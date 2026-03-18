@@ -1,7 +1,7 @@
--- ╔══════════════════════════════════════════════════════╗
--- ║  AC | AudioCrafter  V3.1                            ║
--- ║  Made by MelodyCrafter                              ║
--- ╚══════════════════════════════════════════════════════╝
+-- +======================================================+
+-- |  AC | AudioCrafter  V3.1                            |
+-- |  Made by MelodyCrafter                              |
+-- +======================================================+
 -- CHANGES v3.1:
 --  FIX: G key + reopenBtn visibility (AC._uiOpen flag)
 --  FIX: Enum.KeyCode errors (pcall KeyCode.Name everywhere)
@@ -90,7 +90,7 @@ AC.drawLogo=function(parent,size,color)
     return lf
 end
 
--- ── GUI ROOT ─────────────────────────────────────────────
+-- -- GUI ROOT ---------------------------------------------
 do
     local old=AC.gui:FindFirstChild("AC_GUI"); if old then old:Destroy() end
     AC.screenGui=Instance.new("ScreenGui"); AC.screenGui.Name="AC_GUI"; AC.screenGui.ResetOnSpawn=false
@@ -124,7 +124,7 @@ do
     AC._uiOpen=true  -- tracks whether main UI is visible (fix for G key)
 end
 
--- ── HELPERS ──────────────────────────────────────────────
+-- -- HELPERS ----------------------------------------------
 do
     AC.viewDist=12; AC.viewYaw=0; AC.viewPitch=15
     AC.startViewing=function(p)
@@ -252,7 +252,7 @@ do
     end
 end
 
--- ── MAIN FRAME ───────────────────────────────────────────
+-- -- MAIN FRAME -------------------------------------------
 do
     AC.wrapper=Instance.new("Frame",AC.screenGui); AC.wrapper.Size=UDim2.new(0,AC.UI_W,0,AC.UI_H); AC.wrapper.Position=UDim2.new(0.5,-AC.UI_W/2,0.5,-AC.UI_H/2); AC.wrapper.BackgroundTransparency=1
     local shadow=Instance.new("Frame",AC.wrapper); shadow.Size=UDim2.new(1,20,1,20); shadow.Position=UDim2.new(0,-10,0,-10); shadow.BackgroundColor3=Color3.fromRGB(0,0,0); shadow.BackgroundTransparency=0.45; shadow.ZIndex=0; Instance.new("UICorner",shadow).CornerRadius=UDim.new(0,20)
@@ -265,7 +265,7 @@ do
     local ndot=Instance.new("Frame",AC.navbar); ndot.Size=UDim2.new(0,7,0,7); ndot.Position=UDim2.new(0,194,0.5,-3); ndot.BackgroundColor3=AC.PUR_BRIGHT; ndot.ZIndex=6; Instance.new("UICorner",ndot).CornerRadius=UDim.new(1,0)
     AC.TS:Create(ndot,TweenInfo.new(1,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),{BackgroundColor3=AC.PUR_DARK,BackgroundTransparency=0.4}):Play()
     local navBy=Instance.new("TextLabel",AC.navbar); navBy.Size=UDim2.new(0,160,1,0); navBy.Position=UDim2.new(0,205,0,0); navBy.BackgroundTransparency=1; navBy.Text="by MelodyCrafter"; navBy.TextColor3=AC.TXT_DIM; navBy.TextSize=11; navBy.Font=Enum.Font.Gotham; navBy.TextXAlignment=Enum.TextXAlignment.Left; navBy.ZIndex=6
-    AC.minBtn=Instance.new("TextButton",AC.navbar); AC.minBtn.Size=UDim2.new(0,24,0,24); AC.minBtn.Position=UDim2.new(1,-30,0.5,-12); AC.minBtn.BackgroundColor3=Color3.fromRGB(35,35,35); AC.minBtn.Text="—"; AC.minBtn.TextColor3=AC.TXT_DIM; AC.minBtn.TextSize=13; AC.minBtn.Font=Enum.Font.GothamBold; AC.minBtn.ZIndex=6; Instance.new("UICorner",AC.minBtn).CornerRadius=UDim.new(0,6)
+    AC.minBtn=Instance.new("TextButton",AC.navbar); AC.minBtn.Size=UDim2.new(0,24,0,24); AC.minBtn.Position=UDim2.new(1,-30,0.5,-12); AC.minBtn.BackgroundColor3=Color3.fromRGB(35,35,35); AC.minBtn.Text=""; AC.minBtn.TextColor3=AC.TXT_DIM; AC.minBtn.TextSize=13; AC.minBtn.Font=Enum.Font.GothamBold; AC.minBtn.ZIndex=6; Instance.new("UICorner",AC.minBtn).CornerRadius=UDim.new(0,6)
     AC.minBtn.MouseEnter:Connect(function() AC.TS:Create(AC.minBtn,TweenInfo.new(0.12),{BackgroundColor3=AC.PUR_DARK,TextColor3=AC.TXT_WHITE}):Play() end)
     AC.minBtn.MouseLeave:Connect(function() AC.TS:Create(AC.minBtn,TweenInfo.new(0.12),{BackgroundColor3=Color3.fromRGB(35,35,35),TextColor3=AC.TXT_DIM}):Play() end)
 
@@ -279,7 +279,7 @@ do
     AC.mainPanel=Instance.new("Frame",body); AC.mainPanel.Size=UDim2.new(0,AC.MAIN_W,1,0); AC.mainPanel.Position=UDim2.new(0,AC.SIDE_W+6,0,0); AC.mainPanel.BackgroundColor3=AC.BG_PANEL; AC.mainPanel.ClipsDescendants=true; AC.mainPanel.ZIndex=3; Instance.new("UICorner",AC.mainPanel).CornerRadius=UDim.new(0,12); local mpk=Instance.new("UIStroke",AC.mainPanel); mpk.Color=AC.PUR_STROKE; mpk.Thickness=1; mpk.Transparency=0.4
     AC.pageContainer=Instance.new("Frame",AC.mainPanel); AC.pageContainer.Size=UDim2.new(1,0,1,0); AC.pageContainer.BackgroundTransparency=1; AC.pageContainer.ClipsDescendants=true
 
-    -- ── Reopen button ── FIX: always visible with pulsing border ──
+    -- -- Reopen button -- FIX: always visible with pulsing border --
     AC.reopenBtn=Instance.new("TextButton",AC.screenGui)
     AC.reopenBtn.Size=UDim2.new(0,50,0,50); AC.reopenBtn.Position=UDim2.new(1,-62,0.5,-25)
     AC.reopenBtn.BackgroundColor3=AC.BG_PANEL; AC.reopenBtn.Text=""; AC.reopenBtn.Visible=false; AC.reopenBtn.ZIndex=20
@@ -302,7 +302,7 @@ do
         end
     end)
 
-    -- ── FIX: minimize/reopen using _uiOpen flag ──────────
+    -- -- FIX: minimize/reopen using _uiOpen flag ----------
     AC.doMin=function()
         if not AC._uiOpen then return end; AC._uiOpen=false
         pcall(function() AC.openSound:Play() end)
@@ -319,7 +319,7 @@ do
     AC.minBtn.MouseButton1Click:Connect(AC.doMin)
     AC.reopenBtn.MouseButton1Click:Connect(AC.doOpen)
 
-    -- ── FIX: G key uses _uiOpen flag, not Visible ────────
+    -- -- FIX: G key uses _uiOpen flag, not Visible --------
     AC.UIS.InputBegan:Connect(function(i,gp)
         if gp then return end
         if i.KeyCode==Enum.KeyCode.G then
@@ -328,7 +328,7 @@ do
     end)
 end
 
--- ── FPS/PING HUD + TAGS ──────────────────────────────────
+-- -- FPS/PING HUD + TAGS ----------------------------------
 do
     local pill=Instance.new("Frame",AC.screenGui); pill.Size=UDim2.new(0,200,0,28); pill.Position=UDim2.new(0.5,-100,0,2); pill.BackgroundColor3=Color3.fromRGB(10,10,10); pill.ZIndex=300; Instance.new("UICorner",pill).CornerRadius=UDim.new(0,14); local ps=Instance.new("UIStroke",pill); ps.Color=AC.PUR_STROKE; ps.Thickness=1.2; ps.Transparency=0.2
     local tagsDot=Instance.new("Frame",pill); tagsDot.Size=UDim2.new(0,9,0,9); tagsDot.Position=UDim2.new(0,8,0.5,-4); tagsDot.BackgroundColor3=AC.PUR_BRIGHT; tagsDot.ZIndex=301; Instance.new("UICorner",tagsDot).CornerRadius=UDim.new(1,0)
@@ -361,7 +361,7 @@ do
     end)
 end
 
--- ── BILLBOARD TAGS (typewriter, LOD, lighter purple) ─────
+-- -- BILLBOARD TAGS (typewriter, LOD, lighter purple) -----
 do
     local MARKER="AC_Active"
     local DISPLAY_TEXT="AUDIO USER"
@@ -447,7 +447,7 @@ do
         local f=Instance.new("Frame",AC.toastContainer); f.Size=UDim2.new(0,280,0,0); f.BackgroundColor3=Color3.fromRGB(20,16,0); f.ClipsDescendants=true
         Instance.new("UICorner",f).CornerRadius=UDim.new(0,8); local st=Instance.new("UIStroke",f); st.Color=color; st.Thickness=2
         local bar=Instance.new("Frame",f); bar.Size=UDim2.new(0,4,1,0); bar.BackgroundColor3=color; bar.BorderSizePixel=0
-        local lbl=Instance.new("TextLabel",f); lbl.Size=UDim2.new(1,-18,1,0); lbl.Position=UDim2.new(0,14,0,0); lbl.BackgroundTransparency=1; lbl.Text="⚡ AC USER: "..p.Name.." — ADMIN IN SERVER"; lbl.TextColor3=color; lbl.TextSize=12; lbl.Font=Enum.Font.GothamBold; lbl.TextXAlignment=Enum.TextXAlignment.Left; lbl.TextWrapped=true
+        local lbl=Instance.new("TextLabel",f); lbl.Size=UDim2.new(1,-18,1,0); lbl.Position=UDim2.new(0,14,0,0); lbl.BackgroundTransparency=1; lbl.Text="! AC USER: "..p.Name.."  ADMIN IN SERVER"; lbl.TextColor3=color; lbl.TextSize=12; lbl.Font=Enum.Font.GothamBold; lbl.TextXAlignment=Enum.TextXAlignment.Left; lbl.TextWrapped=true
         AC.TS:Create(f,TweenInfo.new(0.2,Enum.EasingStyle.Quint,Enum.EasingDirection.Out),{Size=UDim2.new(0,280,0,48)}):Play()
         task.delay(6,function() if f and f.Parent then AC.TS:Create(f,TweenInfo.new(0.2),{Size=UDim2.new(0,280,0,0)}):Play(); task.delay(0.25,function() if f and f.Parent then f:Destroy() end end) end end)
     end
@@ -491,18 +491,18 @@ do
 end
 
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- HOME TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("Home",1); local pg=AC.createPage(); AC.tabs["Home"].page=pg
     local wCard=AC.makeCard(pg,12,72,Color3.fromRGB(18,5,30)); wCard.Size=UDim2.new(1,-24,0,72)
     local wg=Instance.new("UIGradient",wCard); wg.Color=ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(40,8,65)),ColorSequenceKeypoint.new(1,Color3.fromRGB(10,2,18))}; wg.Rotation=135
     local wt=Instance.new("TextLabel",wCard); wt.Size=UDim2.new(1,-20,0,32); wt.Position=UDim2.new(0,14,0,8); wt.BackgroundTransparency=1; wt.Text="Welcome, "..AC.player.Name; wt.TextColor3=AC.TXT_WHITE; wt.TextSize=20; wt.Font=Enum.Font.GothamBold; wt.TextXAlignment=Enum.TextXAlignment.Left
-    local ws=Instance.new("TextLabel",wCard); ws.Size=UDim2.new(1,-20,0,20); ws.Position=UDim2.new(0,14,0,44); ws.BackgroundTransparency=1; ws.Text="AC AudioCrafter v3.1 — by MelodyCrafter"; ws.TextColor3=AC.PUR_MID; ws.TextSize=12; ws.Font=Enum.Font.Gotham; ws.TextXAlignment=Enum.TextXAlignment.Left
+    local ws=Instance.new("TextLabel",wCard); ws.Size=UDim2.new(1,-20,0,20); ws.Position=UDim2.new(0,14,0,44); ws.BackgroundTransparency=1; ws.Text="AC AudioCrafter v3.1  by MelodyCrafter"; ws.TextColor3=AC.PUR_MID; ws.TextSize=12; ws.Font=Enum.Font.Gotham; ws.TextXAlignment=Enum.TextXAlignment.Left
     local cW=math.floor((AC.MAIN_W-24-16)/3)
     local function ic(label,val,col,vc) local c=Instance.new("Frame",pg); c.Size=UDim2.new(0,cW,0,56); c.Position=UDim2.new(0,12+col*(cW+8),0,96); c.BackgroundColor3=AC.BG_CARD; Instance.new("UICorner",c).CornerRadius=UDim.new(0,8); local ll=Instance.new("TextLabel",c); ll.Size=UDim2.new(1,-10,0,16); ll.Position=UDim2.new(0,10,0,8); ll.BackgroundTransparency=1; ll.Text=label; ll.TextColor3=AC.TXT_DIM; ll.TextSize=10; ll.Font=Enum.Font.Gotham; ll.TextXAlignment=Enum.TextXAlignment.Left; local vl=Instance.new("TextLabel",c); vl.Size=UDim2.new(1,-10,0,24); vl.Position=UDim2.new(0,10,0,26); vl.BackgroundTransparency=1; vl.Text=val; vl.TextColor3=vc or AC.TXT_WHITE; vl.TextSize=14; vl.Font=Enum.Font.GothamBold; vl.TextXAlignment=Enum.TextXAlignment.Left end
-    ic("Version","v3.1",0); ic("Status","● Active",1,AC.GREEN_OK); ic("Script",AC.executorName,2,AC.PUR_BRIGHT)
+    ic("Version","v3.1",0); ic("Status","* Active",1,AC.GREEN_OK); ic("Script",AC.executorName,2,AC.PUR_BRIGHT)
 
     AC.sectionLbl(pg,"CHANGELOG",164)
     local clOuter=Instance.new("Frame",pg); clOuter.Size=UDim2.new(1,-24,0,230); clOuter.Position=UDim2.new(0,12,0,182)
@@ -519,31 +519,31 @@ do
         l.BackgroundTransparency=1; l.Text=t; l.TextColor3=c2; l.TextSize=sz
         l.Font=f or Enum.Font.Gotham; l.TextXAlignment=Enum.TextXAlignment.Left; l.TextWrapped=true; l.LayoutOrder=clOrd
     end
-    cll("v3.1 — Current Update",12,AC.PUR_GLOW,Enum.Font.GothamBold)
+    cll("v3.1  Current Update",12,AC.PUR_GLOW,Enum.Font.GothamBold)
     cll("RN panel: fetches ALL animations from Rootleak/Animations (~1000+) via GitHub API.",10,AC.TXT_MAIN)
     cll("Settings saved per-player using writefile (favs, binds, speeds persist across executions).",10,AC.TXT_MAIN)
     cll("Bind slots: Delete/Backspace exits bind mode + X button clears individual bind.",10,AC.TXT_MAIN)
     cll("Stop emote fix: api.stop_animation() called correctly; second click reliably stops.",10,AC.TXT_MAIN)
     cll("UGC Emotes panel: now identical layout to AC REANIMATION (speed slider + bind row).",10,AC.TXT_MAIN)
     cll("Sound ID fixed. Changelog restored. FPS calc fixed. UGC lag fixed.",10,AC.TXT_MAIN)
-    cll("v3.0 — Major Update",12,AC.PUR_MID,Enum.Font.GothamBold)
+    cll("v3.0  Major Update",12,AC.PUR_MID,Enum.Font.GothamBold)
     cll("AC REANIMATION panel (AK-style): All/Favs, star favs, per-emote speed 0.1-12,",10,AC.TXT_MAIN)
     cll("speed slider 0-10, number row Bind slots, highlight toggle, semi-transparent.",10,AC.TXT_MAIN)
     cll("UGC Emotes panel: All/Favs/States, matching bottom bar, async row loading.",10,AC.TXT_MAIN)
     cll("Billboard: typewriter loop, lighter purple, distance LOD (logo-only far).",10,AC.TXT_MAIN)
     cll("FIX: G key + reopenBtn. FIX: KeyCode errors. FIX: double tag. FIX: ragdoll.",10,AC.TXT_MAIN)
     cll("FIX: Sound IDs corrected. FIX: Changelog restored. FIX: UGC panel lag.",10,AC.TXT_MAIN)
-    cll("v2.9 — Rootleak Reanimation API integrated.",12,AC.PUR_MID,Enum.Font.GothamBold)
-    cll("v2.6~2.8 — Tags, emotes, VC bypass, dropdown, glowing button fixes.",10,AC.TXT_DIM)
-    cll("v2.0~2.5 — PShade shaders, executor detect, hover/click sounds, fly fixes.",10,AC.TXT_DIM)
-    cll("v1.0~1.9 — Initial release through Anti-VC, spectate, ESP, FPS/PING HUD.",10,AC.TXT_DIM)
+    cll("v2.9  Rootleak Reanimation API integrated.",12,AC.PUR_MID,Enum.Font.GothamBold)
+    cll("v2.6~2.8  Tags, emotes, VC bypass, dropdown, glowing button fixes.",10,AC.TXT_DIM)
+    cll("v2.0~2.5  PShade shaders, executor detect, hover/click sounds, fly fixes.",10,AC.TXT_DIM)
+    cll("v1.0~1.9  Initial release through Anti-VC, spectate, ESP, FPS/PING HUD.",10,AC.TXT_DIM)
 
     btn.MouseButton1Click:Connect(function() AC.switchTab("Home") end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- PLAYER TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("Player",2); local pg=AC.createPage(); AC.tabs["Player"].page=pg
     AC.sectionLbl(pg,"TARGET",10)
@@ -602,16 +602,16 @@ do
     vBtn.MouseButton1Click:Connect(function() if AC.selectedTarget then AC.startViewing(AC.selectedTarget); AC.toast("Viewing "..AC.selectedTarget.Name) else AC.toast("No target",AC.RED_ERR) end end)
     tBtn.MouseButton1Click:Connect(function() if AC.selectedTarget and AC.selectedTarget.Character then local r=AC.selectedTarget.Character:FindFirstChild("HumanoidRootPart"); local m=AC.player.Character and AC.player.Character:FindFirstChild("HumanoidRootPart"); if r and m then m.CFrame=r.CFrame*CFrame.new(0,0,-3); AC.toast("TP'd to "..AC.selectedTarget.Name) end else AC.toast("No target",AC.RED_ERR) end end)
     brBtn.MouseButton1Click:Connect(function() if AC.selectedTarget and AC.selectedTarget.Character then local r=AC.selectedTarget.Character:FindFirstChild("HumanoidRootPart"); local m=AC.player.Character and AC.player.Character:FindFirstChild("HumanoidRootPart"); if r and m then r.CFrame=m.CFrame*CFrame.new(0,0,-3); AC.toast("Brought "..AC.selectedTarget.Name) end else AC.toast("No target",AC.RED_ERR) end end)
-    foBtn.MouseButton1Click:Connect(function() if AC.focusActive then AC.focusActive=false; if AC.focusConn then AC.focusConn:Disconnect(); AC.focusConn=nil end; foBtn.Text="Focus Loop TP"; AC.toast("Focus OFF",AC.ORANGE_W); return end; if not AC.selectedTarget then AC.toast("No target",AC.RED_ERR); return end; AC.focusActive=true; foBtn.Text="Stop Focus"; AC.toast("Focus ON → "..AC.selectedTarget.Name); AC.focusConn=AC.RS.Heartbeat:Connect(function() if not AC.focusActive then return end; if AC.selectedTarget and AC.selectedTarget.Character then local r=AC.selectedTarget.Character:FindFirstChild("HumanoidRootPart"); local m=AC.player.Character and AC.player.Character:FindFirstChild("HumanoidRootPart"); if r and m then m.CFrame=r.CFrame*CFrame.new(0,0,-2) end end end) end)
+    foBtn.MouseButton1Click:Connect(function() if AC.focusActive then AC.focusActive=false; if AC.focusConn then AC.focusConn:Disconnect(); AC.focusConn=nil end; foBtn.Text="Focus Loop TP"; AC.toast("Focus OFF",AC.ORANGE_W); return end; if not AC.selectedTarget then AC.toast("No target",AC.RED_ERR); return end; AC.focusActive=true; foBtn.Text="Stop Focus"; AC.toast("Focus ON -> "..AC.selectedTarget.Name); AC.focusConn=AC.RS.Heartbeat:Connect(function() if not AC.focusActive then return end; if AC.selectedTarget and AC.selectedTarget.Character then local r=AC.selectedTarget.Character:FindFirstChild("HumanoidRootPart"); local m=AC.player.Character and AC.player.Character:FindFirstChild("HumanoidRootPart"); if r and m then m.CFrame=r.CFrame*CFrame.new(0,0,-2) end end end) end)
     siBtn.MouseButton1Click:Connect(function() if AC.onHead then AC.onHead=false; if AC.headConn then AC.headConn:Disconnect(); AC.headConn=nil end; local h2=AC.player.Character and AC.player.Character:FindFirstChildOfClass("Humanoid"); if h2 then h2.Sit=false end; siBtn.Text="Sit on Head"; AC.toast("Off head",AC.ORANGE_W); return end; if not AC.selectedTarget or not AC.selectedTarget.Character then AC.toast("No target",AC.RED_ERR); return end; AC.onHead=true; siBtn.Text="Get Off"; AC.headConn=AC.RS.Heartbeat:Connect(function() if not AC.onHead then return end; local mc=AC.player.Character; local mr=mc and mc:FindFirstChild("HumanoidRootPart"); local mh=mc and mc:FindFirstChildOfClass("Humanoid"); local th=AC.selectedTarget.Character and AC.selectedTarget.Character:FindFirstChild("Head"); if mr and th then if mh then mh.Sit=true end; mr.CFrame=th.CFrame*CFrame.new(0,th.Size.Y+0.8,0) end end) end)
     baBtn.MouseButton1Click:Connect(function() if AC.inBp then AC.inBp=false; if AC.bpConn then AC.bpConn:Disconnect(); AC.bpConn=nil end; local mh=AC.player.Character and AC.player.Character:FindFirstChildOfClass("Humanoid"); if mh then mh.Sit=false end; baBtn.Text="Backpack Mode"; AC.toast("Backpack OFF",AC.ORANGE_W); return end; if not AC.selectedTarget or not AC.selectedTarget.Character then AC.toast("No target",AC.RED_ERR); return end; AC.inBp=true; baBtn.Text="Exit Backpack"; AC.bpConn=AC.RS.Heartbeat:Connect(function() if not AC.inBp then return end; local mr=AC.player.Character and AC.player.Character:FindFirstChild("HumanoidRootPart"); local mh2=AC.player.Character and AC.player.Character:FindFirstChildOfClass("Humanoid"); local tr=AC.selectedTarget.Character and AC.selectedTarget.Character:FindFirstChild("HumanoidRootPart"); if mr and tr then if mh2 then mh2.Sit=true end; mr.CFrame=tr.CFrame*CFrame.new(0,1,1.8) end end) end)
     clBtn.MouseButton1Click:Connect(function() AC.stopViewing(); AC.focusActive=false; AC.onHead=false; AC.inBp=false; AC.selectedTarget=nil; sBox.Text=""; foBtn.Text="Focus Loop TP"; siBtn.Text="Sit on Head"; baBtn.Text="Backpack Mode"; AC.toast("Target cleared") end)
     btn.MouseButton1Click:Connect(function() AC.switchTab("Player") end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- MOVEMENT TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("Movement",3); local pg=AC.createPage(); AC.tabs["Movement"].page=pg
     AC.sectionLbl(pg,"LOCOMOTION",10)
@@ -640,9 +640,9 @@ do
     btn.MouseButton1Click:Connect(function() AC.switchTab("Movement") end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- WORLD TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("World",4); local pg=AC.createPage(); AC.tabs["World"].page=pg
     AC.sectionLbl(pg,"ENVIRONMENT",10)
@@ -657,9 +657,9 @@ do
     btn.MouseButton1Click:Connect(function() AC.switchTab("World") end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- EMOTES TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("Emotes",5); local pg=AC.createPage(); AC.tabs["Emotes"].page=pg
 
@@ -668,8 +668,8 @@ do
 
     local function ensureAPI(cb)
         if rnAPI then cb(rnAPI); return end
-        if rnLoading then AC.toast("Still loading…",AC.ORANGE_W); return end
-        rnLoading=true; AC.toast("Loading Reanimation API…",AC.ORANGE_W)
+        if rnLoading then AC.toast("Still loading...",AC.ORANGE_W); return end
+        rnLoading=true; AC.toast("Loading Reanimation API...",AC.ORANGE_W)
         task.spawn(function()
             local ok,result=pcall(function() return loadstring(game:HttpGet(_URLS.REANIMATION))() end)
             rnLoading=false
@@ -804,7 +804,7 @@ do
 
 
 
-    -- ── AC REANIMATION PANEL ──────────────────────────────
+    -- -- AC REANIMATION PANEL ------------------------------
     local RN_W,RN_H=340,520
     local rnPanel=Instance.new("Frame",AC.screenGui)
     rnPanel.Size=UDim2.new(0,RN_W,0,RN_H); rnPanel.Position=UDim2.new(0.5,-170,0.5,-260)
@@ -822,7 +822,7 @@ do
     local rnTitleLbl=Instance.new("TextLabel",rnHdr); rnTitleLbl.Size=UDim2.new(1,-110,1,0); rnTitleLbl.Position=UDim2.new(0,52,0,0); rnTitleLbl.BackgroundTransparency=1; rnTitleLbl.Text="AC REANIMATION"; rnTitleLbl.TextColor3=AC.TXT_WHITE; rnTitleLbl.TextSize=14; rnTitleLbl.Font=Enum.Font.GothamBold; rnTitleLbl.TextXAlignment=Enum.TextXAlignment.Left; rnTitleLbl.ZIndex=72
     local rnStatusLbl=Instance.new("TextLabel",rnHdr); rnStatusLbl.Size=UDim2.new(1,-110,1,0); rnStatusLbl.Position=UDim2.new(0,52,0,14); rnStatusLbl.BackgroundTransparency=1; rnStatusLbl.Text="Loading animations..."; rnStatusLbl.TextColor3=AC.TXT_DIM; rnStatusLbl.TextSize=10; rnStatusLbl.Font=Enum.Font.Gotham; rnStatusLbl.TextXAlignment=Enum.TextXAlignment.Left; rnStatusLbl.ZIndex=72
     local rnCornerLbl=Instance.new("TextLabel",rnHdr); rnCornerLbl.Size=UDim2.new(0,24,1,0); rnCornerLbl.Position=UDim2.new(1,-30,0,0); rnCornerLbl.BackgroundTransparency=1; rnCornerLbl.Text="AC"; rnCornerLbl.TextColor3=AC.PUR_MID; rnCornerLbl.TextSize=9; rnCornerLbl.Font=Enum.Font.GothamBold; rnCornerLbl.TextXAlignment=Enum.TextXAlignment.Right; rnCornerLbl.ZIndex=72
-    local rnClsBtn=Instance.new("TextButton",rnHdr); rnClsBtn.Size=UDim2.new(0,20,0,20); rnClsBtn.Position=UDim2.new(1,-24,0.5,-10); rnClsBtn.BackgroundColor3=Color3.fromRGB(35,35,35); rnClsBtn.Text="✕"; rnClsBtn.TextColor3=AC.TXT_DIM; rnClsBtn.TextSize=11; rnClsBtn.Font=Enum.Font.GothamBold; rnClsBtn.ZIndex=72; Instance.new("UICorner",rnClsBtn).CornerRadius=UDim.new(0,5)
+    local rnClsBtn=Instance.new("TextButton",rnHdr); rnClsBtn.Size=UDim2.new(0,20,0,20); rnClsBtn.Position=UDim2.new(1,-24,0.5,-10); rnClsBtn.BackgroundColor3=Color3.fromRGB(35,35,35); rnClsBtn.Text="X"; rnClsBtn.TextColor3=AC.TXT_DIM; rnClsBtn.TextSize=11; rnClsBtn.Font=Enum.Font.GothamBold; rnClsBtn.ZIndex=72; Instance.new("UICorner",rnClsBtn).CornerRadius=UDim.new(0,5)
     rnClsBtn.MouseButton1Click:Connect(function() rnPanel.Visible=false end)
 
     -- All | Favs tabs
@@ -872,7 +872,7 @@ do
         nb.BackgroundColor3=Color3.fromRGB(20,20,24); nb.BackgroundTransparency=0.2
         nb.Text=tostring(nv); nb.TextColor3=AC.PUR_GLOW; nb.TextSize=13; nb.Font=Enum.Font.GothamBold; nb.ZIndex=72
         Instance.new("UICorner",nb).CornerRadius=UDim.new(0,5); Instance.new("UIStroke",nb).Color=AC.PUR_STROKE
-        -- Bottom slot: keybind capture — shows "Bind" until bound
+        -- Bottom slot: keybind capture  shows "Bind" until bound
         local kb=Instance.new("TextButton",numRowF)
         kb.Size=UDim2.new(0,bW2,0,22); kb.Position=UDim2.new(0,xOff,0,26)
         kb.BackgroundColor3=Color3.fromRGB(20,20,24); kb.BackgroundTransparency=0.2
@@ -964,7 +964,7 @@ do
         local row=Instance.new("TextButton",rnScroll); row.Size=UDim2.new(1,0,0,34); row.BackgroundColor3=Color3.fromRGB(14,14,18); row.BackgroundTransparency=0.1; row.Text=""; row.LayoutOrder=idx; row.ZIndex=72; Instance.new("UICorner",row).CornerRadius=UDim.new(0,7)
         local rS=Instance.new("UIStroke",row); rS.Color=AC.PUR_STROKE; rS.Thickness=1; rS.Transparency=0.7
         local idxStr=tostring(idx)
-        local star=Instance.new("TextButton",row); star.Size=UDim2.new(0,22,0,22); star.Position=UDim2.new(0,6,0.5,-11); star.BackgroundTransparency=1; star.Text=rnFavs[idxStr] and "★" or "☆"; star.TextColor3=rnFavs[idxStr] and Color3.fromRGB(255,210,60) or AC.TXT_DIM; star.TextSize=14; star.Font=Enum.Font.Gotham; star.ZIndex=73
+        local star=Instance.new("TextButton",row); star.Size=UDim2.new(0,22,0,22); star.Position=UDim2.new(0,6,0.5,-11); star.BackgroundTransparency=1; star.Text=rnFavs[idxStr] and "*" or "*"; star.TextColor3=rnFavs[idxStr] and Color3.fromRGB(255,210,60) or AC.TXT_DIM; star.TextSize=14; star.Font=Enum.Font.Gotham; star.ZIndex=73
         local nLbl=Instance.new("TextLabel",row); nLbl.Size=UDim2.new(1,-120,1,0); nLbl.Position=UDim2.new(0,32,0,0); nLbl.BackgroundTransparency=1; nLbl.Text=name; nLbl.TextColor3=AC.TXT_MAIN; nLbl.TextSize=12; nLbl.Font=Enum.Font.Gotham; nLbl.TextXAlignment=Enum.TextXAlignment.Left; nLbl.TextTruncate=Enum.TextTruncate.AtEnd; nLbl.ZIndex=73
         local emoteSpd=rnSpeeds[idxStr] or 1.0
         local spdDn=Instance.new("TextButton",row); spdDn.Size=UDim2.new(0,14,0,14); spdDn.Position=UDim2.new(1,-60,0.5,-7); spdDn.BackgroundColor3=Color3.fromRGB(30,30,36); spdDn.Text="-"; spdDn.TextColor3=AC.TXT_DIM; spdDn.TextSize=11; spdDn.Font=Enum.Font.GothamBold; spdDn.ZIndex=73; Instance.new("UICorner",spdDn).CornerRadius=UDim.new(0,4)
@@ -974,8 +974,8 @@ do
         local urlC,nameC=url,name
 
         star.MouseButton1Click:Connect(function()
-            if rnFavs[idxStr] then rnFavs[idxStr]=nil; star.Text="☆"; star.TextColor3=AC.TXT_DIM
-            else rnFavs[idxStr]=true; star.Text="★"; AC.TS:Create(star,TweenInfo.new(0.15),{TextColor3=Color3.fromRGB(255,210,60)}):Play() end
+            if rnFavs[idxStr] then rnFavs[idxStr]=nil; star.Text="*"; star.TextColor3=AC.TXT_DIM
+            else rnFavs[idxStr]=true; star.Text="*"; AC.TS:Create(star,TweenInfo.new(0.15),{TextColor3=Color3.fromRGB(255,210,60)}):Play() end
             saveRnFavs(); if rnFavOnly then row.Visible=rnFavs[idxStr]~=nil end
         end)
         spdDn.MouseButton1Click:Connect(function()
@@ -1008,7 +1008,7 @@ do
                     return
                 end
                 rnBinds[idxStr]=kn; saveRnBinds(); bLbl.Text=kn:sub(1,3); bLbl.TextColor3=AC.TXT_WHITE
-                bListen=false; if bConn then bConn:Disconnect(); bConn=nil end; AC.toast("Bound "..kn.." → "..nameC,AC.PUR_BRIGHT)
+                bListen=false; if bConn then bConn:Disconnect(); bConn=nil end; AC.toast("Bound "..kn.." -> "..nameC,AC.PUR_BRIGHT)
             end)
         end)
 
@@ -1034,7 +1034,7 @@ do
                 end
                 pcall(function() api.play_animation(urlC,emoteSpd) end); rnNowUrl=urlC; highlighted=true; rnHighRow=row
                 AC.TS:Create(row,TweenInfo.new(0.15),{BackgroundColor3=AC.PUR_DARK}):Play(); rS.Color=AC.PUR_BRIGHT
-                AC.toast("♪ "..nameC,AC.PUR_BRIGHT)
+                AC.toast("* "..nameC,AC.PUR_BRIGHT)
             end)
         end)
         row.MouseEnter:Connect(function() if not highlighted then AC.TS:Create(row,TweenInfo.new(0.1),{BackgroundColor3=Color3.fromRGB(22,22,28)}):Play() end end)
@@ -1086,7 +1086,7 @@ do
                         if r and tostring(r.index)==idxStr then
                             ensureAPI(function(api)
                                 pcall(function() api.play_animation(r.url, rnSpeeds[idxStr] or 1.0) end)
-                                AC.toast("♪ "..r.nameLower,AC.PUR_BRIGHT)
+                                AC.toast("* "..r.nameLower,AC.PUR_BRIGHT)
                             end)
                             break
                         end
@@ -1106,7 +1106,7 @@ do
     end
 end)
 
-    -- ── UGC EMOTES PANEL ─────────────────────────────────
+    -- -- UGC EMOTES PANEL ---------------------------------
     local UGC_W,UGC_H=360,500
     local ugcPanel=Instance.new("Frame",AC.screenGui)
     ugcPanel.Size=UDim2.new(0,UGC_W,0,UGC_H+44); ugcPanel.Position=UDim2.new(0.5,-180,0.5,-250)
@@ -1118,7 +1118,7 @@ end)
     local ugcTitleLbl=Instance.new("TextLabel",ugcHdr); ugcTitleLbl.Size=UDim2.new(1,-80,1,0); ugcTitleLbl.Position=UDim2.new(0,14,0,0); ugcTitleLbl.BackgroundTransparency=1; ugcTitleLbl.Text="UGC EMOTES"; ugcTitleLbl.TextColor3=AC.TXT_WHITE; ugcTitleLbl.TextSize=14; ugcTitleLbl.Font=Enum.Font.GothamBold; ugcTitleLbl.TextXAlignment=Enum.TextXAlignment.Left; ugcTitleLbl.ZIndex=67
     local ugcStatusLbl=Instance.new("TextLabel",ugcHdr); ugcStatusLbl.Size=UDim2.new(1,-80,1,0); ugcStatusLbl.Position=UDim2.new(0,14,0,14); ugcStatusLbl.BackgroundTransparency=1; ugcStatusLbl.Text="Loading..."; ugcStatusLbl.TextColor3=AC.TXT_DIM; ugcStatusLbl.TextSize=10; ugcStatusLbl.Font=Enum.Font.Gotham; ugcStatusLbl.TextXAlignment=Enum.TextXAlignment.Left; ugcStatusLbl.ZIndex=67
     local ugcAcLbl=Instance.new("TextLabel",ugcHdr); ugcAcLbl.Size=UDim2.new(0,24,1,0); ugcAcLbl.Position=UDim2.new(1,-30,0,0); ugcAcLbl.BackgroundTransparency=1; ugcAcLbl.Text="AC"; ugcAcLbl.TextColor3=AC.PUR_MID; ugcAcLbl.TextSize=9; ugcAcLbl.Font=Enum.Font.GothamBold; ugcAcLbl.TextXAlignment=Enum.TextXAlignment.Right; ugcAcLbl.ZIndex=67
-    local ugcClsBtn=Instance.new("TextButton",ugcHdr); ugcClsBtn.Size=UDim2.new(0,20,0,20); ugcClsBtn.Position=UDim2.new(1,-24,0.5,-10); ugcClsBtn.BackgroundColor3=Color3.fromRGB(35,35,35); ugcClsBtn.Text="✕"; ugcClsBtn.TextColor3=AC.TXT_DIM; ugcClsBtn.TextSize=11; ugcClsBtn.Font=Enum.Font.GothamBold; ugcClsBtn.ZIndex=67; Instance.new("UICorner",ugcClsBtn).CornerRadius=UDim.new(0,5)
+    local ugcClsBtn=Instance.new("TextButton",ugcHdr); ugcClsBtn.Size=UDim2.new(0,20,0,20); ugcClsBtn.Position=UDim2.new(1,-24,0.5,-10); ugcClsBtn.BackgroundColor3=Color3.fromRGB(35,35,35); ugcClsBtn.Text="X"; ugcClsBtn.TextColor3=AC.TXT_DIM; ugcClsBtn.TextSize=11; ugcClsBtn.Font=Enum.Font.GothamBold; ugcClsBtn.ZIndex=67; Instance.new("UICorner",ugcClsBtn).CornerRadius=UDim.new(0,5)
     ugcClsBtn.MouseButton1Click:Connect(function() ugcPanel.Visible=false end)
 
     -- Tabs: All | Favs | States
@@ -1199,7 +1199,7 @@ end)
                     return
                 end
                 ugcNumBinds[idxC].savedKey=kn; kb.Text=kn:sub(1,4); kb.TextColor3=AC.TXT_WHITE
-                kL=false; if kC then kC:Disconnect(); kC=nil end; AC.toast("UGC Speed "..nvC.." → "..kn,AC.PUR_BRIGHT)
+                kL=false; if kC then kC:Disconnect(); kC=nil end; AC.toast("UGC Speed "..nvC.." -> "..kn,AC.PUR_BRIGHT)
             end)
         end)
     end
@@ -1249,12 +1249,12 @@ end)
         local row=Instance.new("TextButton",ugcScroll); row.Size=UDim2.new(1,0,0,34); row.BackgroundColor3=Color3.fromRGB(14,14,18); row.BackgroundTransparency=0.1; row.Text=""; row.LayoutOrder=idx; row.ZIndex=68; Instance.new("UICorner",row).CornerRadius=UDim.new(0,7)
         local rS=Instance.new("UIStroke",row); rS.Color=AC.PUR_STROKE; rS.Thickness=1; rS.Transparency=0.7
         local idxStr=tostring(item.id)
-        local star=Instance.new("TextButton",row); star.Size=UDim2.new(0,22,0,22); star.Position=UDim2.new(0,6,0.5,-11); star.BackgroundTransparency=1; star.Text=ugcFavs[idxStr] and "★" or "☆"; star.TextColor3=ugcFavs[idxStr] and Color3.fromRGB(255,210,60) or AC.TXT_DIM; star.TextSize=14; star.Font=Enum.Font.Gotham; star.ZIndex=69
+        local star=Instance.new("TextButton",row); star.Size=UDim2.new(0,22,0,22); star.Position=UDim2.new(0,6,0.5,-11); star.BackgroundTransparency=1; star.Text=ugcFavs[idxStr] and "*" or "*"; star.TextColor3=ugcFavs[idxStr] and Color3.fromRGB(255,210,60) or AC.TXT_DIM; star.TextSize=14; star.Font=Enum.Font.Gotham; star.ZIndex=69
         local nLbl=Instance.new("TextLabel",row); nLbl.Size=UDim2.new(1,-70,1,0); nLbl.Position=UDim2.new(0,32,0,0); nLbl.BackgroundTransparency=1; nLbl.Text=item.name; nLbl.TextColor3=AC.TXT_MAIN; nLbl.TextSize=12; nLbl.Font=Enum.Font.Gotham; nLbl.TextXAlignment=Enum.TextXAlignment.Left; nLbl.TextTruncate=Enum.TextTruncate.AtEnd; nLbl.ZIndex=69
         local bLbl=Instance.new("TextButton",row); bLbl.Size=UDim2.new(0,28,0,14); bLbl.Position=UDim2.new(1,-34,0.5,-7); bLbl.BackgroundColor3=Color3.fromRGB(26,26,32); bLbl.Text=ugcBinds[idxStr] and ugcBinds[idxStr]:sub(1,3) or "Bind"; bLbl.TextColor3=ugcBinds[idxStr] and AC.TXT_WHITE or AC.TXT_DIM; bLbl.TextSize=8; bLbl.Font=Enum.Font.Gotham; bLbl.ZIndex=69; bLbl.BackgroundTransparency=0.3; Instance.new("UICorner",bLbl).CornerRadius=UDim.new(0,4)
         star.MouseButton1Click:Connect(function()
-            if ugcFavs[idxStr] then ugcFavs[idxStr]=nil; star.Text="☆"; star.TextColor3=AC.TXT_DIM
-            else ugcFavs[idxStr]=true; star.Text="★"; AC.TS:Create(star,TweenInfo.new(0.15),{TextColor3=Color3.fromRGB(255,210,60)}):Play() end
+            if ugcFavs[idxStr] then ugcFavs[idxStr]=nil; star.Text="*"; star.TextColor3=AC.TXT_DIM
+            else ugcFavs[idxStr]=true; star.Text="*"; AC.TS:Create(star,TweenInfo.new(0.15),{TextColor3=Color3.fromRGB(255,210,60)}):Play() end
             saveUgcFavs(); if ugcFavOnly then row.Visible=ugcFavs[idxStr]~=nil end
         end)
         local bL=false; local bC=nil
@@ -1277,7 +1277,7 @@ end)
             if ugcHighRow then pcall(function() AC.TS:Create(ugcHighRow,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(14,14,18)}):Play(); local ps=ugcHighRow:FindFirstChildOfClass("UIStroke"); if ps then ps.Color=AC.PUR_STROKE end end) end
             playUgcEmote(item.id); highlighted=true; ugcHighRow=row
             AC.TS:Create(row,TweenInfo.new(0.15),{BackgroundColor3=AC.PUR_DARK}):Play(); rS.Color=AC.PUR_BRIGHT
-            AC.toast("♪ "..item.name,AC.PUR_BRIGHT)
+            AC.toast("* "..item.name,AC.PUR_BRIGHT)
         end)
         row.MouseEnter:Connect(function() if not highlighted then AC.TS:Create(row,TweenInfo.new(0.1),{BackgroundColor3=Color3.fromRGB(22,22,28)}):Play() end end)
         row.MouseLeave:Connect(function() if not highlighted then AC.TS:Create(row,TweenInfo.new(0.1),{BackgroundColor3=Color3.fromRGB(14,14,18)}):Play() end end)
@@ -1289,7 +1289,7 @@ end)
     for _,cat in ipairs(STATE_CATS) do
         local sec=Instance.new("Frame",ugcStatesSF); sec.Size=UDim2.new(1,0,0,96); sec.BackgroundColor3=Color3.fromRGB(16,16,20); sec.BackgroundTransparency=0.3; sec.ZIndex=68; Instance.new("UICorner",sec).CornerRadius=UDim.new(0,8); Instance.new("UIStroke",sec).Color=AC.PUR_STROKE
         local cLbl=Instance.new("TextLabel",sec); cLbl.Size=UDim2.new(1,-80,0,22); cLbl.Position=UDim2.new(0,10,0,6); cLbl.BackgroundTransparency=1; cLbl.Text=cat; cLbl.TextColor3=AC.PUR_GLOW; cLbl.TextSize=13; cLbl.Font=Enum.Font.GothamBold; cLbl.TextXAlignment=Enum.TextXAlignment.Left; cLbl.ZIndex=69
-        local ddBtn=Instance.new("TextButton",sec); ddBtn.Size=UDim2.new(1,-20,0,24); ddBtn.Position=UDim2.new(0,10,0,30); ddBtn.BackgroundColor3=Color3.fromRGB(22,22,28); ddBtn.BackgroundTransparency=0.2; ddBtn.Text="Select animation ▾"; ddBtn.TextColor3=AC.TXT_MAIN; ddBtn.TextSize=11; ddBtn.Font=Enum.Font.Gotham; ddBtn.ZIndex=69; Instance.new("UICorner",ddBtn).CornerRadius=UDim.new(0,6); Instance.new("UIStroke",ddBtn).Color=AC.PUR_STROKE
+        local ddBtn=Instance.new("TextButton",sec); ddBtn.Size=UDim2.new(1,-20,0,24); ddBtn.Position=UDim2.new(0,10,0,30); ddBtn.BackgroundColor3=Color3.fromRGB(22,22,28); ddBtn.BackgroundTransparency=0.2; ddBtn.Text="Select animation "; ddBtn.TextColor3=AC.TXT_MAIN; ddBtn.TextSize=11; ddBtn.Font=Enum.Font.Gotham; ddBtn.ZIndex=69; Instance.new("UICorner",ddBtn).CornerRadius=UDim.new(0,6); Instance.new("UIStroke",ddBtn).Color=AC.PUR_STROKE
         local sLbl=Instance.new("TextLabel",sec); sLbl.Size=UDim2.new(0,50,0,14); sLbl.Position=UDim2.new(0,10,0,60); sLbl.BackgroundTransparency=1; sLbl.Text="Speed:"; sLbl.TextColor3=AC.TXT_DIM; sLbl.TextSize=9; sLbl.Font=Enum.Font.GothamBold; sLbl.ZIndex=69
         local sVLbl=Instance.new("TextLabel",sec); sVLbl.Size=UDim2.new(0,32,0,14); sVLbl.Position=UDim2.new(0,58,0,60); sVLbl.BackgroundTransparency=1; sVLbl.Text="1.0x"; sVLbl.TextColor3=AC.PUR_GLOW; sVLbl.TextSize=9; sVLbl.Font=Enum.Font.GothamBold; sVLbl.ZIndex=69
         local sTrk=Instance.new("Frame",sec); sTrk.Size=UDim2.new(1,-110,0,5); sTrk.Position=UDim2.new(0,10,0,78); sTrk.BackgroundColor3=Color3.fromRGB(30,30,35); sTrk.ZIndex=69; Instance.new("UICorner",sTrk).CornerRadius=UDim.new(1,0)
@@ -1312,8 +1312,8 @@ end)
         for ai,aData in ipairs(RN_ANIMS) do
             local aC=aData; local opt=Instance.new("TextButton",ddSF); opt.Size=UDim2.new(1,0,0,30); opt.BackgroundColor3=Color3.fromRGB(30,30,36); opt.BorderSizePixel=0; opt.Text=aData[1]; opt.TextColor3=AC.TXT_WHITE; opt.TextSize=11; opt.Font=Enum.Font.Gotham; opt.LayoutOrder=ai; opt.ZIndex=602; Instance.new("UICorner",opt).CornerRadius=UDim.new(0,6)
             opt.MouseButton1Click:Connect(function()
-                ddBtn.Text=aC[1].." ▾"; ddPop.Visible=false
-                if rnAPI then pcall(function() rnAPI.play_animation(aC[2],stSpd) end); AC.toast("♪ "..cat..": "..aC[1],AC.PUR_BRIGHT)
+                ddBtn.Text=aC[1].." "; ddPop.Visible=false
+                if rnAPI then pcall(function() rnAPI.play_animation(aC[2],stSpd) end); AC.toast("* "..cat..": "..aC[1],AC.PUR_BRIGHT)
                 else AC.toast("Enable Reanimation first!",AC.ORANGE_W) end
             end)
             opt.MouseEnter:Connect(function() AC.TS:Create(opt,TweenInfo.new(0.1),{BackgroundColor3=AC.PUR_DARK,TextColor3=AC.TXT_WHITE}):Play() end)
@@ -1435,9 +1435,9 @@ end)
 
     btn.MouseButton1Click:Connect(function() AC.switchTab("Emotes") end)
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- MISC TAB
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local btn=AC.createTab("Misc",6); local pg=AC.createPage(); AC.tabs["Misc"].page=pg
     AC.sectionLbl(pg,"VISUAL",10)
@@ -1490,21 +1490,21 @@ do
     local vcBtn=Instance.new("TextButton",vcOuter); vcBtn.Size=UDim2.new(1,0,0,40); vcBtn.BackgroundColor3=Color3.fromRGB(10,35,10); vcBtn.Text="Anti-VC Ban Protection"; vcBtn.TextColor3=Color3.fromRGB(80,255,80); vcBtn.TextSize=13; vcBtn.Font=Enum.Font.GothamBold; Instance.new("UICorner",vcBtn).CornerRadius=UDim.new(0,8)
     local vcS=Instance.new("UIStroke",vcBtn); vcS.Color=Color3.fromRGB(0,200,0); vcS.Thickness=1.5
     AC.TS:Create(vcS,TweenInfo.new(1.2,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),{Color=Color3.fromRGB(0,80,0),Transparency=0.4}):Play()
-    local vcW=Instance.new("TextLabel",vcOuter); vcW.Size=UDim2.new(1,0,0,18); vcW.Position=UDim2.new(0,0,0,43); vcW.BackgroundTransparency=1; vcW.Text="⚠  NOT COMPATIBLE WITH XENO AND SOLARA"; vcW.TextColor3=Color3.fromRGB(255,60,60); vcW.TextSize=10; vcW.Font=Enum.Font.GothamBold; vcW.TextXAlignment=Enum.TextXAlignment.Center
+    local vcW=Instance.new("TextLabel",vcOuter); vcW.Size=UDim2.new(1,0,0,18); vcW.Position=UDim2.new(0,0,0,43); vcW.BackgroundTransparency=1; vcW.Text="!  NOT COMPATIBLE WITH XENO AND SOLARA"; vcW.TextColor3=Color3.fromRGB(255,60,60); vcW.TextSize=10; vcW.Font=Enum.Font.GothamBold; vcW.TextXAlignment=Enum.TextXAlignment.Center
     vcBtn.MouseButton1Click:Connect(function() AC.toast("Loading VC Bypass...",AC.ORANGE_W); task.spawn(function() local ok,err=pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/0riginalWarrior/Stalkie/refs/heads/main/vcbypass.lua"))() end); if ok then AC.toast("VC Bypass loaded!",AC.GREEN_OK) else AC.toast("VC Bypass failed",AC.RED_ERR) end end) end)
 
     AC.sectionLbl(pg,"SYSTEM",420)
     AC.cmdListBtn=AC.makeBtn(pg,"Command List",438,40)
     AC.sectionLbl(pg,"CREDITS",490)
     local crd=AC.makeCard(pg,508,66,AC.BG_CARD)
-    local cr1=Instance.new("TextLabel",crd); cr1.Size=UDim2.new(1,-16,0,20); cr1.Position=UDim2.new(0,12,0,6); cr1.BackgroundTransparency=1; cr1.Text="AC AudioCrafter V3.1 — by MelodyCrafter"; cr1.TextColor3=AC.PUR_BRIGHT; cr1.TextSize=13; cr1.Font=Enum.Font.GothamBold; cr1.TextXAlignment=Enum.TextXAlignment.Left
+    local cr1=Instance.new("TextLabel",crd); cr1.Size=UDim2.new(1,-16,0,20); cr1.Position=UDim2.new(0,12,0,6); cr1.BackgroundTransparency=1; cr1.Text="AC AudioCrafter V3.1  by MelodyCrafter"; cr1.TextColor3=AC.PUR_BRIGHT; cr1.TextSize=13; cr1.Font=Enum.Font.GothamBold; cr1.TextXAlignment=Enum.TextXAlignment.Left
     local cr2=Instance.new("TextLabel",crd); cr2.Size=UDim2.new(1,-16,0,14); cr2.Position=UDim2.new(0,12,0,28); cr2.BackgroundTransparency=1; cr2.Text="Inspired by IY, SystemBroken, Empty Tools, Onyx V2, AKADMIN, Bleed"; cr2.TextColor3=AC.TXT_DIM; cr2.TextSize=10; cr2.Font=Enum.Font.Gotham; cr2.TextXAlignment=Enum.TextXAlignment.Left
     btn.MouseButton1Click:Connect(function() AC.switchTab("Misc") end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- EXTERNAL + COMMAND LIST
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local extSep=Instance.new("Frame",AC.sideScroll); extSep.Size=UDim2.new(1,-16,0,1); extSep.BackgroundColor3=AC.PUR_STROKE; extSep.BackgroundTransparency=0.4; extSep.LayoutOrder=90
     local extLbl=Instance.new("TextLabel",AC.sideScroll); extLbl.Size=UDim2.new(1,-16,0,16); extLbl.BackgroundTransparency=1; extLbl.Text="EXTERNAL"; extLbl.TextColor3=AC.ORANGE_W; extLbl.TextSize=9; extLbl.Font=Enum.Font.GothamBold; extLbl.TextXAlignment=Enum.TextXAlignment.Left; extLbl.LayoutOrder=91
@@ -1514,8 +1514,8 @@ do
     local CMDS={{".view","Spectate target"},{".tp [name]","TP to player"},{".bring","Bring target"},{".focus","Focus loop TP"},{".headsit","Sit on head"},{".backpack","Backpack mode"},{".cleartarget","Clear target"},{".esp","Toggle ESP"},{".fly","Toggle Fly"},{".noclip","Toggle Noclip"},{".fullbright","Toggle Fullbright"},{".shaders","Toggle Shaders"},{".baseplate","Toggle Baseplate"},{".antivoid","Toggle Anti-Void"},{".antiafk","Toggle Anti-AFK"},{".re","Respawn in place"},{".reset","Reset character"},{".minimize","Toggle GUI"},{".cmds","Command List"},{".hide [n]","Hide player"},{".unhide [n]","Unhide player"},{".rj","Rejoin server"}}
     local cp=Instance.new("Frame",AC.screenGui); cp.Size=UDim2.new(0,340,0,480); cp.Position=UDim2.new(0.5,-170,0.5,-240); cp.BackgroundColor3=Color3.fromRGB(10,10,10); cp.ZIndex=50; cp.Visible=false; cp.ClipsDescendants=true; Instance.new("UICorner",cp).CornerRadius=UDim.new(0,12); Instance.new("UIStroke",cp).Color=AC.PUR_STROKE
     local cph=Instance.new("Frame",cp); cph.Size=UDim2.new(1,0,0,40); cph.BackgroundColor3=Color3.fromRGB(6,6,6); cph.ZIndex=51; Instance.new("UICorner",cph).CornerRadius=UDim.new(0,12)
-    local cpt=Instance.new("TextLabel",cph); cpt.Size=UDim2.new(1,-50,1,0); cpt.Position=UDim2.new(0,14,0,0); cpt.BackgroundTransparency=1; cpt.Text="⌨  Command List"; cpt.TextColor3=AC.TXT_WHITE; cpt.TextSize=14; cpt.Font=Enum.Font.GothamBold; cpt.TextXAlignment=Enum.TextXAlignment.Left; cpt.ZIndex=52
-    local cpX=Instance.new("TextButton",cph); cpX.Size=UDim2.new(0,26,0,26); cpX.Position=UDim2.new(1,-32,0.5,-13); cpX.BackgroundColor3=AC.PUR_MID; cpX.Text="✕"; cpX.TextColor3=AC.TXT_WHITE; cpX.TextSize=12; cpX.Font=Enum.Font.GothamBold; cpX.ZIndex=52; Instance.new("UICorner",cpX).CornerRadius=UDim.new(1,0); cpX.MouseButton1Click:Connect(function() cp.Visible=false end)
+    local cpt=Instance.new("TextLabel",cph); cpt.Size=UDim2.new(1,-50,1,0); cpt.Position=UDim2.new(0,14,0,0); cpt.BackgroundTransparency=1; cpt.Text="  Command List"; cpt.TextColor3=AC.TXT_WHITE; cpt.TextSize=14; cpt.Font=Enum.Font.GothamBold; cpt.TextXAlignment=Enum.TextXAlignment.Left; cpt.ZIndex=52
+    local cpX=Instance.new("TextButton",cph); cpX.Size=UDim2.new(0,26,0,26); cpX.Position=UDim2.new(1,-32,0.5,-13); cpX.BackgroundColor3=AC.PUR_MID; cpX.Text="X"; cpX.TextColor3=AC.TXT_WHITE; cpX.TextSize=12; cpX.Font=Enum.Font.GothamBold; cpX.ZIndex=52; Instance.new("UICorner",cpX).CornerRadius=UDim.new(1,0); cpX.MouseButton1Click:Connect(function() cp.Visible=false end)
     local cps=Instance.new("ScrollingFrame",cp); cps.Size=UDim2.new(1,-8,1,-48); cps.Position=UDim2.new(0,4,0,44); cps.BackgroundTransparency=1; cps.BorderSizePixel=0; cps.ScrollBarThickness=3; cps.ScrollBarImageColor3=AC.PUR_MID; cps.AutomaticCanvasSize=Enum.AutomaticSize.Y; cps.CanvasSize=UDim2.new(0,0,0,0); cps.ZIndex=51
     local cpl=Instance.new("UIListLayout",cps); cpl.Padding=UDim.new(0,2)
     local cpp=Instance.new("UIPadding",cps); cpp.PaddingTop=UDim.new(0,4); cpp.PaddingLeft=UDim.new(0,4); cpp.PaddingRight=UDim.new(0,4)
@@ -1557,9 +1557,9 @@ do
     pcall(function() local TCS=game:GetService("TextChatService"); if TCS.ChatVersion==Enum.ChatVersion.TextChatService then TCS.SendingMessage:Connect(function(msg) if msg.Text:sub(1,1)=="." then handleChat(msg.Text) end end) end end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- QUICK BAR
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     local qBar=Instance.new("Frame",AC.screenGui); qBar.Size=UDim2.new(0,186,0,44); qBar.Position=UDim2.new(1,-200,1,-110); qBar.BackgroundColor3=Color3.fromRGB(8,8,8); qBar.BackgroundTransparency=0.15; qBar.ZIndex=400; qBar.ClipsDescendants=false; Instance.new("UICorner",qBar).CornerRadius=UDim.new(1,0); Instance.new("UIStroke",qBar).Color=AC.PUR_STROKE
     local qDrag,qDS,qSP=false,nil,nil
@@ -1588,9 +1588,9 @@ do
     end)
 end
 
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 -- OPEN ANIMATION
--- ─────────────────────────────────────────────────────────
+-- ---------------------------------------------------------
 do
     AC.wrapper.Size=UDim2.new(0,0,0,0); AC.wrapper.Position=UDim2.new(0.5,0,1.5,0)
     AC.sidebar.Size=UDim2.new(0,0,1,0); AC.mainPanel.Size=UDim2.new(0,0,1,0); AC.navbar.Size=UDim2.new(1,0,0,0)
@@ -1607,7 +1607,7 @@ do
     end)
 end
 
--- ── OPEN ANIMATION ───────────────────────────────────────
+-- -- OPEN ANIMATION ---------------------------------------
 do
     AC.wrapper.Size=UDim2.new(0,0,0,0); AC.wrapper.Position=UDim2.new(0.5,0,1.5,0)
     AC.sidebar.Size=UDim2.new(0,0,1,0); AC.mainPanel.Size=UDim2.new(0,0,1,0); AC.navbar.Size=UDim2.new(1,0,0,0)
@@ -1625,7 +1625,7 @@ do
         end)
     end)
     task.delay(1.5,function() AC.toast("AC AudioCrafter v3.1 loaded! Press G to toggle.") end)
-    print("AC AudioCrafter V3.1 — by MelodyCrafter")
+    print("AC AudioCrafter V3.1  by MelodyCrafter")
     print("  G = toggle UI | Emotes tab: Reanimation + Open Emote Menu")
     print("  All KeyCode errors fixed | Double tag fixed | Ragdoll fix")
 end
