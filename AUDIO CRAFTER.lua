@@ -391,7 +391,7 @@ do
         end)
     end
 
-    local TAG_W,TAG_H=220,46
+    local TAG_W,TAG_H=160,38
     local function attachTag(char,owner)
         local head=char:WaitForChild("Head",10); if not head then return end
         -- FIX: destroy any existing tag first to prevent doubles
@@ -403,23 +403,23 @@ do
         table.insert(AC.allBillboards,bb)
 
         local pill=Instance.new("Frame",bb); pill.Size=UDim2.new(1,0,1,0); pill.BackgroundColor3=Color3.fromRGB(8,2,16); pill.BackgroundTransparency=0.25
-        Instance.new("UICorner",pill).CornerRadius=UDim.new(0,23)
+        Instance.new("UICorner",pill).CornerRadius=UDim.new(0,10)
         local pStroke=Instance.new("UIStroke",pill); pStroke.Color=AC.PUR_BRIGHT; pStroke.Thickness=2
 
         -- Logo icon (small, left side)
-        local logoFrame=AC.drawLogo(pill,22,Color3.fromRGB(210,160,255))
-        logoFrame.Position=UDim2.new(0,6,0.5,-11)
+        local logoFrame=AC.drawLogo(pill,18,Color3.fromRGB(210,160,255))
+        logoFrame.Position=UDim2.new(0,6,0.5,-9)
 
         -- title: lighter purple (AC.TXT_BILLBOARD), typewriter
-        local titleLbl=Instance.new("TextLabel",pill); titleLbl.Size=UDim2.new(1,-40,0,20); titleLbl.Position=UDim2.new(0,32,0,4)
+        local titleLbl=Instance.new("TextLabel",pill); titleLbl.Size=UDim2.new(1,-28,0,18); titleLbl.Position=UDim2.new(0,26,0,2)
         titleLbl.BackgroundTransparency=1; titleLbl.Text="AUDIO USER"; titleLbl.TextColor3=AC.TXT_BILLBOARD
-        titleLbl.TextSize=15; titleLbl.Font=Enum.Font.GothamBold; titleLbl.TextXAlignment=Enum.TextXAlignment.Left
-        titleLbl.TextStrokeTransparency=0.5; titleLbl.TextStrokeColor3=AC.PUR_DARK
+        titleLbl.TextSize=13; titleLbl.Font=Enum.Font.GothamBold; titleLbl.TextXAlignment=Enum.TextXAlignment.Center
+        titleLbl.TextStrokeTransparency=0.6; titleLbl.TextStrokeColor3=AC.PUR_DARK
 
-        local userLbl=Instance.new("TextLabel",pill); userLbl.Size=UDim2.new(1,-40,0,16); userLbl.Position=UDim2.new(0,32,0,24)
+        local userLbl=Instance.new("TextLabel",pill); userLbl.Size=UDim2.new(1,-28,0,14); userLbl.Position=UDim2.new(0,26,0,20)
         userLbl.BackgroundTransparency=1; userLbl.Text="@"..(owner and owner.Name or "AC User")
-        userLbl.TextColor3=Color3.fromRGB(200,170,220); userLbl.TextSize=10; userLbl.Font=Enum.Font.Gotham
-        userLbl.TextXAlignment=Enum.TextXAlignment.Left; userLbl.TextTruncate=Enum.TextTruncate.AtEnd
+        userLbl.TextColor3=Color3.fromRGB(200,170,220); userLbl.TextSize=9; userLbl.Font=Enum.Font.Gotham
+        userLbl.TextXAlignment=Enum.TextXAlignment.Center; userLbl.TextTruncate=Enum.TextTruncate.AtEnd
 
         local grad=Instance.new("UIGradient",pill); grad.Color=ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(15,4,28)),ColorSequenceKeypoint.new(1,Color3.fromRGB(6,2,12))}; grad.Rotation=135
 
@@ -676,23 +676,29 @@ do
     end
 
     -- Storage helpers
-    local function readData(key,fallback)
-        local ok,r=pcall(function() if isfile and isfile(key) then return AC.Http:JSONDecode(readfile(key)) end end)
+    -- Settings saved per UserId: BLEED/<userId>/<key>
+    local _uid = tostring(AC.player.UserId)
+    local _saveDir = "BLEED/" .. _uid
+    local function readData(key, fallback)
+        local fullPath = _saveDir .. "/" .. key
+        local ok, r = pcall(function()
+            if isfile and isfile(fullPath) then
+                return AC.Http:JSONDecode(readfile(fullPath))
+            end
+        end)
         return (ok and r) or fallback
     end
-    local function writeData(key,data)
-        pcall(function() if not isfolder("BLEED") then makefolder("BLEED") end; writefile(key,AC.Http:JSONEncode(data)) end)
+    local function writeData(key, data)
+        pcall(function()
+            if writefile then
+                if isfolder then
+                    if not isfolder("BLEED") then if makefolder then makefolder("BLEED") end end
+                    if not isfolder(_saveDir) then if makefolder then makefolder(_saveDir) end end
+                end
+                writefile(_saveDir .. "/" .. key, AC.Http:JSONEncode(data))
+            end
+        end)
     end
-
-    local rnFavs={}; local rnBinds={}; local rnSpeeds={}
-    do
-        local fl=readData("BLEED/rn_favs.json",{}); for _,id in ipairs(fl) do rnFavs[tostring(id)]=true end
-        local bl=readData("BLEED/rn_binds.json",{}); for k,v in pairs(bl) do rnBinds[k]=v end
-        local sl=readData("BLEED/rn_speeds.json",{}); for k,v in pairs(sl) do rnSpeeds[k]=v end
-    end
-    local function saveRnFavs() local l={}; for k in pairs(rnFavs) do l[#l+1]=k end; writeData("BLEED/rn_favs.json",l) end
-    local function saveRnBinds() writeData("BLEED/rn_binds.json",rnBinds) end
-    local function saveRnSpeeds() writeData("BLEED/rn_speeds.json",rnSpeeds) end
 
     -- Dynamic animation list: fetched from Rootleak/Animations via GitHub Contents API
     -- Falls back to hardcoded list if fetch fails
@@ -835,8 +841,11 @@ do
 
     -- Number row 1,3,5,7,9
     local NUM_VALS={1,3,5,7,9}; local numBtnBinds={}
+    -- Load saved num-row keybinds
+    local _savedNumBinds={}
+    pcall(function() _savedNumBinds=readData("rn_numBinds.json",{}) end)
     local numRowF=Instance.new("Frame",rnPanel); numRowF.Size=UDim2.new(1,-16,0,52); numRowF.Position=UDim2.new(0,8,0,392); numRowF.BackgroundTransparency=1; numRowF.ZIndex=71
-    local bW2=math.floor((RN_W-16-8*4)/5)
+    local bW2=math.floor((RN_W-16-4*4)/5)  -- 4px gap between 5 buttons
     for i,nv in ipairs(NUM_VALS) do
         local xOff=(i-1)*(bW2+8)
         -- Top slot: shows "Bind" until a key is bound, clicking captures keybind
@@ -852,7 +861,9 @@ do
         kb.BackgroundColor3=Color3.fromRGB(20,20,24); kb.BackgroundTransparency=0.2
         kb.Text="Bind"; kb.TextColor3=AC.TXT_DIM; kb.TextSize=10; kb.Font=Enum.Font.Gotham; kb.ZIndex=72
         Instance.new("UICorner",kb).CornerRadius=UDim.new(0,5); Instance.new("UIStroke",kb).Color=AC.PUR_STROKE
-        numBtnBinds[i]={numBtn=nb,keyBtn=kb,savedKey=nil,val=nv}
+        local _sk = _savedNumBinds[tostring(i)]
+        numBtnBinds[i]={numBtn=nb,keyBtn=kb,savedKey=_sk,val=nv}
+        if _sk then kb.Text=_sk:sub(1,4); kb.TextColor3=AC.TXT_WHITE end
         local nvCopy=nv; local kbCopy=kb; local idx=i
         nb.MouseButton1Click:Connect(function() setRnSpd(nvCopy) end)
         local kListen=false; local kConn=nil
@@ -879,6 +890,12 @@ do
                 numBtnBinds[idx].savedKey=kn
                 kb.Text=kn:sub(1,4); kb.TextColor3=AC.TXT_WHITE
                 kListen=false; if kConn then kConn:Disconnect(); kConn=nil end
+                -- Save to persistent storage
+                pcall(function()
+                    local nbSave={}
+                    for si,slot in ipairs(numBtnBinds) do if slot.savedKey then nbSave[tostring(si)]=slot.savedKey end end
+                    writeData("rn_numBinds.json",nbSave)
+                end)
                 AC.toast("Speed "..nv.." bound to "..kn,AC.PUR_BRIGHT)
             end)
         end
@@ -1048,7 +1065,14 @@ do
 
     local rnDrag,rnDS,rnSP=false,nil,nil
     rnHdr.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 then rnDrag=true; rnDS=i.Position; rnSP=rnPanel.Position; i.Changed:Connect(function() if i.UserInputState==Enum.UserInputState.End then rnDrag=false end end) end end)
-    AC.UIS.InputChanged:Connect(function(i) if rnDrag and i.UserInputType==Enum.UserInputType.MouseMovement then local d=i.Position-rnDS; rnPanel.Position=UDim2.new(rnSP.X.Scale,rnSP.X.Offset+d.X,rnSP.Y.Scale,rnSP.Y.Offset+d.Y) end end)
+    AC.UIS.InputChanged:Connect(function(i)
+    if rnDrag and i.UserInputType==Enum.UserInputType.MouseMovement then
+        local d=i.Position-rnDS
+        local newX=math.clamp(rnSP.X.Offset+d.X, 0, AC.camera.ViewportSize.X-RN_W)
+        local newY=math.clamp(rnSP.Y.Offset+d.Y, 0, AC.camera.ViewportSize.Y-RN_H)
+        rnPanel.Position=UDim2.new(0,newX,0,newY)
+    end
+end)
 
     -- ── UGC EMOTES PANEL ─────────────────────────────────
     local UGC_W,UGC_H=360,500
@@ -1155,11 +1179,11 @@ do
 
     local ugcFavs={}; local ugcBinds={}
     do
-        local fl=readData("BLEED/ugc_favs.json",{}); for _,id in ipairs(fl) do ugcFavs[tostring(id)]=true end
-        local bl=readData("BLEED/ugc_binds.json",{}); for k,v in pairs(bl) do ugcBinds[k]=v end
+        local fl=readData("ugc_favs.json",{}); for _,id in ipairs(fl) do ugcFavs[tostring(id)]=true end
+        local bl=readData("ugc_binds.json",{}); for k,v in pairs(bl) do ugcBinds[k]=v end
     end
-    local function saveUgcFavs() local l={}; for k in pairs(ugcFavs) do l[#l+1]=k end; writeData("BLEED/ugc_favs.json",l) end
-    local function saveUgcBinds() writeData("BLEED/ugc_binds.json",ugcBinds) end
+    local function saveUgcFavs() local l={}; for k in pairs(ugcFavs) do l[#l+1]=k end; writeData("ugc_favs.json",l) end
+    local function saveUgcBinds() writeData("ugc_binds.json",ugcBinds) end
 
     local ugcAllRows={}; local ugcFavOnly=false; local ugcHighRow=nil
 
@@ -1239,18 +1263,18 @@ do
         setStSpd(1.0)
 
         -- Dropdown popup
-        local ddPop=Instance.new("Frame",AC.screenGui); ddPop.Size=UDim2.new(0,220,0,0); ddPop.BackgroundColor3=Color3.fromRGB(16,16,20); ddPop.ClipsDescendants=true; ddPop.ZIndex=600; ddPop.Visible=false; Instance.new("UICorner",ddPop).CornerRadius=UDim.new(0,8); Instance.new("UIStroke",ddPop).Color=AC.PUR_STROKE
-        local ddSF=Instance.new("ScrollingFrame",ddPop); ddSF.Size=UDim2.new(1,0,1,0); ddSF.BackgroundTransparency=1; ddSF.BorderSizePixel=0; ddSF.ScrollBarThickness=3; ddSF.ScrollBarImageColor3=AC.PUR_MID; ddSF.AutomaticCanvasSize=Enum.AutomaticSize.Y; ddSF.CanvasSize=UDim2.new(0,0,0,0); ddSF.ZIndex=601
+        local ddPop=Instance.new("Frame",AC.screenGui); ddPop.Size=UDim2.new(0,220,0,0); ddPop.BackgroundColor3=Color3.fromRGB(22,22,28); ddPop.BorderSizePixel=0; ddPop.ClipsDescendants=true; ddPop.ZIndex=600; ddPop.Visible=false; Instance.new("UICorner",ddPop).CornerRadius=UDim.new(0,8); Instance.new("UIStroke",ddPop).Color=AC.PUR_STROKE
+        local ddSF=Instance.new("ScrollingFrame",ddPop); ddSF.Size=UDim2.new(1,0,1,0); ddSF.BackgroundColor3=Color3.fromRGB(30,30,36); ddSF.BackgroundTransparency=0; ddSF.BorderSizePixel=0; ddSF.ScrollBarThickness=3; ddSF.ScrollBarImageColor3=AC.PUR_MID; ddSF.AutomaticCanvasSize=Enum.AutomaticSize.Y; ddSF.CanvasSize=UDim2.new(0,0,0,0); ddSF.ZIndex=601
         local ddLL=Instance.new("UIListLayout",ddSF); ddLL.Padding=UDim.new(0,2); Instance.new("UIPadding",ddSF).PaddingTop=UDim.new(0,4); Instance.new("UIPadding",ddSF).PaddingLeft=UDim.new(0,4); Instance.new("UIPadding",ddSF).PaddingRight=UDim.new(0,4)
         for ai,aData in ipairs(RN_ANIMS) do
-            local aC=aData; local opt=Instance.new("TextButton",ddSF); opt.Size=UDim2.new(1,0,0,28); opt.BackgroundColor3=Color3.fromRGB(22,22,28); opt.Text=aData[1]; opt.TextColor3=AC.TXT_MAIN; opt.TextSize=11; opt.Font=Enum.Font.Gotham; opt.LayoutOrder=ai; opt.ZIndex=602; Instance.new("UICorner",opt).CornerRadius=UDim.new(0,6)
+            local aC=aData; local opt=Instance.new("TextButton",ddSF); opt.Size=UDim2.new(1,0,0,30); opt.BackgroundColor3=Color3.fromRGB(30,30,36); opt.BorderSizePixel=0; opt.Text=aData[1]; opt.TextColor3=AC.TXT_WHITE; opt.TextSize=11; opt.Font=Enum.Font.Gotham; opt.LayoutOrder=ai; opt.ZIndex=602; Instance.new("UICorner",opt).CornerRadius=UDim.new(0,6)
             opt.MouseButton1Click:Connect(function()
                 ddBtn.Text=aC[1].." ▾"; ddPop.Visible=false
                 if rnAPI then pcall(function() rnAPI.play_animation(aC[2],stSpd) end); AC.toast("♪ "..cat..": "..aC[1],AC.PUR_BRIGHT)
                 else AC.toast("Enable Reanimation first!",AC.ORANGE_W) end
             end)
-            opt.MouseEnter:Connect(function() AC.TS:Create(opt,TweenInfo.new(0.1),{BackgroundColor3=AC.PUR_DARK}):Play() end)
-            opt.MouseLeave:Connect(function() AC.TS:Create(opt,TweenInfo.new(0.1),{BackgroundColor3=Color3.fromRGB(22,22,28)}):Play() end)
+            opt.MouseEnter:Connect(function() AC.TS:Create(opt,TweenInfo.new(0.1),{BackgroundColor3=AC.PUR_DARK,TextColor3=AC.TXT_WHITE}):Play() end)
+            opt.MouseLeave:Connect(function() AC.TS:Create(opt,TweenInfo.new(0.1),{BackgroundColor3=Color3.fromRGB(30,30,36),TextColor3=AC.TXT_WHITE}):Play() end)
         end
         ddBtn.MouseButton1Click:Connect(function()
             if ddPop.Visible then ddPop.Visible=false; return end
@@ -1290,7 +1314,14 @@ do
     -- Drag UGC panel
     local ugcDrag,ugcDS,ugcSP=false,nil,nil
     ugcHdr.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 then ugcDrag=true; ugcDS=i.Position; ugcSP=ugcPanel.Position; i.Changed:Connect(function() if i.UserInputState==Enum.UserInputState.End then ugcDrag=false end end) end end)
-    AC.UIS.InputChanged:Connect(function(i) if ugcDrag and i.UserInputType==Enum.UserInputType.MouseMovement then local d=i.Position-ugcDS; ugcPanel.Position=UDim2.new(ugcSP.X.Scale,ugcSP.X.Offset+d.X,ugcSP.Y.Scale,ugcSP.Y.Offset+d.Y) end end)
+    AC.UIS.InputChanged:Connect(function(i)
+    if ugcDrag and i.UserInputType==Enum.UserInputType.MouseMovement then
+        local d=i.Position-ugcDS
+        local newX=math.clamp(ugcSP.X.Offset+d.X, 0, AC.camera.ViewportSize.X-UGC_W)
+        local newY=math.clamp(ugcSP.Y.Offset+d.Y, 0, AC.camera.ViewportSize.Y-(UGC_H+44))
+        ugcPanel.Position=UDim2.new(0,newX,0,newY)
+    end
+end)
 
     -- Fetch UGC emotes
     local ugcLoaded=false
@@ -1326,13 +1357,35 @@ do
     local rnMainBtn=Instance.new("TextButton",pg); rnMainBtn.Size=UDim2.new(1,-24,0,40); rnMainBtn.Position=UDim2.new(0,12,0,28); rnMainBtn.BackgroundColor3=AC.BG_CARD; rnMainBtn.Text="Reanimation"; rnMainBtn.TextColor3=AC.PUR_GLOW; rnMainBtn.TextSize=14; rnMainBtn.Font=Enum.Font.GothamBold; Instance.new("UICorner",rnMainBtn).CornerRadius=UDim.new(0,8); local rnMS=Instance.new("UIStroke",rnMainBtn); rnMS.Color=AC.PUR_STROKE; rnMS.Thickness=1.5; rnMS.Transparency=0.3
     rnMainBtn.MouseEnter:Connect(function() AC.TS:Create(rnMainBtn,TweenInfo.new(0.15),{BackgroundColor3=AC.PUR_MID}):Play() end)
     rnMainBtn.MouseLeave:Connect(function() AC.TS:Create(rnMainBtn,TweenInfo.new(0.15),{BackgroundColor3=AC.BG_CARD}):Play() end)
-    rnMainBtn.MouseButton1Click:Connect(function() pcall(function() AC.clickSnd:Play() end); rnPanel.Visible=not rnPanel.Visible end)
+    rnMainBtn.MouseButton1Click:Connect(function()
+    pcall(function() AC.clickSnd:Play() end)
+    rnPanel.Visible=not rnPanel.Visible
+    if rnPanel.Visible then
+        local vp=AC.camera.ViewportSize
+        local pos=rnPanel.Position
+        if pos.X.Offset<0 or pos.X.Offset>vp.X-50 or pos.Y.Offset<0 or pos.Y.Offset>vp.Y-50 then
+            rnPanel.Position=UDim2.new(0.5,-RN_W/2,0.5,-RN_H/2)
+        end
+    end
+end)
 
     AC.sectionLbl(pg,"UGC EMOTES",78)
     local ugcMainBtn=Instance.new("TextButton",pg); ugcMainBtn.Size=UDim2.new(1,-24,0,40); ugcMainBtn.Position=UDim2.new(0,12,0,96); ugcMainBtn.BackgroundColor3=AC.BG_CARD; ugcMainBtn.Text="Open Emote Menu"; ugcMainBtn.TextColor3=AC.PUR_GLOW; ugcMainBtn.TextSize=14; ugcMainBtn.Font=Enum.Font.GothamBold; Instance.new("UICorner",ugcMainBtn).CornerRadius=UDim.new(0,8); local ugcMS=Instance.new("UIStroke",ugcMainBtn); ugcMS.Color=AC.PUR_STROKE; ugcMS.Thickness=1.5; ugcMS.Transparency=0.3
     ugcMainBtn.MouseEnter:Connect(function() AC.TS:Create(ugcMainBtn,TweenInfo.new(0.15),{BackgroundColor3=AC.PUR_MID}):Play() end)
     ugcMainBtn.MouseLeave:Connect(function() AC.TS:Create(ugcMainBtn,TweenInfo.new(0.15),{BackgroundColor3=AC.BG_CARD}):Play() end)
-    ugcMainBtn.MouseButton1Click:Connect(function() pcall(function() AC.clickSnd:Play() end); ugcPanel.Visible=not ugcPanel.Visible; if ugcPanel.Visible then loadUgcData() end end)
+    ugcMainBtn.MouseButton1Click:Connect(function()
+    pcall(function() AC.clickSnd:Play() end)
+    ugcPanel.Visible=not ugcPanel.Visible
+    if ugcPanel.Visible then
+        -- Reset position if it somehow went offscreen
+        local vp=AC.camera.ViewportSize
+        local pos=ugcPanel.Position
+        if pos.X.Offset<0 or pos.X.Offset>vp.X-50 or pos.Y.Offset<0 or pos.Y.Offset>vp.Y-50 then
+            ugcPanel.Position=UDim2.new(0.5,-UGC_W/2,0.5,-(UGC_H+44)/2)
+        end
+        loadUgcData()
+    end
+end)
 
     btn.MouseButton1Click:Connect(function() AC.switchTab("Emotes") end)
 end
