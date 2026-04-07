@@ -1,27 +1,30 @@
-const servers = {};
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     const { action, job, user } = req.query;
     if (!job) return res.status(400).json([]);
 
-    const now = Date.now();
-    if (!servers[job]) servers[job] = {};
+    const url = "https://optimal-stallion-94210.upstash.io";
+    const token = "gQAAAAAAAXACAAIncDI3YTM1ZTk1Zjc2NWM0NzViOTkxOWMxMGE0MzU4ZjM1ZHAyOTQyMTA";
+    const key = 'ac:' + job;
+    const headers = { Authorization: 'Bearer ' + token };
 
-    for (const [name, ts] of Object.entries(servers[job])) {
-        if (now - ts > 90000) delete servers[job][name];
-    }
-
-    if (action === 'join' && user) {
-        servers[job][user] = now;
-        return res.json({ ok: true });
-    }
-    if (action === 'list') {
-        return res.json(Object.keys(servers[job]));
-    }
-    if (action === 'leave' && user) {
-        delete servers[job][user];
-        return res.json({ ok: true });
+    try {
+        if (action === 'join' && user) {
+            await fetch(`${url}/sadd/${key}/${encodeURIComponent(user)}`, { headers });
+            await fetch(`${url}/expire/${key}/120`, { headers });
+            return res.json({ ok: true });
+        }
+        if (action === 'list') {
+            const r = await fetch(`${url}/smembers/${key}`, { headers });
+            const data = await r.json();
+            return res.json(data.result || []);
+        }
+        if (action === 'leave' && user) {
+            await fetch(`${url}/srem/${key}/${encodeURIComponent(user)}`, { headers });
+            return res.json({ ok: true });
+        }
+    } catch(e) {
+        return res.status(500).json({ error: e.message });
     }
     return res.status(400).json([]);
 }
