@@ -1,21 +1,17 @@
 import fs from "fs";
 import path from "path";
 
-const VALID_KEY = "ACMelody2024secretkey";
-
 export default function handler(req, res) {
-  const key = req.query.key;
+  const accept = req.headers.accept || "";
 
-  // :x: wrong or missing key
-  if (key !== VALID_KEY) {
-    res.status(403).setHeader("Content-Type", "text/plain");
-    return res.send("Forbidden");
+  if (accept.includes("text/html")) {
+    res.writeHead(302, { Location: "/" });
+    return res.end();
   }
 
   const filePath = path.join(process.cwd(), "private", "ac.lua");
-  const lua = fs.readFileSync(filePath, "utf8");
+  const script = fs.readFileSync(filePath, "utf8");
 
-  res.status(200);
   res.setHeader("Content-Type", "text/plain");
-  return res.send(lua);
+  res.send(script);
 }
