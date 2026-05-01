@@ -241,6 +241,7 @@ input::placeholder{color:#333}
       <button class="ntab" onclick="showPage('users',this)">👾 Live</button>
       <button class="ntab" onclick="showPage('bans',this)">🚫 Bans</button>
       <button class="ntab" onclick="showPage('whitelist',this)">✅ Whitelist</button>
+      <button class="ntab" onclick="showPage('quickadd',this)">⚡ Quick Add</button>
       <button class="ntab" onclick="resetGhToken()" title="Update GitHub Token" style="padding:7px 10px">🔑</button>
     </div>
   </nav>
@@ -434,6 +435,42 @@ input::placeholder{color:#333}
       <div class="card">
         <div class="card-top"><span class="card-title">Banned Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderBans(this.value)"/></div>
         <div class="card-body" style="padding:14px"><div id="ban-list" class="ulist"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK ADD PAGE -->
+  <div class="page" id="page-quickadd">
+    <div class="grid2">
+      <div class="card">
+        <div class="card-top"><span class="card-title">⚡ Quick Add User</span></div>
+        <div class="card-body">
+          <div class="field">
+            <label>Roblox Username</label>
+            <input type="text" id="qa-user" placeholder="Username to add..." onkeydown="if(event.key==='Enter')quickAdd()"/>
+            <div class="field-hint">
+              If already in Tags — shows their existing tag.<br>
+              If new — adds them with a default "AC USER" tag visible to everyone running the script.
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="quickAdd()" style="margin-bottom:10px">
+            ⚡ Quick Add
+          </button>
+          <div id="qa-status" style="display:none;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <span class="card-title">Quick Added Users</span>
+          <input class="search-input" placeholder="🔍 Search..." oninput="renderQuickList(this.value)"/>
+        </div>
+        <div class="card-body" style="padding:14px">
+          <div style="font-size:.75rem;color:#444;margin-bottom:10px;line-height:1.5">
+            These users get a visible nametag for everyone running the script.<br>
+            Their tag shows while they have the script executed.
+          </div>
+          <div id="qa-list" class="ulist"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1322,6 +1359,98 @@ function renderBans(q=''){const el=document.getElementById('ban-list');const lis
 async function wlAdd(){const u=document.getElementById('wl-user').value.trim();if(!u){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_add',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`✅ ${u} whitelisted`,'ok');document.getElementById('wl-user').value=''}else toast(d.error||'Failed','err')}
 async function wlRemove(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_remove',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`${u} removed from whitelist`,'ok')}}
 function renderWl(q=''){const el=document.getElementById('wl-list');const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')}
+// ════════════════════════════════════════════════════════════
+//  QUICK ADD — adds user with default tag, or shows existing
+// ════════════════════════════════════════════════════════════
+async function quickAdd(){
+  const username = document.getElementById('qa-user').value.trim()
+  if(!username){ toast('Enter a username','err'); return }
+
+  const qs = document.getElementById('qa-status')
+  qs.style.display='block'
+  qs.style.background='rgba(0,150,255,.07)'
+  qs.style.border='1px solid rgba(0,150,255,.2)'
+  qs.style.color='#60b8ff'
+  qs.textContent='Checking...'
+
+  // Check if already in tag system
+  if(tagData[username]){
+    qs.style.background='rgba(0,200,100,.07)'
+    qs.style.border='1px solid rgba(0,200,100,.2)'
+    qs.style.color='#4ade80'
+    qs.textContent=`✓ ${username} already has tag: "${tagData[username].tag}" — visible to all script users`
+    document.getElementById('qa-user').value=''
+    renderQuickList()
+    return
+  }
+
+  // Add with default AC USER tag — no pfp, no bg, just the tag
+  const r = await fetch(TAGS_API,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      auth: pass,
+      action: 'set',
+      username,
+      tag: 'AC USER',
+      pfpId: '',
+      bgId: '',
+      effects: { glowColor: '#960096' },
+      quickAdded: true
+    })
+  })
+  const d = await r.json()
+  if(d.ok){
+    tagData = d.users || {}
+    qs.style.background='rgba(0,200,100,.07)'
+    qs.style.border='1px solid rgba(0,200,100,.2)'
+    qs.style.color='#4ade80'
+    qs.textContent=`✓ ${username} added — their nametag will show for all script users when they execute`
+    document.getElementById('qa-user').value=''
+    renderQuickList()
+    renderTags()
+    updateStats()
+    toast(`⚡ ${username} quick-added`,'ok')
+  } else {
+    qs.style.background='rgba(220,60,60,.07)'
+    qs.style.border='1px solid rgba(220,60,60,.2)'
+    qs.style.color='#f87171'
+    qs.textContent='Failed: ' + (d.error||'Unknown error')
+    toast('Failed','err')
+  }
+}
+
+function renderQuickList(q=''){
+  const el = document.getElementById('qa-list')
+  if(!el) return
+  const keys = Object.keys(tagData).filter(u=>
+    (!q || u.toLowerCase().includes(q.toLowerCase()))
+  )
+  if(!keys.length){
+    el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div>No users added yet</div>'
+    return
+  }
+  el.innerHTML = keys.map(u => {
+    const d = tagData[u]
+    const gc = (d.effects&&d.effects.glowColor) ? d.effects.glowColor : '#960096'
+    const pfpUrl = d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):''
+    return `<div class="urow">
+      <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
+      <div class="urow-info">
+        <div class="urow-name">${u}</div>
+        <div class="urow-meta" style="display:flex;align-items:center;gap:6px">
+          ${d.tag}
+          <span style="width:7px;height:7px;border-radius:50%;background:${gc};box-shadow:0 0 5px ${gc};display:inline-block" title="${gc}"></span>
+        </div>
+      </div>
+      <div class="urow-actions">
+        <button class="btn btn-ghost btn-sm" onclick="editTag('${u}');showPage('tags',document.querySelector('.ntab'))">Edit</button>
+        <button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button>
+      </div>
+    </div>`
+  }).join('')
+}
+
 function toast(msg,type){const e=document.getElementById('toast');e.textContent=msg;e.className=`show ${type||''}`;setTimeout(()=>e.className='',3500)}
 </script>
 
