@@ -50,7 +50,8 @@ nav .sp{flex:1}
 .stat-label{font-size:.8rem;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.grid-form{display:grid;grid-template-columns:440px 1fr;gap:20px;align-items:start}
+.grid-form{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media(max-width:1100px){.grid-form{grid-template-columns:1fr}}
 @media(max-width:900px){.grid2,.grid-form{grid-template-columns:1fr}}
 @media(max-width:768px){
   nav{padding:0 14px;gap:8px;height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
@@ -79,30 +80,31 @@ nav .sp{flex:1}
   .ntag-tag{font-size:.75rem}
 }
 
-.card{background:#111;border:1px solid #333;border-radius:12px;overflow:hidden}
-.card-top{padding:16px 20px;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.card-title{font-size:.85rem;color:#888;text-transform:uppercase;letter-spacing:1.5px}
+.card{background:#0e0e12;border:1px solid #1e1e2a;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.card-top{padding:14px 20px;border-bottom:1px solid #1a1a24;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0b0b10}
+.card-title{font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:2px;font-weight:700}
 .card-body{padding:20px}
 
-.field{margin-bottom:16px}
-.field label{display:block;font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.field-hint{font-size:.8rem;color:#555;margin-top:5px;line-height:1.4}
-input[type=text],input[type=password]{width:100%;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#fff;font-size:.95rem;font-family:'Coming Soon',cursive;outline:none;transition:border-color .2s}
-input:focus{border-color:#0066ff}
-input::placeholder{color:#444}
-.divider{height:1px;background:#222;margin:16px 0}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px;font-weight:700}
+.field-hint{font-size:.75rem;color:#383844;margin-top:4px;line-height:1.4}
+input[type=text],input[type=password]{width:100%;background:#080810;border:1px solid #1e1e2e;border-radius:8px;padding:10px 14px;color:#fff;font-size:.93rem;font-family:'Coming Soon',cursive;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus{border-color:#334;box-shadow:0 0 0 3px rgba(80,100,255,.12)}
+input::placeholder{color:#333}
+.divider{height:1px;background:#1a1a22;margin:14px 0}
 
 /* Toggles */
-.toggles-section{margin-bottom:16px}
-.toggles-section label{display:block;font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.toggles-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;background:#0a0a0a;border:1px solid #2a2a2a;border-radius:8px;padding:9px 13px;cursor:pointer;transition:border-color .2s;user-select:none}
-.toggle-row:hover{border-color:#444}
-.toggle-label{font-size:.82rem;color:#ccc;display:flex;align-items:center;gap:7px}
-.toggle-label .ticon{font-size:1rem}
-.toggle-switch{width:36px;height:20px;background:#222;border-radius:99px;position:relative;flex-shrink:0;transition:background .2s;border:1px solid #333}
-.toggle-switch.on{background:#0066ff;border-color:#0066ff}
-.toggle-switch::after{content:'';position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.toggles-section{margin-bottom:14px}
+.toggles-section label,.color-section label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;font-weight:700}
+.toggles-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;background:#08080f;border:1px solid #161622;border-radius:9px;padding:9px 12px;cursor:pointer;transition:all .15s;user-select:none}
+.toggle-row:hover{border-color:#2a2a3a;background:#0c0c16}
+.toggle-row.tog-active{border-color:rgba(80,120,255,.3);background:rgba(40,60,180,.06)}
+.toggle-label{font-size:.8rem;color:#aaa;display:flex;align-items:center;gap:7px}
+.toggle-label .ticon{font-size:.95rem}
+.toggle-switch{width:34px;height:18px;background:#181820;border-radius:99px;position:relative;flex-shrink:0;transition:background .2s;border:1px solid #252530}
+.toggle-switch.on{background:#2255ee;border-color:#3366ff}
+.toggle-switch::after{content:'';position:absolute;width:12px;height:12px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .18s;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 .toggle-switch.on::after{left:18px}
 
 /* Color palette */
@@ -132,36 +134,53 @@ input::placeholder{color:#444}
 .gif-progress{height:3px;background:#222;border-radius:2px;margin-top:6px;overflow:hidden;display:none}
 .gif-progress-inner{height:100%;background:linear-gradient(90deg,#0066ff,#00ccff);border-radius:2px;transition:width .15s;width:0%}
 
-/* Preview */
-.preview-wrap{padding:12px 16px;background:#0a0a0a;border:1px solid #222;border-radius:10px;display:flex;align-items:center;gap:12px;margin-bottom:16px;position:relative;overflow:hidden;min-height:60px}
-.preview-label{font-size:.75rem;color:#555;white-space:nowrap;text-transform:uppercase;letter-spacing:1px;flex-shrink:0}
-.ntag{display:flex;align-items:center;gap:7px;background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.3);border-radius:99px;padding:4px 14px 4px 4px;box-shadow:0 0 12px rgba(0,102,255,.15);position:relative;overflow:hidden}
-/* Animated preview canvas sits inside ntag */
-.ntag-anim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:99px}
-.ntag-pfp{width:28px;height:28px;border-radius:50%;background:#222;overflow:hidden;flex-shrink:0;position:relative;z-index:1}
+/* Preview card — full height right column */
+.preview-card{background:#0b0b12;border:1px solid #1a1a26;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4);display:flex;flex-direction:column;min-height:600px}
+.preview-card-top{padding:14px 20px;border-bottom:1px solid #1a1a24;background:#090910;display:flex;align-items:center;justify-content:space-between}
+.preview-card-title{font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.preview-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:24px;position:relative}
+/* Fake game world background in preview */
+.preview-world{width:100%;height:220px;border-radius:10px;background:linear-gradient(180deg,#87ceeb 0%,#87ceeb 55%,#4a8c3f 55%,#3d7a33 100%);position:relative;overflow:hidden;border:1px solid #1e1e2a;flex-shrink:0}
+.preview-world::before{content:'';position:absolute;bottom:0;left:0;right:0;height:45%;background:repeating-linear-gradient(90deg,#3d7a33 0px,#4a8c3f 20px,#3d7a33 40px)}
+.preview-character{position:absolute;bottom:42%;left:50%;transform:translateX(-50%);font-size:2.2rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+/* The nametag floats above the character */
+.preview-tag-float{position:absolute;bottom:calc(42% + 52px);left:50%;transform:translateX(-50%);white-space:nowrap}
+.ntag{display:flex;align-items:center;gap:8px;background:rgba(5,8,25,.7);border:1.5px solid rgba(0,102,255,.35);border-radius:99px;padding:6px 16px 6px 6px;box-shadow:0 0 16px rgba(0,102,255,.2),0 2px 8px rgba(0,0,0,.6);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
+.ntag-anim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:99px;opacity:.5}
+.ntag-pfp{width:36px;height:36px;border-radius:50%;background:#1a1a2e;overflow:hidden;flex-shrink:0;position:relative;z-index:1;border:1.5px solid rgba(255,255,255,.15)}
 .ntag-pfp img{width:100%;height:100%;object-fit:cover}
 .ntag-info{position:relative;z-index:1}
-.ntag-tag{font-size:.85rem;font-weight:700;color:#fff}
-.ntag-user{font-size:.7rem;color:#888;margin-top:1px}
+.ntag-tag{font-size:1rem;font-weight:700;color:#fff;letter-spacing:.3px;line-height:1.2;font-family:'Coming Soon',cursive}
+.ntag-user{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:1px}
+/* Info panel below preview world */
+.preview-info{width:100%;background:#0d0d16;border:1px solid #1a1a26;border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.prev-info-item{display:flex;flex-direction:column;gap:3px}
+.prev-info-key{font-size:.68rem;color:#444;text-transform:uppercase;letter-spacing:1px}
+.prev-info-val{font-size:.82rem;color:#ccc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prev-info-val.active{color:#4ade80}
+.prev-info-val.inactive{color:#555}
 
 /* Sprite sheet mini preview */
 .sheet-preview{margin-top:10px;display:none}
 .sheet-preview canvas{border-radius:6px;border:1px solid #333;max-width:100%;height:auto;display:block}
 .sheet-meta{font-size:.75rem;color:#666;margin-top:6px;line-height:1.5}
 
-.btn{border:none;border-radius:8px;padding:10px 18px;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:7px}
-.btn:hover{transform:scale(1.04)}
-.btn-primary{background:rgba(40,40,80,.8);color:#fff;border:1px solid rgba(100,150,255,.35);width:100%;justify-content:center;box-shadow:0 0 16px rgba(0,66,200,.2)}
-.btn-primary:hover{background:rgba(60,60,120,.9)}
-.btn-sm{padding:6px 12px;font-size:.8rem;border-radius:7px;width:auto}
-.btn-ghost{background:transparent;border:1px solid #333;color:#aaa}
-.btn-ghost:hover{border-color:#555;color:#fff}
-.btn-red{background:rgba(220,30,30,.12);border:1px solid rgba(220,80,80,.3);color:#f87171}
-.btn-red:hover{background:rgba(220,30,30,.2)}
-.btn-green{background:rgba(0,200,100,.1);border:1px solid rgba(0,200,100,.25);color:#4ade80}
-.btn-green:hover{background:rgba(0,200,100,.2)}
-.btn-ban{background:rgba(200,0,0,.15);border:1px solid rgba(255,50,50,.3);color:#f87171;width:100%;justify-content:center}
-.btn-wl{background:rgba(0,180,80,.12);border:1px solid rgba(0,200,100,.3);color:#4ade80;width:100%;justify-content:center}
+.btn{border:none;border-radius:9px;padding:10px 18px;font-family:'Coming Soon',cursive;font-size:.93rem;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px;letter-spacing:.3px}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:linear-gradient(135deg,#1a1a4a,#0d0d2e);color:#fff;border:1px solid rgba(100,130,255,.4);width:100%;justify-content:center;box-shadow:0 2px 20px rgba(0,50,200,.25),inset 0 1px 0 rgba(255,255,255,.06)}
+.btn-primary:hover{background:linear-gradient(135deg,#222260,#111140);border-color:rgba(120,160,255,.6);box-shadow:0 4px 28px rgba(0,60,255,.35)}
+.btn-sm{padding:5px 11px;font-size:.78rem;border-radius:7px;width:auto}
+.btn-ghost{background:transparent;border:1px solid #222;color:#666;border-radius:7px}
+.btn-ghost:hover{border-color:#444;color:#ccc;background:rgba(255,255,255,.04)}
+.btn-red{background:rgba(200,20,20,.1);border:1px solid rgba(200,60,60,.25);color:#f87171;border-radius:9px}
+.btn-red:hover{background:rgba(200,20,20,.18);border-color:rgba(255,80,80,.4)}
+.btn-green{background:rgba(0,180,90,.1);border:1px solid rgba(0,180,90,.22);color:#4ade80;border-radius:9px}
+.btn-green:hover{background:rgba(0,180,90,.18)}
+.btn-ban{background:rgba(180,0,0,.12);border:1px solid rgba(240,40,40,.28);color:#f87171;width:100%;justify-content:center;border-radius:9px}
+.btn-ban:hover{background:rgba(180,0,0,.2)}
+.btn-wl{background:rgba(0,160,80,.1);border:1px solid rgba(0,200,100,.25);color:#4ade80;width:100%;justify-content:center;border-radius:9px}
+.btn-wl:hover{background:rgba(0,160,80,.18)}
 
 .ulist{display:flex;flex-direction:column;gap:6px;max-height:460px;overflow-y:auto;padding-right:4px}
 .ulist::-webkit-scrollbar{width:4px}
@@ -322,27 +341,72 @@ input::placeholder{color:#444}
 
           <div class="divider"></div>
 
-          <div class="preview-wrap">
-            <span class="preview-label">Preview</span>
-            <div class="ntag" id="prev-ntag">
-              <canvas id="prev-anim-canvas" class="ntag-anim" style="display:none"></canvas>
-              <div class="ntag-pfp"><img id="prev-pfp" src="" style="display:none"/></div>
-              <div class="ntag-info">
-                <div class="ntag-tag" id="prev-tag">AC USER</div>
-                <div class="ntag-user" id="prev-user">@username</div>
-              </div>
-            </div>
-          </div>
-
           <button class="btn btn-primary" onclick="saveTag()">
             <span id="save-spin" style="display:none" class="spin"></span>💾 Save User
           </button>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-top"><span class="card-title">Tag Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderTags(this.value)"/></div>
-        <div class="card-body" style="padding:14px"><div id="tag-list" class="ulist"></div></div>
+      <!-- RIGHT COLUMN: Live Preview + Tag List -->
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <!-- LIVE PREVIEW CARD -->
+        <div class="preview-card">
+          <div class="preview-card-top">
+            <span class="preview-card-title">Live Preview</span>
+            <span style="font-size:.75rem;color:#444">Updates as you type</span>
+          </div>
+          <div class="preview-body">
+            <!-- Fake game world with floating nametag -->
+            <div class="preview-world">
+              <div class="preview-tag-float">
+                <div class="ntag" id="prev-ntag">
+                  <canvas id="prev-anim-canvas" class="ntag-anim" style="display:none"></canvas>
+                  <div class="ntag-pfp"><img id="prev-pfp" src="" style="display:none"/></div>
+                  <div class="ntag-info">
+                    <div class="ntag-tag" id="prev-tag">AC USER</div>
+                    <div class="ntag-user" id="prev-user">@username</div>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-character">🧍</div>
+            </div>
+
+            <!-- Info grid -->
+            <div class="preview-info">
+              <div class="prev-info-item">
+                <span class="prev-info-key">Username</span>
+                <span class="prev-info-val" id="pi-user">—</span>
+              </div>
+              <div class="prev-info-item">
+                <span class="prev-info-key">Tag Label</span>
+                <span class="prev-info-val" id="pi-tag">—</span>
+              </div>
+              <div class="prev-info-item">
+                <span class="prev-info-key">Profile Pic</span>
+                <span class="prev-info-val" id="pi-pfp" class="inactive">Not set</span>
+              </div>
+              <div class="prev-info-item">
+                <span class="prev-info-key">Background</span>
+                <span class="prev-info-val" id="pi-bg" class="inactive">Not set</span>
+              </div>
+              <div class="prev-info-item">
+                <span class="prev-info-key">Glow Color</span>
+                <span class="prev-info-val" id="pi-glow">—</span>
+              </div>
+              <div class="prev-info-item">
+                <span class="prev-info-key">Effects</span>
+                <span class="prev-info-val" id="pi-effects">None</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAG USERS LIST -->
+        <div class="card">
+          <div class="card-top"><span class="card-title">Tag Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderTags(this.value)"/></div>
+          <div class="card-body" style="padding:14px"><div id="tag-list" class="ulist"></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -466,14 +530,19 @@ function setCustomColor(c){
 
 function applyPreviewGlow(c){
   const ntag = document.getElementById('prev-ntag')
-  ntag.style.boxShadow = `0 0 12px ${c}66`
-  ntag.style.borderColor = `${c}88`
+  ntag.style.setProperty('--glow', c)
+  ntag.style.boxShadow = `0 0 18px ${c}55, 0 2px 8px rgba(0,0,0,.6)`
+  ntag.style.borderColor = c
+  ntag.style.borderWidth = '1.5px'
 }
 
 function toggleEffect(key){
   effects[key] = !effects[key]
-  const el = document.getElementById('tog-'+key)
-  el.className = 'toggle-switch' + (effects[key]?' on':'')
+  const sw = document.getElementById('tog-'+key)
+  sw.className = 'toggle-switch' + (effects[key]?' on':'')
+  // Also highlight the parent row
+  const row = sw.closest('.toggle-row')
+  if(row) row.className = 'toggle-row' + (effects[key]?' tog-active':'')
   updatePreview()
 }
 
@@ -998,15 +1067,19 @@ function stopPreviewAnim(){
 //  PREVIEW (pfp / tag text)
 // ════════════════════════════════════════════════════════════
 function updatePreview(){
-  const tag=document.getElementById('f-tag').value||'AC USER',user=document.getElementById('f-user').value||'username'
-  // Apply typewriter effect to preview tag text
+  const tag=document.getElementById('f-tag').value||'AC USER'
+  const user=document.getElementById('f-user').value||'username'
   const tagEl = document.getElementById('prev-tag')
-  if(effects.typewriter){
+
+  if(effects.glitched){
+    tagEl.style.animation='glitch 0.4s infinite'
+  } else if(effects.typewriter){
     tagEl.style.animation='none'
-    tagEl.style.borderRight='2px solid #fff'
+    tagEl.style.borderRight='2px solid rgba(255,255,255,.7)'
     tagEl.style.overflow='hidden'
     tagEl.style.whiteSpace='nowrap'
     tagEl.style.width='0'
+    void tagEl.offsetWidth
     tagEl.style.animation='typewriter 1.2s steps(20) forwards'
   } else {
     tagEl.style.animation=''
@@ -1017,17 +1090,37 @@ function updatePreview(){
   }
   tagEl.textContent = tag
 
-  if(effects.glitched){
-    tagEl.setAttribute('data-text', tag)
-    tagEl.style.animation='glitch 0.4s infinite'
+  document.getElementById('prev-user').textContent='@'+user
+
+  // PFP
+  const pfpVal=document.getElementById('f-pfp').value.trim()
+  const pi=document.getElementById('prev-pfp')
+  if(pfpVal){
+    pi.src=pfpVal.startsWith('http')?pfpVal:`https://assetdelivery.roblox.com/v1/asset/?id=${pfpVal}`
+    pi.style.display='block'
+    pi.onerror=()=>pi.style.display='none'
+  } else {
+    pi.style.display='none'
   }
 
-  document.getElementById('prev-user').textContent='@'+user
-  const pfp=document.getElementById('f-pfp').value.trim()
-  const pi=document.getElementById('prev-pfp')
-  if(pfp){pi.src=pfp.startsWith('http')?pfp:`https://assetdelivery.roblox.com/v1/asset/?id=${pfp}`;pi.style.display='block';pi.onerror=()=>pi.style.display='none'}
-  else pi.style.display='none'
   applyPreviewGlow(glowColor)
+
+  // Update info grid
+  const bgVal = document.getElementById('f-bg').value.trim()
+  const q = s => document.getElementById(s)
+  q('pi-user').textContent = user === 'username' ? '—' : user
+  q('pi-tag').textContent  = tag === 'AC USER'   ? '—' : tag
+  q('pi-pfp').textContent  = pfpVal ? '✓ Set' : 'Not set'
+  q('pi-pfp').className    = 'prev-info-val ' + (pfpVal ? 'active' : 'inactive')
+  q('pi-bg').textContent   = bgVal ? (gifData ? '🎞 GIF ready' : '🖼 Static') : 'Not set'
+  q('pi-bg').className     = 'prev-info-val ' + (bgVal ? 'active' : 'inactive')
+  q('pi-glow').textContent = glowColor
+  q('pi-glow').style.color = glowColor
+  const activeEffects = Object.entries(effects).filter(([k,v])=>v===true).map(([k])=>({
+    glitched:'⚡Glitch',typewriter:'⌨ Type',animProfile:'🖼 PFP',animBg:'🎞 BG',tagEffects:'✨ FX'
+  }[k]||k)).filter(Boolean)
+  q('pi-effects').textContent = activeEffects.length ? activeEffects.join(' · ') : 'None'
+  q('pi-effects').className = 'prev-info-val ' + (activeEffects.length ? 'active' : 'inactive')
 }
 
 // ════════════════════════════════════════════════════════════
