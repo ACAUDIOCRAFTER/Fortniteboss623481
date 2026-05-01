@@ -1324,5 +1324,32 @@ async function wlRemove(u){const r=await fetch(MANAGE_API,{method:'POST',headers
 function renderWl(q=''){const el=document.getElementById('wl-list');const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')}
 function toast(msg,type){const e=document.getElementById('toast');e.textContent=msg;e.className=`show ${type||''}`;setTimeout(()=>e.className='',3500)}
 </script>
+
+<!-- GITHUB TOKEN MODAL -->
+<div id="gh-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);align-items:center;justify-content:center">
+  <div style="background:#0e0e14;border:1px solid #2a2a3a;border-radius:16px;padding:40px 36px;width:min(420px,92vw);text-align:center;box-shadow:0 0 60px rgba(0,80,255,.15)">
+    <div style="font-size:2rem;margin-bottom:10px">🔑</div>
+    <div style="font-size:1.2rem;color:#fff;margin-bottom:8px;font-family:'Coming Soon',cursive">GitHub Token</div>
+    <div style="font-size:.82rem;color:#555;margin-bottom:24px;line-height:1.6">
+      Enter your GitHub Personal Access Token.<br>
+      Saved only in your browser — never in the code.
+    </div>
+    <input type="password" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxx"
+      style="width:100%;background:#08080f;border:1px solid #1e1e2e;border-radius:8px;padding:12px 16px;color:#fff;font-size:.95rem;font-family:'Coming Soon',cursive;outline:none;text-align:center;letter-spacing:2px;margin-bottom:8px;transition:border-color .2s;box-sizing:border-box"
+      onfocus="this.style.borderColor='#334'" onblur="this.style.borderColor='#1e1e2e'"
+      onkeydown="if(event.key==='Enter')saveGhToken()"/>
+    <div style="font-size:.72rem;color:#333;margin-bottom:20px">Needs <code style="color:#555">repo</code> scope · Generate at github.com/settings/tokens</div>
+    <button onclick="saveGhToken()"
+      style="width:100%;padding:11px;background:linear-gradient(135deg,#1a1a4a,#0d0d2e);color:#fff;border:1px solid rgba(100,130,255,.4);border-radius:9px;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;margin-bottom:8px;transition:all .15s"
+      onmouseover="this.style.borderColor='rgba(150,180,255,.6)'" onmouseout="this.style.borderColor='rgba(100,130,255,.4)'">
+      Save Token →
+    </button>
+    <button onclick="skipGhToken()"
+      style="width:100%;padding:9px;background:transparent;color:#444;border:1px solid #1a1a22;border-radius:9px;font-family:'Coming Soon',cursive;font-size:.82rem;cursor:pointer;transition:all .15s"
+      onmouseover="this.style.color='#888'" onmouseout="this.style.color='#444'">
+      Skip for now
+    </button>
+  </div>
+</div>
 </body>
 </html>
