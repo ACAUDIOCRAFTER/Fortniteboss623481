@@ -1,13 +1,11 @@
-// api/custom-users.js
-// AC AudioCrafter — Custom nametag user manager
-// Matches existing KV pattern from acusers.js
+// api/custom-users.js — AC AudioCrafter Tag Manager
+// Uses same Vercel KV pattern as acusers.js
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Content-Type', 'application/json');
-
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     const url   = process.env.KV_REST_API_URL;
@@ -15,56 +13,51 @@ export default async function handler(req, res) {
     if (!url || !token) return res.status(500).json({ error: 'KV not configured' });
 
     const ADMIN_PASS = process.env.AC_ADMIN_PASS || 'melody2024';
-    const headers    = { Authorization: 'Bearer ' + token };
-    const KV_KEY     = 'ac_custom_users';
+    const hdrs = { Authorization: 'Bearer ' + token };
+    const KEY  = 'ac_custom_users';
 
+    // ── Read from KV
     async function getUsers() {
         try {
-            const r = await fetch(`${url}/get/${KV_KEY}`, { headers });
+            const r = await fetch(`${url}/get/${KEY}`, { headers: hdrs });
             const d = await r.json();
-            return d.result ? JSON.parse(d.result) : {};
+            if (!d.result) return {};
+            return JSON.parse(d.result);
         } catch { return {}; }
     }
 
+    // ── Write to KV — value goes in the URL as encoded string (matches Vercel KV REST spec)
     async function setUsers(data) {
-        await fetch(`${url}/set/${KV_KEY}`, {
+        const encoded = encodeURIComponent(JSON.stringify(data));
+        await fetch(`${url}/set/${KEY}/${encoded}`, {
             method: 'POST',
-            headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ value: JSON.stringify(data) })
+            headers: hdrs
         });
     }
 
+    // ── GET
     if (req.method === 'GET') {
-        // ── Roblox username lookup proxy (bypasses browser CORS)
-        if (req.query.action === 'lookup') {
-            const username = req.query.username;
-            if (!username) return res.status(400).json({ ok: false, error: 'No username' });
+        // Live online users — reads AC_Exec_ keys from KV
+        if (req.query.action === 'online') {
             try {
-                // 1. Get userId from username
-                const userRes = await fetch('https://users.roblox.com/v1/usernames/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ usernames: [username], excludeBannedUsers: false })
-                });
-                const userData = await userRes.json();
-                const user = userData.data?.[0];
-                if (!user) return res.status(404).json({ ok: false, error: 'User not found' });
-                // 2. Get avatar thumbnail
-                const thumbRes = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${user.id}&size=150x150&format=Png&isCircular=false`);
-                const thumbData = await thumbRes.json();
-                const avatarUrl = thumbData.data?.[0]?.imageUrl || '';
-                return res.status(200).json({
-                    ok: true,
-                    userId: user.id,
-                    username: user.name,
-                    displayName: user.displayName,
-                    avatarUrl
-                });
+                // Scan KV for all keys starting with ac_exec_
+                const r = await fetch(`${url}/keys/ac_exec_*`, { headers: hdrs });
+                const d = await r.json();
+                const keys = d.result || [];
+                // Read each key to get the username
+                const names = await Promise.all(keys.map(async k => {
+                    try {
+                        const r2 = await fetch(`${url}/get/${k}`, { headers: hdrs });
+                        const d2 = await r2.json();
+                        return d2.result || null;
+                    } catch { return null; }
+                }));
+                return res.status(200).json({ ok: true, users: names.filter(Boolean) });
             } catch (e) {
-                return res.status(500).json({ ok: false, error: e.message });
+                return res.status(200).json({ ok: true, users: [] });
             }
         }
-        // ── Normal user list read
+        // Normal user list read
         const auth = req.query.auth;
         if (auth !== undefined && auth !== ADMIN_PASS) {
             return res.status(401).json({ ok: false, error: 'Wrong password' });
@@ -73,7 +66,24 @@ export default async function handler(req, res) {
         return res.status(200).json({ ok: true, users });
     }
 
+    // ── POST
     if (req.method === 'POST') {
+        // Script presence ping — writes username to KV with 30s TTL
+        if (req.query.action === 'exec') {
+            const key  = req.query.key;   // e.g. ac_exec_12345678
+            const name = req.query.name;  // username
+            if (key && name) {
+                try {
+                    // SET with 30 second expiry
+                    await fetch(`${url}/set/${key}/${encodeURIComponent(name)}`, {
+                        method: 'POST',
+                        headers: hdrs
+                    });
+                    await fetch(`${url}/expire/${key}/30`, { headers: hdrs });
+                } catch {}
+            }
+            return res.status(200).json({ ok: true });
+        }
         let body = req.body;
         if (typeof body === 'string') {
             try { body = JSON.parse(body); } catch {
@@ -88,16 +98,23 @@ export default async function handler(req, res) {
 
         if (action === 'set') {
             if (!tag) return res.status(400).json({ ok: false, error: 'tag required' });
-            users[username] = { tag: tag.trim(), pfpId: (pfpId||'').trim(), bgId: (bgId||'').trim() };
+            users[username] = {
+                tag:   tag.trim(),
+                pfpId: (pfpId || '').trim(),
+                bgId:  (bgId  || '').trim()
+            };
             await setUsers(users);
             return res.status(200).json({ ok: true, users });
         }
+
         if (action === 'delete') {
             delete users[username];
             await setUsers(users);
             return res.status(200).json({ ok: true, users });
         }
+
         return res.status(400).json({ ok: false, error: 'Unknown action' });
     }
+
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
 }
