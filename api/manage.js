@@ -1,94 +1,148 @@
-// api/manage.js — AC AudioCrafter ban/whitelist/admin management
+// api/manage.js — AC AudioCrafter manage API
+// Handles: ban, whitelist, live executing users
+
+import { kv } from "@vercel/kv";   // or swap for your storage — see bottom of file
+
+const ADMIN_PASS  = process.env.AC_ADMIN_PASS  || "changeme";
+const EXEC_TTL_MS = 60_000;   // user dropped from live list after 60s no ping
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+
+async function getBans()      { return (await kv.get("ac:banned"))    || []; }
+async function getWhitelist() { return (await kv.get("ac:whitelist")) || []; }
+
+// executing list: { username: lastSeenMs }
+async function getExecMap()   { return (await kv.get("ac:executing")) || {}; }
+async function setExecMap(m)  { await kv.set("ac:executing", m); }
+
+function liveUsers(execMap) {
+  const now = Date.now();
+  return Object.entries(execMap)
+    .filter(([, t]) => now - t < EXEC_TTL_MS)
+    .map(([u]) => u);
+}
+
+// ── handler ──────────────────────────────────────────────────────────────────
 
 export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Content-Type', 'application/json');
-    if (req.method === 'OPTIONS') return res.status(200).end();
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.status(200).end();
 
-    const url   = process.env.KV_REST_API_URL;
-    const token = process.env.KV_REST_API_TOKEN;
-    if (!url || !token) return res.status(500).json({ error: 'KV not configured' });
+  const { action, user, auth } = req.query;
 
-    const ADMIN_PASS = process.env.AC_ADMIN_PASS || 'ACMelodyScoper';
-    const hdrs = { Authorization: 'Bearer ' + token };
-
-    async function getList(key) {
-        try {
-            const r = await fetch(`${url}/get/${key}`, { headers: hdrs });
-            const d = await r.json();
-            return d.result ? JSON.parse(d.result) : [];
-        } catch { return []; }
+  // ── Script ping: POST /api/manage?action=exec&user=USERNAME
+  // No auth needed — this is called from the Roblox executor
+  if (req.method === "POST" && action === "exec" && user) {
+    const map = await getExecMap();
+    map[user] = Date.now();
+    // Clean up stale entries while we're here
+    const now = Date.now();
+    for (const [u, t] of Object.entries(map)) {
+      if (now - t >= EXEC_TTL_MS) delete map[u];
     }
-    async function setList(key, data) {
-        const encoded = encodeURIComponent(JSON.stringify(data));
-        await fetch(`${url}/set/${key}/${encoded}`, { method: 'POST', headers: hdrs });
+    await setExecMap(map);
+    return res.json({ ok: true });
+  }
+
+  // ── Script ban/whitelist check: GET /api/manage?action=check&user=USERNAME
+  if (req.method === "GET" && action === "check" && user) {
+    const [bans, wl] = await Promise.all([getBans(), getWhitelist()]);
+    return res.json({
+      ok:          true,
+      banned:      bans.includes(user),
+      whitelisted: wl.includes(user),
+    });
+  }
+
+  // ── All admin actions below require auth ─────────────────────────────────
+  if (auth !== ADMIN_PASS) {
+    return res.status(401).json({ ok: false, error: "Unauthorized" });
+  }
+
+  // ── GET /api/manage?auth=... — dashboard data poll ───────────────────────
+  if (req.method === "GET") {
+    const [bans, wl, execMap] = await Promise.all([
+      getBans(), getWhitelist(), getExecMap()
+    ]);
+    return res.json({
+      ok:        true,
+      banned:    bans,
+      whitelist: wl,
+      executing: liveUsers(execMap),   // ← this is what the website reads
+    });
+  }
+
+  // ── POST /api/manage — admin mutations ───────────────────────────────────
+  if (req.method === "POST") {
+    let body = {};
+    try { body = typeof req.body === "string" ? JSON.parse(req.body) : (req.body || {}); } catch {}
+    const username = body.username || "";
+    const act      = body.action   || "";
+
+    // Ban
+    if (act === "ban_add" && username) {
+      const bans = await getBans();
+      if (!bans.includes(username)) bans.push(username);
+      await kv.set("ac:banned", bans);
+      // Also remove from executing list if they're live
+      const map = await getExecMap();
+      delete map[username];
+      await setExecMap(map);
+      return res.json({ ok: true, banned: bans });
+    }
+    if (act === "ban_remove" && username) {
+      const bans = (await getBans()).filter(u => u !== username);
+      await kv.set("ac:banned", bans);
+      return res.json({ ok: true, banned: bans });
     }
 
-    // ── GET: script checks if user is banned/whitelisted
-    if (req.method === 'GET') {
-        if (req.query.action === 'check') {
-            const user = req.query.user;
-            if (!user) return res.status(400).json({ ok: false });
-            const [banned, whitelisted, admins] = await Promise.all([
-                getList('ac_banned'),
-                getList('ac_whitelist'),
-                getList('ac_admins')
-            ]);
-            return res.status(200).json({
-                ok: true,
-                banned:      banned.includes(user),
-                whitelisted: whitelisted.includes(user),
-                isAdmin:     admins.includes(user)
-            });
-        }
-        // Admin panel — get all lists
-        const auth = req.query.auth;
-        if (auth !== ADMIN_PASS) return res.status(401).json({ ok: false, error: 'Wrong password' });
-        const [banned, whitelist, admins, executing] = await Promise.all([
-            getList('ac_banned'),
-            getList('ac_whitelist'),
-            getList('ac_admins'),
-            getList('ac_executing')
-        ]);
-        return res.status(200).json({ ok: true, banned, whitelist, admins, executing });
+    // Whitelist
+    if (act === "whitelist_add" && username) {
+      const wl = await getWhitelist();
+      if (!wl.includes(username)) wl.push(username);
+      await kv.set("ac:whitelist", wl);
+      return res.json({ ok: true, whitelist: wl });
+    }
+    if (act === "whitelist_remove" && username) {
+      const wl = (await getWhitelist()).filter(u => u !== username);
+      await kv.set("ac:whitelist", wl);
+      return res.json({ ok: true, whitelist: wl });
     }
 
-    // ── POST: admin actions
-    if (req.method === 'POST') {
-        // Script reports itself as executing
-        if (req.query.action === 'exec') {
-            const user = req.query.user;
-            if (user) {
-                const executing = await getList('ac_executing');
-                if (!executing.includes(user)) { executing.push(user); await setList('ac_executing', executing); }
-                // TTL via separate key
-                await fetch(`${url}/set/ac_exec_ttl_${encodeURIComponent(user)}/1`, { method: 'POST', headers: hdrs });
-                await fetch(`${url}/expire/ac_exec_ttl_${encodeURIComponent(user)}/30`, { headers: hdrs });
-            }
-            return res.status(200).json({ ok: true });
-        }
+    return res.status(400).json({ ok: false, error: "Unknown action" });
+  }
 
-        let body = req.body;
-        if (typeof body === 'string') { try { body = JSON.parse(body); } catch { return res.status(400).json({ ok: false }); } }
-        const { auth, action, username } = body || {};
-        if (auth !== ADMIN_PASS) return res.status(401).json({ ok: false, error: 'Wrong password' });
-        if (!username) return res.status(400).json({ ok: false, error: 'username required' });
-
-        const listKey = action.startsWith('ban') ? 'ac_banned' : action.startsWith('whitelist') ? 'ac_whitelist' : action.startsWith('admin') ? 'ac_admins' : null;
-        if (!listKey) return res.status(400).json({ ok: false, error: 'Unknown action' });
-
-        const list = await getList(listKey);
-        if (action.endsWith('_add')) {
-            if (!list.includes(username)) { list.push(username); await setList(listKey, list); }
-        } else if (action.endsWith('_remove')) {
-            const idx = list.indexOf(username);
-            if (idx !== -1) { list.splice(idx, 1); await setList(listKey, list); }
-        }
-        // Return all lists
-        const [banned, whitelist, admins] = await Promise.all([getList('ac_banned'), getList('ac_whitelist'), getList('ac_admins')]);
-        return res.status(200).json({ ok: true, banned, whitelist, admins });
-    }
-    return res.status(405).json({ ok: false });
+  return res.status(405).json({ ok: false, error: "Method not allowed" });
 }
+
+/*
+  ════════════════════════════════════════════════════════════════
+  IF YOU'RE NOT USING @vercel/kv  — swap the storage at the top:
+  ════════════════════════════════════════════════════════════════
+
+  OPTION A — Vercel KV (recommended, free tier available):
+    npm install @vercel/kv
+    Add KV_REST_API_URL + KV_REST_API_TOKEN to your Vercel env vars
+
+  OPTION B — Simple file/JSON store (if you use a VPS not Vercel):
+    Replace kv calls with fs.readFileSync / fs.writeFileSync on a JSON file:
+
+    import fs from "fs";
+    const DB_FILE = "./data/manage.json";
+    function readDB() {
+      try { return JSON.parse(fs.readFileSync(DB_FILE, "utf8")); } catch { return {}; }
+    }
+    function writeDB(d) { fs.writeFileSync(DB_FILE, JSON.stringify(d)); }
+
+    Then replace:
+      kv.get("ac:banned")      → readDB().banned    || []
+      kv.set("ac:banned", v)   → writeDB({...readDB(), banned: v})
+      etc.
+
+  OPTION C — Already have your own DB setup:
+    Just replace the getBans/getWhitelist/getExecMap/setExecMap
+    functions with your own storage calls.
+  ════════════════════════════════════════════════════════════════
+*/
