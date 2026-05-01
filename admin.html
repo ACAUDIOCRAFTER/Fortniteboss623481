@@ -3,372 +3,375 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AC AudioCrafter — Tag Manager</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<title>AC AudioCrafter — Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --bg:#05050a;--surface:#0c0c14;--card:#10101c;--border:#1e1e2e;--border2:#2a2a3e;
-  --accent:#9000cc;--accent2:#bf00ff;--glow:rgba(144,0,204,.35);
-  --green:#4ade80;--red:#f87171;--text:#f0eeff;--dim:#7c7a94;--dim2:#4a4860;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
-body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(144,0,204,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(144,0,204,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
-.topbar{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),var(--accent),transparent);background-size:200% 100%;animation:slide 3s linear infinite;z-index:100}
-@keyframes slide{0%{background-position:0%}100%{background-position:200%}}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden}
 
 /* AUTH */
-#auth{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(5,5,10,.97);backdrop-filter:blur(20px);z-index:200}
-.auth-card{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:48px 40px;width:360px;text-align:center;box-shadow:0 0 60px var(--glow),0 0 0 1px rgba(144,0,204,.1);position:relative;overflow:hidden}
-.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent)}
-.auth-logo{width:64px;height:64px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;margin:0 auto 20px;box-shadow:0 8px 24px var(--glow)}
-.auth-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
-.auth-card p{font-size:13px;color:var(--dim);margin-bottom:28px}
-.auth-input{width:100%;background:#08080f;border:1px solid var(--border2);border-radius:10px;padding:13px 16px;color:var(--text);font-size:15px;font-family:'Inter',sans-serif;outline:none;text-align:center;letter-spacing:3px;margin-bottom:14px;transition:border-color .2s,box-shadow .2s}
-.auth-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(144,0,204,.15)}
-.auth-err{color:var(--red);font-size:12px;margin-top:8px;display:none}
+#auth{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,13,13,.97);z-index:300}
+.acard{background:#111;border:1px solid #333;border-radius:16px;padding:52px 44px;width:400px;text-align:center;box-shadow:0 0 60px rgba(0,100,255,.15)}
+.acard h1{font-size:2.4rem;color:#fff;text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66;margin-bottom:8px}
+.acard p{color:#aaa;font-size:1rem;margin-bottom:32px}
+.ainput{width:100%;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:13px 18px;color:#fff;font-size:1.1rem;font-family:'Coming Soon',cursive;outline:none;text-align:center;letter-spacing:4px;margin-bottom:16px;transition:border-color .2s}
+.ainput:focus{border-color:#0066ff}
+.abtn{width:100%;padding:12px;background:rgba(40,40,80,.8);color:#fff;border:1px solid rgba(100,150,255,.3);border-radius:8px;font-family:'Coming Soon',cursive;font-size:1.1rem;cursor:pointer;transition:.2s}
+.abtn:hover{background:rgba(80,80,160,.8);transform:scale(1.02)}
+.aerr{color:#f87171;font-size:.9rem;margin-top:10px;display:none}
 
-/* LAYOUT */
-#app{display:none;position:relative;z-index:1;min-height:100vh}
-nav{position:sticky;top:0;background:rgba(5,5,10,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;gap:16px;height:60px;z-index:50}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:.5px}
-.nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 4px 12px var(--glow)}
-.nav-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 7px;border-radius:99px;text-transform:uppercase}
-nav .spacer{flex:1}
-.nav-user{font-size:12px;color:var(--dim)}
-.main{max-width:1100px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:420px 1fr;gap:24px;align-items:start}
+/* APP */
+#app{display:none;min-height:100vh;position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;background:rgba(13,13,13,.92);border-bottom:1px solid #222;padding:0 32px;display:flex;align-items:center;gap:16px;height:62px;z-index:100;backdrop-filter:blur(12px)}
+.nav-title{font-size:1.6rem;color:#fff;text-shadow:0 0 20px #0066ff88,0 0 40px #0044cc55;letter-spacing:1px}
+.nav-badge{background:linear-gradient(135deg,#ff3366,#ff6633);padding:3px 12px;border-radius:20px;font-size:.75rem}
+nav .sp{flex:1}
+.nav-tabs{display:flex;gap:6px}
+.ntab{background:transparent;border:1px solid #333;padding:7px 16px;border-radius:8px;color:#aaa;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;transition:.2s}
+.ntab:hover,.ntab.active{background:rgba(40,40,80,.7);color:#fff;border-color:rgba(100,150,255,.4);text-shadow:0 0 10px rgba(100,150,255,.5)}
+
+/* PAGES */
+.page{display:none;max-width:1200px;margin:0 auto;padding:32px 24px}
+.page.active{display:block}
+
+/* LIVE BAR */
+.live-bar{background:#111;border:1px solid #333;border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.live-label{font-size:.85rem;color:#888;white-space:nowrap;text-transform:uppercase;letter-spacing:1px}
+.live-users{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.live-chip{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:99px;padding:4px 12px;font-size:.85rem;color:#00ff88;display:flex;align-items:center;gap:5px}
+.ldot{width:6px;height:6px;border-radius:50%;background:#00ff88;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.live-count{font-size:.85rem;color:#666;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.lstatus{width:7px;height:7px;border-radius:50%;background:#444}
+.lstatus.on{background:#00ff88}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat{background:#111;border:1px solid #333;border-radius:10px;padding:18px 20px}
+.stat-val{font-size:2rem;font-weight:700;text-shadow:0 0 20px currentColor}
+.stat-label{font-size:.8rem;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-form{display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.grid2,.grid-form{grid-template-columns:1fr}}
 
 /* CARDS */
-.panel{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative}
-.panel-header{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.panel-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
-.panel-body{padding:22px}
+.card{background:#111;border:1px solid #333;border-radius:12px;overflow:hidden}
+.card-top{padding:16px 20px;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-title{font-size:.85rem;color:#888;text-transform:uppercase;letter-spacing:1.5px}
+.card-body{padding:20px}
 
 /* FORM */
 .field{margin-bottom:16px}
-.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px}
-.field-hint{font-size:10px;color:var(--dim2);margin-top:5px}
-input[type=text],input[type=password]{width:100%;background:#08080f;border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s}
-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(144,0,204,.12)}
-input::placeholder{color:var(--dim2)}
+.field label{display:block;font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.field-hint{font-size:.8rem;color:#555;margin-top:5px;line-height:1.4}
+input[type=text],input[type=password]{width:100%;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#fff;font-size:.95rem;font-family:'Coming Soon',cursive;outline:none;transition:border-color .2s}
+input:focus{border-color:#0066ff}
+input::placeholder{color:#444}
+.divider{height:1px;background:#222;margin:16px 0}
 
-/* Preview */
-.tag-preview-wrap{padding:14px;background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.tag-preview-label{font-size:10px;color:var(--dim2);white-space:nowrap;font-weight:600;letter-spacing:.5px}
-.nametag{display:flex;align-items:center;gap:8px;background:rgba(144,0,204,.12);border:1px solid var(--accent);border-radius:99px;padding:5px 14px 5px 5px;box-shadow:0 0 12px rgba(144,0,204,.2)}
-.nametag-pfp{width:30px;height:30px;border-radius:50%;background:var(--border2);overflow:hidden;flex-shrink:0}
-.nametag-pfp img{width:100%;height:100%;object-fit:cover}
-.nametag-tag{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--text)}
-.nametag-user{font-size:9px;color:var(--dim);margin-top:1px}
+/* PREVIEW */
+.preview-wrap{padding:12px 16px;background:#0a0a0a;border:1px solid #222;border-radius:10px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.preview-label{font-size:.75rem;color:#555;white-space:nowrap;text-transform:uppercase;letter-spacing:1px}
+.ntag{display:flex;align-items:center;gap:7px;background:rgba(0,102,255,.08);border:1px solid rgba(0,102,255,.3);border-radius:99px;padding:4px 14px 4px 4px;box-shadow:0 0 12px rgba(0,102,255,.15);position:relative;overflow:hidden}
+.ntag-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25;display:none}
+.ntag-pfp{width:28px;height:28px;border-radius:50%;background:#222;overflow:hidden;flex-shrink:0;position:relative;z-index:1}
+.ntag-pfp img{width:100%;height:100%;object-fit:cover}
+.ntag-info{position:relative;z-index:1}
+.ntag-tag{font-size:.85rem;font-weight:700;color:#fff}
+.ntag-user{font-size:.7rem;color:#888;margin-top:1px}
 
-/* Buttons */
-.btn{border:none;border-radius:10px;padding:11px 20px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;box-shadow:0 4px 16px var(--glow);width:100%;justify-content:center}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--glow)}
-.btn-secondary{background:transparent;border:1px solid var(--border2);color:var(--dim)}
-.btn-secondary:hover{border-color:var(--accent);color:var(--text)}
-.btn-sm{padding:6px 12px;font-size:11px;border-radius:7px}
-.btn-danger{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:var(--red)}
-.btn-danger:hover{background:rgba(248,113,113,.2)}
-.divider{height:1px;background:var(--border);margin:16px 0}
+/* BUTTONS */
+.btn{border:none;border-radius:8px;padding:10px 18px;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:7px}
+.btn:hover{transform:scale(1.04)}
+.btn-primary{background:rgba(40,40,80,.8);color:#fff;border:1px solid rgba(100,150,255,.35);width:100%;justify-content:center;box-shadow:0 0 16px rgba(0,66,200,.2)}
+.btn-primary:hover{background:rgba(60,60,120,.9)}
+.btn-sm{padding:6px 12px;font-size:.8rem;border-radius:7px;width:auto}
+.btn-ghost{background:transparent;border:1px solid #333;color:#aaa}
+.btn-ghost:hover{border-color:#555;color:#fff}
+.btn-red{background:rgba(220,30,30,.12);border:1px solid rgba(220,80,80,.3);color:#f87171}
+.btn-red:hover{background:rgba(220,30,30,.2)}
+.btn-green{background:rgba(0,200,100,.1);border:1px solid rgba(0,200,100,.25);color:#4ade80}
+.btn-green:hover{background:rgba(0,200,100,.2)}
+.btn-ban{background:rgba(200,0,0,.15);border:1px solid rgba(255,50,50,.3);color:#f87171;width:100%;justify-content:center}
+.btn-wl{background:rgba(0,180,80,.12);border:1px solid rgba(0,200,100,.3);color:#4ade80;width:100%;justify-content:center}
 
-/* User list */
-.users-list{display:flex;flex-direction:column;gap:8px}
-.user-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:border-color .2s}
-.user-card:hover{border-color:var(--border2)}
-.user-pfp{width:42px;height:42px;border-radius:50%;background:var(--border);overflow:hidden;flex-shrink:0;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--dim2);font-size:16px}
-.user-pfp img{width:100%;height:100%;object-fit:cover}
-.user-info{flex:1;min-width:0}
-.user-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.user-meta{font-size:10px;color:var(--dim);margin-top:2px}
-.tag-pill{background:rgba(144,0,204,.15);border:1px solid rgba(144,0,204,.3);border-radius:99px;padding:3px 10px;font-size:10px;font-weight:600;color:var(--accent2);white-space:nowrap}
-.user-actions{display:flex;gap:6px;flex-shrink:0}
-.empty{text-align:center;padding:48px 24px;color:var(--dim);font-size:13px}
-.empty-icon{font-size:36px;margin-bottom:12px;opacity:.4}
+/* USER LIST */
+.ulist{display:flex;flex-direction:column;gap:6px;max-height:460px;overflow-y:auto;padding-right:4px}
+.ulist::-webkit-scrollbar{width:4px}
+.ulist::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
+.urow{background:#0f0f0f;border:1px solid #282828;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;transition:border-color .15s}
+.urow:hover{border-color:#444}
+.urow-icon{width:34px;height:34px;border-radius:50%;background:#1a1a1a;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;border:1px solid #2a2a2a}
+.urow-icon img{width:100%;height:100%;object-fit:cover}
+.urow-info{flex:1;min-width:0}
+.urow-name{font-size:.95rem;color:#fff}
+.urow-meta{font-size:.75rem;color:#666;margin-top:2px}
+.urow-actions{display:flex;gap:5px;flex-shrink:0}
+.chip{border-radius:99px;padding:2px 10px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.chip-acc{background:rgba(0,102,255,.12);border:1px solid rgba(0,102,255,.25);color:#6699ff}
+.chip-red{background:rgba(200,30,30,.12);border:1px solid rgba(220,80,80,.25);color:#f87171}
+.chip-green{background:rgba(0,200,100,.1);border:1px solid rgba(0,200,100,.2);color:#4ade80}
+.chip-live{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);color:#00ff88}
+.search-input{background:#0a0a0a;border:1px solid #333;border-radius:7px;padding:7px 12px;color:#fff;font-size:.85rem;font-family:'Coming Soon',cursive;outline:none;width:180px;transition:border-color .2s}
+.search-input:focus{border-color:#0066ff}
+.empty{text-align:center;padding:48px;color:#555;font-size:.95rem}
+.empty-icon{font-size:2.2rem;margin-bottom:10px;opacity:.5}
 
-/* Stats */
-.stats{display:flex;gap:12px;padding:16px 22px;border-bottom:1px solid var(--border)}
-.stat{flex:1;text-align:center}
-.stat-val{font-size:20px;font-weight:700}
-.stat-label{font-size:10px;color:var(--dim);margin-top:2px;letter-spacing:.5px;text-transform:uppercase}
-
-/* Toast */
-#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:12px 22px;font-size:13px;font-weight:500;opacity:0;pointer-events:none;transition:all .25s;z-index:500;box-shadow:0 8px 32px rgba(0,0,0,.5);white-space:nowrap}
+/* TOAST */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#111;border:1px solid #333;border-radius:10px;padding:12px 24px;font-size:.95rem;opacity:0;pointer-events:none;transition:all .25s;z-index:500;box-shadow:0 8px 32px rgba(0,0,0,.6);white-space:nowrap}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-#toast.ok{border-color:rgba(74,222,128,.4);color:var(--green)}
-#toast.err{border-color:rgba(248,113,113,.4);color:var(--red)}
-.spin{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.2);border-top-color:white;animation:spin .6s linear infinite;display:inline-block}
+#toast.ok{border-color:rgba(0,255,136,.4);color:#00ff88;text-shadow:0 0 10px rgba(0,255,136,.4)}
+#toast.err{border-color:rgba(248,113,113,.4);color:#f87171;text-shadow:0 0 10px rgba(248,113,113,.4)}
+.spin{width:13px;height:13px;border-radius:50%;border:2px solid rgba(255,255,255,.2);border-top-color:white;animation:spin .6s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:800px){.main{grid-template-columns:1fr}}
+
+/* VERSION */
+.version{position:fixed;bottom:20px;left:20px;color:#fff;font-size:.9rem;opacity:.7;z-index:10}
+.copy{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.55;z-index:10}
 </style>
 </head>
 <body>
-<div class="topbar"></div>
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:0"></canvas>
+<canvas id="trail-canvas"   style="position:fixed;inset:0;pointer-events:none;z-index:1"></canvas>
 
+<!-- AUTH -->
 <div id="auth">
-  <div class="auth-card">
-    <div class="auth-logo">AC</div>
-    <h2>Tag Manager</h2>
-    <p>AC AudioCrafter Admin Panel</p>
-    <input class="auth-input" type="password" id="auth-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
-    <button class="btn btn-primary" onclick="login()">Sign In</button>
-    <div class="auth-err" id="auth-err">Incorrect password</div>
+  <div class="acard">
+    <h1>AC Admin</h1>
+    <p>AudioCrafter Management Panel</p>
+    <input class="ainput" type="password" id="auth-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="abtn" onclick="login()">Sign In →</button>
+    <div class="aerr" id="aerr">Wrong password — try again</div>
   </div>
 </div>
 
+<!-- APP -->
 <div id="app">
   <nav>
-    <div class="nav-logo"><div class="nav-logo-icon">AC</div>AudioCrafter</div>
-    <span class="nav-badge">Tag Manager</span>
-    <div class="spacer"></div>
-    <span class="nav-user" id="nav-count">0 users</span>
+    <span class="nav-title">AC AudioCrafter</span>
+    <span class="nav-badge">ADMIN</span>
+    <div class="sp"></div>
+    <div class="nav-tabs">
+      <button class="ntab active" onclick="showPage('tags',this)">🏷 Tags</button>
+      <button class="ntab" onclick="showPage('users',this)">👾 Live</button>
+      <button class="ntab" onclick="showPage('bans',this)">🚫 Bans</button>
+      <button class="ntab" onclick="showPage('whitelist',this)">✅ Whitelist</button>
+    </div>
   </nav>
 
-  <div class="main">
-    <!-- FORM -->
-    <div>
-      <div class="panel">
-        <div class="panel-header">
-          <span class="panel-title" id="form-title">Add User</span>
-          <button class="btn btn-secondary btn-sm" onclick="clearForm()" id="clear-btn" style="display:none">✕ Clear</button>
+  <div style="max-width:1200px;margin:0 auto;padding:28px 24px 0">
+    <!-- Live bar -->
+    <div class="live-bar">
+      <span class="live-label">Live in-game</span>
+      <div id="live-users" class="live-users"><span style="font-size:.85rem;color:#555">Polling...</span></div>
+      <div class="live-count"><div class="lstatus" id="lstatus"></div><span id="lcnt">0 online</span></div>
+    </div>
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val" style="color:#6699ff" id="st-tags">0</div><div class="stat-label">Tag Users</div></div>
+      <div class="stat"><div class="stat-val" style="color:#4ade80" id="st-wl">0</div><div class="stat-label">Whitelisted</div></div>
+      <div class="stat"><div class="stat-val" style="color:#f87171" id="st-ban">0</div><div class="stat-label">Banned</div></div>
+      <div class="stat"><div class="stat-val" style="color:#00ff88" id="st-live">0</div><div class="stat-label">Online Now</div></div>
+    </div>
+  </div>
+
+  <!-- TAGS PAGE -->
+  <div class="page active" id="page-tags">
+    <div class="grid-form">
+      <div class="card">
+        <div class="card-top">
+          <span class="card-title" id="form-title">Add Tag User</span>
+          <button class="btn btn-ghost btn-sm" onclick="clearTagForm()" id="clear-btn" style="display:none">✕ Clear</button>
         </div>
-        <div class="panel-body">
-
-          <div class="field">
-            <label>Roblox Username</label>
-            <input type="text" id="f-username" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/>
-            <div class="field-hint">Exact Roblox username — script matches this to players in game</div>
-          </div>
-
-          <div class="field">
-            <label>Tag Label</label>
-            <input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/>
-          </div>
-
-          <div class="field">
-            <label>Profile Picture</label>
-            <input type="text" id="f-pfp" placeholder="Image URL, Roblox Asset ID, or blank" oninput="updatePreview()"/>
-            <div class="field-hint">Paste any image URL (imgur, discord CDN etc.) — script downloads it automatically via getcustomasset</div>
-          </div>
-
-          <div class="field">
-            <label>Background Image</label>
-            <input type="text" id="f-bg" placeholder="Image URL, Roblox Asset ID, or blank" oninput="updatePreview()"/>
-            <div class="field-hint">Same — any image URL works</div>
-          </div>
-
+        <div class="card-body">
+          <div class="field"><label>Roblox Username</label><input type="text" id="f-user" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/><div class="field-hint">Exact username — script matches this to in-game players</div></div>
+          <div class="field"><label>Tag Label</label><input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/></div>
+          <div class="field"><label>Profile Picture</label><input type="text" id="f-pfp" placeholder="Image URL or Asset ID" oninput="updatePreview()"/><div class="field-hint">Any image URL — script downloads via getcustomasset automatically</div></div>
+          <div class="field"><label>Background Image</label><input type="text" id="f-bg" placeholder="Image URL or Asset ID" oninput="updatePreview()"/></div>
           <div class="divider"></div>
-
-          <div class="tag-preview-wrap">
-            <span class="tag-preview-label">PREVIEW</span>
-            <div class="nametag" id="prev-nametag" style="position:relative;overflow:hidden">
-              <img id="prev-bg" src="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;border-radius:99px"/>
-              <div class="nametag-pfp" id="prev-pfp-wrap" style="position:relative;z-index:1">
-                <img id="prev-pfp" src="" style="display:none"/>
-              </div>
-              <div style="position:relative;z-index:1">
-                <div class="nametag-tag" id="prev-tag">AC USER</div>
-                <div class="nametag-user" id="prev-user">@username</div>
+          <div class="preview-wrap">
+            <span class="preview-label">Preview</span>
+            <div class="ntag">
+              <img id="prev-bg-img" class="ntag-bg"/>
+              <div class="ntag-pfp"><img id="prev-pfp" src="" style="display:none"/></div>
+              <div class="ntag-info">
+                <div class="ntag-tag" id="prev-tag">AC USER</div>
+                <div class="ntag-user" id="prev-user">@username</div>
               </div>
             </div>
           </div>
-
-          <button class="btn btn-primary" onclick="saveUser()">
-            <span id="save-spinner" style="display:none" class="spin"></span>
-            💾 Save User
-          </button>
-
+          <button class="btn btn-primary" onclick="saveTag()"><span id="save-spin" style="display:none" class="spin"></span>💾 Save User</button>
         </div>
       </div>
-    </div>
-
-    <!-- USER LIST -->
-    <div>
-      <div class="panel">
-        <div class="stats">
-          <div class="stat"><div class="stat-val" id="stat-total">0</div><div class="stat-label">Total</div></div>
-          <div class="stat"><div class="stat-val" style="color:var(--green)" id="stat-pfp">0</div><div class="stat-label">With PFP</div></div>
-          <div class="stat"><div class="stat-val" style="color:var(--accent2)" id="stat-bg">0</div><div class="stat-label">With BG</div></div>
-        </div>
-        <!-- Online users row -->
-        <div id="online-bar" style="padding:12px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <span style="font-size:10px;font-weight:600;letter-spacing:1px;color:var(--dim);text-transform:uppercase">Live in-game</span>
-          <div id="online-users" style="display:flex;gap:8px;flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--dim2)">Polling...</span>
-          </div>
-          <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
-            <div id="live-dot" style="width:7px;height:7px;border-radius:50%;background:var(--dim2)"></div>
-            <span id="live-count" style="font-size:11px;color:var(--dim)">0 online</span>
-          </div>
-        </div>
-        <div class="panel-header">
-          <span class="panel-title">Whitelisted Users</span>
-          <input type="text" style="width:160px;padding:6px 10px;font-size:11px" placeholder="🔍 Search..." oninput="filterUsers(this.value)"/>
-        </div>
-        <div class="panel-body" style="padding:14px">
-          <div id="users-list" class="users-list">
-            <div class="empty"><div class="empty-icon">👥</div>Loading...</div>
-          </div>
-        </div>
+      <div class="card">
+        <div class="card-top"><span class="card-title">Tag Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderTags(this.value)"/></div>
+        <div class="card-body" style="padding:14px"><div id="tag-list" class="ulist"></div></div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- LIVE PAGE -->
+  <div class="page" id="page-users">
+    <div class="card">
+      <div class="card-top"><span class="card-title">Currently Executing Script</span><button class="btn btn-ghost btn-sm" onclick="pollAll()">↺ Refresh</button></div>
+      <div class="card-body" style="padding:14px"><div id="exec-list" class="ulist"></div></div>
+    </div>
+  </div>
+
+  <!-- BANS PAGE -->
+  <div class="page" id="page-bans">
+    <div class="grid2">
+      <div class="card">
+        <div class="card-top"><span class="card-title">Ban a User</span></div>
+        <div class="card-body">
+          <div class="field"><label>Roblox Username</label><input type="text" id="ban-user" placeholder="Username to ban"/><div class="field-hint">They will see the ban screen fullscreen when they try to execute</div></div>
+          <button class="btn btn-ban" onclick="banUser()">🚫 Ban User</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-title">Banned Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderBans(this.value)"/></div>
+        <div class="card-body" style="padding:14px"><div id="ban-list" class="ulist"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHITELIST PAGE -->
+  <div class="page" id="page-whitelist">
+    <div class="grid2">
+      <div class="card">
+        <div class="card-top"><span class="card-title">Whitelist a User</span></div>
+        <div class="card-body">
+          <div class="field"><label>Roblox Username</label><input type="text" id="wl-user" placeholder="Username to whitelist"/><div class="field-hint">Whitelisted users bypass the key system entirely and get instant access</div></div>
+          <button class="btn btn-wl" onclick="wlAdd()">✅ Add to Whitelist</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="card-title">Whitelisted Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderWl(this.value)"/></div>
+        <div class="card-body" style="padding:14px"><div id="wl-list" class="ulist"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<div class="version">AC AudioCrafter v3 — Admin Panel</div>
+<div class="copy">© 2026 MelodyCrafter3 · AudioCrafter</div>
 <div id="toast"></div>
 
 <script>
-const API = '/api/custom-users'
-let pass = '', users = {}, allUsers = {}, filterQ = ''
+// ── CANVAS: sparkles
+const sc=document.getElementById('sparkle-canvas'),sctx=sc.getContext('2d')
+sc.width=innerWidth;sc.height=innerHeight
+window.addEventListener('resize',()=>{sc.width=innerWidth;sc.height=innerHeight;tc.width=innerWidth;tc.height=innerHeight})
+const stars=[]
+for(let i=0;i<100;i++)stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.4,baseA:Math.random()*.5+.2,phase:Math.random()*Math.PI*2,t:Date.now()})
+;(function drawStars(){sctx.clearRect(0,0,sc.width,sc.height);const now=Date.now();for(const s of stars){const t=(now-s.t)/1000;const a=Math.max(.05,Math.min(.85,s.baseA+Math.sin(t*.6+s.phase)*.3));sctx.fillStyle=`rgba(200,220,255,${a})`;sctx.beginPath();sctx.arc(s.x,s.y,s.r,0,Math.PI*2);sctx.fill()};requestAnimationFrame(drawStars)})()
 
-function login() {
-  const pw = document.getElementById('auth-pw').value
-  fetch(`${API}?auth=${encodeURIComponent(pw)}`)
-    .then(r => r.json()).then(d => {
-      if (d.ok) {
-        pass = pw; localStorage.setItem('ac_p', pw)
-        document.getElementById('auth').style.display = 'none'
-        document.getElementById('app').style.display = 'block'
-        users = d.users || {}; allUsers = {...users}; renderUsers()
-      } else { document.getElementById('auth-err').style.display = 'block' }
-    }).catch(() => document.getElementById('auth-err').style.display = 'block')
+// ── CANVAS: mouse trail
+const tc=document.getElementById('trail-canvas'),tctx=tc.getContext('2d')
+tc.width=innerWidth;tc.height=innerHeight
+const pts=[]
+document.addEventListener('mousemove',e=>pts.push({x:e.clientX,y:e.clientY,t:Date.now()}))
+;(function drawTrail(){tctx.clearRect(0,0,tc.width,tc.height);const now=Date.now();for(let j=pts.length-1;j>=0;j--){if(now-pts[j].t>900){pts.splice(j,1);continue};if(j>0){const age=(now-pts[j].t)/900;tctx.beginPath();tctx.moveTo(pts[j-1].x,pts[j-1].y);tctx.lineTo(pts[j].x,pts[j].y);tctx.strokeStyle=`rgba(100,150,255,${(1-age)*.6})`;tctx.lineWidth=2;tctx.stroke()}};requestAnimationFrame(drawTrail)})()
+
+// ── STATE
+const TAGS_API='/api/custom-users', MANAGE_API='/api/manage'
+let pass='',tagData={},banData=[],wlData=[],execData=[]
+
+// ── AUTH
+function login(){
+  const pw=document.getElementById('auth-pw').value
+  fetch(`${TAGS_API}?auth=${encodeURIComponent(pw)}`).then(r=>r.json()).then(d=>{
+    if(d.ok){pass=pw;localStorage.setItem('ac_p',pw);document.getElementById('auth').style.display='none';document.getElementById('app').style.display='block';tagData=d.users||{};loadManage();renderTags();setInterval(pollAll,5000)}
+    else document.getElementById('aerr').style.display='block'
+  }).catch(()=>document.getElementById('aerr').style.display='block')
 }
-window.onload = () => { const s = localStorage.getItem('ac_p'); if (s) { document.getElementById('auth-pw').value = s; login() } }
+window.onload=()=>{const s=localStorage.getItem('ac_p');if(s){document.getElementById('auth-pw').value=s;login()}}
 
-function updatePreview() {
-  const tag   = document.getElementById('f-tag').value || 'AC USER'
-  const uname = document.getElementById('f-username').value || 'username'
-  const pfp   = document.getElementById('f-pfp').value.trim()
-  document.getElementById('prev-tag').textContent  = tag
-  document.getElementById('prev-user').textContent = '@' + uname
-  const img = document.getElementById('prev-pfp')
-  if (pfp) {
-    img.src = pfp.startsWith('http') ? pfp : `https://assetdelivery.roblox.com/v1/asset/?id=${pfp}`
-    img.style.display = 'block'
-    img.onerror = () => img.style.display = 'none'
-  } else { img.style.display = 'none' }
+// ── TABS
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');btn.classList.add('active')}
 
-  // Background preview
-  const bg    = document.getElementById('f-bg').value.trim()
-  const bgImg = document.getElementById('prev-bg')
-  if (bg) {
-    bgImg.src = bg.startsWith('http') ? bg : `https://assetdelivery.roblox.com/v1/asset/?id=${bg}`
-    bgImg.style.display = 'block'
-    bgImg.onerror = () => bgImg.style.display = 'none'
-  } else { bgImg.style.display = 'none' }
+// ── LOAD
+async function loadManage(){
+  try{const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`);const d=await r.json();if(d.ok){banData=d.banned||[];wlData=d.whitelist||[];execData=d.executing||[];updateStats();renderBans();renderWl();renderExec();renderLive(execData)}}catch{}
 }
-
-async function saveUser() {
-  const username = document.getElementById('f-username').value.trim()
-  const tag      = document.getElementById('f-tag').value.trim()
-  const pfpId    = document.getElementById('f-pfp').value.trim()
-  const bgId     = document.getElementById('f-bg').value.trim()
-  if (!username || !tag) { toast('Username and tag are required', 'err'); return }
-  document.getElementById('save-spinner').style.display = 'inline-block'
-  try {
-    const r = await fetch(API, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({auth: pass, action: 'set', username, tag, pfpId, bgId})
-    })
-    const d = await r.json()
-    if (d.ok) {
-      users = d.users || {}; allUsers = {...users}
-      renderUsers(); clearForm()
-      toast(`✓ ${username} saved — updates in-game within 10s`, 'ok')
-    } else toast(d.error || 'Save failed', 'err')
-  } catch { toast('Network error', 'err') }
-  document.getElementById('save-spinner').style.display = 'none'
+async function pollAll(){
+  try{
+    const [r1,r2]=await Promise.all([fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`),fetch(`${TAGS_API}?auth=${encodeURIComponent(pass)}`)])
+    const [d1,d2]=await Promise.all([r1.json(),r2.json()])
+    if(d1.ok){banData=d1.banned||[];wlData=d1.whitelist||[];execData=d1.executing||[]}
+    if(d2.ok)tagData=d2.users||{}
+    updateStats();renderLive(execData);renderTags();renderBans();renderWl();renderExec()
+  }catch{}
 }
 
-async function deleteUser(username) {
-  if (!confirm(`Remove ${username}?`)) return
-  const r = await fetch(API, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username})})
-  const d = await r.json()
-  if (d.ok) { users = d.users || {}; allUsers = {...users}; renderUsers(); toast(`${username} removed`, 'ok') }
+function updateStats(){
+  document.getElementById('st-tags').textContent=Object.keys(tagData).length
+  document.getElementById('st-wl').textContent=wlData.length
+  document.getElementById('st-ban').textContent=banData.length
+  document.getElementById('st-live').textContent=execData.length
 }
 
-function editUser(username) {
-  const u = users[username]
-  document.getElementById('f-username').value = username
-  document.getElementById('f-tag').value      = u.tag
-  document.getElementById('f-pfp').value      = u.pfpId || ''
-  document.getElementById('f-bg').value       = u.bgId  || ''
-  document.getElementById('form-title').textContent = `Editing: ${username}`
-  document.getElementById('clear-btn').style.display = 'inline-flex'
-  updatePreview()
-  window.scrollTo({top:0,behavior:'smooth'})
+function renderLive(users){
+  const ul=document.getElementById('live-users'),dot=document.getElementById('lstatus'),cnt=document.getElementById('lcnt')
+  cnt.textContent=`${users.length} online`;dot.className='lstatus'+(users.length>0?' on':'')
+  ul.innerHTML=users.length?users.map(u=>`<span class="live-chip"><span class="ldot"></span>${u}</span>`).join(''):'<span style="font-size:.85rem;color:#555">No one executing right now</span>'
 }
 
-function clearForm() {
-  ['f-username','f-tag','f-pfp','f-bg'].forEach(id => document.getElementById(id).value = '')
-  document.getElementById('form-title').textContent = 'Add User'
-  document.getElementById('clear-btn').style.display = 'none'
-  updatePreview()
+// ── TAGS
+function updatePreview(){
+  const tag=document.getElementById('f-tag').value||'AC USER',user=document.getElementById('f-user').value||'username'
+  const pfp=document.getElementById('f-pfp').value.trim(),bg=document.getElementById('f-bg').value.trim()
+  document.getElementById('prev-tag').textContent=tag;document.getElementById('prev-user').textContent='@'+user
+  const pi=document.getElementById('prev-pfp')
+  if(pfp){pi.src=pfp.startsWith('http')?pfp:`https://assetdelivery.roblox.com/v1/asset/?id=${pfp}`;pi.style.display='block';pi.onerror=()=>pi.style.display='none'}else pi.style.display='none'
+  const bi=document.getElementById('prev-bg-img')
+  if(bg){bi.src=bg.startsWith('http')?bg:`https://assetdelivery.roblox.com/v1/asset/?id=${bg}`;bi.style.display='block';bi.onerror=()=>bi.style.display='none'}else bi.style.display='none'
 }
 
-function filterUsers(q) { filterQ = q.toLowerCase(); renderUsers() }
-
-function renderUsers() {
-  const keys = Object.keys(allUsers).filter(k => !filterQ || k.toLowerCase().includes(filterQ))
-  const el = document.getElementById('users-list')
-  const total = Object.keys(allUsers).length
-  document.getElementById('stat-total').textContent = total
-  document.getElementById('stat-pfp').textContent   = Object.values(allUsers).filter(u => u.pfpId).length
-  document.getElementById('stat-bg').textContent    = Object.values(allUsers).filter(u => u.bgId).length
-  document.getElementById('nav-count').textContent  = `${total} user${total!==1?'s':''}`
-  if (!keys.length) {
-    el.innerHTML = `<div class="empty"><div class="empty-icon">👥</div>${filterQ ? 'No matches' : 'No users added yet'}</div>`
-    return
-  }
-  el.innerHTML = keys.map(username => {
-    const u = allUsers[username]
-    const pfpUrl = u.pfpId ? (u.pfpId.startsWith('http') ? u.pfpId : `https://assetdelivery.roblox.com/v1/asset/?id=${u.pfpId}`) : ''
-    return `<div class="user-card">
-      <div class="user-pfp">${pfpUrl ? `<img src="${pfpUrl}" onerror="this.style.display='none'"/>` : '👤'}</div>
-      <div class="user-info"><div class="user-name">${username}</div><div class="user-meta">${u.pfpId||'No PFP'} · ${u.bgId||'No BG'}</div></div>
-      <div class="tag-pill">${u.tag || 'No Tag'}</div>
-      <div class="user-actions">
-        <button class="btn btn-secondary btn-sm" onclick="editUser('${username}')">Edit</button>
-        <button class="btn btn-danger btn-sm" onclick="deleteUser('${username}')">✕</button>
-      </div>
-    </div>`
-  }).join('')
+async function saveTag(){
+  const username=document.getElementById('f-user').value.trim(),tag=document.getElementById('f-tag').value.trim()
+  const pfpId=document.getElementById('f-pfp').value.trim(),bgId=document.getElementById('f-bg').value.trim()
+  if(!username||!tag){toast('Username and tag required','err');return}
+  document.getElementById('save-spin').style.display='inline-block'
+  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set',username,tag,pfpId,bgId})})
+  const d=await r.json()
+  if(d.ok){tagData=d.users||{};renderTags();clearTagForm();toast(`✓ ${username} saved — updates in-game within 10s`,'ok')}else toast(d.error||'Failed','err')
+  document.getElementById('save-spin').style.display='none'
+}
+async function deleteTag(u){if(!confirm(`Remove tag for ${u}?`))return;const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username:u})});const d=await r.json();if(d.ok){tagData=d.users||{};renderTags();toast(`${u} removed`,'ok')}}
+function editTag(u){const d=tagData[u];document.getElementById('f-user').value=u;document.getElementById('f-tag').value=d.tag;document.getElementById('f-pfp').value=d.pfpId||'';document.getElementById('f-bg').value=d.bgId||'';document.getElementById('form-title').textContent='Editing: '+u;document.getElementById('clear-btn').style.display='inline-flex';updatePreview();window.scrollTo({top:0,behavior:'smooth'})}
+function clearTagForm(){['f-user','f-tag','f-pfp','f-bg'].forEach(id=>document.getElementById(id).value='');document.getElementById('form-title').textContent='Add Tag User';document.getElementById('clear-btn').style.display='none';updatePreview()}
+function renderTags(q=''){
+  const keys=Object.keys(tagData).filter(k=>!q||k.toLowerCase().includes(q.toLowerCase()))
+  const el=document.getElementById('tag-list');updateStats()
+  if(!keys.length){el.innerHTML=`<div class="empty"><div class="empty-icon">🏷</div>${q?'No matches':'No tag users yet'}</div>`;return}
+  el.innerHTML=keys.map(u=>{const d=tagData[u];const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';
+  return`<div class="urow"><div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">${d.pfpId?'Has PFP':'No PFP'} · ${d.bgId?'Has BG':'No BG'}</div></div><span class="chip chip-acc">${d.tag||'—'}</span><div class="urow-actions"><button class="btn btn-ghost btn-sm" onclick="editTag('${u}')">Edit</button><button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button></div></div>`}).join('')
 }
 
-function toast(msg, type) {
-  const el = document.getElementById('toast')
-  el.textContent = msg; el.className = `show ${type||''}`
-  setTimeout(() => el.className = '', 3500)
-}
+// ── EXEC
+function renderExec(){const el=document.getElementById('exec-list');if(!execData.length){el.innerHTML='<div class="empty"><div class="empty-icon">👾</div>No one executing right now</div>';return};el.innerHTML=execData.map(u=>`<div class="urow"><div class="urow-icon">👾</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Currently running the script</div></div><span class="chip chip-live">ONLINE</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="quickBan('${u}')">🚫 Ban</button></div></div>`).join('')}
 
-// ── Live online users — polls acusers.js every 5s
-async function pollOnline() {
-  try {
-    // Get the game job ID list from acusers API — we don't know the jobId
-    // so we just scan all ac_custom_users keys and check workspace via the script's AC_Exec_ system
-    // Instead: call our own API with action=online to get current executing users
-    const r = await fetch('/api/custom-users?action=online')
-    const d = await r.json()
-    const users = d.users || []
-    const dot   = document.getElementById('live-dot')
-    const count = document.getElementById('live-count')
-    const list  = document.getElementById('online-users')
-    count.textContent = `${users.length} online`
-    dot.style.background = users.length > 0 ? 'var(--green)' : 'var(--dim2)'
-    if (users.length === 0) {
-      list.innerHTML = '<span style="font-size:11px;color:var(--dim2)">No one executing right now</span>'
-    } else {
-      list.innerHTML = users.map(u => `
-        <span style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);border-radius:99px;padding:3px 10px;font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px">
-          <span style="width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block"></span>
-          ${u}
-        </span>`).join('')
-    }
-  } catch {}
-}
-pollOnline()
-setInterval(pollOnline, 5000)
+// ── BANS
+async function banUser(u){const un=u||document.getElementById('ban-user').value.trim();if(!un){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_add',username:un})});const d=await r.json();if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`🚫 ${un} banned`,'ok');document.getElementById('ban-user').value=''}else toast(d.error||'Failed','err')}
+function quickBan(u){banUser(u)}
+async function unbanUser(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_remove',username:u})});const d=await r.json();if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`${u} unbanned`,'ok')}}
+function renderBans(q=''){const el=document.getElementById('ban-list');const list=banData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">🚫</div>No banned users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">🚫</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Gets ban screen on execute</div></div><span class="chip chip-red">BANNED</span><div class="urow-actions"><button class="btn btn-green btn-sm" onclick="unbanUser('${u}')">Unban</button></div></div>`).join('')}
+
+// ── WHITELIST
+async function wlAdd(){const u=document.getElementById('wl-user').value.trim();if(!u){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_add',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`✅ ${u} whitelisted`,'ok');document.getElementById('wl-user').value=''}else toast(d.error||'Failed','err')}
+async function wlRemove(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_remove',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`${u} removed from whitelist`,'ok')}}
+function renderWl(q=''){const el=document.getElementById('wl-list');const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')}
+
+// ── TOAST
+function toast(msg,type){const e=document.getElementById('toast');e.textContent=msg;e.className=`show ${type||''}`;setTimeout(()=>e.className='',3500)}
 </script>
 </body>
 </html>
