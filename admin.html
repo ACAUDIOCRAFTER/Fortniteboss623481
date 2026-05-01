@@ -4,545 +4,768 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AC AudioCrafter — Tag Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --bg: #06060a;
-    --card: #0e0e16;
-    --border: #2a2a3a;
-    --accent: #9600c8;
-    --accent2: #c800ff;
-    --green: #50dc78;
-    --red: #dc5050;
-    --text: #ffffff;
-    --dim: #a09ab0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Courier New', monospace;
-    min-height: 100vh;
-  }
+:root {
+  --bg:      #05050a;
+  --surface: #0c0c14;
+  --card:    #10101c;
+  --border:  #1e1e2e;
+  --border2: #2a2a3e;
+  --accent:  #9000cc;
+  --accent2: #bf00ff;
+  --glow:    rgba(144,0,204,.35);
+  --green:   #4ade80;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --text:    #f0eeff;
+  --dim:     #7c7a94;
+  --dim2:    #4a4860;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-  /* Animated glow border on top */
-  body::before {
-    content: '';
-    display: block;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), var(--accent), transparent);
-    background-size: 200% 100%;
-    animation: borderFlow 3s linear infinite;
-  }
-  @keyframes borderFlow { 0%{background-position:0% 0%} 100%{background-position:200% 0%} }
+/* Background grid */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(144,0,204,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(144,0,204,.03) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+  z-index:0;
+}
 
-  header {
-    padding: 28px 32px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .logo {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: bold; color: white;
-  }
-  header h1 { font-size: 18px; letter-spacing: 1px; }
-  header p  { font-size: 11px; color: var(--dim); margin-top: 2px; }
+/* Top glow bar */
+.topbar{
+  position:fixed;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),var(--accent),transparent);
+  background-size:200% 100%;
+  animation:slide 3s linear infinite;
+  z-index:100;
+}
+@keyframes slide{0%{background-position:0%}100%{background-position:200%}}
 
-  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+/* ── AUTH ── */
+#auth{
+  position:fixed;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(5,5,10,.97);
+  backdrop-filter:blur(20px);
+  z-index:200;
+}
+.auth-card{
+  background:var(--card);
+  border:1px solid var(--border2);
+  border-radius:20px;
+  padding:48px 40px;
+  width:360px;
+  text-align:center;
+  box-shadow:0 0 60px var(--glow),0 0 0 1px rgba(144,0,204,.1);
+  position:relative;
+  overflow:hidden;
+}
+.auth-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent2),transparent);
+}
+.auth-logo{
+  width:64px;height:64px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:800;
+  margin:0 auto 20px;
+  box-shadow:0 8px 24px var(--glow);
+}
+.auth-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
+.auth-card p{font-size:13px;color:var(--dim);margin-bottom:28px}
+.auth-input{
+  width:100%;
+  background:#08080f;
+  border:1px solid var(--border2);
+  border-radius:10px;
+  padding:13px 16px;
+  color:var(--text);
+  font-size:15px;
+  font-family:'Inter',sans-serif;
+  outline:none;
+  text-align:center;
+  letter-spacing:3px;
+  margin-bottom:14px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.auth-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(144,0,204,.15)}
+.auth-err{color:var(--red);font-size:12px;margin-top:8px;display:none}
 
-  .section-title {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--accent2);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+/* ── LAYOUT ── */
+#app{display:none;position:relative;z-index:1;min-height:100vh}
+nav{
+  position:sticky;top:0;
+  background:rgba(5,5,10,.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+  display:flex;align-items:center;gap:16px;
+  height:60px;
+  z-index:50;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:15px;letter-spacing:.5px;
+}
+.nav-logo-icon{
+  width:32px;height:32px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;
+  box-shadow:0 4px 12px var(--glow);
+}
+.nav-badge{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;font-size:9px;font-weight:700;
+  letter-spacing:1px;padding:2px 7px;border-radius:99px;
+  text-transform:uppercase;
+}
+nav .spacer{flex:1}
+.nav-user{font-size:12px;color:var(--dim)}
 
-  /* Add user form */
-  .form-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .form-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-  }
+.main{max-width:1100px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:420px 1fr;gap:24px;align-items:start}
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-  .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+/* ── CARDS ── */
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+.panel-header{
+  padding:18px 22px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.panel-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.panel-body{padding:22px}
 
-  .field label {
-    display: block;
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .field input, .field select {
-    width: 100%;
-    background: #0a0a12;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 10px 12px;
-    color: var(--text);
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .field input:focus, .field select:focus {
-    border-color: var(--accent);
-  }
-  .field input::placeholder { color: #444; }
+/* ── FORM ── */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px}
+.field-row{display:flex;gap:8px}
 
-  /* Preview strip */
-  .preview-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 16px;
-    padding: 12px 14px;
-    background: #09090f;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    min-height: 56px;
-  }
-  .tag-preview {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(150,0,200,.15);
-    border: 1px solid var(--accent);
-    border-radius: 24px;
-    padding: 5px 12px 5px 5px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: .5px;
-    position: relative;
-  }
-  .tag-pfp {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--border);
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .tag-pfp img { width: 100%; height: 100%; object-fit: cover; }
-  .tag-label { color: var(--text); font-size: 11px; }
-  .tag-display { color: var(--dim); font-size: 10px; }
+.input-wrap{position:relative;flex:1}
+input[type=text],input[type=password],select{
+  width:100%;
+  background:#08080f;
+  border:1px solid var(--border2);
+  border-radius:10px;
+  padding:11px 14px;
+  color:var(--text);
+  font-size:13px;
+  font-family:'Inter',sans-serif;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(144,0,204,.12)}
+input::placeholder{color:var(--dim2)}
+.input-icon{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  color:var(--dim2);font-size:12px;pointer-events:none;
+}
 
-  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+/* Roblox lookup button */
+.lookup-btn{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:10px;
+  padding:11px 14px;
+  color:var(--dim);
+  font-size:12px;font-family:'Inter',sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .2s;
+  flex-shrink:0;
+}
+.lookup-btn:hover{border-color:var(--accent);color:var(--text)}
+.lookup-btn.loading{opacity:.6;pointer-events:none}
 
-  button {
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: .5px;
-    transition: all .15s;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-  }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(150,0,200,.4); }
-  .btn-secondary {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--dim);
-  }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
-  .btn-danger {
-    background: transparent;
-    border: 1px solid #4a1818;
-    color: var(--red);
-    padding: 6px 12px;
-    font-size: 11px;
-  }
-  .btn-danger:hover { background: rgba(220,80,80,.1); }
+/* Avatar row */
+.avatar-row{
+  display:flex;align-items:center;gap:14px;
+  padding:14px;
+  background:#08080f;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-bottom:16px;
+}
+.avatar-thumb{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--border);
+  border:2px solid var(--border2);
+  overflow:hidden;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--dim2);font-size:20px;
+}
+.avatar-thumb img{width:100%;height:100%;object-fit:cover}
+.avatar-info{flex:1}
+.avatar-name{font-size:14px;font-weight:600}
+.avatar-display{font-size:11px;color:var(--dim);margin-top:2px}
+.avatar-id{font-size:10px;color:var(--dim2);margin-top:2px;font-family:monospace}
 
-  /* Users table */
-  .users-grid { display: flex; flex-direction: column; gap: 8px; }
+/* Tag preview */
+.tag-preview-wrap{
+  padding:14px;
+  background:rgba(0,0,0,.3);
+  border:1px solid var(--border);
+  border-radius:12px;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.tag-preview-label{font-size:10px;color:var(--dim2);white-space:nowrap;font-weight:600;letter-spacing:.5px}
+.nametag{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(144,0,204,.12);
+  border:1px solid var(--accent);
+  border-radius:99px;
+  padding:5px 14px 5px 5px;
+  box-shadow:0 0 12px rgba(144,0,204,.2);
+}
+.nametag-pfp{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--border2);overflow:hidden;flex-shrink:0;
+}
+.nametag-pfp img{width:100%;height:100%;object-fit:cover}
+.nametag-text{}
+.nametag-tag{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--text)}
+.nametag-user{font-size:9px;color:var(--dim);margin-top:1px}
 
-  .user-row {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: border-color .2s;
-  }
-  .user-row:hover { border-color: rgba(150,0,200,.4); }
+/* Buttons */
+.btn{
+  border:none;border-radius:10px;
+  padding:11px 20px;
+  font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:600;
+  cursor:pointer;letter-spacing:.3px;
+  transition:all .15s;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  box-shadow:0 4px 16px var(--glow);
+  width:100%;justify-content:center;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--glow)}
+.btn-primary:active{transform:translateY(0)}
+.btn-secondary{
+  background:transparent;border:1px solid var(--border2);
+  color:var(--dim);
+}
+.btn-secondary:hover{border-color:var(--accent);color:var(--text)}
+.btn-sm{padding:6px 12px;font-size:11px;border-radius:7px}
+.btn-danger{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:var(--red)}
+.btn-danger:hover{background:rgba(248,113,113,.2)}
 
-  .user-pfp {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: var(--border);
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 2px solid var(--accent);
-  }
-  .user-pfp img { width: 100%; height: 100%; object-fit: cover; }
+/* ── USER LIST ── */
+.users-list{display:flex;flex-direction:column;gap:8px}
+.user-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  display:flex;align-items:center;gap:12px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.user-card:hover{border-color:var(--border2);box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.user-pfp{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--border);overflow:hidden;flex-shrink:0;
+  border:2px solid var(--border2);
+}
+.user-pfp img{width:100%;height:100%;object-fit:cover}
+.user-info{flex:1;min-width:0}
+.user-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.user-meta{font-size:10px;color:var(--dim);margin-top:2px}
+.tag-pill{
+  background:rgba(144,0,204,.15);
+  border:1px solid rgba(144,0,204,.3);
+  border-radius:99px;padding:3px 10px;
+  font-size:10px;font-weight:600;
+  color:var(--accent2);white-space:nowrap;
+}
+.user-actions{display:flex;gap:6px;flex-shrink:0}
 
-  .user-info { flex: 1; min-width: 0; }
-  .user-name { font-size: 13px; font-weight: bold; }
-  .user-meta { font-size: 10px; color: var(--dim); margin-top: 2px; }
+.empty{
+  text-align:center;padding:48px 24px;
+  color:var(--dim);font-size:13px;
+}
+.empty-icon{font-size:36px;margin-bottom:12px;opacity:.4}
 
-  .user-tag-badge {
-    background: rgba(150,0,200,.2);
-    border: 1px solid var(--accent);
-    border-radius: 12px;
-    padding: 3px 10px;
-    font-size: 10px;
-    color: var(--accent2);
-    white-space: nowrap;
-  }
+/* Stats row */
+.stats{display:flex;gap:12px;padding:16px 22px;border-bottom:1px solid var(--border)}
+.stat{flex:1;text-align:center}
+.stat-val{font-size:20px;font-weight:700}
+.stat-label{font-size:10px;color:var(--dim);margin-top:2px;letter-spacing:.5px;text-transform:uppercase}
 
-  .user-actions { display: flex; gap: 6px; }
+/* Divider */
+.divider{height:1px;background:var(--border);margin:16px 0}
 
-  /* Toast */
-  #toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 20px;
-    font-size: 12px;
-    transition: transform .3s ease, opacity .3s;
-    opacity: 0;
-    z-index: 999;
-    white-space: nowrap;
-  }
-  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-  #toast.ok  { border-color: var(--green); color: var(--green); }
-  #toast.err { border-color: var(--red);   color: var(--red);   }
+/* Toast */
+#toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--card);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  padding:12px 22px;
+  font-size:13px;font-weight:500;
+  opacity:0;pointer-events:none;
+  transition:all .25s;
+  z-index:500;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  white-space:nowrap;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.ok{border-color:rgba(74,222,128,.4);color:var(--green)}
+#toast.err{border-color:rgba(248,113,113,.4);color:var(--red)}
 
-  /* Auth overlay */
-  #auth-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,.92);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 100;
-  }
-  .auth-box {
-    background: var(--card);
-    border: 1px solid var(--accent);
-    border-radius: 14px;
-    padding: 36px 32px;
-    width: 320px;
-    text-align: center;
-  }
-  .auth-box h2 { font-size: 16px; margin-bottom: 8px; }
-  .auth-box p  { font-size: 11px; color: var(--dim); margin-bottom: 20px; }
-  .auth-box input {
-    width: 100%;
-    background: #0a0a12;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 10px 12px;
-    color: var(--text);
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    outline: none;
-    margin-bottom: 12px;
-    text-align: center;
-    letter-spacing: 2px;
-  }
+/* Spinner */
+.spin{
+  width:16px;height:16px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.2);
+  border-top-color:white;
+  animation:spin .6s linear infinite;
+  display:inline-block;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  .empty-state {
-    text-align: center;
-    padding: 40px;
-    color: var(--dim);
-    font-size: 12px;
-  }
-
-  @media (max-width: 600px) {
-    .form-grid, .form-grid.three { grid-template-columns: 1fr; }
-  }
+@media(max-width:800px){
+  .main{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+<div class="topbar"></div>
 
-<!-- Auth overlay -->
-<div id="auth-overlay">
-  <div class="auth-box">
-    <div class="logo" style="margin: 0 auto 16px; width:48px;height:48px;font-size:22px;">AC</div>
-    <h2>AC AudioCrafter</h2>
-    <p>Enter your admin password to continue</p>
-    <input type="password" id="auth-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAuth()"/>
-    <button class="btn-primary" style="width:100%" onclick="checkAuth()">ENTER</button>
-    <p id="auth-err" style="color:var(--red);font-size:10px;margin-top:10px;display:none">Wrong password</p>
+<!-- Auth -->
+<div id="auth">
+  <div class="auth-card">
+    <div class="auth-logo">AC</div>
+    <h2>Tag Manager</h2>
+    <p>AC AudioCrafter Admin Panel</p>
+    <input class="auth-input" type="password" id="auth-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="btn btn-primary" onclick="login()">Sign In</button>
+    <div class="auth-err" id="auth-err">Incorrect password — try again</div>
   </div>
 </div>
 
-<header>
-  <div class="logo">AC</div>
-  <div>
-    <h1>AC AUDIOCRAFTER — TAG MANAGER</h1>
-    <p>Manage custom nametags for your whitelisted users</p>
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- Add user form -->
-  <div class="section-title">Add / Edit User</div>
-  <div class="form-card">
-    <div class="form-grid">
-      <div class="field">
-        <label>Roblox Username</label>
-        <input type="text" id="f-username" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/>
-      </div>
-      <div class="field">
-        <label>Tag Label</label>
-        <input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/>
-      </div>
+<!-- App -->
+<div id="app">
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">AC</div>
+      AudioCrafter
     </div>
-    <div class="form-grid three">
-      <div class="field">
-        <label>PFP Asset ID <span style="color:var(--dim)">(blank = none)</span></label>
-        <input type="text" id="f-pfp" placeholder="e.g. 113979242243283" oninput="updatePreview()"/>
-      </div>
-      <div class="field">
-        <label>Background Asset ID <span style="color:var(--dim)">(blank = none)</span></label>
-        <input type="text" id="f-bg" placeholder="e.g. 97099238046338" oninput="updatePreview()"/>
-      </div>
-      <div class="field">
-        <label>Role</label>
-        <select id="f-role">
-          <option value="owner">Owner</option>
-          <option value="co-owner">Co-Owner</option>
-          <option value="admin">Admin</option>
-          <option value="user" selected>User</option>
-          <option value="custom">Custom</option>
-        </select>
-      </div>
-    </div>
+    <span class="nav-badge">Tag Manager</span>
+    <div class="spacer"></div>
+    <span class="nav-user" id="nav-count">0 users</span>
+  </nav>
 
-    <!-- Live preview -->
-    <div class="preview-row">
-      <span style="font-size:10px;color:var(--dim);white-space:nowrap">PREVIEW</span>
-      <div class="tag-preview" id="tag-preview">
-        <div class="tag-pfp" id="preview-pfp-wrap">
-          <img id="preview-pfp" src="" style="display:none"/>
+  <div class="main">
+
+    <!-- LEFT: Add/Edit form -->
+    <div>
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title" id="form-title">Add User</span>
+          <button class="btn btn-secondary btn-sm" onclick="clearForm()" id="clear-btn" style="display:none">✕ Clear</button>
         </div>
-        <div>
-          <div class="tag-label" id="preview-label">AC USER</div>
-          <div class="tag-display" id="preview-uname">@username</div>
+        <div class="panel-body">
+
+          <!-- Username + lookup -->
+          <div class="field">
+            <label>Roblox Username</label>
+            <div class="field-row">
+              <div class="input-wrap">
+                <input type="text" id="f-username" placeholder="e.g. Exhalivibes" oninput="onUsernameInput()"/>
+              </div>
+              <button class="lookup-btn" id="lookup-btn" onclick="lookupUser()">🔍 Lookup</button>
+            </div>
+          </div>
+
+          <!-- Avatar preview (shown after lookup) -->
+          <div class="avatar-row" id="avatar-row" style="display:none">
+            <div class="avatar-thumb" id="avatar-thumb">👤</div>
+            <div class="avatar-info">
+              <div class="avatar-name" id="avatar-name">—</div>
+              <div class="avatar-display" id="avatar-display">—</div>
+              <div class="avatar-id" id="avatar-userid">User ID: —</div>
+            </div>
+          </div>
+
+          <!-- Tag label -->
+          <div class="field">
+            <label>Tag Label</label>
+            <input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/>
+          </div>
+
+          <!-- PFP -->
+          <div class="field">
+            <label>Profile Picture</label>
+            <div class="field-row">
+              <input type="text" id="f-pfp" placeholder="Image URL, Asset ID, or blank" oninput="updatePreview()"/>
+              <button class="lookup-btn" onclick="usePfpFromRoblox()" title="Use Roblox avatar">↺ Avatar</button>
+            </div>
+            <div style="font-size:10px;color:var(--dim);margin-top:5px">Drop any image URL (imgur, discord CDN, etc.) — script downloads it automatically</div>
+          </div>
+
+          <!-- Background -->
+          <div class="field">
+            <label>Background Image</label>
+            <input type="text" id="f-bg" placeholder="Image URL or Asset ID or blank" oninput="updatePreview()"/>
+            <div style="font-size:10px;color:var(--dim);margin-top:5px">Same — any image URL works</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Nametag preview -->
+          <div class="tag-preview-wrap">
+            <span class="tag-preview-label">PREVIEW</span>
+            <div class="nametag">
+              <div class="nametag-pfp" id="prev-pfp-wrap">
+                <img id="prev-pfp" src="" style="display:none"/>
+              </div>
+              <div class="nametag-text">
+                <div class="nametag-tag" id="prev-tag">AC USER</div>
+                <div class="nametag-user" id="prev-user">@username</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="saveUser()">
+            <span id="save-spinner" style="display:none" class="spin"></span>
+            💾 Save User
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="btn-row">
-      <button class="btn-primary" onclick="saveUser()">💾 SAVE USER</button>
-      <button class="btn-secondary" onclick="clearForm()">CLEAR</button>
+    <!-- RIGHT: User list -->
+    <div>
+      <div class="panel">
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-val" id="stat-total">0</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val" style="color:var(--green)" id="stat-with-pfp">0</div>
+            <div class="stat-label">With PFP</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val" style="color:var(--accent2)" id="stat-with-bg">0</div>
+            <div class="stat-label">With BG</div>
+          </div>
+        </div>
+        <div class="panel-header">
+          <span class="panel-title">Whitelisted Users</span>
+          <input type="text" style="width:160px;padding:6px 10px;font-size:11px" placeholder="🔍 Search..." oninput="filterUsers(this.value)"/>
+        </div>
+        <div class="panel-body" style="padding:14px">
+          <div id="users-list" class="users-list">
+            <div class="empty"><div class="empty-icon">👥</div>Loading users...</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- User list -->
-  <div class="section-title">Whitelisted Users</div>
-  <div id="users-container" class="users-grid">
-    <div class="empty-state">Loading users...</div>
   </div>
-
 </div>
 
 <div id="toast"></div>
 
 <script>
 const API = '/api/custom-users'
-const ADMIN_PASS = localStorage.getItem('ac_pass') || ''
+let pass = ''
 let users = {}
-let authed = false
+let allUsers = {}
+let lookupCache = {}  // username -> {userId, avatarUrl, displayName}
 
-// ── Auth
-function checkAuth() {
-  const val = document.getElementById('auth-input').value
-  fetch('/api/custom-users?auth=' + encodeURIComponent(val))
+// ── AUTH ──
+function login() {
+  const pw = document.getElementById('auth-pw').value
+  fetch(`${API}?auth=${encodeURIComponent(pw)}`)
     .then(r => r.json())
     .then(d => {
       if (d.ok) {
-        authed = true
-        localStorage.setItem('ac_pass', val)
-        window._pass = val
-        document.getElementById('auth-overlay').style.display = 'none'
-        loadUsers()
+        pass = pw
+        localStorage.setItem('ac_p', pw)
+        document.getElementById('auth').style.display = 'none'
+        document.getElementById('app').style.display = 'block'
+        users = d.users || {}
+        allUsers = { ...users }
+        renderUsers()
       } else {
         document.getElementById('auth-err').style.display = 'block'
       }
     })
-    .catch(() => {
-      document.getElementById('auth-err').style.display = 'block'
-    })
+    .catch(() => document.getElementById('auth-err').style.display = 'block')
 }
-
-// Auto-auth if password saved
 window.onload = () => {
-  const saved = localStorage.getItem('ac_pass')
-  if (saved) {
-    window._pass = saved
-    document.getElementById('auth-input').value = saved
-    checkAuth()
-  }
+  const saved = localStorage.getItem('ac_p')
+  if (saved) { document.getElementById('auth-pw').value = saved; login() }
 }
 
-// ── Load users
-function loadUsers() {
-  fetch(API + '?auth=' + encodeURIComponent(window._pass))
-    .then(r => r.json())
-    .then(d => {
-      if (d.ok) { users = d.users || {}; renderUsers() }
-    })
-}
-
-// ── Render user list
-function renderUsers() {
-  const el = document.getElementById('users-container')
-  const keys = Object.keys(users)
-  if (!keys.length) {
-    el.innerHTML = '<div class="empty-state">No users added yet. Use the form above to add one.</div>'
-    return
-  }
-  el.innerHTML = keys.map(username => {
-    const u = users[username]
-    const pfpUrl = u.pfpId ? `https://assetdelivery.roblox.com/v1/asset/?id=${u.pfpId}` : ''
-    return `
-    <div class="user-row">
-      <div class="user-pfp">
-        ${pfpUrl ? `<img src="${pfpUrl}" onerror="this.style.display='none'"/>` : ''}
-      </div>
-      <div class="user-info">
-        <div class="user-name">${username}</div>
-        <div class="user-meta">
-          PFP: ${u.pfpId || '—'} &nbsp;|&nbsp; BG: ${u.bgId || '—'}
-        </div>
-      </div>
-      <div class="user-tag-badge">${u.tag}</div>
-      <div class="user-actions">
-        <button class="btn-secondary" style="padding:6px 12px;font-size:11px" onclick="editUser('${username}')">EDIT</button>
-        <button class="btn-danger" onclick="deleteUser('${username}')">✕</button>
-      </div>
-    </div>`
-  }).join('')
-}
-
-// ── Preview
-function updatePreview() {
-  const tag = document.getElementById('f-tag').value || 'AC USER'
-  const uname = document.getElementById('f-username').value || 'username'
-  const pfpId = document.getElementById('f-pfp').value.trim()
-  document.getElementById('preview-label').textContent = tag
-  document.getElementById('preview-uname').textContent = '@' + uname
-  const pfpImg = document.getElementById('preview-pfp')
-  if (pfpId) {
-    pfpImg.src = `https://assetdelivery.roblox.com/v1/asset/?id=${pfpId}`
-    pfpImg.style.display = 'block'
-  } else {
-    pfpImg.style.display = 'none'
-  }
-}
-
-// ── Save user
-function saveUser() {
+// ── ROBLOX LOOKUP ──
+async function lookupUser() {
   const username = document.getElementById('f-username').value.trim()
-  const tag = document.getElementById('f-tag').value.trim()
-  const pfpId = document.getElementById('f-pfp').value.trim()
-  const bgId = document.getElementById('f-bg').value.trim()
-  if (!username || !tag) { toast('Username and tag label are required', 'err'); return }
+  if (!username) { toast('Enter a Roblox username first', 'err'); return }
 
-  fetch(API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ auth: window._pass, action: 'set', username, tag, pfpId, bgId })
-  })
-  .then(r => r.json())
-  .then(d => {
+  const btn = document.getElementById('lookup-btn')
+  btn.textContent = '⏳ Looking up...'
+  btn.classList.add('loading')
+
+  try {
+    // 1. Get userId from username
+    const res = await fetch('https://users.roblox.com/v1/usernames/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ usernames: [username], excludeBannedUsers: false })
+    })
+    const data = await res.json()
+    const user = data.data?.[0]
+    if (!user) { toast('User not found on Roblox', 'err'); btn.textContent = '🔍 Lookup'; btn.classList.remove('loading'); return }
+
+    const userId = user.id
+    const displayName = user.displayName
+
+    // 2. Get avatar thumbnail
+    const thumbRes = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`)
+    const thumbData = await thumbRes.json()
+    const avatarUrl = thumbData.data?.[0]?.imageUrl || ''
+
+    // 3. Cache and display
+    lookupCache[username.toLowerCase()] = { userId, avatarUrl, displayName }
+
+    // Show avatar row
+    document.getElementById('avatar-row').style.display = 'flex'
+    document.getElementById('avatar-name').textContent = user.name
+    document.getElementById('avatar-display').textContent = displayName !== user.name ? `Display: ${displayName}` : ''
+    document.getElementById('avatar-userid').textContent = `User ID: ${userId}`
+
+    const thumb = document.getElementById('avatar-thumb')
+    if (avatarUrl) {
+      thumb.innerHTML = `<img src="${avatarUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`
+    }
+
+    // Auto-fill PFP with avatar (using a proxy-friendly approach)
+    // Store the avatar URL for preview, but leave asset ID field for manual override
+    window._lastAvatarUrl = avatarUrl
+    window._lastUserId = userId
+
+    updatePreview()
+    toast(`Found: ${user.name} (${displayName})`, 'ok')
+  } catch (e) {
+    toast('Lookup failed — check username', 'err')
+  }
+
+  btn.textContent = '🔍 Lookup'
+  btn.classList.remove('loading')
+}
+
+function usePfpFromRoblox() {
+  if (!window._lastUserId) { toast('Lookup a user first', 'err'); return }
+  // Use the userId as a decal-style asset — in Roblox the headshot thumb URL
+  // is what the nametag uses. We store the userId so the script can resolve it.
+  document.getElementById('f-pfp').value = window._lastUserId.toString()
+  updatePreview()
+  toast('Using Roblox avatar PFP', 'ok')
+}
+
+function onUsernameInput() {
+  document.getElementById('avatar-row').style.display = 'none'
+  window._lastAvatarUrl = null
+  updatePreview()
+}
+
+// ── PREVIEW ──
+function updatePreview() {
+  const tag   = document.getElementById('f-tag').value || 'AC USER'
+  const uname = document.getElementById('f-username').value || 'username'
+  document.getElementById('prev-tag').textContent  = tag
+  document.getElementById('prev-user').textContent = '@' + uname
+
+  const pfpId = document.getElementById('f-pfp').value.trim()
+  const img   = document.getElementById('prev-pfp')
+  if (pfpId) {
+    if (pfpId.startsWith('http')) {
+      // Direct URL — show directly in preview
+      img.src = pfpId
+    } else {
+      const num = parseInt(pfpId)
+      if (num > 1000000 && pfpId.length > 8) {
+        img.src = window._lastAvatarUrl || `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${pfpId}&size=48x48&format=Png`
+      } else {
+        img.src = `https://assetdelivery.roblox.com/v1/asset/?id=${pfpId}`
+      }
+    }
+    img.style.display = 'block'
+    img.onerror = () => img.style.display = 'none'
+  } else if (window._lastAvatarUrl) {
+    img.src = window._lastAvatarUrl
+    img.style.display = 'block'
+  } else {
+    img.style.display = 'none'
+  }
+}
+
+// ── SAVE ──
+async function saveUser() {
+  const username = document.getElementById('f-username').value.trim()
+  const tag      = document.getElementById('f-tag').value.trim()
+  const pfpId    = document.getElementById('f-pfp').value.trim()
+  const bgId     = document.getElementById('f-bg').value.trim()
+  if (!username || !tag) { toast('Username and tag are required', 'err'); return }
+
+  document.getElementById('save-spinner').style.display = 'inline-block'
+
+  try {
+    const r = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ auth: pass, action: 'set', username, tag, pfpId, bgId })
+    })
+    const d = await r.json()
     if (d.ok) {
-      users[username] = { tag, pfpId, bgId }
+      users = d.users || {}
+      allUsers = { ...users }
       renderUsers()
       clearForm()
-      toast('Saved! Script will pick up changes within 10s', 'ok')
-    } else {
-      toast(d.error || 'Save failed', 'err')
-    }
-  })
-  .catch(e => toast('Network error', 'err'))
+      toast(`✓ ${username} saved — script updates in ~10s`, 'ok')
+    } else toast(d.error || 'Save failed', 'err')
+  } catch { toast('Network error', 'err') }
+
+  document.getElementById('save-spinner').style.display = 'none'
 }
 
-// ── Edit
+// ── DELETE ──
+async function deleteUser(username) {
+  if (!confirm(`Remove ${username}?`)) return
+  const r = await fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ auth: pass, action: 'delete', username })
+  })
+  const d = await r.json()
+  if (d.ok) {
+    users = d.users || {}; allUsers = { ...users }
+    renderUsers(); toast(`${username} removed`, 'ok')
+  }
+}
+
+// ── EDIT ──
 function editUser(username) {
   const u = users[username]
   document.getElementById('f-username').value = username
   document.getElementById('f-tag').value = u.tag
   document.getElementById('f-pfp').value = u.pfpId || ''
-  document.getElementById('f-bg').value = u.bgId || ''
+  document.getElementById('f-bg').value  = u.bgId  || ''
+  document.getElementById('form-title').textContent = `Editing: ${username}`
+  document.getElementById('clear-btn').style.display = 'inline-flex'
+
+  // Try to show avatar if we have it cached or can build URL
+  if (u.pfpId) {
+    window._lastAvatarUrl = null
+    const img = document.getElementById('avatar-thumb')
+    const num = parseInt(u.pfpId)
+    const avatarUrl = (num > 1000000 && u.pfpId.length > 8)
+      ? `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${u.pfpId}&size=150x150&format=Png`
+      : `https://assetdelivery.roblox.com/v1/asset/?id=${u.pfpId}`
+    img.innerHTML = `<img src="${avatarUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`
+    document.getElementById('avatar-name').textContent = username
+    document.getElementById('avatar-display').textContent = ''
+    document.getElementById('avatar-userid').textContent = `PFP ID: ${u.pfpId}`
+    document.getElementById('avatar-row').style.display = 'flex'
+  }
+
   updatePreview()
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-// ── Delete
-function deleteUser(username) {
-  if (!confirm(`Remove ${username} from the whitelist?`)) return
-  fetch(API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ auth: window._pass, action: 'delete', username })
-  })
-  .then(r => r.json())
-  .then(d => {
-    if (d.ok) {
-      delete users[username]
-      renderUsers()
-      toast(`${username} removed`, 'ok')
-    } else toast(d.error || 'Delete failed', 'err')
-  })
-}
-
 function clearForm() {
   ['f-username','f-tag','f-pfp','f-bg'].forEach(id => document.getElementById(id).value = '')
+  document.getElementById('avatar-row').style.display = 'none'
+  document.getElementById('form-title').textContent = 'Add User'
+  document.getElementById('clear-btn').style.display = 'none'
+  window._lastAvatarUrl = null
+  window._lastUserId = null
   updatePreview()
 }
 
+// ── RENDER ──
+let filterQ = ''
+function filterUsers(q) { filterQ = q.toLowerCase(); renderUsers() }
+
+function renderUsers() {
+  const keys = Object.keys(allUsers).filter(k => !filterQ || k.toLowerCase().includes(filterQ))
+  const el = document.getElementById('users-list')
+
+  // Stats
+  const total = Object.keys(allUsers).length
+  const withPfp = Object.values(allUsers).filter(u => u.pfpId).length
+  const withBg  = Object.values(allUsers).filter(u => u.bgId).length
+  document.getElementById('stat-total').textContent  = total
+  document.getElementById('stat-with-pfp').textContent = withPfp
+  document.getElementById('stat-with-bg').textContent  = withBg
+  document.getElementById('nav-count').textContent = `${total} user${total !== 1 ? 's' : ''}`
+
+  if (!keys.length) {
+    el.innerHTML = `<div class="empty"><div class="empty-icon">👥</div>${filterQ ? 'No users match your search' : 'No users added yet'}</div>`
+    return
+  }
+
+  el.innerHTML = keys.map(username => {
+    const u = allUsers[username]
+    const num = parseInt(u.pfpId)
+    const pfpUrl = u.pfpId
+      ? (num > 1000000 && u.pfpId.length > 8
+          ? `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${u.pfpId}&size=150x150&format=Png`
+          : `https://assetdelivery.roblox.com/v1/asset/?id=${u.pfpId}`)
+      : ''
+    return `
+    <div class="user-card">
+      <div class="user-pfp">
+        ${pfpUrl ? `<img src="${pfpUrl}" onerror="this.style.display='none'"/>` : ''}
+      </div>
+      <div class="user-info">
+        <div class="user-name">${username}</div>
+        <div class="user-meta">${u.pfpId ? 'Has PFP' : 'No PFP'} · ${u.bgId ? 'Has BG' : 'No BG'}</div>
+      </div>
+      <div class="tag-pill">${u.tag}</div>
+      <div class="user-actions">
+        <button class="btn btn-secondary btn-sm" onclick="editUser('${username}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteUser('${username}')">✕</button>
+      </div>
+    </div>`
+  }).join('')
+}
+
+// ── TOAST ──
 function toast(msg, type) {
   const el = document.getElementById('toast')
   el.textContent = msg
-  el.className = 'show ' + (type || '')
-  setTimeout(() => el.className = '', 3000)
+  el.className = `show ${type || ''}`
+  setTimeout(() => el.className = '', 3500)
 }
 </script>
 </body>
