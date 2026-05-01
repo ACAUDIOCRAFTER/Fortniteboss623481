@@ -10,7 +10,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color:#f0f0f0;overflow-x:hidden}
-
 #auth{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,13,13,.97);z-index:300}
 .acard{background:#111;border:1px solid #333;border-radius:16px;padding:52px 44px;width:400px;text-align:center;box-shadow:0 0 60px rgba(0,100,255,.15)}
 .acard h1{font-size:2.4rem;color:#fff;text-shadow:0 0 30px #0066ff88,0 0 60px #0044cc66;margin-bottom:8px}
@@ -20,9 +19,7 @@ html,body{height:100%;font-family:'Coming Soon',cursive;background:#0d0d0d;color
 .abtn{width:100%;padding:12px;background:rgba(40,40,80,.8);color:#fff;border:1px solid rgba(100,150,255,.3);border-radius:8px;font-family:'Coming Soon',cursive;font-size:1.1rem;cursor:pointer;transition:.2s}
 .abtn:hover{background:rgba(80,80,160,.8);transform:scale(1.02)}
 .aerr{color:#f87171;font-size:.9rem;margin-top:10px;display:none}
-
 #app{display:none;min-height:100vh;position:relative;z-index:1}
-
 nav{position:sticky;top:0;background:rgba(13,13,13,.92);border-bottom:1px solid #222;padding:0 32px;display:flex;align-items:center;gap:16px;height:62px;z-index:100;backdrop-filter:blur(12px)}
 .nav-title{font-size:1.6rem;color:#fff;text-shadow:0 0 20px #0066ff88,0 0 40px #0044cc55;letter-spacing:1px}
 .nav-badge{background:linear-gradient(135deg,#ff3366,#ff6633);padding:3px 12px;border-radius:20px;font-size:.75rem}
@@ -30,10 +27,8 @@ nav .sp{flex:1}
 .nav-tabs{display:flex;gap:6px}
 .ntab{background:transparent;border:1px solid #333;padding:7px 16px;border-radius:8px;color:#aaa;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;transition:.2s}
 .ntab:hover,.ntab.active{background:rgba(40,40,80,.7);color:#fff;border-color:rgba(100,150,255,.4);text-shadow:0 0 10px rgba(100,150,255,.5)}
-
 .page{display:none;max-width:1200px;margin:0 auto;padding:32px 24px}
 .page.active{display:block}
-
 .live-bar{background:#111;border:1px solid #333;border-radius:10px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .live-label{font-size:.85rem;color:#888;white-space:nowrap;text-transform:uppercase;letter-spacing:1px}
 .live-users{display:flex;gap:8px;flex-wrap:wrap;flex:1}
@@ -43,12 +38,10 @@ nav .sp{flex:1}
 .live-count{font-size:.85rem;color:#666;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .lstatus{width:7px;height:7px;border-radius:50%;background:#444}
 .lstatus.on{background:#00ff88}
-
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .stat{background:#111;border:1px solid #333;border-radius:10px;padding:18px 20px}
 .stat-val{font-size:2rem;font-weight:700;text-shadow:0 0 20px currentColor}
 .stat-label{font-size:.8rem;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
-
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .grid-form{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 @media(max-width:1100px){.grid-form{grid-template-columns:1fr}}
@@ -79,12 +72,10 @@ nav .sp{flex:1}
   .stats-row{grid-template-columns:1fr 1fr}
   .ntag-tag{font-size:.75rem}
 }
-
 .card{background:#0e0e12;border:1px solid #1e1e2a;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .card-top{padding:14px 20px;border-bottom:1px solid #1a1a24;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0b0b10}
 .card-title{font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:2px;font-weight:700}
 .card-body{padding:20px}
-
 .field{margin-bottom:13px}
 .field label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px;font-weight:700}
 .field-hint{font-size:.75rem;color:#383844;margin-top:4px;line-height:1.4}
@@ -92,8 +83,6 @@ input[type=text],input[type=password]{width:100%;background:#080810;border:1px s
 input:focus{border-color:#334;box-shadow:0 0 0 3px rgba(80,100,255,.12)}
 input::placeholder{color:#333}
 .divider{height:1px;background:#1a1a22;margin:14px 0}
-
-/* Toggles */
 .toggles-section{margin-bottom:14px}
 .toggles-section label,.color-section label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;font-weight:700}
 .toggles-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -106,8 +95,6 @@ input::placeholder{color:#333}
 .toggle-switch.on{background:#2255ee;border-color:#3366ff}
 .toggle-switch::after{content:'';position:absolute;width:12px;height:12px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .18s;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 .toggle-switch.on::after{left:18px}
-
-/* Color palette */
 .color-section{margin-bottom:16px}
 .color-section label{display:block;font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
 .color-palette{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:8px}
@@ -118,32 +105,24 @@ input::placeholder{color:#333}
 .color-custom-row{display:flex;gap:8px;align-items:center}
 .color-custom-row input[type=color]{width:38px;height:38px;border:1px solid #333;border-radius:7px;background:#0a0a0a;cursor:pointer;padding:2px}
 .color-custom-row span{font-size:.8rem;color:#666}
-
-/* GIF input row with process button */
 .gif-row{display:flex;gap:8px;align-items:stretch}
 .gif-row input{flex:1}
 .gif-process-btn{background:rgba(0,150,255,.12);border:1px solid rgba(0,150,255,.3);color:#60b8ff;border-radius:8px;padding:10px 14px;font-family:'Coming Soon',cursive;font-size:.85rem;cursor:pointer;white-space:nowrap;transition:.2s;flex-shrink:0}
 .gif-process-btn:hover{background:rgba(0,150,255,.22);border-color:rgba(0,150,255,.5)}
 .gif-process-btn:disabled{opacity:.4;cursor:not-allowed}
-
-/* GIF status bar */
 .gif-status{margin-top:8px;font-size:.8rem;border-radius:7px;padding:8px 12px;display:none;align-items:center;gap:8px}
 .gif-status.loading{display:flex;background:rgba(0,150,255,.07);border:1px solid rgba(0,150,255,.2);color:#60b8ff}
 .gif-status.ok{display:flex;background:rgba(0,200,100,.07);border:1px solid rgba(0,200,100,.2);color:#4ade80}
 .gif-status.err{display:flex;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171}
 .gif-progress{height:3px;background:#222;border-radius:2px;margin-top:6px;overflow:hidden;display:none}
 .gif-progress-inner{height:100%;background:linear-gradient(90deg,#0066ff,#00ccff);border-radius:2px;transition:width .15s;width:0%}
-
-/* Preview card — full height right column */
 .preview-card{background:#0b0b12;border:1px solid #1a1a26;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4);display:flex;flex-direction:column;min-height:600px}
 .preview-card-top{padding:14px 20px;border-bottom:1px solid #1a1a24;background:#090910;display:flex;align-items:center;justify-content:space-between}
 .preview-card-title{font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:2px;font-weight:700}
 .preview-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:24px;position:relative}
-/* Fake game world background in preview */
 .preview-world{width:100%;height:220px;border-radius:10px;background:linear-gradient(180deg,#87ceeb 0%,#87ceeb 55%,#4a8c3f 55%,#3d7a33 100%);position:relative;overflow:hidden;border:1px solid #1e1e2a;flex-shrink:0}
 .preview-world::before{content:'';position:absolute;bottom:0;left:0;right:0;height:45%;background:repeating-linear-gradient(90deg,#3d7a33 0px,#4a8c3f 20px,#3d7a33 40px)}
 .preview-character{position:absolute;bottom:42%;left:50%;transform:translateX(-50%);font-size:2.2rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
-/* The nametag floats above the character */
 .preview-tag-float{position:absolute;bottom:calc(42% + 52px);left:50%;transform:translateX(-50%);white-space:nowrap}
 .ntag{display:flex;align-items:center;gap:8px;background:rgba(5,8,25,.7);border:1.5px solid rgba(0,102,255,.35);border-radius:99px;padding:6px 16px 6px 6px;box-shadow:0 0 16px rgba(0,102,255,.2),0 2px 8px rgba(0,0,0,.6);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
 .ntag-anim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:99px;opacity:.5}
@@ -152,19 +131,15 @@ input::placeholder{color:#333}
 .ntag-info{position:relative;z-index:1}
 .ntag-tag{font-size:1rem;font-weight:700;color:#fff;letter-spacing:.3px;line-height:1.2;font-family:'Coming Soon',cursive}
 .ntag-user{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:1px}
-/* Info panel below preview world */
 .preview-info{width:100%;background:#0d0d16;border:1px solid #1a1a26;border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .prev-info-item{display:flex;flex-direction:column;gap:3px}
 .prev-info-key{font-size:.68rem;color:#444;text-transform:uppercase;letter-spacing:1px}
 .prev-info-val{font-size:.82rem;color:#ccc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prev-info-val.active{color:#4ade80}
 .prev-info-val.inactive{color:#555}
-
-/* Sprite sheet mini preview */
 .sheet-preview{margin-top:10px;display:none}
 .sheet-preview canvas{border-radius:6px;border:1px solid #333;max-width:100%;height:auto;display:block}
 .sheet-meta{font-size:.75rem;color:#666;margin-top:6px;line-height:1.5}
-
 .btn{border:none;border-radius:9px;padding:10px 18px;font-family:'Coming Soon',cursive;font-size:.93rem;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px;letter-spacing:.3px}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
@@ -181,7 +156,6 @@ input::placeholder{color:#333}
 .btn-ban:hover{background:rgba(180,0,0,.2)}
 .btn-wl{background:rgba(0,160,80,.1);border:1px solid rgba(0,200,100,.25);color:#4ade80;width:100%;justify-content:center;border-radius:9px}
 .btn-wl:hover{background:rgba(0,160,80,.18)}
-
 .ulist{display:flex;flex-direction:column;gap:6px;max-height:460px;overflow-y:auto;padding-right:4px}
 .ulist::-webkit-scrollbar{width:4px}
 .ulist::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
@@ -203,14 +177,12 @@ input::placeholder{color:#333}
 .search-input:focus{border-color:#0066ff}
 .empty{text-align:center;padding:48px;color:#555;font-size:.95rem}
 .empty-icon{font-size:2.2rem;margin-bottom:10px;opacity:.5}
-
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#111;border:1px solid #333;border-radius:10px;padding:12px 24px;font-size:.95rem;opacity:0;pointer-events:none;transition:all .25s;z-index:500;box-shadow:0 8px 32px rgba(0,0,0,.6);white-space:nowrap}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast.ok{border-color:rgba(0,255,136,.4);color:#00ff88;text-shadow:0 0 10px rgba(0,255,136,.4)}
 #toast.err{border-color:rgba(248,113,113,.4);color:#f87171;text-shadow:0 0 10px rgba(248,113,113,.4)}
 .spin{width:13px;height:13px;border-radius:50%;border:2px solid rgba(255,255,255,.2);border-top-color:white;animation:spin .6s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 .version{position:fixed;bottom:20px;left:20px;color:#fff;font-size:.9rem;opacity:.7;z-index:10}
 .copy{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.55;z-index:10}
 </style>
@@ -218,8 +190,6 @@ input::placeholder{color:#333}
 <body>
 <canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:0"></canvas>
 <canvas id="trail-canvas"   style="position:fixed;inset:0;pointer-events:none;z-index:1"></canvas>
-
-<!-- AUTH -->
 <div id="auth">
   <div class="acard">
     <h1>AC Admin</h1>
@@ -229,8 +199,6 @@ input::placeholder{color:#333}
     <div class="aerr" id="aerr">Wrong password — try again</div>
   </div>
 </div>
-
-<!-- APP -->
 <div id="app">
   <nav>
     <span class="nav-title">AC AudioCrafter</span>
@@ -245,7 +213,6 @@ input::placeholder{color:#333}
       <button class="ntab" onclick="resetGhToken()" title="Update GitHub Token" style="padding:7px 10px">🔑</button>
     </div>
   </nav>
-
   <div style="max-width:1200px;margin:0 auto;padding:28px 24px 0">
     <div class="live-bar" style="transition:border-color .4s">
       <span class="live-label" style="display:flex;align-items:center;gap:7px">
@@ -261,8 +228,6 @@ input::placeholder{color:#333}
       <div class="stat"><div class="stat-val" style="color:#00ff88" id="st-live">0</div><div class="stat-label">Online Now</div></div>
     </div>
   </div>
-
-  <!-- TAGS PAGE -->
   <div class="page active" id="page-tags">
     <div class="grid-form">
       <div class="card">
@@ -271,141 +236,61 @@ input::placeholder{color:#333}
           <button class="btn btn-ghost btn-sm" onclick="clearTagForm()" id="clear-btn" style="display:none">✕ Clear</button>
         </div>
         <div class="card-body">
-          <div class="field">
-            <label>Roblox Username</label>
-            <input type="text" id="f-user" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/>
-          </div>
-          <div class="field">
-            <label>Tag Label</label>
-            <input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/>
-          </div>
-          <div class="field">
-            <label>Profile Picture URL</label>
-            <input type="text" id="f-pfp" placeholder="Image URL or Asset ID" oninput="updatePreview()"/>
-            <div class="field-hint">Any image URL — downloaded automatically in-game</div>
-          </div>
-
-          <!-- BG GIF field with auto-process -->
+          <div class="field"><label>Roblox Username</label><input type="text" id="f-user" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/></div>
+          <div class="field"><label>Tag Label</label><input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/></div>
+          <div class="field"><label>Profile Picture URL</label><input type="text" id="f-pfp" placeholder="Image URL or Asset ID" oninput="updatePreview()"/><div class="field-hint">Any image URL — downloaded automatically in-game</div></div>
           <div class="field">
             <label>Background GIF / Image URL</label>
-            <div class="gif-row">
-              <input type="text" id="f-bg" placeholder="Paste any GIF or image URL..." oninput="onBgInput()"/>
-              <button class="gif-process-btn" id="gif-btn" onclick="processGif()" disabled>⚙ Process</button>
-            </div>
+            <div class="gif-row"><input type="text" id="f-bg" placeholder="Paste any GIF or image URL..." oninput="onBgInput()"/><button class="gif-process-btn" id="gif-btn" onclick="processGif()" disabled>⚙ Process</button></div>
             <div class="field-hint">Paste a GIF URL — click Process to convert it to a sprite sheet automatically. Static images work too.</div>
             <div class="gif-status" id="gif-status"></div>
             <div class="gif-progress" id="gif-progress"><div class="gif-progress-inner" id="gif-bar"></div></div>
           </div>
-
-          <!-- Sprite sheet mini preview -->
-          <div class="sheet-preview" id="sheet-preview">
-            <canvas id="sheet-canvas"></canvas>
-            <div class="sheet-meta" id="sheet-meta"></div>
-          </div>
-
+          <div class="sheet-preview" id="sheet-preview"><canvas id="sheet-canvas"></canvas><div class="sheet-meta" id="sheet-meta"></div></div>
           <div class="divider"></div>
-
-          <!-- EFFECTS TOGGLES -->
           <div class="toggles-section">
             <label>Nametag Effects</label>
             <div class="toggles-grid">
-              <div class="toggle-row" onclick="toggleEffect('glitched')">
-                <span class="toggle-label"><span class="ticon">⚡</span>Glitched Name</span>
-                <div class="toggle-switch" id="tog-glitched"></div>
-              </div>
-              <div class="toggle-row" onclick="toggleEffect('typewriter')">
-                <span class="toggle-label"><span class="ticon">⌨️</span>Typewriter Name</span>
-                <div class="toggle-switch" id="tog-typewriter"></div>
-              </div>
-              <div class="toggle-row" onclick="toggleEffect('animProfile')">
-                <span class="toggle-label"><span class="ticon">🖼</span>Animated Profile</span>
-                <div class="toggle-switch" id="tog-animProfile"></div>
-              </div>
-              <div class="toggle-row" onclick="toggleEffect('animBg')">
-                <span class="toggle-label"><span class="ticon">🎞</span>Animated Background</span>
-                <div class="toggle-switch" id="tog-animBg"></div>
-              </div>
-              <div class="toggle-row" onclick="toggleEffect('tagEffects')">
-                <span class="toggle-label"><span class="ticon">✨</span>Nametag Effects</span>
-                <div class="toggle-switch" id="tog-tagEffects"></div>
-              </div>
+              <div class="toggle-row" onclick="toggleEffect('glitched')"><span class="toggle-label"><span class="ticon">⚡</span>Glitched Name</span><div class="toggle-switch" id="tog-glitched"></div></div>
+              <div class="toggle-row" onclick="toggleEffect('typewriter')"><span class="toggle-label"><span class="ticon">⌨️</span>Typewriter Name</span><div class="toggle-switch" id="tog-typewriter"></div></div>
+              <div class="toggle-row" onclick="toggleEffect('animProfile')"><span class="toggle-label"><span class="ticon">🖼</span>Animated Profile</span><div class="toggle-switch" id="tog-animProfile"></div></div>
+              <div class="toggle-row" onclick="toggleEffect('animBg')"><span class="toggle-label"><span class="ticon">🎞</span>Animated Background</span><div class="toggle-switch" id="tog-animBg"></div></div>
+              <div class="toggle-row" onclick="toggleEffect('tagEffects')"><span class="toggle-label"><span class="ticon">✨</span>Nametag Effects</span><div class="toggle-switch" id="tog-tagEffects"></div></div>
             </div>
           </div>
-
-          <!-- GLOW COLOR PALETTE -->
           <div class="color-section">
             <label>Glow Color</label>
             <div class="color-palette" id="color-palette"></div>
-            <div class="color-custom-row">
-              <input type="color" id="f-custom-color" value="#960096" oninput="setCustomColor(this.value)"/>
-              <span>Custom color — click to pick</span>
-            </div>
+            <div class="color-custom-row"><input type="color" id="f-custom-color" value="#960096" oninput="setCustomColor(this.value)"/><span>Custom color — click to pick</span></div>
           </div>
-
           <div class="divider"></div>
-
-          <button class="btn btn-primary" onclick="saveTag()">
-            <span id="save-spin" style="display:none" class="spin"></span>💾 Save User
-          </button>
+          <button class="btn btn-primary" onclick="saveTag()"><span id="save-spin" style="display:none" class="spin"></span>💾 Save User</button>
         </div>
       </div>
-
-      <!-- RIGHT COLUMN: Live Preview + Tag List -->
       <div style="display:flex;flex-direction:column;gap:20px">
-
-        <!-- LIVE PREVIEW CARD -->
         <div class="preview-card">
-          <div class="preview-card-top">
-            <span class="preview-card-title">Live Preview</span>
-            <span style="font-size:.75rem;color:#444">Updates as you type</span>
-          </div>
+          <div class="preview-card-top"><span class="preview-card-title">Live Preview</span><span style="font-size:.75rem;color:#444">Updates as you type</span></div>
           <div class="preview-body">
-            <!-- Fake game world with floating nametag -->
             <div class="preview-world">
               <div class="preview-tag-float">
                 <div class="ntag" id="prev-ntag">
                   <canvas id="prev-anim-canvas" class="ntag-anim" style="display:none"></canvas>
                   <div class="ntag-pfp"><img id="prev-pfp" src="" style="display:none"/></div>
-                  <div class="ntag-info">
-                    <div class="ntag-tag" id="prev-tag">AC USER</div>
-                    <div class="ntag-user" id="prev-user">@username</div>
-                  </div>
+                  <div class="ntag-info"><div class="ntag-tag" id="prev-tag">AC USER</div><div class="ntag-user" id="prev-user">@username</div></div>
                 </div>
               </div>
               <div class="preview-character">🧍</div>
             </div>
-
-            <!-- Info grid -->
             <div class="preview-info">
-              <div class="prev-info-item">
-                <span class="prev-info-key">Username</span>
-                <span class="prev-info-val" id="pi-user">—</span>
-              </div>
-              <div class="prev-info-item">
-                <span class="prev-info-key">Tag Label</span>
-                <span class="prev-info-val" id="pi-tag">—</span>
-              </div>
-              <div class="prev-info-item">
-                <span class="prev-info-key">Profile Pic</span>
-                <span class="prev-info-val" id="pi-pfp" class="inactive">Not set</span>
-              </div>
-              <div class="prev-info-item">
-                <span class="prev-info-key">Background</span>
-                <span class="prev-info-val" id="pi-bg" class="inactive">Not set</span>
-              </div>
-              <div class="prev-info-item">
-                <span class="prev-info-key">Glow Color</span>
-                <span class="prev-info-val" id="pi-glow">—</span>
-              </div>
-              <div class="prev-info-item">
-                <span class="prev-info-key">Effects</span>
-                <span class="prev-info-val" id="pi-effects">None</span>
-              </div>
+              <div class="prev-info-item"><span class="prev-info-key">Username</span><span class="prev-info-val" id="pi-user">—</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Tag Label</span><span class="prev-info-val" id="pi-tag">—</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Profile Pic</span><span class="prev-info-val" id="pi-pfp" class="inactive">Not set</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Background</span><span class="prev-info-val" id="pi-bg" class="inactive">Not set</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Glow Color</span><span class="prev-info-val" id="pi-glow">—</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Effects</span><span class="prev-info-val" id="pi-effects">None</span></div>
             </div>
           </div>
         </div>
-
-        <!-- TAG USERS LIST -->
         <div class="card">
           <div class="card-top"><span class="card-title">Tag Users</span><input class="search-input" placeholder="🔍 Search..." oninput="renderTags(this.value)"/></div>
           <div class="card-body" style="padding:14px"><div id="tag-list" class="ulist"></div></div>
@@ -413,16 +298,12 @@ input::placeholder{color:#333}
       </div>
     </div>
   </div>
-
-  <!-- LIVE PAGE -->
   <div class="page" id="page-users">
     <div class="card">
       <div class="card-top"><span class="card-title">Currently Executing Script</span><button class="btn btn-ghost btn-sm" onclick="pollAll()">↺ Refresh</button></div>
       <div class="card-body" style="padding:14px"><div id="exec-list" class="ulist"></div></div>
     </div>
   </div>
-
-  <!-- BANS PAGE -->
   <div class="page" id="page-bans">
     <div class="grid2">
       <div class="card">
@@ -438,8 +319,6 @@ input::placeholder{color:#333}
       </div>
     </div>
   </div>
-
-  <!-- QUICK ADD PAGE -->
   <div class="page" id="page-quickadd">
     <div class="grid2">
       <div class="card">
@@ -453,29 +332,24 @@ input::placeholder{color:#333}
               If new — adds them with a default "AC USER" tag visible to everyone running the script.
             </div>
           </div>
-          <button class="btn btn-primary" onclick="quickAdd()" style="margin-bottom:10px">
-            ⚡ Quick Add
-          </button>
+          <button class="btn btn-primary" onclick="quickAdd()" style="margin-bottom:10px">⚡ Quick Add</button>
           <div id="qa-status" style="display:none;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px"></div>
         </div>
       </div>
       <div class="card">
         <div class="card-top">
-          <span class="card-title">Quick Added Users</span>
+          <span class="card-title">All Tag Users</span>
           <input class="search-input" placeholder="🔍 Search..." oninput="renderQuickList(this.value)"/>
         </div>
         <div class="card-body" style="padding:14px">
           <div style="font-size:.75rem;color:#444;margin-bottom:10px;line-height:1.5">
-            These users get a visible nametag for everyone running the script.<br>
-            Their tag shows while they have the script executed.
+            All users in the tag system — visible nametag for everyone running the script.
           </div>
           <div id="qa-list" class="ulist"></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- WHITELIST PAGE -->
   <div class="page" id="page-whitelist">
     <div class="grid2">
       <div class="card">
@@ -492,18 +366,11 @@ input::placeholder{color:#333}
     </div>
   </div>
 </div>
-
 <div class="version">AC AudioCrafter v3 — Admin Panel</div>
 <div class="copy">© 2026 MelodyCrafter3 · AudioCrafter</div>
 <div id="toast"></div>
-
-<!-- Hidden GIF decoder worker canvas -->
 <canvas id="gif-decode-canvas" style="display:none"></canvas>
-
 <script>
-// ════════════════════════════════════════════════════════════
-//  CANVAS FX
-// ════════════════════════════════════════════════════════════
 const sc=document.getElementById('sparkle-canvas'),sctx=sc.getContext('2d')
 sc.width=innerWidth;sc.height=innerHeight
 window.addEventListener('resize',()=>{sc.width=innerWidth;sc.height=innerHeight;tc.width=innerWidth;tc.height=innerHeight})
@@ -516,155 +383,47 @@ const pts=[]
 document.addEventListener('mousemove',e=>pts.push({x:e.clientX,y:e.clientY,t:Date.now()}))
 ;(function drawTrail(){tctx.clearRect(0,0,tc.width,tc.height);const now=Date.now();for(let j=pts.length-1;j>=0;j--){if(now-pts[j].t>900){pts.splice(j,1);continue};if(j>0){const age=(now-pts[j].t)/900;tctx.beginPath();tctx.moveTo(pts[j-1].x,pts[j-1].y);tctx.lineTo(pts[j].x,pts[j].y);tctx.strokeStyle=`rgba(100,150,255,${(1-age)*.6})`;tctx.lineWidth=2;tctx.stroke()}};requestAnimationFrame(drawTrail)})()
 
-// ════════════════════════════════════════════════════════════
-//  STATE
-// ════════════════════════════════════════════════════════════
 const TAGS_API='/api/custom-users', MANAGE_API='/api/manage'
 let pass='', tagData={}, banData=[], wlData=[], execData=[]
-
-// Current processed GIF data
-let gifData = null  // { sheetDataUrl, frameW, frameH, cols, totalFrames, fps, sheetBlob }
+let gifData = null
 let previewAnimInterval = null
-
-// Effects state
-let effects = {
-  glitched:    false,
-  typewriter:  false,
-  animProfile: false,
-  animBg:      false,
-  tagEffects:  false
-}
-let glowColor = '#960096'  // default matches in-game neon purple
+let effects = {glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false}
+let glowColor = '#960096'
 
 const GLOW_PRESETS = [
-  {c:'#0066ff',n:'Blue'},    {c:'#00ccff',n:'Cyan'},
-  {c:'#00ff88',n:'Green'},   {c:'#ff3366',n:'Red'},
-  {c:'#ff9900',n:'Orange'},  {c:'#cc44ff',n:'Purple'},
-  {c:'#ffffff',n:'White'},   {c:'#ffdd00',n:'Gold'},
-  {c:'#ff66cc',n:'Pink'},    {c:'#44ffdd',n:'Teal'},
-  {c:'#ff4400',n:'Flame'},   {c:'#aaaaff',n:'Lavender'},
+  {c:'#0066ff',n:'Blue'},{c:'#00ccff',n:'Cyan'},{c:'#00ff88',n:'Green'},{c:'#ff3366',n:'Red'},
+  {c:'#ff9900',n:'Orange'},{c:'#cc44ff',n:'Purple'},{c:'#ffffff',n:'White'},{c:'#ffdd00',n:'Gold'},
+  {c:'#ff66cc',n:'Pink'},{c:'#44ffdd',n:'Teal'},{c:'#ff4400',n:'Flame'},{c:'#aaaaff',n:'Lavender'},
 ]
 
 function initColorPalette(){
-  const el = document.getElementById('color-palette')
-  el.innerHTML = GLOW_PRESETS.map((p,i)=>
-    `<div class="color-swatch${p.c.toLowerCase()===glowColor.toLowerCase()?' selected':''}"
-     style="background:${p.c};box-shadow:0 0 8px ${p.c}66"
-     title="${p.n}" onclick="selectColor('${p.c}',this)"></div>`
-  ).join('')
+  const el=document.getElementById('color-palette')
+  el.innerHTML=GLOW_PRESETS.map((p,i)=>`<div class="color-swatch${p.c.toLowerCase()===glowColor.toLowerCase()?' selected':''}" style="background:${p.c};box-shadow:0 0 8px ${p.c}66" title="${p.n}" onclick="selectColor('${p.c}',this)"></div>`).join('')
   applyPreviewGlow(glowColor)
 }
+function selectColor(c,el){glowColor=c;document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));el.classList.add('selected');document.getElementById('f-custom-color').value=c;applyPreviewGlow(c)}
+function setCustomColor(c){glowColor=c;document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));applyPreviewGlow(c)}
+function applyPreviewGlow(c){const ntag=document.getElementById('prev-ntag');ntag.style.setProperty('--glow',c);ntag.style.boxShadow=`0 0 18px ${c}55, 0 2px 8px rgba(0,0,0,.6)`;ntag.style.borderColor=c;ntag.style.borderWidth='1.5px'}
+function toggleEffect(key){effects[key]=!effects[key];const sw=document.getElementById('tog-'+key);sw.className='toggle-switch'+(effects[key]?' on':'');const row=sw.closest('.toggle-row');if(row)row.className='toggle-row'+(effects[key]?' tog-active':'');updatePreview()}
+function getEffectsFromForm(){return{...effects,glowColor}}
 
-function selectColor(c, el){
-  glowColor = c
-  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'))
-  el.classList.add('selected')
-  document.getElementById('f-custom-color').value = c
-  applyPreviewGlow(c)
+const GH={token:localStorage.getItem('ac_gh_token')||'',owner:'ACAUDIOCRAFTER',repo:'AUDIO-CRAFTER',branch:'main',folder:'sprites'}
+
+async function uploadToGitHub(blob,filename){
+  GH.token=localStorage.getItem('ac_gh_token')||''
+  if(!GH.token)throw new Error('No GitHub token set. Click the 🔑 button to add one.')
+  const base64=await new Promise((res,rej)=>{const reader=new FileReader();reader.onload=()=>res(reader.result.split(',')[1]);reader.onerror=rej;reader.readAsDataURL(blob)})
+  const path=`${GH.folder}/${filename}`
+  const apiUrl=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${path}`
+  let sha=null
+  try{const check=await fetch(apiUrl,{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});if(check.ok){const existing=await check.json();sha=existing.sha}}catch{}
+  const body={message:`Upload sprite sheet: ${filename}`,content:base64,branch:GH.branch}
+  if(sha)body.sha=sha
+  const resp=await fetch(apiUrl,{method:'PUT',headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)})
+  if(!resp.ok){const err=await resp.json();throw new Error(`GitHub upload failed: ${err.message}`)}
+  return`https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`
 }
 
-function setCustomColor(c){
-  glowColor = c
-  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'))
-  applyPreviewGlow(c)
-}
-
-function applyPreviewGlow(c){
-  const ntag = document.getElementById('prev-ntag')
-  ntag.style.setProperty('--glow', c)
-  ntag.style.boxShadow = `0 0 18px ${c}55, 0 2px 8px rgba(0,0,0,.6)`
-  ntag.style.borderColor = c
-  ntag.style.borderWidth = '1.5px'
-}
-
-function toggleEffect(key){
-  effects[key] = !effects[key]
-  const sw = document.getElementById('tog-'+key)
-  sw.className = 'toggle-switch' + (effects[key]?' on':'')
-  // Also highlight the parent row
-  const row = sw.closest('.toggle-row')
-  if(row) row.className = 'toggle-row' + (effects[key]?' tog-active':'')
-  updatePreview()
-}
-
-function getEffectsFromForm(){
-  return { ...effects, glowColor }
-}
-
-// ── GitHub config — token lives ONLY in localStorage, never in source code
-const GH = {
-  token: localStorage.getItem('ac_gh_token') || '',
-  owner: 'ACAUDIOCRAFTER',
-  repo:  'AUDIO-CRAFTER',
-  branch: 'main',
-  folder: 'sprites'
-}
-
-// ════════════════════════════════════════════════════════════
-//  GITHUB UPLOADER
-//  Commits a PNG blob directly to your GitHub repo.
-//  Returns the raw URL so Roblox can download it.
-// ════════════════════════════════════════════════════════════
-async function uploadToGitHub(blob, filename){
-  // Always read fresh from localStorage in case it was set after page load
-  GH.token = localStorage.getItem('ac_gh_token') || ''
-  if(!GH.token) throw new Error('No GitHub token set. Click the 🔑 button to add one.')
-  // Convert blob to base64
-  const base64 = await new Promise((res, rej) => {
-    const reader = new FileReader()
-    reader.onload  = () => res(reader.result.split(',')[1])
-    reader.onerror = rej
-    reader.readAsDataURL(blob)
-  })
-
-  const path = `${GH.folder}/${filename}`
-  const apiUrl = `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${path}`
-
-  // Check if file already exists (need its SHA to update)
-  let sha = null
-  try {
-    const check = await fetch(apiUrl, {
-      headers: {
-        'Authorization': `token ${GH.token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    })
-    if(check.ok){
-      const existing = await check.json()
-      sha = existing.sha
-    }
-  } catch{}
-
-  // Commit the file
-  const body = {
-    message: `Upload sprite sheet: ${filename}`,
-    content: base64,
-    branch:  GH.branch
-  }
-  if(sha) body.sha = sha  // required for updates
-
-  const resp = await fetch(apiUrl, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `token ${GH.token}`,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  })
-
-  if(!resp.ok){
-    const err = await resp.json()
-    throw new Error(`GitHub upload failed: ${err.message}`)
-  }
-
-  // Return the raw.githubusercontent.com URL (permanent, no expiry)
-  return `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`
-}
-
-// ════════════════════════════════════════════════════════════
-//  AUTH
-// ════════════════════════════════════════════════════════════
 function login(){
   const pw=document.getElementById('auth-pw').value
   fetch(`${TAGS_API}?auth=${encodeURIComponent(pw)}`).then(r=>r.json()).then(d=>{
@@ -673,57 +432,27 @@ function login(){
       document.getElementById('auth').style.display='none'
       document.getElementById('app').style.display='block'
       tagData=d.users||{}
-      loadManage();renderTags()
-      // Poll every 5s — and do an immediate live-users-only ping every 3s
-      setInterval(pollAll, 5000)
-      setInterval(pollLive, 3000)
-      // Show token modal if no token saved yet
-      if(!localStorage.getItem('ac_gh_token')){
-        setTimeout(()=>showGhModal(),600)
-      }
-    } else document.getElementById('aerr').style.display='block'
+      loadManage();renderTags();renderQuickList()
+      setInterval(pollAll,5000)
+      setInterval(pollLive,3000)
+      if(!localStorage.getItem('ac_gh_token')){setTimeout(()=>showGhModal(),600)}
+    }else document.getElementById('aerr').style.display='block'
   }).catch(()=>document.getElementById('aerr').style.display='block')
 }
 
-function showGhModal(){
-  const m=document.getElementById('gh-modal')
-  m.style.display='flex'
-}
-function saveGhToken(){
-  const t=document.getElementById('gh-token-input').value.trim()
-  if(!t){toast('Paste your token first','err');return}
-  localStorage.setItem('ac_gh_token',t)
-  GH.token=t
-  document.getElementById('gh-modal').style.display='none'
-  toast('✓ GitHub token saved — GIF uploads ready','ok')
-}
-function skipGhToken(){
-  document.getElementById('gh-modal').style.display='none'
-  toast('GIF uploads will fail until token is set','err')
-}
-// Allow re-entering token from settings
-function resetGhToken(){
-  localStorage.removeItem('ac_gh_token')
-  GH.token=''
-  document.getElementById('gh-token-input').value=''
-  showGhModal()
-}
-window.onload=()=>{
-  initColorPalette()
-  const s=localStorage.getItem('ac_p')
-  if(s){document.getElementById('auth-pw').value=s;login()}
-}
+function showGhModal(){document.getElementById('gh-modal').style.display='flex'}
+function saveGhToken(){const t=document.getElementById('gh-token-input').value.trim();if(!t){toast('Paste your token first','err');return};localStorage.setItem('ac_gh_token',t);GH.token=t;document.getElementById('gh-modal').style.display='none';toast('✓ GitHub token saved — GIF uploads ready','ok')}
+function skipGhToken(){document.getElementById('gh-modal').style.display='none';toast('GIF uploads will fail until token is set','err')}
+function resetGhToken(){localStorage.removeItem('ac_gh_token');GH.token='';document.getElementById('gh-token-input').value='';showGhModal()}
+window.onload=()=>{initColorPalette();const s=localStorage.getItem('ac_p');if(s){document.getElementById('auth-pw').value=s;login()}}
 
-// ════════════════════════════════════════════════════════════
-//  TABS
-// ════════════════════════════════════════════════════════════
 function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');btn.classList.add('active')}
 
-// ════════════════════════════════════════════════════════════
-//  LOAD / POLL
-// ════════════════════════════════════════════════════════════
 async function loadManage(){
-  try{const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`);const d=await r.json();if(d.ok){banData=d.banned||[];wlData=d.whitelist||[];execData=d.executing||[];updateStats();renderBans();renderWl();renderExec();renderLive(execData)}}catch{}
+  try{
+    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`);const d=await r.json()
+    if(d.ok){banData=d.banned||[];wlData=d.whitelist||[];execData=d.executing||[];updateStats();renderBans();renderWl();renderExec();renderLive(execData);renderQuickList()}
+  }catch{}
 }
 async function pollAll(){
   try{
@@ -731,626 +460,156 @@ async function pollAll(){
     const [d1,d2]=await Promise.all([r1.json(),r2.json()])
     if(d1.ok){banData=d1.banned||[];wlData=d1.whitelist||[];execData=d1.executing||[]}
     if(d2.ok)tagData=d2.users||{}
-    updateStats();renderLive(execData);renderTags();renderBans();renderWl();renderExec()
+    updateStats();renderLive(execData);renderTags();renderBans();renderWl();renderExec();renderQuickList()
   }catch{}
 }
-
-// Fast poll — only fetches live executing users (lightweight, every 3s)
 async function pollLive(){
-  if(!pass) return
-  try{
-    const r = await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`)
-    const d = await r.json()
-    if(d.ok){
-      execData = d.executing || []
-      document.getElementById('st-live').textContent = execData.length
-      renderLive(execData)
-      renderExec()
-    }
-  }catch{}
+  if(!pass)return
+  try{const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}`);const d=await r.json();if(d.ok){execData=d.executing||[];document.getElementById('st-live').textContent=execData.length;renderLive(execData);renderExec()}}catch{}
 }
-function updateStats(){
-  document.getElementById('st-tags').textContent=Object.keys(tagData).length
-  document.getElementById('st-wl').textContent=wlData.length
-  document.getElementById('st-ban').textContent=banData.length
-  document.getElementById('st-live').textContent=execData.length
-}
+function updateStats(){document.getElementById('st-tags').textContent=Object.keys(tagData).length;document.getElementById('st-wl').textContent=wlData.length;document.getElementById('st-ban').textContent=banData.length;document.getElementById('st-live').textContent=execData.length}
 function renderLive(users){
   const ul=document.getElementById('live-users'),dot=document.getElementById('lstatus'),cnt=document.getElementById('lcnt')
-  const n = users.length
-  cnt.textContent = n > 0 ? `${n} online` : `0 online`
-  dot.className = 'lstatus' + (n > 0 ? ' on' : '')
-  if(n > 0){
-    ul.innerHTML = users.map(u=>
-      `<span class="live-chip">
-        <span class="ldot"></span>
-        <span>${u}</span>
-        <span style="font-size:.7rem;opacity:.5;margin-left:2px">executing</span>
-      </span>`
-    ).join('')
-  } else {
-    ul.innerHTML = '<span style="font-size:.82rem;color:#333;font-style:italic">No one running the script right now</span>'
-  }
-  // Flash the live bar border when count changes
-  const bar = document.querySelector('.live-bar')
-  if(bar && n > 0){
-    bar.style.borderColor = 'rgba(0,255,136,.35)'
-    setTimeout(()=>bar.style.borderColor='', 800)
-  }
+  const n=users.length;cnt.textContent=n>0?`${n} online`:`0 online`;dot.className='lstatus'+(n>0?' on':'')
+  if(n>0){ul.innerHTML=users.map(u=>`<span class="live-chip"><span class="ldot"></span><span>${u}</span><span style="font-size:.7rem;opacity:.5;margin-left:2px">executing</span></span>`).join('')}
+  else{ul.innerHTML='<span style="font-size:.82rem;color:#333;font-style:italic">No one running the script right now</span>'}
+  const bar=document.querySelector('.live-bar')
+  if(bar&&n>0){bar.style.borderColor='rgba(0,255,136,.35)';setTimeout(()=>bar.style.borderColor='',800)}
 }
 
-// ════════════════════════════════════════════════════════════
-//  GIF PROCESSOR
-//  Uses the browser's native <img> + canvas to decode GIF frames
-//  Falls back to static image if not a GIF
-// ════════════════════════════════════════════════════════════
+function onBgInput(){const val=document.getElementById('f-bg').value.trim();document.getElementById('gif-btn').disabled=!val;if(gifData){gifData=null;stopPreviewAnim();document.getElementById('prev-anim-canvas').style.display='none';document.getElementById('sheet-preview').style.display='none';setGifStatus('','')}}
+function setGifStatus(type,msg){const el=document.getElementById('gif-status');el.className=`gif-status ${type}`;el.textContent=msg;el.style.display=type?'flex':'none'}
+function setProgress(pct){const bar=document.getElementById('gif-progress');const inner=document.getElementById('gif-bar');if(pct<0){bar.style.display='none';return};bar.style.display='block';inner.style.width=pct+'%'}
 
-function onBgInput(){
-  const val = document.getElementById('f-bg').value.trim()
-  document.getElementById('gif-btn').disabled = !val
-  // Reset gif data if URL changed
-  if(gifData){
-    gifData = null
-    stopPreviewAnim()
-    document.getElementById('prev-anim-canvas').style.display='none'
-    document.getElementById('sheet-preview').style.display='none'
-    setGifStatus('','')
-  }
-}
+function loadImage(src){return new Promise((res,rej)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>res(img);img.onerror=()=>rej(new Error('Image load failed'));img.src=src})}
 
-function setGifStatus(type, msg){
-  const el = document.getElementById('gif-status')
-  el.className = `gif-status ${type}`
-  el.textContent = msg
-  el.style.display = type ? 'flex' : 'none'
-}
-
-function setProgress(pct){
-  const bar = document.getElementById('gif-progress')
-  const inner = document.getElementById('gif-bar')
-  if(pct < 0){ bar.style.display='none'; return }
-  bar.style.display='block'
-  inner.style.width = pct+'%'
-}
-
-// Decode a GIF into frames using canvas + image element trick
-// Returns array of {imageData, delay} or null if not a GIF
-async function decodeGifFrames(url){
-  // Load raw bytes via fetch (needs CORS or proxy)
-  let bytes
-  try {
-    const resp = await fetch(url)
-    if(!resp.ok) throw new Error('HTTP '+resp.status)
-    bytes = await resp.arrayBuffer()
-  } catch(e) {
-    throw new Error('Could not fetch image: '+e.message+'. Try a direct image URL (ending in .gif or .png) that allows CORS.')
-  }
-
-  const arr = new Uint8Array(bytes)
-
-  // Check if GIF by magic bytes
-  const isGif = arr[0]===0x47 && arr[1]===0x49 && arr[2]===0x46
-
-  if(!isGif){
-    // Static image — just return 1 frame
-    const blob = new Blob([bytes], {type:'image/png'})
-    const burl = URL.createObjectURL(blob)
-    const img  = await loadImage(burl)
-    URL.revokeObjectURL(burl)
-    const c = document.createElement('canvas')
-    c.width=img.width; c.height=img.height
-    c.getContext('2d').drawImage(img,0,0)
-    return [{canvas:c, delay:100}]
-  }
-
-  // Use omggif to parse GIF frames
-  // We'll use a minimal GIF parser inline
-  return await parseGifFrames(bytes)
-}
-
-function loadImage(src){
-  return new Promise((res,rej)=>{
-    const img=new Image()
-    img.crossOrigin='anonymous'
-    img.onload=()=>res(img)
-    img.onerror=()=>rej(new Error('Image load failed'))
-    img.src=src
-  })
-}
-
-// Minimal GIF frame extractor using canvas ImageData
-// Uses the browser's built-in GIF animation via img elements + requestAnimationFrame trick
-async function parseGifFrames(bytes){
-  // Write GIF to blob and use an <img> to get natural dimensions
-  const blob = new Blob([bytes], {type:'image/gif'})
-  const burl = URL.createObjectURL(blob)
-  const img  = await loadImage(burl)
-  const W=img.naturalWidth, H=img.naturalHeight
-
-  // Parse frame count and delays from raw GIF bytes
-  const frames = extractGifMeta(bytes)
-
-  // Now render each frame by seeking the GIF
-  // We use the "multiple img elements" approach: create one <img> per frame delay offset
-  // Since browsers can't seek GIFs, we use a canvas trick:
-  // Draw the img at each frame's cumulative time offset using offscreen canvas + getImageData
-
-  const result = []
-  const tmpC = document.createElement('canvas')
-  tmpC.width=W; tmpC.height=H
-  const tmpCtx = tmpC.getContext('2d')
-
-  // For each frame, we create an img at the right playback offset
-  // using CSS animation-play-state + animation-delay hack
-  for(let i=0;i<frames.length;i++){
-    setProgress(Math.round((i/frames.length)*80))
-    const fc = document.createElement('canvas')
-    fc.width=W; fc.height=H
-    const fctx = fc.getContext('2d')
-
-    // Create a fresh img for this frame's timestamp
-    const fi = new Image()
-    fi.crossOrigin='anonymous'
-    await new Promise(res=>{
-      fi.onload=res
-      fi.src=burl
-    })
-
-    // Use the total cumulative delay to position in animation
-    // Apply via CSS to "seek" the GIF to this frame
-    fi.style.cssText=`
-      position:fixed;left:-9999px;top:-9999px;
-      animation-name:none;
-      animation-duration:${frames.totalDurationMs}ms;
-      animation-delay:-${frames[i].startMs}ms;
-      animation-timing-function:steps(1);
-      animation-iteration-count:1;
-    `
-    document.body.appendChild(fi)
-
-    // Small wait for browser to apply
-    await new Promise(r=>setTimeout(r,16))
-    fctx.drawImage(fi,0,0)
-    document.body.removeChild(fi)
-
-    result.push({canvas:fc, delay: frames[i].delay})
-  }
-
-  URL.revokeObjectURL(burl)
-  setProgress(100)
-  return result
-}
-
-// Parse GIF block structure to extract frame count + delays
 function extractGifMeta(bytes){
-  const frames=[]
-  let i=6 // skip header
-  // Skip logical screen descriptor (7 bytes) + optional global color table
-  const flags=bytes[10]
-  const hasGCT=(flags>>7)&1
-  const gctSize=hasGCT ? 3*(1<<((flags&7)+1)) : 0
-  i = 13 + gctSize
-
-  let currentDelay=100, startMs=0, totalDurationMs=0
-
-  while(i < bytes.length){
-    const block=bytes[i]
-    if(block===0x3B) break // trailer
-
-    if(block===0x21){ // extension
-      const label=bytes[i+1]
-      if(label===0xF9){ // graphic control
-        currentDelay = (bytes[i+4] | (bytes[i+5]<<8)) * 10 || 100
-        i+=8
-      } else {
-        i+=2
-        while(bytes[i]!==0) i+=bytes[i]+1
-        i++
-      }
-    } else if(block===0x2C){ // image descriptor
-      frames.push({delay:currentDelay, startMs})
-      startMs+=currentDelay
-      totalDurationMs+=currentDelay
-      currentDelay=100
-
-      const hasLCT=(bytes[i+9]>>6)&1
-      const lctSize=hasLCT ? 3*(1<<((bytes[i+9]&7)+1)) : 0
-      i+=10+lctSize+1 // skip descriptor + LCT + LZW min code
-      // skip sub-blocks
-      while(bytes[i]!==0) i+=bytes[i]+1
-      i++
-    } else {
-      i++
-    }
-  }
-
-  frames.totalDurationMs=totalDurationMs||1000
-  return frames
+  const frames=[];let i=6;const flags=bytes[10];const hasGCT=(flags>>7)&1;const gctSize=hasGCT?3*(1<<((flags&7)+1)):0;i=13+gctSize
+  let currentDelay=100,startMs=0,totalDurationMs=0
+  while(i<bytes.length){const block=bytes[i];if(block===0x3B)break;if(block===0x21){const label=bytes[i+1];if(label===0xF9){currentDelay=(bytes[i+4]|(bytes[i+5]<<8))*10||100;i+=8}else{i+=2;while(bytes[i]!==0)i+=bytes[i]+1;i++}}else if(block===0x2C){frames.push({delay:currentDelay,startMs});startMs+=currentDelay;totalDurationMs+=currentDelay;currentDelay=100;const hasLCT=(bytes[i+9]>>6)&1;const lctSize=hasLCT?3*(1<<((bytes[i+9]&7)+1)):0;i+=10+lctSize+1;while(bytes[i]!==0)i+=bytes[i]+1;i++}else{i++}}
+  frames.totalDurationMs=totalDurationMs||1000;return frames
 }
 
-// Build sprite sheet from decoded frames
-function buildSpriteSheet(frames, W, H){
-  const COLS = Math.min(frames.length, Math.ceil(Math.sqrt(frames.length * (W/H))))
-  const ROWS = Math.ceil(frames.length / COLS)
-  const sheet = document.createElement('canvas')
-  sheet.width  = W * COLS
-  sheet.height = H * ROWS
-  const ctx = sheet.getContext('2d')
-
-  for(let i=0;i<frames.length;i++){
-    const col = i % COLS
-    const row = Math.floor(i / COLS)
-    ctx.drawImage(frames[i].canvas, col*W, row*H)
-  }
-
-  const fps = Math.round(1000 / (frames.reduce((s,f)=>s+f.delay,0)/frames.length))
-
-  return { sheet, cols:COLS, rows:ROWS, frameW:W, frameH:H, totalFrames:frames.length, fps }
+function buildSpriteSheet(frames,W,H){
+  const COLS=Math.min(frames.length,Math.ceil(Math.sqrt(frames.length*(W/H))));const ROWS=Math.ceil(frames.length/COLS)
+  const sheet=document.createElement('canvas');sheet.width=W*COLS;sheet.height=H*ROWS;const ctx=sheet.getContext('2d')
+  for(let i=0;i<frames.length;i++){const col=i%COLS;const row=Math.floor(i/COLS);ctx.drawImage(frames[i].canvas,col*W,row*H)}
+  const fps=Math.round(1000/(frames.reduce((s,f)=>s+f.delay,0)/frames.length))
+  return{sheet,cols:COLS,rows:ROWS,frameW:W,frameH:H,totalFrames:frames.length,fps}
 }
 
-// Main process function called by button
 async function processGif(){
-  const url = document.getElementById('f-bg').value.trim()
-  if(!url) return
-
-  const btn = document.getElementById('gif-btn')
-  btn.disabled=true; btn.textContent='⏳ Processing...'
-  setGifStatus('loading','Fetching image...')
-  setProgress(0)
-  gifData=null
-  stopPreviewAnim()
-
+  const url=document.getElementById('f-bg').value.trim();if(!url)return
+  const btn=document.getElementById('gif-btn');btn.disabled=true;btn.textContent='⏳ Processing...';setGifStatus('loading','Fetching image...');setProgress(0);gifData=null;stopPreviewAnim()
   try{
-    setGifStatus('loading','Decoding frames...')
-    setProgress(10)
-
-    let frames, W, H
-
-    // Try fetch + decode
-    const resp = await fetch(url).catch(()=>null)
-    if(!resp || !resp.ok) throw new Error('Could not fetch — check URL and CORS. Try a direct .gif URL.')
-
-    const bytes = await resp.arrayBuffer()
-    const arr = new Uint8Array(bytes)
-    const isGif = arr[0]===0x47 && arr[1]===0x49 && arr[2]===0x46
-
+    const resp=await fetch(url).catch(()=>null);if(!resp||!resp.ok)throw new Error('Could not fetch — check URL and CORS. Try a direct .gif URL.')
+    const bytes=await resp.arrayBuffer();const arr=new Uint8Array(bytes);const isGif=arr[0]===0x47&&arr[1]===0x49&&arr[2]===0x46
+    let frames,W,H
     if(isGif){
-      setGifStatus('loading','Parsing GIF structure...')
-      setProgress(20)
-
-      // Get dimensions from img
-      const blob = new Blob([bytes],{type:'image/gif'})
-      const burl = URL.createObjectURL(blob)
-      const img  = await loadImage(burl)
-      W=img.naturalWidth; H=img.naturalHeight
-
-      // Parse frame meta
-      const meta = extractGifMeta(bytes)
-      const frameCount = meta.length
-
-      setGifStatus('loading',`Found ${frameCount} frames — rendering...`)
-      setProgress(30)
-
-      // Render each frame by drawing the GIF at each animation position
+      setGifStatus('loading','Parsing GIF structure...');setProgress(20)
+      const blob=new Blob([bytes],{type:'image/gif'});const burl=URL.createObjectURL(blob);const img=await loadImage(burl);W=img.naturalWidth;H=img.naturalHeight
+      const meta=extractGifMeta(bytes);const frameCount=meta.length
+      setGifStatus('loading',`Found ${frameCount} frames — rendering...`);setProgress(30)
       frames=[]
       for(let fi=0;fi<frameCount;fi++){
-        setProgress(30 + Math.round((fi/frameCount)*55))
-        const fc = document.createElement('canvas')
-        fc.width=W; fc.height=H
-        const fctx=fc.getContext('2d')
-        // Use fresh image object per frame attempt
-        const fimg=new Image()
-        fimg.crossOrigin='anonymous'
-        await new Promise(r=>{fimg.onload=r;fimg.src=burl})
-        fimg.style.cssText=`position:fixed;visibility:hidden;left:0;top:0;animation-name:none`
-        document.body.appendChild(fimg)
-        await new Promise(r=>setTimeout(r,20))
-        fctx.drawImage(fimg,0,0)
-        document.body.removeChild(fimg)
-        frames.push({canvas:fc, delay:meta[fi]?.delay||100})
+        setProgress(30+Math.round((fi/frameCount)*55))
+        const fc=document.createElement('canvas');fc.width=W;fc.height=H;const fctx=fc.getContext('2d')
+        const fimg=new Image();fimg.crossOrigin='anonymous';await new Promise(r=>{fimg.onload=r;fimg.src=burl})
+        fimg.style.cssText=`position:fixed;visibility:hidden;left:0;top:0;animation-name:none`;document.body.appendChild(fimg);await new Promise(r=>setTimeout(r,20));fctx.drawImage(fimg,0,0);document.body.removeChild(fimg)
+        frames.push({canvas:fc,delay:meta[fi]?.delay||100})
       }
       URL.revokeObjectURL(burl)
-
-    } else {
-      // Static image
-      setGifStatus('loading','Loading static image...')
-      setProgress(50)
-      const blob=new Blob([bytes])
-      const burl=URL.createObjectURL(blob)
-      const img=await loadImage(burl)
-      URL.revokeObjectURL(burl)
-      W=img.naturalWidth; H=img.naturalHeight
-      const fc=document.createElement('canvas')
-      fc.width=W; fc.height=H
-      fc.getContext('2d').drawImage(img,0,0)
-      frames=[{canvas:fc,delay:100}]
+    }else{
+      setGifStatus('loading','Loading static image...');setProgress(50)
+      const blob=new Blob([bytes]);const burl=URL.createObjectURL(blob);const img=await loadImage(burl);URL.revokeObjectURL(burl);W=img.naturalWidth;H=img.naturalHeight
+      const fc=document.createElement('canvas');fc.width=W;fc.height=H;fc.getContext('2d').drawImage(img,0,0);frames=[{canvas:fc,delay:100}]
     }
-
-    setProgress(90)
-    setGifStatus('loading','Building sprite sheet...')
-
-    const result = buildSpriteSheet(frames, W, H)
-
-    // Convert to blob/dataUrl
-    const dataUrl = result.sheet.toDataURL('image/png')
-    const sheetBlob = await new Promise(res=>result.sheet.toBlob(res,'image/png'))
-
-    gifData = {
-      sheetDataUrl: dataUrl,
-      sheetBlob,
-      frameW: result.frameW,
-      frameH: result.frameH,
-      cols:   result.cols,
-      rows:   result.rows,
-      totalFrames: result.totalFrames,
-      fps:    result.fps,
-      frames
-    }
-
-    setProgress(100)
-    setGifStatus('ok',`✓ ${result.totalFrames} frames · ${result.cols}×${result.rows} grid · ${result.fps}fps · ${result.frameW}×${result.frameH}px per frame`)
-    setTimeout(()=>setProgress(-1),1200)
-
-    // Show mini sheet preview
-    const sp = document.getElementById('sheet-preview')
-    const sc2 = document.getElementById('sheet-canvas')
-    const previewH = 80
-    const previewW = Math.round(result.sheet.width * (previewH / result.sheet.height))
-    sc2.width=previewW; sc2.height=previewH
-    sc2.getContext('2d').drawImage(result.sheet,0,0,previewW,previewH)
-    document.getElementById('sheet-meta').innerHTML=
-      `Sheet: ${result.sheet.width}×${result.sheet.height}px &nbsp;·&nbsp; ${result.totalFrames} frames &nbsp;·&nbsp; ${result.cols} cols × ${result.rows} rows &nbsp;·&nbsp; ${result.fps} fps`
-    sp.style.display='block'
-
-    // Start preview animation
-    startPreviewAnim(frames, W, H)
-
-    toast(`✓ GIF processed — ${result.totalFrames} frames ready`,'ok')
-
-  } catch(e){
-    setGifStatus('err','⚠ '+e.message)
-    setProgress(-1)
-    console.error(e)
-    toast('GIF process failed','err')
-  }
-
-  btn.disabled=false; btn.textContent='⚙ Process'
+    setProgress(90);setGifStatus('loading','Building sprite sheet...')
+    const result=buildSpriteSheet(frames,W,H)
+    const dataUrl=result.sheet.toDataURL('image/png');const sheetBlob=await new Promise(res=>result.sheet.toBlob(res,'image/png'))
+    gifData={sheetDataUrl:dataUrl,sheetBlob,frameW:result.frameW,frameH:result.frameH,cols:result.cols,rows:result.rows,totalFrames:result.totalFrames,fps:result.fps,frames}
+    setProgress(100);setGifStatus('ok',`✓ ${result.totalFrames} frames · ${result.cols}×${result.rows} grid · ${result.fps}fps · ${result.frameW}×${result.frameH}px per frame`);setTimeout(()=>setProgress(-1),1200)
+    const sp=document.getElementById('sheet-preview');const sc2=document.getElementById('sheet-canvas');const previewH=80;const previewW=Math.round(result.sheet.width*(previewH/result.sheet.height));sc2.width=previewW;sc2.height=previewH;sc2.getContext('2d').drawImage(result.sheet,0,0,previewW,previewH);document.getElementById('sheet-meta').innerHTML=`Sheet: ${result.sheet.width}×${result.sheet.height}px &nbsp;·&nbsp; ${result.totalFrames} frames &nbsp;·&nbsp; ${result.cols} cols × ${result.rows} rows &nbsp;·&nbsp; ${result.fps} fps`;sp.style.display='block'
+    startPreviewAnim(frames,W,H);toast(`✓ GIF processed — ${result.totalFrames} frames ready`,'ok')
+  }catch(e){setGifStatus('err','⚠ '+e.message);setProgress(-1);console.error(e);toast('GIF process failed','err')}
+  btn.disabled=false;btn.textContent='⚙ Process'
 }
 
-// ── Preview animation in the nametag ─────────────────────
-function startPreviewAnim(frames, W, H){
-  stopPreviewAnim()
-  const cv = document.getElementById('prev-anim-canvas')
-  const ctx = cv.getContext('2d')
-  cv.style.display='block'
-  cv.style.opacity='0.35'
+function startPreviewAnim(frames,W,H){stopPreviewAnim();const cv=document.getElementById('prev-anim-canvas');const ctx=cv.getContext('2d');cv.style.display='block';cv.style.opacity='0.35';let frame=0;function step(){const f=frames[frame];cv.width=cv.offsetWidth||200;cv.height=cv.offsetHeight||40;ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(f.canvas,0,0,cv.width,cv.height);frame=(frame+1)%frames.length;previewAnimInterval=setTimeout(step,f.delay)};step()}
+function stopPreviewAnim(){if(previewAnimInterval){clearTimeout(previewAnimInterval);previewAnimInterval=null}}
 
-  let frame=0
-  function step(){
-    const f = frames[frame]
-    cv.width=cv.offsetWidth||200; cv.height=cv.offsetHeight||40
-    ctx.clearRect(0,0,cv.width,cv.height)
-    ctx.drawImage(f.canvas, 0,0, cv.width, cv.height)
-    frame=(frame+1)%frames.length
-    previewAnimInterval = setTimeout(step, f.delay)
-  }
-  step()
-}
-function stopPreviewAnim(){
-  if(previewAnimInterval){ clearTimeout(previewAnimInterval); previewAnimInterval=null }
-}
-
-// ════════════════════════════════════════════════════════════
-//  PREVIEW (pfp / tag text)
-// ════════════════════════════════════════════════════════════
 function updatePreview(){
-  const tag=document.getElementById('f-tag').value||'AC USER'
-  const user=document.getElementById('f-user').value||'username'
-  const tagEl = document.getElementById('prev-tag')
-
-  if(effects.glitched){
-    tagEl.style.animation='glitch 0.4s infinite'
-  } else if(effects.typewriter){
-    tagEl.style.animation='none'
-    tagEl.style.borderRight='2px solid rgba(255,255,255,.7)'
-    tagEl.style.overflow='hidden'
-    tagEl.style.whiteSpace='nowrap'
-    tagEl.style.width='0'
-    void tagEl.offsetWidth
-    tagEl.style.animation='typewriter 1.2s steps(20) forwards'
-  } else {
-    tagEl.style.animation=''
-    tagEl.style.borderRight=''
-    tagEl.style.overflow=''
-    tagEl.style.whiteSpace=''
-    tagEl.style.width=''
-  }
-  tagEl.textContent = tag
-
-  document.getElementById('prev-user').textContent='@'+user
-
-  // PFP
-  const pfpVal=document.getElementById('f-pfp').value.trim()
-  const pi=document.getElementById('prev-pfp')
-  if(pfpVal){
-    pi.src=pfpVal.startsWith('http')?pfpVal:`https://assetdelivery.roblox.com/v1/asset/?id=${pfpVal}`
-    pi.style.display='block'
-    pi.onerror=()=>pi.style.display='none'
-  } else {
-    pi.style.display='none'
-  }
-
+  const tag=document.getElementById('f-tag').value||'AC USER';const user=document.getElementById('f-user').value||'username';const tagEl=document.getElementById('prev-tag')
+  if(effects.glitched){tagEl.style.animation='glitch 0.4s infinite'}else if(effects.typewriter){tagEl.style.animation='none';tagEl.style.borderRight='2px solid rgba(255,255,255,.7)';tagEl.style.overflow='hidden';tagEl.style.whiteSpace='nowrap';tagEl.style.width='0';void tagEl.offsetWidth;tagEl.style.animation='typewriter 1.2s steps(20) forwards'}else{tagEl.style.animation='';tagEl.style.borderRight='';tagEl.style.overflow='';tagEl.style.whiteSpace='';tagEl.style.width=''}
+  tagEl.textContent=tag;document.getElementById('prev-user').textContent='@'+user
+  const pfpVal=document.getElementById('f-pfp').value.trim();const pi=document.getElementById('prev-pfp')
+  if(pfpVal){pi.src=pfpVal.startsWith('http')?pfpVal:`https://assetdelivery.roblox.com/v1/asset/?id=${pfpVal}`;pi.style.display='block';pi.onerror=()=>pi.style.display='none'}else{pi.style.display='none'}
   applyPreviewGlow(glowColor)
-
-  // Update info grid
-  const bgVal = document.getElementById('f-bg').value.trim()
-  const q = s => document.getElementById(s)
-  q('pi-user').textContent = user === 'username' ? '—' : user
-  q('pi-tag').textContent  = tag === 'AC USER'   ? '—' : tag
-  q('pi-pfp').textContent  = pfpVal ? '✓ Set' : 'Not set'
-  q('pi-pfp').className    = 'prev-info-val ' + (pfpVal ? 'active' : 'inactive')
-  q('pi-bg').textContent   = bgVal ? (gifData ? '🎞 GIF ready' : '🖼 Static') : 'Not set'
-  q('pi-bg').className     = 'prev-info-val ' + (bgVal ? 'active' : 'inactive')
-  q('pi-glow').textContent = glowColor
-  q('pi-glow').style.color = glowColor
-  const activeEffects = Object.entries(effects).filter(([k,v])=>v===true).map(([k])=>({
-    glitched:'⚡Glitch',typewriter:'⌨ Type',animProfile:'🖼 PFP',animBg:'🎞 BG',tagEffects:'✨ FX'
-  }[k]||k)).filter(Boolean)
-  q('pi-effects').textContent = activeEffects.length ? activeEffects.join(' · ') : 'None'
-  q('pi-effects').className = 'prev-info-val ' + (activeEffects.length ? 'active' : 'inactive')
+  const bgVal=document.getElementById('f-bg').value.trim();const q=s=>document.getElementById(s)
+  q('pi-user').textContent=user==='username'?'—':user;q('pi-tag').textContent=tag==='AC USER'?'—':tag
+  q('pi-pfp').textContent=pfpVal?'✓ Set':'Not set';q('pi-pfp').className='prev-info-val '+(pfpVal?'active':'inactive')
+  q('pi-bg').textContent=bgVal?(gifData?'🎞 GIF ready':'🖼 Static'):'Not set';q('pi-bg').className='prev-info-val '+(bgVal?'active':'inactive')
+  q('pi-glow').textContent=glowColor;q('pi-glow').style.color=glowColor
+  const activeEffects=Object.entries(effects).filter(([k,v])=>v===true).map(([k])=>({glitched:'⚡Glitch',typewriter:'⌨ Type',animProfile:'🖼 PFP',animBg:'🎞 BG',tagEffects:'✨ FX'}[k]||k)).filter(Boolean)
+  q('pi-effects').textContent=activeEffects.length?activeEffects.join(' · '):'None';q('pi-effects').className='prev-info-val '+(activeEffects.length?'active':'inactive')
 }
 
-// ════════════════════════════════════════════════════════════
-//  SAVE TAG
-//  Uploads the sprite sheet PNG to your API, stores metadata
-// ════════════════════════════════════════════════════════════
 async function saveTag(){
-  const username=document.getElementById('f-user').value.trim()
-  const tag=document.getElementById('f-tag').value.trim()
-  const pfpId=document.getElementById('f-pfp').value.trim()
-
+  const username=document.getElementById('f-user').value.trim();const tag=document.getElementById('f-tag').value.trim();const pfpId=document.getElementById('f-pfp').value.trim()
   if(!username||!tag){toast('Username and tag required','err');return}
-
   document.getElementById('save-spin').style.display='inline-block'
-
-  let bgId = document.getElementById('f-bg').value.trim()
-  let animMeta = null
-
-  // If GIF was processed, upload sprite sheet to GitHub and store the raw URL
+  let bgId=document.getElementById('f-bg').value.trim();let animMeta=null
   if(gifData){
     try{
       setGifStatus('loading','Uploading sprite sheet to GitHub...')
-      const filename = `${username.toLowerCase().replace(/[^a-z0-9]/g,'_')}_${Date.now()}.png`
-      const rawUrl   = await uploadToGitHub(gifData.sheetBlob, filename)
-      bgId = rawUrl
-      animMeta = {
-        sheetUrl:    rawUrl,
-        frameW:      gifData.frameW,
-        frameH:      gifData.frameH,
-        cols:        gifData.cols,
-        totalFrames: gifData.totalFrames,
-        fps:         gifData.fps
-      }
+      const filename=`${username.toLowerCase().replace(/[^a-z0-9]/g,'_')}_${Date.now()}.png`
+      const rawUrl=await uploadToGitHub(gifData.sheetBlob,filename)
+      bgId=rawUrl;animMeta={sheetUrl:rawUrl,frameW:gifData.frameW,frameH:gifData.frameH,cols:gifData.cols,totalFrames:gifData.totalFrames,fps:gifData.fps}
       setGifStatus('ok',`✓ Uploaded to GitHub → ${filename}`)
-    } catch(e){
-      console.error('GitHub upload error:', e)
-      toast('GitHub upload failed: '+e.message, 'err')
-      setGifStatus('err','Upload failed — '+e.message)
-      document.getElementById('save-spin').style.display='none'
-      return
-    }
+    }catch(e){console.error('GitHub upload error:',e);toast('GitHub upload failed: '+e.message,'err');setGifStatus('err','Upload failed — '+e.message);document.getElementById('save-spin').style.display='none';return}
   }
-
-  const body = {auth:pass, action:'set', username, tag, pfpId, bgId, effects:getEffectsFromForm()}
-  if(animMeta) body.animMeta = animMeta
-
-  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-  const d=await r.json()
-
-  if(d.ok){
-    tagData=d.users||{}
-    renderTags()
-    clearTagForm()
-    toast(`✓ ${username} saved — updates in-game within 10s`,'ok')
-  } else {
-    toast(d.error||'Failed','err')
-  }
-
+  const body={auth:pass,action:'set',username,tag,pfpId,bgId,effects:getEffectsFromForm()};if(animMeta)body.animMeta=animMeta
+  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json()
+  if(d.ok){tagData=d.users||{};renderTags();renderQuickList();clearTagForm();toast(`✓ ${username} saved — updates in-game within 10s`,'ok')}else{toast(d.error||'Failed','err')}
   document.getElementById('save-spin').style.display='none'
 }
 
-// ════════════════════════════════════════════════════════════
-//  TAG LIST
-// ════════════════════════════════════════════════════════════
-async function deleteTag(u){if(!confirm(`Remove tag for ${u}?`))return;const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username:u})});const d=await r.json();if(d.ok){tagData=d.users||{};renderTags();toast(`${u} removed`,'ok')}}
+async function deleteTag(u){if(!confirm(`Remove tag for ${u}?`))return;const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username:u})});const d=await r.json();if(d.ok){tagData=d.users||{};renderTags();renderQuickList();toast(`${u} removed`,'ok')}}
+
 function editTag(u){
-  const d=tagData[u]
-  document.getElementById('f-user').value=u
-  document.getElementById('f-tag').value=d.tag
-  document.getElementById('f-pfp').value=d.pfpId||''
-  document.getElementById('f-bg').value=d.bgId||''
-  document.getElementById('form-title').textContent='Editing: '+u
-  document.getElementById('clear-btn').style.display='inline-flex'
-  // Restore effects toggles + glow color
-  const userEffects = d.effects || {}
-  effects = {glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false, ...userEffects}
-  Object.keys(effects).forEach(k=>{
-    const sw=document.getElementById('tog-'+k)
-    if(!sw) return
-    sw.className='toggle-switch'+(effects[k]?' on':'')
-    const row=sw.closest('.toggle-row')
-    if(row) row.className='toggle-row'+(effects[k]?' tog-active':'')
-  })
-  // Load glow color — from effects, or fall back to in-game default purple
-  const savedGlow = (userEffects.glowColor && userEffects.glowColor !== '') ? userEffects.glowColor : '#960096'
-  glowColor = savedGlow
-  document.getElementById('f-custom-color').value = savedGlow
-  // Try to match a preset swatch
-  document.querySelectorAll('.color-swatch').forEach(s=>{
-    const swColor = s.style.backgroundColor
-    // Convert hex to compare
-    const swHex = s.getAttribute('onclick')?.match(/'(#[0-9a-fA-F]{6})'/)?.[1]
-    s.classList.toggle('selected', swHex === savedGlow.toLowerCase())
-  })
-  applyPreviewGlow(savedGlow)
-  updatePreview()
-  if(d.animMeta){
-    const m=d.animMeta
-    setGifStatus('ok',`✓ ${m.totalFrames} frames · ${m.cols} cols · ${m.fps}fps · ${m.frameW}×${m.frameH}px`)
-  }
+  const d=tagData[u];document.getElementById('f-user').value=u;document.getElementById('f-tag').value=d.tag;document.getElementById('f-pfp').value=d.pfpId||'';document.getElementById('f-bg').value=d.bgId||''
+  document.getElementById('form-title').textContent='Editing: '+u;document.getElementById('clear-btn').style.display='inline-flex'
+  const userEffects=d.effects||{}
+  effects={glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false,...userEffects}
+  Object.keys(effects).forEach(k=>{const sw=document.getElementById('tog-'+k);if(!sw)return;sw.className='toggle-switch'+(effects[k]?' on':'');const row=sw.closest('.toggle-row');if(row)row.className='toggle-row'+(effects[k]?' tog-active':'')})
+  const savedGlow=(userEffects.glowColor&&userEffects.glowColor!=='')?userEffects.glowColor:'#960096'
+  glowColor=savedGlow;document.getElementById('f-custom-color').value=savedGlow
+  document.querySelectorAll('.color-swatch').forEach(s=>{const swHex=s.getAttribute('onclick')?.match(/'(#[0-9a-fA-F]{6})'/)?.[1];s.classList.toggle('selected',swHex===savedGlow.toLowerCase())})
+  applyPreviewGlow(savedGlow);updatePreview()
+  if(d.animMeta){const m=d.animMeta;setGifStatus('ok',`✓ ${m.totalFrames} frames · ${m.cols} cols · ${m.fps}fps · ${m.frameW}×${m.frameH}px`)}
   window.scrollTo({top:0,behavior:'smooth'})
 }
+
 function clearTagForm(){
   ['f-user','f-tag','f-pfp','f-bg'].forEach(id=>document.getElementById(id).value='')
-  document.getElementById('form-title').textContent='Add Tag User'
-  document.getElementById('clear-btn').style.display='none'
-  document.getElementById('gif-btn').disabled=true
-  document.getElementById('sheet-preview').style.display='none'
-  setGifStatus('','')
-  setProgress(-1)
-  gifData=null
-  stopPreviewAnim()
-  document.getElementById('prev-anim-canvas').style.display='none'
-  // Reset effects
+  document.getElementById('form-title').textContent='Add Tag User';document.getElementById('clear-btn').style.display='none'
+  document.getElementById('gif-btn').disabled=true;document.getElementById('sheet-preview').style.display='none';setGifStatus('','');setProgress(-1);gifData=null;stopPreviewAnim();document.getElementById('prev-anim-canvas').style.display='none'
   effects={glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false}
   Object.keys(effects).forEach(k=>{const el=document.getElementById('tog-'+k);if(el)el.className='toggle-switch'})
-  glowColor='#0066ff'
-  document.getElementById('f-custom-color').value='#0066ff'
-  initColorPalette()
-  applyPreviewGlow('#0066ff')
-  updatePreview()
+  glowColor='#0066ff';document.getElementById('f-custom-color').value='#0066ff';initColorPalette();applyPreviewGlow('#0066ff');updatePreview()
 }
+
 function renderTags(q=''){
   const keys=Object.keys(tagData).filter(k=>!q||k.toLowerCase().includes(q.toLowerCase()))
   const el=document.getElementById('tag-list');updateStats()
   if(!keys.length){el.innerHTML=`<div class="empty"><div class="empty-icon">🏷</div>${q?'No matches':'No tag users yet'}</div>`;return}
   el.innerHTML=keys.map(u=>{
-    const d=tagData[u]
-    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):''
-    const hasAnim=!!d.animMeta
-    const gc = (d.effects&&d.effects.glowColor&&d.effects.glowColor!=='') ? d.effects.glowColor : '#960096'
-    const glowDot = `<span style="width:8px;height:8px;border-radius:50%;background:${gc};box-shadow:0 0 6px ${gc};display:inline-block;flex-shrink:0" title="Glow: ${gc}"></span>`
-    return`<div class="urow">
-      <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
-      <div class="urow-info">
-        <div class="urow-name">${u}</div>
-        <div class="urow-meta" style="display:flex;align-items:center;gap:6px">
-          ${d.pfpId?'Has PFP':'No PFP'} · ${hasAnim?`Animated ${d.animMeta.totalFrames}fr`:(d.bgId?'Has BG':'No BG')}
-          ${glowDot}
-        </div>
-      </div>
-      ${hasAnim?`<span class="chip chip-anim">🎞 GIF</span>`:`<span class="chip chip-acc">${d.tag||'—'}</span>`}
-      <div class="urow-actions">
-        <button class="btn btn-ghost btn-sm" onclick="editTag('${u}')">Edit</button>
-        <button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button>
-      </div>
-    </div>`
+    const d=tagData[u];const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';const hasAnim=!!d.animMeta;const gc=(d.effects&&d.effects.glowColor&&d.effects.glowColor!=='')?d.effects.glowColor:'#960096'
+    const glowDot=`<span style="width:8px;height:8px;border-radius:50%;background:${gc};box-shadow:0 0 6px ${gc};display:inline-block;flex-shrink:0" title="Glow: ${gc}"></span>`
+    return`<div class="urow"><div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta" style="display:flex;align-items:center;gap:6px">${d.pfpId?'Has PFP':'No PFP'} · ${hasAnim?`Animated ${d.animMeta.totalFrames}fr`:(d.bgId?'Has BG':'No BG')} ${glowDot}</div></div>${hasAnim?`<span class="chip chip-anim">🎞 GIF</span>`:`<span class="chip chip-acc">${d.tag||'—'}</span>`}<div class="urow-actions"><button class="btn btn-ghost btn-sm" onclick="editTag('${u}')">Edit</button><button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button></div></div>`
   }).join('')
 }
 
-// ════════════════════════════════════════════════════════════
-//  EXEC / BANS / WHITELIST (unchanged)
-// ════════════════════════════════════════════════════════════
 function renderExec(){const el=document.getElementById('exec-list');if(!execData.length){el.innerHTML='<div class="empty"><div class="empty-icon">👾</div>No one executing right now</div>';return};el.innerHTML=execData.map(u=>`<div class="urow"><div class="urow-icon">👾</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Currently running the script</div></div><span class="chip chip-live">ONLINE</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="quickBan('${u}')">🚫 Ban</button></div></div>`).join('')}
 async function banUser(u){const un=u||document.getElementById('ban-user').value.trim();if(!un){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_add',username:un})});const d=await r.json();if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`🚫 ${un} banned`,'ok');document.getElementById('ban-user').value=''}else toast(d.error||'Failed','err')}
 function quickBan(u){banUser(u)}
@@ -1359,87 +618,38 @@ function renderBans(q=''){const el=document.getElementById('ban-list');const lis
 async function wlAdd(){const u=document.getElementById('wl-user').value.trim();if(!u){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_add',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`✅ ${u} whitelisted`,'ok');document.getElementById('wl-user').value=''}else toast(d.error||'Failed','err')}
 async function wlRemove(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_remove',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`${u} removed from whitelist`,'ok')}}
 function renderWl(q=''){const el=document.getElementById('wl-list');const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')}
-// ════════════════════════════════════════════════════════════
-//  QUICK ADD — adds user with default tag, or shows existing
-// ════════════════════════════════════════════════════════════
+
 async function quickAdd(){
-  const username = document.getElementById('qa-user').value.trim()
-  if(!username){ toast('Enter a username','err'); return }
-
-  const qs = document.getElementById('qa-status')
-  qs.style.display='block'
-  qs.style.background='rgba(0,150,255,.07)'
-  qs.style.border='1px solid rgba(0,150,255,.2)'
-  qs.style.color='#60b8ff'
-  qs.textContent='Checking...'
-
-  // Check if already in tag system
+  const username=document.getElementById('qa-user').value.trim();if(!username){toast('Enter a username','err');return}
+  const qs=document.getElementById('qa-status');qs.style.display='block';qs.style.background='rgba(0,150,255,.07)';qs.style.border='1px solid rgba(0,150,255,.2)';qs.style.color='#60b8ff';qs.textContent='Checking...'
   if(tagData[username]){
-    qs.style.background='rgba(0,200,100,.07)'
-    qs.style.border='1px solid rgba(0,200,100,.2)'
-    qs.style.color='#4ade80'
+    qs.style.background='rgba(0,200,100,.07)';qs.style.border='1px solid rgba(0,200,100,.2)';qs.style.color='#4ade80'
     qs.textContent=`✓ ${username} already has tag: "${tagData[username].tag}" — visible to all script users`
-    document.getElementById('qa-user').value=''
-    renderQuickList()
-    return
+    document.getElementById('qa-user').value='';renderQuickList();return
   }
-
-  // Add with default AC USER tag — no pfp, no bg, just the tag
-  const r = await fetch(TAGS_API,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      auth: pass,
-      action: 'set',
-      username,
-      tag: 'AC USER',
-      pfpId: '',
-      bgId: '',
-      effects: { glowColor: '#960096' },
-      quickAdded: true
-    })
-  })
-  const d = await r.json()
+  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set',username,tag:'AC USER',pfpId:'',bgId:'',effects:{glowColor:'#960096'},quickAdded:true})})
+  const d=await r.json()
   if(d.ok){
-    tagData = d.users || {}
-    qs.style.background='rgba(0,200,100,.07)'
-    qs.style.border='1px solid rgba(0,200,100,.2)'
-    qs.style.color='#4ade80'
+    tagData=d.users||{};qs.style.background='rgba(0,200,100,.07)';qs.style.border='1px solid rgba(0,200,100,.2)';qs.style.color='#4ade80'
     qs.textContent=`✓ ${username} added — their nametag will show for all script users when they execute`
-    document.getElementById('qa-user').value=''
-    renderQuickList()
-    renderTags()
-    updateStats()
-    toast(`⚡ ${username} quick-added`,'ok')
-  } else {
-    qs.style.background='rgba(220,60,60,.07)'
-    qs.style.border='1px solid rgba(220,60,60,.2)'
-    qs.style.color='#f87171'
-    qs.textContent='Failed: ' + (d.error||'Unknown error')
-    toast('Failed','err')
-  }
+    document.getElementById('qa-user').value='';renderQuickList();renderTags();updateStats();toast(`⚡ ${username} quick-added`,'ok')
+  }else{qs.style.background='rgba(220,60,60,.07)';qs.style.border='1px solid rgba(220,60,60,.2)';qs.style.color='#f87171';qs.textContent='Failed: '+(d.error||'Unknown error');toast('Failed','err')}
 }
 
+// ── FIX: Shows ALL users in the tag system (not just quickAdded ones) ─────────
 function renderQuickList(q=''){
-  const el = document.getElementById('qa-list')
-  if(!el) return
-  const keys = Object.keys(tagData).filter(u=>
-    (!q || u.toLowerCase().includes(q.toLowerCase()))
-  )
-  if(!keys.length){
-    el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div>No users added yet</div>'
-    return
-  }
-  el.innerHTML = keys.map(u => {
-    const d = tagData[u]
-    const gc = (d.effects&&d.effects.glowColor) ? d.effects.glowColor : '#960096'
-    const pfpUrl = d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):''
-    return `<div class="urow">
+  const el=document.getElementById('qa-list');if(!el)return
+  const keys=Object.keys(tagData).filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()))
+  if(!keys.length){el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div>No users in system yet</div>';return}
+  el.innerHTML=keys.map(u=>{
+    const d=tagData[u];const gc=(d.effects&&d.effects.glowColor)?d.effects.glowColor:'#960096'
+    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';const hasAnim=!!d.animMeta
+    return`<div class="urow">
       <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
       <div class="urow-info">
         <div class="urow-name">${u}</div>
         <div class="urow-meta" style="display:flex;align-items:center;gap:6px">
-          ${d.tag}
+          ${d.tag} · ${hasAnim?`🎞 ${d.animMeta.totalFrames}fr`:(d.bgId?'Has BG':'No BG')}
           <span style="width:7px;height:7px;border-radius:50%;background:${gc};box-shadow:0 0 5px ${gc};display:inline-block" title="${gc}"></span>
         </div>
       </div>
@@ -1453,31 +663,15 @@ function renderQuickList(q=''){
 
 function toast(msg,type){const e=document.getElementById('toast');e.textContent=msg;e.className=`show ${type||''}`;setTimeout(()=>e.className='',3500)}
 </script>
-
-<!-- GITHUB TOKEN MODAL -->
 <div id="gh-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);align-items:center;justify-content:center">
   <div style="background:#0e0e14;border:1px solid #2a2a3a;border-radius:16px;padding:40px 36px;width:min(420px,92vw);text-align:center;box-shadow:0 0 60px rgba(0,80,255,.15)">
     <div style="font-size:2rem;margin-bottom:10px">🔑</div>
     <div style="font-size:1.2rem;color:#fff;margin-bottom:8px;font-family:'Coming Soon',cursive">GitHub Token</div>
-    <div style="font-size:.82rem;color:#555;margin-bottom:24px;line-height:1.6">
-      Enter your GitHub Personal Access Token.<br>
-      Saved only in your browser — never in the code.
-    </div>
-    <input type="password" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxx"
-      style="width:100%;background:#08080f;border:1px solid #1e1e2e;border-radius:8px;padding:12px 16px;color:#fff;font-size:.95rem;font-family:'Coming Soon',cursive;outline:none;text-align:center;letter-spacing:2px;margin-bottom:8px;transition:border-color .2s;box-sizing:border-box"
-      onfocus="this.style.borderColor='#334'" onblur="this.style.borderColor='#1e1e2e'"
-      onkeydown="if(event.key==='Enter')saveGhToken()"/>
+    <div style="font-size:.82rem;color:#555;margin-bottom:24px;line-height:1.6">Enter your GitHub Personal Access Token.<br>Saved only in your browser — never in the code.</div>
+    <input type="password" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxx" style="width:100%;background:#08080f;border:1px solid #1e1e2e;border-radius:8px;padding:12px 16px;color:#fff;font-size:.95rem;font-family:'Coming Soon',cursive;outline:none;text-align:center;letter-spacing:2px;margin-bottom:8px;transition:border-color .2s;box-sizing:border-box" onfocus="this.style.borderColor='#334'" onblur="this.style.borderColor='#1e1e2e'" onkeydown="if(event.key==='Enter')saveGhToken()"/>
     <div style="font-size:.72rem;color:#333;margin-bottom:20px">Needs <code style="color:#555">repo</code> scope · Generate at github.com/settings/tokens</div>
-    <button onclick="saveGhToken()"
-      style="width:100%;padding:11px;background:linear-gradient(135deg,#1a1a4a,#0d0d2e);color:#fff;border:1px solid rgba(100,130,255,.4);border-radius:9px;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;margin-bottom:8px;transition:all .15s"
-      onmouseover="this.style.borderColor='rgba(150,180,255,.6)'" onmouseout="this.style.borderColor='rgba(100,130,255,.4)'">
-      Save Token →
-    </button>
-    <button onclick="skipGhToken()"
-      style="width:100%;padding:9px;background:transparent;color:#444;border:1px solid #1a1a22;border-radius:9px;font-family:'Coming Soon',cursive;font-size:.82rem;cursor:pointer;transition:all .15s"
-      onmouseover="this.style.color='#888'" onmouseout="this.style.color='#444'">
-      Skip for now
-    </button>
+    <button onclick="saveGhToken()" style="width:100%;padding:11px;background:linear-gradient(135deg,#1a1a4a,#0d0d2e);color:#fff;border:1px solid rgba(100,130,255,.4);border-radius:9px;font-family:'Coming Soon',cursive;font-size:.95rem;cursor:pointer;margin-bottom:8px;transition:all .15s" onmouseover="this.style.borderColor='rgba(150,180,255,.6)'" onmouseout="this.style.borderColor='rgba(100,130,255,.4)'">Save Token →</button>
+    <button onclick="skipGhToken()" style="width:100%;padding:9px;background:transparent;color:#444;border:1px solid #1a1a22;border-radius:9px;font-family:'Coming Soon',cursive;font-size:.82rem;cursor:pointer;transition:all .15s" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#444'">Skip for now</button>
   </div>
 </div>
 </body>
