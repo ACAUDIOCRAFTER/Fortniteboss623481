@@ -519,7 +519,8 @@ function login(){
       tagData=d.users||{}
       loadManage();renderTags();renderQuickList()
       // FIX: poll every 2s for live users (was 5s — too slow for real-time)
-      setInterval(pollLive, 2000)
+      pollLive()
+      setInterval(pollLive, 1500)
       setInterval(pollAll, 8000)
       loadDmGifs()
       if(!GH.token){setTimeout(()=>showGhModal(),600)}
@@ -634,13 +635,18 @@ async function pollLive(){
   if(!pass) return
   const start=Date.now()
   try{
-    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${start}`)
+    // Cache-busting + no-cache headers to ensure fresh data every poll
+    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${start}`, {
+      cache: 'no-store',
+      headers: {'Cache-Control': 'no-cache', 'Pragma': 'no-cache'}
+    })
     const d=await r.json()
     if(d.ok){
       execData=d.executing||[]
       document.getElementById('st-live').textContent=execData.length
+      document.getElementById('st-ban').textContent=(d.banned||[]).length
+      document.getElementById('st-wl').textContent=(d.whitelist||[]).length
       renderLive(execData);renderExec()
-      // Show ping time
       const ping=Date.now()-start
       const pingEl=document.getElementById('live-ping')
       pingEl.textContent=ping+'ms'; pingEl.className='live-ping active'
