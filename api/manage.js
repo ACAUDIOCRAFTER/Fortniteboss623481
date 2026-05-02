@@ -32,10 +32,12 @@ export default async function handler(req, res) {
         await fetch(`${url}/set/${key}/${encoded}`, { method: 'POST', headers: hdrs });
     }
 
-    async function getBans()     { return (await kvGet('ac_banned'))    || []; }
-    async function getWl()       { return (await kvGet('ac_whitelist')) || []; }
-    async function getExecMap()  { return (await kvGet('ac_executing')) || {}; }
-    async function setExecMap(m) { await kvSet('ac_executing', m); }
+    async function getBans()      { return (await kvGet('ac_banned'))     || []; }
+    async function getWl()        { return (await kvGet('ac_whitelist'))  || []; }
+    async function getExecMap()   { return (await kvGet('ac_executing'))  || {}; }
+    async function getAllUsers()   { return (await kvGet('ac_all_users'))  || {}; }
+    async function setExecMap(m)  { await kvSet('ac_executing', m); }
+    async function setAllUsers(m) { await kvSet('ac_all_users', m); }
 
     function liveUsers(map) {
         const now = Date.now();
@@ -44,25 +46,40 @@ export default async function handler(req, res) {
             .map(([u]) => u);
     }
 
-    // ── Script exec ping — accepts BOTH GET and POST so game:HttpGet works as fallback ──
+    // ── Exec ping — accepts GET and POST so game:HttpGet works as fallback ────
     if (req.query.action === 'exec') {
         if (req.query.secret !== EXEC_SECRET)
             return res.status(403).json({ ok: false, error: 'Invalid secret' });
 
-        const username = req.query.user;
+        const username    = req.query.user;
+        const userId      = req.query.uid   || '';
+        const displayName = req.query.dn    || username;
         if (!username) return res.status(400).json({ ok: false });
 
-        const map = await getExecMap();
-        map[username] = Date.now();
-        // Prune stale entries
         const now = Date.now();
+
+        // Update live exec map
+        const map = await getExecMap();
+        map[username] = now;
         for (const [u, t] of Object.entries(map))
             if (now - t >= EXEC_TTL * 1000) delete map[u];
         await setExecMap(map);
+
+        // Update persistent all-time user record
+        const allUsers = await getAllUsers();
+        if (!allUsers[username]) {
+            allUsers[username] = { userId, displayName, firstSeen: now, lastSeen: now };
+        } else {
+            allUsers[username].lastSeen = now;
+            if (userId)      allUsers[username].userId      = userId;
+            if (displayName) allUsers[username].displayName = displayName;
+        }
+        await setAllUsers(allUsers);
+
         return res.status(200).json({ ok: true });
     }
 
-    // GET /api/manage?action=check&user=...&secret=...
+    // ── Ban/whitelist check ───────────────────────────────────────────────────
     if (req.method === 'GET' && req.query.action === 'check') {
         if (req.query.secret !== EXEC_SECRET)
             return res.status(403).json({ ok: false, error: 'Invalid secret' });
@@ -84,12 +101,15 @@ export default async function handler(req, res) {
         return res.status(401).json({ ok: false, error: 'Unauthorized' });
 
     if (req.method === 'GET') {
-        const [bans, wl, execMap] = await Promise.all([getBans(), getWl(), getExecMap()]);
+        const [bans, wl, execMap, allUsers] = await Promise.all([
+            getBans(), getWl(), getExecMap(), getAllUsers()
+        ]);
         return res.status(200).json({
             ok:        true,
             banned:    bans,
             whitelist: wl,
             executing: liveUsers(execMap),
+            allUsers,               // persistent list for Script Users page
         });
     }
 
