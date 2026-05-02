@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     const ADMIN_PASS  = process.env.AC_ADMIN_PASS;
     const EXEC_SECRET = process.env.AC_EXEC_SECRET;
     const EXEC_TTL    = 45;
+    const DM_TTL_MS   = 7 * 24 * 60 * 60 * 1000; // 7 days
     const hdrs        = { Authorization: 'Bearer ' + token };
 
     if (!ADMIN_PASS)  return res.status(500).json({ error: 'AC_ADMIN_PASS not set' });
@@ -20,7 +21,7 @@ export default async function handler(req, res) {
 
     async function kvGet(key) {
         try {
-            const r = await fetch(`${url}/get/${key}`, { headers: hdrs });
+            const r = await fetch(`${url}/get/${encodeURIComponent(key)}`, { headers: hdrs });
             const d = await r.json();
             if (!d.result) return null;
             return JSON.parse(d.result);
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
     }
     async function kvSet(key, value) {
         const encoded = encodeURIComponent(JSON.stringify(value));
-        await fetch(`${url}/set/${key}/${encoded}`, { method: 'POST', headers: hdrs });
+        await fetch(`${url}/set/${encodeURIComponent(key)}/${encoded}`, { method: 'POST', headers: hdrs });
     }
     async function getBans()      { return (await kvGet('ac_banned'))    || []; }
     async function getWl()        { return (await kvGet('ac_whitelist')) || []; }
@@ -44,8 +45,7 @@ export default async function handler(req, res) {
             .map(([u]) => u);
     }
 
-    // ── exec_list — IN-GAME script queries who else is online ─────────────────
-    // GET /api/manage?action=exec_list&secret=EXEC_SECRET
+    // ── exec_list ─────────────────────────────────────────────────────────────
     if (req.query.action === 'exec_list') {
         if (req.query.secret !== EXEC_SECRET)
             return res.status(403).json({ ok: false, error: 'Invalid secret' });
@@ -53,23 +53,20 @@ export default async function handler(req, res) {
         return res.status(200).json({ ok: true, executing: liveUsers(execMap) });
     }
 
-    // ── exec ping — script reports itself as online ───────────────────────────
+    // ── exec ping ─────────────────────────────────────────────────────────────
     if (req.query.action === 'exec') {
         if (req.query.secret !== EXEC_SECRET)
             return res.status(403).json({ ok: false, error: 'Invalid secret' });
-
-        const username    = req.query.user;
-        const userId      = req.query.uid  || '';
-        const displayName = req.query.dn   || username;
+        const username = req.query.user;
+        const userId   = req.query.uid  || '';
+        const displayName = req.query.dn || username;
         if (!username) return res.status(400).json({ ok: false });
-
         const now = Date.now();
         const map = await getExecMap();
         map[username] = now;
         for (const [u, t] of Object.entries(map))
             if (now - t >= EXEC_TTL * 1000) delete map[u];
         await setExecMap(map);
-
         const allUsers = await getAllUsers();
         if (!allUsers[username]) {
             allUsers[username] = { userId, displayName, firstSeen: now, lastSeen: now };
@@ -80,6 +77,46 @@ export default async function handler(req, res) {
         }
         await setAllUsers(allUsers);
         return res.status(200).json({ ok: true });
+    }
+
+    // ── dm_send — store a DM in KV ────────────────────────────────────────────
+    // POST body OR query params
+    if (req.query.action === 'dm_send' || (req.body && req.body.action === 'dm_send')) {
+        const b = req.body || {};
+        const secret = b.secret || req.query.secret;
+        if (secret !== EXEC_SECRET)
+            return res.status(403).json({ ok: false, error: 'Invalid secret' });
+
+        const from   = b.from   || req.query.from;
+        const fromId = b.fromId || req.query.fromId;
+        const toId   = b.toId   || req.query.toId;
+        const text   = b.text   || req.query.text;
+        const ts     = b.ts     || req.query.ts || String(Date.now());
+        if (!from || !fromId || !toId || !text)
+            return res.status(400).json({ ok: false, error: 'Missing fields' });
+
+        // Store in inbox of recipient: key = ac_dm_inbox_{toId}
+        const inboxKey = `ac_dm_inbox_${toId}`;
+        const inbox = (await kvGet(inboxKey)) || [];
+        inbox.push({ from, fromId, text, ts: Number(ts) });
+
+        // Prune messages older than 7 days
+        const cutoff = Date.now() - DM_TTL_MS;
+        const pruned = inbox.filter(m => (m.ts * 1000) > cutoff || m.ts > cutoff);
+        await kvSet(inboxKey, pruned);
+
+        return res.status(200).json({ ok: true });
+    }
+
+    // ── dm_poll — fetch DMs for a user ────────────────────────────────────────
+    if (req.query.action === 'dm_poll') {
+        if (req.query.secret !== EXEC_SECRET)
+            return res.status(403).json({ ok: false, error: 'Invalid secret' });
+        const toId = req.query.toId;
+        if (!toId) return res.status(400).json({ ok: false });
+        const inboxKey = `ac_dm_inbox_${toId}`;
+        const inbox = (await kvGet(inboxKey)) || [];
+        return res.status(200).json({ ok: true, messages: inbox });
     }
 
     // ── ban/whitelist check ───────────────────────────────────────────────────
@@ -118,7 +155,6 @@ export default async function handler(req, res) {
         }
         const { action, username } = body;
         if (!username) return res.status(400).json({ ok: false, error: 'username required' });
-
         if (action === 'ban_add') {
             const bans = await getBans();
             if (!bans.includes(username)) bans.push(username);
