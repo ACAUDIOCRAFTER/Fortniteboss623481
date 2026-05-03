@@ -71,30 +71,40 @@ export default async function handler(req, res) {
             let body = req.body;
             if (typeof body === "string") { try { body = JSON.parse(body); } catch(e) {} }
 
-            const { userId, displayName, tag, executed, forceTag, pfp, bg, glowColor, effects } = body || {};
+            // Accept both pfpId/bgId (from admin.html) and pfp/bg (legacy) so nothing breaks
+            const {
+                userId, displayName, tag, executed, forceTag,
+                pfpId: pfpIdRaw, bgId: bgIdRaw,
+                pfp: pfpLegacy, bg: bgLegacy,
+                glowColor, effects, animMeta
+            } = body || {};
+
             if (!userId) return res.status(400).json({ error: "Missing userId" });
 
             const { content, sha } = await getFile();
             const existing = content[userId] || {};
 
             const newExecuted    = executed    !== undefined ? executed    : (existing.executed    || false);
-            const newTag         = (forceTag && tag) ? tag : (existing.tag || tag || "SCOPER USER");
+            const newTag         = (forceTag && tag) ? tag : (existing.tag || tag || "AC USER");
             const newDisplayName = existing.displayName || displayName || userId;
 
-            // Always preserve existing image/style fields — only overwrite if explicitly provided in this request
-            const newPfp        = pfp        !== undefined ? pfp        : (existing.pfp        || null);
-            const newBg         = bg         !== undefined ? bg         : (existing.bg         || null);
+            // Normalize: prefer pfpId/bgId, fall back to pfp/bg (legacy), then existing, then null
+            const incomingPfpId = pfpIdRaw !== undefined ? pfpIdRaw : (pfpLegacy !== undefined ? pfpLegacy : undefined);
+            const incomingBgId  = bgIdRaw  !== undefined ? bgIdRaw  : (bgLegacy  !== undefined ? bgLegacy  : undefined);
+
+            const newPfpId      = incomingPfpId !== undefined ? incomingPfpId : (existing.pfpId || existing.pfp || null);
+            const newBgId       = incomingBgId  !== undefined ? incomingBgId  : (existing.bgId  || existing.bg  || null);
             const newGlowColor  = glowColor  !== undefined ? glowColor  : (existing.glowColor  || null);
             const newEffects    = effects    !== undefined ? effects    : (existing.effects    || null);
+            const newAnimMeta   = animMeta   !== undefined ? animMeta   : (existing.animMeta   || null);
 
             const nothingChanged = existing
                 && existing.executed    === newExecuted
                 && existing.tag         === newTag
                 && existing.displayName === newDisplayName
-                && existing.pfp         === newPfp
-                && existing.bg          === newBg
-                && existing.glowColor   === newGlowColor
-                && existing.effects     === newEffects;
+                && existing.pfpId       === newPfpId
+                && existing.bgId        === newBgId
+                && existing.glowColor   === newGlowColor;
 
             if (nothingChanged) {
                 return res.json({ ok: true, skipped: true });
@@ -104,10 +114,11 @@ export default async function handler(req, res) {
                 displayName: newDisplayName,
                 tag:         newTag,
                 executed:    newExecuted,
-                pfp:         newPfp,
-                bg:          newBg,
+                pfpId:       newPfpId,   // ← consistent name used everywhere now
+                bgId:        newBgId,    // ← consistent name used everywhere now
                 glowColor:   newGlowColor,
                 effects:     newEffects,
+                animMeta:    newAnimMeta,
                 updatedAt:   new Date().toISOString()
             };
 
