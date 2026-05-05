@@ -1,7 +1,8 @@
 {
-  "name": "audio-crafter-api",
-  "version": "1.0.0",
-  "dependencies": {
-    "@octokit/rest": "^20.0.2"
-  }
+  "rewrites": [
+    {
+      "source": "/audiocrafter.lua",
+      "destination": "/api/audiocrafter"
+    }
+  ]
 }
