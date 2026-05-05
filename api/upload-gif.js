@@ -33,6 +33,7 @@ export default async function handler(req, res) {
     const fileBuffer = fs.readFileSync(uploadedFile.filepath);
     const base64Content = fileBuffer.toString("base64");
 
+    // Upload the GIF file
     await octokit.repos.createOrUpdateFileContents({
       owner: OWNER,
       repo: REPO,
@@ -44,6 +45,7 @@ export default async function handler(req, res) {
 
     const rawUrl = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${githubPath}`;
 
+    // Update list.json
     let currentList = [];
     try {
       const { data } = await octokit.repos.getContent({
@@ -65,8 +67,8 @@ export default async function handler(req, res) {
       label: label,
     });
 
-    const updatedListContent = JSON.stringify(currentList, null, 2);
-    const listBase64 = Buffer.from(updatedListContent).toString("base64");
+    const updatedContent = JSON.stringify(currentList, null, 2);
+    const listBase64 = Buffer.from(updatedContent).toString("base64");
 
     let listSha = undefined;
     try {
