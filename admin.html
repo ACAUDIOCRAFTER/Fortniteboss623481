@@ -200,6 +200,7 @@ input::placeholder{color:#333}
       <button class="ntab" onclick="showPage('gifs',this)">🖼 GIFs</button>
       <button class="ntab" onclick="showPage('toggletags',this)">🏷 Tag Ctrl</button>
       <button class="ntab" onclick="showPage('scriptusers',this)">👥 Script Users</button>
+      <button class="ntab" onclick="showPage('fixurls',this)" style="border-color:rgba(255,180,0,.3);color:#ffb300">⚠️ Fix URLs</button>
       <button class="ntab" onclick="resetGhToken()" title="Update GitHub Token" style="padding:7px 10px">🔑</button>
     </div>
   </nav>
@@ -452,6 +453,28 @@ input::placeholder{color:#333}
         <button id="global-tag-btn" class="btn" style="min-width:140px;justify-content:center" onclick="toggleGlobalTags()">
           <span id="global-tag-label">Loading...</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIX URLs PAGE -->
+  <div class="page" id="page-fixurls">
+    <div class="card" style="margin-bottom:20px;border-color:rgba(255,180,0,.25)">
+      <div class="card-top" style="background:rgba(40,30,0,.4)">
+        <span class="card-title" style="color:#ffb300">⚠️ Expired URL Scanner</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span id="fix-summary" style="font-size:.78rem;color:#666">—</span>
+          <button class="btn btn-ghost btn-sm" onclick="scanExpiredUrls()">🔍 Scan Now</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div style="font-size:.82rem;color:#888;margin-bottom:16px;line-height:1.7;background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.15);border-radius:8px;padding:12px 14px">
+          <strong style="color:#ffb300">Discord CDN URLs expire</strong> — any pfpId or bgId pointing to <code style="color:#aaa">cdn.discordapp.com</code> will stop working after a few days.<br>
+          Users below have expired or expiring URLs. Click <strong style="color:#fff">Fix</strong> on each one to re-upload their images to GitHub so they're permanent forever.
+        </div>
+        <div id="fix-list" class="ulist" style="max-height:700px">
+          <div class="empty"><div class="empty-icon">🔍</div>Click "Scan Now" to check for expired URLs</div>
+        </div>
       </div>
     </div>
   </div>
@@ -758,6 +781,7 @@ function showPage(id,btn){
   if(id==='gifs') loadDmGifs()
   if(id==='toggletags') loadTagToggleState()
   if(id==='scriptusers') loadScriptUsers()
+  if(id==='fixurls') scanExpiredUrls()
 }
 
 // ── Live polling ──
@@ -1164,6 +1188,253 @@ window.onload=()=>{
   const s=localStorage.getItem('ac_p')
   if(s){document.getElementById('auth-pw').value=s;login()}
 }
+
+// ── Fix Expired URLs ──────────────────────────────────────────────────────
+
+function isDiscordUrl(url){
+  return url && (url.includes('cdn.discordapp.com') || url.includes('media.discordapp.net'))
+}
+function isExpiredOrExpiring(url){
+  if(!isDiscordUrl(url)) return false
+  // Check the ex= param — it's a unix hex timestamp
+  const m = url.match(/[?&]ex=([0-9a-f]+)/i)
+  if(!m) return true // no expiry param = already expired/broken
+  const expiresAt = parseInt(m[1], 16) * 1000
+  const hoursLeft = (expiresAt - Date.now()) / 3600000
+  return hoursLeft < 48 // flag if expires within 48 hours
+}
+function urlStatus(url){
+  if(!url || url === '') return 'none'
+  if(url.includes('raw.githubusercontent.com')) return 'permanent'
+  if(isDiscordUrl(url)){
+    const m = url.match(/[?&]ex=([0-9a-f]+)/i)
+    if(!m) return 'expired'
+    const expiresAt = parseInt(m[1], 16) * 1000
+    const hoursLeft = (expiresAt - Date.now()) / 3600000
+    if(hoursLeft <= 0) return 'expired'
+    if(hoursLeft < 48) return 'expiring'
+    return 'discord' // valid for now but will expire
+  }
+  return 'other'
+}
+
+function scanExpiredUrls(){
+  const list = document.getElementById('fix-list')
+  const summary = document.getElementById('fix-summary')
+  const users = Object.entries(tagData)
+  if(!users.length){
+    list.innerHTML='<div class="empty"><div class="empty-icon">🏷</div>No tag users loaded yet</div>'
+    return
+  }
+
+  const flagged = users.map(([u, d])=>{
+    const pfpStatus = urlStatus(d.pfpId||'')
+    const bgStatus  = urlStatus(d.bgId||'')
+    const needsFix = pfpStatus === 'expired' || pfpStatus === 'expiring' || pfpStatus === 'discord'
+                  || bgStatus  === 'expired' || bgStatus  === 'expiring' || bgStatus  === 'discord'
+    return {u, d, pfpStatus, bgStatus, needsFix}
+  }).filter(x=>x.needsFix)
+
+  const expiredCount = flagged.filter(x=>
+    x.pfpStatus==='expired'||x.bgStatus==='expired'
+  ).length
+  const expiringCount = flagged.filter(x=>
+    (x.pfpStatus==='expiring'||x.bgStatus==='expiring') && x.pfpStatus!=='expired' && x.bgStatus!=='expired'
+  ).length
+  const discordCount = flagged.filter(x=>
+    x.pfpStatus==='discord'||x.bgStatus==='discord'
+  ).length - expiringCount - expiredCount
+
+  summary.innerHTML = flagged.length === 0
+    ? '<span style="color:#4ade80">✅ All URLs are permanent!</span>'
+    : `<span style="color:#f87171">${expiredCount} expired</span> · <span style="color:#ffb300">${expiringCount} expiring soon</span> · <span style="color:#60b8ff">${Math.max(0,discordCount)} discord (will expire)</span>`
+
+  if(!flagged.length){
+    list.innerHTML='<div class="empty"><div class="empty-icon">✅</div>All users have permanent GitHub URLs — nothing to fix!</div>'
+    return
+  }
+
+  const statusColor = {expired:'#f87171', expiring:'#ffb300', discord:'#60b8ff', permanent:'#4ade80', none:'#555', other:'#888'}
+  const statusLabel = {expired:'EXPIRED', expiring:'EXPIRING SOON', discord:'DISCORD (will expire)', permanent:'✓ PERMANENT', none:'—', other:'OTHER'}
+
+  list.innerHTML = flagged.map(({u, d, pfpStatus, bgStatus})=>{
+    const pfpUrl = d.pfpId||''
+    const bgUrl  = d.bgId||''
+    const pfpThumb = pfpUrl ? `<img src="${pfpUrl}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid #333;background:#111;flex-shrink:0" onerror="this.style.opacity='.15'"/>` : '<span style="font-size:1.2rem">👤</span>'
+    return`<div class="urow" style="flex-direction:column;align-items:stretch;gap:8px;padding:14px">
+      <div style="display:flex;align-items:center;gap:10px">
+        ${pfpThumb}
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.95rem;color:#fff">${u}</div>
+          <div style="font-size:.75rem;color:#666">${d.tag||'AC USER'}</div>
+        </div>
+        <button class="btn btn-sm" style="background:rgba(255,160,0,.12);border:1px solid rgba(255,160,0,.3);color:#ffb300;flex-shrink:0" onclick="openFixModal('${u}')">🔧 Fix</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:#0a0a10;border-radius:7px;padding:8px 10px">
+          <div style="font-size:.65rem;color:#444;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Profile Pic</div>
+          <span style="font-size:.72rem;color:${statusColor[pfpStatus]};font-weight:700">${statusLabel[pfpStatus]}</span>
+          ${pfpUrl?`<div style="font-size:.65rem;color:#333;margin-top:3px;word-break:break-all;overflow:hidden;max-height:30px">${pfpUrl.substring(0,60)}...</div>`:''}
+        </div>
+        <div style="background:#0a0a10;border-radius:7px;padding:8px 10px">
+          <div style="font-size:.65rem;color:#444;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Background</div>
+          <span style="font-size:.72rem;color:${statusColor[bgStatus]};font-weight:700">${statusLabel[bgStatus]}</span>
+          ${bgUrl?`<div style="font-size:.65rem;color:#333;margin-top:3px;word-break:break-all;overflow:hidden;max-height:30px">${bgUrl.substring(0,60)}...</div>`:''}
+        </div>
+      </div>
+    </div>`
+  }).join('')
+}
+
+// ── Fix Modal ──
+let fixCurrentUser = null
+
+function openFixModal(username){
+  fixCurrentUser = username
+  const d = tagData[username]
+  const pfpUrl = d.pfpId||''
+  const bgUrl  = d.bgId||''
+
+  document.getElementById('fix-modal-user').textContent = username
+  document.getElementById('fix-pfp-current').textContent = pfpUrl || '(none)'
+  document.getElementById('fix-bg-current').textContent  = bgUrl  || '(none)'
+  document.getElementById('fix-pfp-thumb').src = pfpUrl
+  document.getElementById('fix-bg-thumb').src  = bgUrl
+
+  // Hide sections if URL is already permanent or empty
+  const pfpStatus = urlStatus(pfpUrl)
+  const bgStatus  = urlStatus(bgUrl)
+  document.getElementById('fix-pfp-section').style.display = (pfpStatus==='permanent'||pfpStatus==='none') ? 'none' : 'block'
+  document.getElementById('fix-bg-section').style.display  = (bgStatus ==='permanent'||bgStatus ==='none') ? 'none' : 'block'
+
+  // Reset file inputs
+  document.getElementById('fix-pfp-file').value=''
+  document.getElementById('fix-bg-file').value=''
+  document.getElementById('fix-pfp-file-label').textContent='Choose new PFP file...'
+  document.getElementById('fix-pfp-file-label').classList.remove('has-file')
+  document.getElementById('fix-bg-file-label').textContent='Choose new BG file...'
+  document.getElementById('fix-bg-file-label').classList.remove('has-file')
+  document.getElementById('fix-modal-status').style.display='none'
+
+  document.getElementById('fix-modal').style.display='flex'
+}
+
+function closeFixModal(){
+  document.getElementById('fix-modal').style.display='none'
+  fixCurrentUser=null
+}
+
+// File input previews for fix modal
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('fix-pfp-file').addEventListener('change',function(e){
+    const f=e.target.files[0]
+    const lbl=document.getElementById('fix-pfp-file-label')
+    if(f){lbl.textContent=f.name;lbl.classList.add('has-file')}
+    else{lbl.textContent='Choose new PFP file...';lbl.classList.remove('has-file')}
+  })
+  document.getElementById('fix-bg-file').addEventListener('change',function(e){
+    const f=e.target.files[0]
+    const lbl=document.getElementById('fix-bg-file-label')
+    if(f){lbl.textContent=f.name;lbl.classList.add('has-file')}
+    else{lbl.textContent='Choose new BG file...';lbl.classList.remove('has-file')}
+  })
+})
+
+async function applyFix(){
+  if(!fixCurrentUser) return
+  if(!GH.token){toast('Set GitHub token first — click 🔑','err');return}
+  const spin=document.getElementById('fix-modal-spin')
+  const status=document.getElementById('fix-modal-status')
+  spin.style.display='inline-block'
+  status.style.display='none'
+
+  const d = tagData[fixCurrentUser]
+  let newPfp = d.pfpId||''
+  let newBg  = d.bgId||''
+
+  try{
+    const pfpFile = document.getElementById('fix-pfp-file').files[0]
+    const bgFile  = document.getElementById('fix-bg-file').files[0]
+
+    if(!pfpFile && !bgFile){
+      status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171'
+      status.textContent='Select at least one file to upload'
+      spin.style.display='none'
+      return
+    }
+
+    if(pfpFile){
+      status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;background:rgba(0,150,255,.07);border:1px solid rgba(0,150,255,.2);color:#60b8ff'
+      status.textContent='Uploading profile picture...'
+      newPfp = await uploadFileToGitHub(pfpFile, 'pfps')
+    }
+    if(bgFile){
+      status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;background:rgba(0,150,255,.07);border:1px solid rgba(0,150,255,.2);color:#60b8ff'
+      status.textContent='Uploading background...'
+      newBg = await uploadFileToGitHub(bgFile, 'backgrounds')
+    }
+
+    // Save back to API
+    status.textContent='Saving to database...'
+    const body={auth:pass,action:'set',username:fixCurrentUser,tag:d.tag,pfpId:newPfp,bgId:newBg,effects:d.effects||{glowColor:'#0066ff'}}
+    const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    const res=await r.json()
+    if(res.ok){
+      tagData=res.users||{}
+      status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;background:rgba(0,200,100,.07);border:1px solid rgba(0,200,100,.2);color:#4ade80'
+      status.textContent='✓ Fixed! URLs are now permanent GitHub links.'
+      toast(`✓ ${fixCurrentUser} URLs fixed permanently`,'ok')
+      setTimeout(()=>{closeFixModal();scanExpiredUrls()},1500)
+    }else{
+      throw new Error(res.error||'Save failed')
+    }
+  }catch(e){
+    status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171'
+    status.textContent='Failed: '+e.message
+    toast('Fix failed','err')
+  }
+  spin.style.display='none'
+}
 </script>
+
+<!-- Fix Modal -->
+<div id="fix-modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.88);align-items:center;justify-content:center">
+  <div style="background:#0e0e14;border:1px solid #2a2a3a;border-radius:16px;padding:32px 28px;width:min(480px,94vw);box-shadow:0 0 60px rgba(255,160,0,.1);max-height:90vh;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div style="font-size:1.1rem;color:#fff;font-family:'Coming Soon',cursive">Fix URLs for <span id="fix-modal-user" style="color:#ffb300"></span></div>
+      <button onclick="closeFixModal()" style="background:transparent;border:none;color:#555;font-size:1.2rem;cursor:pointer;font-family:'Coming Soon',cursive">✕</button>
+    </div>
+    <div id="fix-pfp-section" style="margin-bottom:20px">
+      <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;font-weight:700">Profile Picture — Expired/Discord URL</div>
+      <div id="fix-pfp-current" style="font-size:.7rem;color:#f87171;margin-bottom:8px;word-break:break-all;background:rgba(200,40,40,.07);border:1px solid rgba(200,40,40,.15);border-radius:6px;padding:7px 10px"></div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <img id="fix-pfp-thumb" src="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid #333;flex-shrink:0;background:#111" onerror="this.style.opacity='.15'"/>
+        <label class="file-upload-btn" for="fix-pfp-file" style="flex:1">
+          <input type="file" id="fix-pfp-file" accept="image/*"/>
+          <span class="file-upload-icon">🖼</span>
+          <span class="file-upload-label" id="fix-pfp-file-label">Choose replacement PFP...</span>
+        </label>
+      </div>
+    </div>
+    <div id="fix-bg-section" style="margin-bottom:24px">
+      <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;font-weight:700">Background — Expired/Discord URL</div>
+      <div id="fix-bg-current" style="font-size:.7rem;color:#f87171;margin-bottom:8px;word-break:break-all;background:rgba(200,40,40,.07);border:1px solid rgba(200,40,40,.15);border-radius:6px;padding:7px 10px"></div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <img id="fix-bg-thumb" src="" style="width:64px;height:40px;border-radius:6px;object-fit:cover;border:1px solid #333;flex-shrink:0;background:#111" onerror="this.style.opacity='.15'"/>
+        <label class="file-upload-btn" for="fix-bg-file" style="flex:1">
+          <input type="file" id="fix-bg-file" accept="image/*"/>
+          <span class="file-upload-icon">🎞</span>
+          <span class="file-upload-label" id="fix-bg-file-label">Choose replacement BG...</span>
+        </label>
+      </div>
+    </div>
+    <div id="fix-modal-status" style="display:none;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-bottom:14px"></div>
+    <button onclick="applyFix()" class="btn btn-primary">
+      <span id="fix-modal-spin" style="display:none" class="spin"></span>
+      📤 Upload & Fix Permanently
+    </button>
+    <div style="font-size:.72rem;color:#333;margin-top:10px;text-align:center">Only uploads files you select — skips unchanged fields</div>
+  </div>
+</div>
 </body>
 </html>
