@@ -56,7 +56,6 @@ nav .sp{flex:1}
   .version,.copy{display:none}.live-bar{padding:10px 14px;gap:10px}
   .urow{flex-wrap:wrap;gap:6px}.urow-actions{width:100%;display:flex;justify-content:flex-end}
   .search-input{width:100%}.card-top{flex-wrap:wrap;gap:8px}.card-top .search-input{width:100%}
-  .toggles-grid{grid-template-columns:1fr 1fr!important}.color-palette{grid-template-columns:repeat(4,1fr)!important}
   .gif-grid{grid-template-columns:repeat(3,1fr)!important}
 }
 @media(max-width:400px){.stats-row{grid-template-columns:1fr 1fr}.ntag-tag{font-size:.75rem}}
@@ -67,32 +66,23 @@ nav .sp{flex:1}
 .field{margin-bottom:13px}
 .field label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px;font-weight:700}
 .field-hint{font-size:.75rem;color:#383844;margin-top:4px;line-height:1.4}
-input[type=text],input[type=password],input[type=file]{width:100%;background:#080810;border:1px solid #1e1e2e;border-radius:8px;padding:10px 14px;color:#fff;font-size:.93rem;font-family:'Coming Soon',cursive;outline:none;transition:border-color .2s,box-shadow .2s}
+input[type=text],input[type=password]{width:100%;background:#080810;border:1px solid #1e1e2e;border-radius:8px;padding:10px 14px;color:#fff;font-size:.93rem;font-family:'Coming Soon',cursive;outline:none;transition:border-color .2s,box-shadow .2s}
 input:focus{border-color:#334;box-shadow:0 0 0 3px rgba(80,100,255,.12)}
 input::placeholder{color:#333}
+
+/* File upload styled button */
+.file-upload-btn{display:flex;align-items:center;gap:10px;background:#080810;border:1px solid #1e1e2e;border-radius:8px;padding:10px 14px;cursor:pointer;transition:border-color .2s,box-shadow .2s;width:100%}
+.file-upload-btn:hover{border-color:#334}
+.file-upload-btn input[type=file]{display:none}
+.file-upload-label{font-size:.9rem;color:#555;font-family:'Coming Soon',cursive;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-upload-label.has-file{color:#ccc}
+.file-upload-icon{font-size:1.1rem;flex-shrink:0}
+
+/* Image preview box */
+.img-preview-box{margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid #1e1e2a;display:none}
+.img-preview-box img{width:100%;height:auto;object-fit:contain;background:#080810;max-height:140px;display:block}
+
 .divider{height:1px;background:#1a1a22;margin:14px 0}
-.toggles-section{margin-bottom:14px}
-.toggles-section label,.color-section label{display:block;font-size:.7rem;color:#444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;font-weight:700}
-.toggles-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;background:#08080f;border:1px solid #161622;border-radius:9px;padding:9px 12px;cursor:pointer;transition:all .15s;user-select:none}
-.toggle-row:hover{border-color:#2a2a3a;background:#0c0c16}
-.toggle-row.tog-active{border-color:rgba(80,120,255,.3);background:rgba(40,60,180,.06)}
-.toggle-label{font-size:.8rem;color:#aaa;display:flex;align-items:center;gap:7px}
-.toggle-label .ticon{font-size:.95rem}
-.toggle-switch{width:34px;height:18px;background:#181820;border-radius:99px;position:relative;flex-shrink:0;transition:background .2s;border:1px solid #252530}
-.toggle-switch.on{background:#2255ee;border-color:#3366ff}
-.toggle-switch::after{content:'';position:absolute;width:12px;height:12px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .18s;box-shadow:0 1px 4px rgba(0,0,0,.5)}
-.toggle-switch.on::after{left:18px}
-.color-section{margin-bottom:16px}
-.color-section label{display:block;font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.color-palette{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:8px}
-.color-swatch{width:100%;aspect-ratio:1;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;position:relative}
-.color-swatch:hover{transform:scale(1.15)}
-.color-swatch.selected{border-color:#fff;transform:scale(1.15)}
-.color-swatch.selected::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.8)}
-.color-custom-row{display:flex;gap:8px;align-items:center}
-.color-custom-row input[type=color]{width:38px;height:38px;border:1px solid #333;border-radius:7px;background:#0a0a0a;cursor:pointer;padding:2px}
-.color-custom-row span{font-size:.8rem;color:#666}
 .gif-row{display:flex;gap:8px;align-items:stretch}
 .gif-row input{flex:1}
 .gif-process-btn{background:rgba(0,150,255,.12);border:1px solid rgba(0,150,255,.3);color:#60b8ff;border-radius:8px;padding:10px 14px;font-family:'Coming Soon',cursive;font-size:.85rem;cursor:pointer;white-space:nowrap;transition:.2s;flex-shrink:0}
@@ -104,7 +94,7 @@ input::placeholder{color:#333}
 .gif-status.err{display:flex;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171}
 .gif-progress{height:3px;background:#222;border-radius:2px;margin-top:6px;overflow:hidden;display:none}
 .gif-progress-inner{height:100%;background:linear-gradient(90deg,#0066ff,#00ccff);border-radius:2px;transition:width .15s;width:0%}
-.preview-card{background:#0b0b12;border:1px solid #1a1a26;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4);display:flex;flex-direction:column;min-height:600px}
+.preview-card{background:#0b0b12;border:1px solid #1a1a26;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4);display:flex;flex-direction:column;min-height:500px}
 .preview-card-top{padding:14px 20px;border-bottom:1px solid #1a1a24;background:#090910;display:flex;align-items:center;justify-content:space-between}
 .preview-card-title{font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:2px;font-weight:700}
 .preview-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:24px;position:relative}
@@ -173,11 +163,13 @@ input::placeholder{color:#333}
 .copy{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.55;z-index:10}
 /* GIF page styles */
 .gif-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
-.gif-thumb-card{background:#0e0e16;border:1px solid #1e1e2a;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:1.4}
-.gif-thumb-card img{width:100%;height:100%;object-fit:cover}
+.gif-thumb-card{background:#0e0e16;border:1px solid #1e1e2a;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:1.4;display:flex;flex-direction:column}
+.gif-thumb-card .gif-img-wrap{flex:1;overflow:hidden;position:relative;min-height:0}
+.gif-thumb-card .gif-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.gif-thumb-card .gif-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#444;padding:4px;text-align:center;word-break:break-all}
 .gif-thumb-card:hover .gif-del{opacity:1}
-.gif-del{position:absolute;top:5px;right:5px;background:rgba(180,0,0,.8);border:none;color:#fff;border-radius:5px;padding:2px 6px;font-size:.7rem;cursor:pointer;opacity:0;transition:opacity .15s;font-family:'Coming Soon',cursive}
-.gif-thumb-url{font-size:.65rem;color:#444;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gif-del{position:absolute;top:5px;right:5px;background:rgba(180,0,0,.8);border:none;color:#fff;border-radius:5px;padding:2px 6px;font-size:.7rem;cursor:pointer;opacity:0;transition:opacity .15s;font-family:'Coming Soon',cursive;z-index:2}
+.gif-thumb-url{font-size:.65rem;color:#444;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}
 .live-ping{font-size:.72rem;color:#333;margin-left:auto}
 .live-ping.active{color:#00ff88}
 </style>
@@ -238,31 +230,37 @@ input::placeholder{color:#333}
         <div class="card-body">
           <div class="field"><label>Roblox Username</label><input type="text" id="f-user" placeholder="e.g. Exhalivibes" oninput="updatePreview()"/></div>
           <div class="field"><label>Tag Label</label><input type="text" id="f-tag" placeholder="e.g. CO-OWNER" oninput="updatePreview()"/></div>
-          <div class="field"><label>Profile Picture URL</label><input type="text" id="f-pfp" placeholder="Image URL or Asset ID" oninput="updatePreview()"/><div class="field-hint">Any image URL — downloaded automatically in-game</div></div>
+
+          <!-- PROFILE PICTURE — file upload -->
           <div class="field">
-            <label>Background GIF / Image URL</label>
-            <div class="gif-row"><input type="text" id="f-bg" placeholder="Paste any GIF or image URL..." oninput="onBgInput()"/><button class="gif-process-btn" id="gif-btn" onclick="processGif()" disabled>⚙ Process</button></div>
-            <div class="field-hint">Paste a GIF URL — click Process to convert it to a sprite sheet. Static images work too.</div>
-            <div class="gif-status" id="gif-status"></div>
-            <div class="gif-progress" id="gif-progress"><div class="gif-progress-inner" id="gif-bar"></div></div>
-          </div>
-          <div class="sheet-preview" id="sheet-preview"><canvas id="sheet-canvas"></canvas><div class="sheet-meta" id="sheet-meta"></div></div>
-          <div class="divider"></div>
-          <div class="toggles-section">
-            <label>Nametag Effects</label>
-            <div class="toggles-grid">
-              <div class="toggle-row" onclick="toggleEffect('glitched')"><span class="toggle-label"><span class="ticon">⚡</span>Glitched Name</span><div class="toggle-switch" id="tog-glitched"></div></div>
-              <div class="toggle-row" onclick="toggleEffect('typewriter')"><span class="toggle-label"><span class="ticon">⌨️</span>Typewriter Name</span><div class="toggle-switch" id="tog-typewriter"></div></div>
-              <div class="toggle-row" onclick="toggleEffect('animProfile')"><span class="toggle-label"><span class="ticon">🖼</span>Animated Profile</span><div class="toggle-switch" id="tog-animProfile"></div></div>
-              <div class="toggle-row" onclick="toggleEffect('animBg')"><span class="toggle-label"><span class="ticon">🎞</span>Animated Background</span><div class="toggle-switch" id="tog-animBg"></div></div>
-              <div class="toggle-row" onclick="toggleEffect('tagEffects')"><span class="toggle-label"><span class="ticon">✨</span>Nametag Effects</span><div class="toggle-switch" id="tog-tagEffects"></div></div>
+            <label>Profile Picture</label>
+            <label class="file-upload-btn" for="pfp-file-input">
+              <input type="file" id="pfp-file-input" accept="image/png,image/jpeg,image/webp,image/gif"/>
+              <span class="file-upload-icon">🖼</span>
+              <span class="file-upload-label" id="pfp-file-label">Choose image file...</span>
+            </label>
+            <div class="img-preview-box" id="pfp-preview-box">
+              <img id="pfp-preview-img" src="" alt="PFP preview"/>
             </div>
+            <div class="field-hint">Upload a PNG/JPG for the profile picture — stored permanently on GitHub.</div>
+            <!-- hidden: stores the uploaded URL after upload, or existing URL when editing -->
+            <input type="hidden" id="f-pfp-url" />
           </div>
-          <div class="color-section">
-            <label>Glow Color</label>
-            <div class="color-palette" id="color-palette"></div>
-            <div class="color-custom-row"><input type="color" id="f-custom-color" value="#960096" oninput="setCustomColor(this.value)"/><span>Custom color — click to pick</span></div>
+
+          <div class="field">
+            <label>Background GIF / Image</label>
+            <label class="file-upload-btn" for="bg-file-input">
+              <input type="file" id="bg-file-input" accept="image/gif,image/png,image/jpeg,image/webp"/>
+              <span class="file-upload-icon">🎞</span>
+              <span class="file-upload-label" id="bg-file-label">Choose GIF or image file...</span>
+            </label>
+            <div class="img-preview-box" id="bg-preview-box">
+              <img id="bg-preview-img" src="" alt="BG preview"/>
+            </div>
+            <div class="field-hint">Upload a GIF or static image for the nametag background — stored on GitHub.</div>
+            <input type="hidden" id="f-bg-url" />
           </div>
+
           <div class="divider"></div>
           <button class="btn btn-primary" onclick="saveTag()"><span id="save-spin" style="display:none" class="spin"></span>💾 Save User</button>
         </div>
@@ -274,7 +272,6 @@ input::placeholder{color:#333}
             <div class="preview-world">
               <div class="preview-tag-float">
                 <div class="ntag" id="prev-ntag">
-                  <canvas id="prev-anim-canvas" class="ntag-anim" style="display:none"></canvas>
                   <div class="ntag-pfp"><img id="prev-pfp" src="" style="display:none"/></div>
                   <div class="ntag-info"><div class="ntag-tag" id="prev-tag">AC USER</div><div class="ntag-user" id="prev-user">@username</div></div>
                 </div>
@@ -284,10 +281,8 @@ input::placeholder{color:#333}
             <div class="preview-info">
               <div class="prev-info-item"><span class="prev-info-key">Username</span><span class="prev-info-val" id="pi-user">—</span></div>
               <div class="prev-info-item"><span class="prev-info-key">Tag Label</span><span class="prev-info-val" id="pi-tag">—</span></div>
-              <div class="prev-info-item"><span class="prev-info-key">Profile Pic</span><span class="prev-info-val" id="pi-pfp" class="inactive">Not set</span></div>
-              <div class="prev-info-item"><span class="prev-info-key">Background</span><span class="prev-info-val" id="pi-bg" class="inactive">Not set</span></div>
-              <div class="prev-info-item"><span class="prev-info-key">Glow Color</span><span class="prev-info-val" id="pi-glow">—</span></div>
-              <div class="prev-info-item"><span class="prev-info-key">Effects</span><span class="prev-info-val" id="pi-effects">None</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Profile Pic</span><span class="prev-info-val" id="pi-pfp">Not set</span></div>
+              <div class="prev-info-item"><span class="prev-info-key">Background</span><span class="prev-info-val" id="pi-bg">Not set</span></div>
             </div>
           </div>
         </div>
@@ -366,7 +361,7 @@ input::placeholder{color:#333}
     </div>
   </div>
 
-  <!-- GIFS PAGE — UPDATED WITH PERMANENT FILE UPLOAD -->
+  <!-- GIFS PAGE -->
   <div class="page" id="page-gifs">
     <div class="grid2">
       <div class="card">
@@ -374,15 +369,19 @@ input::placeholder{color:#333}
         <div class="card-body">
           <div class="field">
             <label>Select GIF / Image file</label>
-            <input type="file" id="gif-file-input" accept="image/gif,image/png,image/jpeg,image/webp" />
-            <div class="field-hint">Upload a GIF file directly. It will be stored permanently in your GitHub repo.</div>
-            <div id="gif-file-preview" style="margin-top:8px;display:none;border-radius:8px;overflow:hidden;border:1px solid #1e1e2a;max-width:200px">
-              <img id="gif-file-preview-img" src="" style="width:100%;height:auto;object-fit:contain;background:#080810" />
+            <label class="file-upload-btn" for="gif-file-input">
+              <input type="file" id="gif-file-input" accept="image/gif,image/png,image/jpeg,image/webp"/>
+              <span class="file-upload-icon">📁</span>
+              <span class="file-upload-label" id="gif-file-name-label">Choose file...</span>
+            </label>
+            <div class="img-preview-box" id="gif-file-preview-box">
+              <img id="gif-file-preview-img" src="" alt="GIF preview"/>
             </div>
+            <div class="field-hint">Upload a GIF file directly. Stored permanently in your GitHub repo.</div>
           </div>
           <div class="field">
             <label>Label (optional)</label>
-            <input type="text" id="gif-upload-label" placeholder="e.g. wave, lol, hug..." />
+            <input type="text" id="gif-upload-label" placeholder="e.g. wave, lol, hug..."/>
           </div>
           <button class="btn btn-primary" onclick="uploadGifFile()" style="margin-bottom:8px">
             <span id="gif-upload-spin" style="display:none" class="spin"></span>📤 Upload to GitHub
@@ -483,7 +482,6 @@ input::placeholder{color:#333}
 <div class="version">AC AudioCrafter v3 — Admin Panel</div>
 <div class="copy">© 2026 MelodyCrafter3 · AudioCrafter</div>
 <div id="toast"></div>
-<canvas id="gif-decode-canvas" style="display:none"></canvas>
 
 <!-- GitHub Token Modal -->
 <div id="gh-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);align-items:center;justify-content:center">
@@ -499,7 +497,7 @@ input::placeholder{color:#333}
 </div>
 
 <script>
-// ── Canvas effects (same as before) ──
+// ── Canvas effects ──
 const sc=document.getElementById('sparkle-canvas'),sctx=sc.getContext('2d')
 sc.width=innerWidth;sc.height=innerHeight
 window.addEventListener('resize',()=>{sc.width=innerWidth;sc.height=innerHeight;tc.width=innerWidth;tc.height=innerHeight})
@@ -512,16 +510,16 @@ const pts=[]
 document.addEventListener('mousemove',e=>pts.push({x:e.clientX,y:e.clientY,t:Date.now()}))
 ;(function drawTrail(){tctx.clearRect(0,0,tc.width,tc.height);const now=Date.now();for(let j=pts.length-1;j>=0;j--){if(now-pts[j].t>900){pts.splice(j,1);continue};if(j>0){const age=(now-pts[j].t)/900;tctx.beginPath();tctx.moveTo(pts[j-1].x,pts[j-1].y);tctx.lineTo(pts[j].x,pts[j].y);tctx.strokeStyle=`rgba(100,150,255,${(1-age)*.6})`;tctx.lineWidth=2;tctx.stroke()}};requestAnimationFrame(drawTrail)})()
 
-// ── Config ─────────────────────────────────────────────────────────────────
+// ── Config ──
 const TAGS_API='/api/custom-users', MANAGE_API='/api/manage'
 let pass='', tagData={}, banData=[], wlData=[], execData=[]
-let gifData=null, previewAnimInterval=null
-let effects={glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false}
-let glowColor='#960096'
 
-const GH={get token(){return localStorage.getItem('ac_gh_token')||''},owner:'ACAUDIOCRAFTER',repo:'AUDIO-CRAFTER',branch:'main'}
+const GH={
+  get token(){return localStorage.getItem('ac_gh_token')||''},
+  owner:'ACAUDIOCRAFTER',repo:'AUDIO-CRAFTER',branch:'main'
+}
 
-// ── Auth ────────────────────────────────────────────────────────────────────
+// ── Auth ──
 function login(){
   const pw=document.getElementById('auth-pw').value
   fetch(`${TAGS_API}?auth=${encodeURIComponent(pw)}`).then(r=>r.json()).then(d=>{
@@ -540,22 +538,115 @@ function login(){
   }).catch(()=>document.getElementById('aerr').style.display='block')
 }
 
-// ── GitHub helpers ─────────────────────────────────────────────────────────
+// ── GitHub helpers ──
 async function uploadToGitHub(content, path, isBase64=false){
   if(!GH.token) throw new Error('No GitHub token set. Click the 🔑 button.')
   const apiUrl=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${path}`
   let sha=null
-  try{const check=await fetch(apiUrl,{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}});if(check.ok){const existing=await check.json();sha=existing.sha}}catch{}
-  const body={message:`Update ${path}`,content,branch:GH.branch};if(sha)body.sha=sha
+  try{
+    const check=await fetch(apiUrl,{headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json'}})
+    if(check.ok){const existing=await check.json();sha=existing.sha}
+  }catch{}
+  const body={message:`Update ${path}`,content,branch:GH.branch}
+  if(sha)body.sha=sha
   const resp=await fetch(apiUrl,{method:'PUT',headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)})
   if(!resp.ok){const err=await resp.json();throw new Error(`GitHub: ${err.message}`)}
-}
-async function uploadBlobToGitHub(blob, path){
-  const base64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(blob)})
-  return uploadToGitHub(base64, path, true)
+  return `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`
 }
 
-// ── DM GIF management (permanent file upload) ─────────────────────────────
+async function uploadFileToGitHub(file, folder){
+  if(!GH.token) throw new Error('No GitHub token — click 🔑 first.')
+  const ext = file.name.split('.').pop().toLowerCase()
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_').toLowerCase()
+  const path = `${folder}/${Date.now()}_${safeName}`
+  const base64 = await new Promise((res,rej)=>{
+    const r=new FileReader()
+    r.onload=()=>res(r.result.split(',')[1])
+    r.onerror=rej
+    r.readAsDataURL(file)
+  })
+  const url = await uploadToGitHub(base64, path, true)
+  return url
+}
+
+// ── File input handlers ──
+document.addEventListener('DOMContentLoaded', () => {
+  // PFP file input
+  document.getElementById('pfp-file-input').addEventListener('change', function(e){
+    const file = e.target.files[0]
+    const label = document.getElementById('pfp-file-label')
+    const previewBox = document.getElementById('pfp-preview-box')
+    const previewImg = document.getElementById('pfp-preview-img')
+    if(file){
+      label.textContent = file.name
+      label.classList.add('has-file')
+      const reader = new FileReader()
+      reader.onload = ev => {
+        previewImg.src = ev.target.result
+        previewBox.style.display = 'block'
+        // Show in nametag preview
+        document.getElementById('prev-pfp').src = ev.target.result
+        document.getElementById('prev-pfp').style.display = 'block'
+      }
+      reader.readAsDataURL(file)
+      // Clear stored URL since a new file was picked
+      document.getElementById('f-pfp-url').value = ''
+    } else {
+      label.textContent = 'Choose image file...'
+      label.classList.remove('has-file')
+      previewBox.style.display = 'none'
+    }
+    updatePreview()
+  })
+
+  // BG file input
+  document.getElementById('bg-file-input').addEventListener('change', function(e){
+    const file = e.target.files[0]
+    const label = document.getElementById('bg-file-label')
+    const previewBox = document.getElementById('bg-preview-box')
+    const previewImg = document.getElementById('bg-preview-img')
+    if(file){
+      label.textContent = file.name
+      label.classList.add('has-file')
+      const reader = new FileReader()
+      reader.onload = ev => {
+        previewImg.src = ev.target.result
+        previewBox.style.display = 'block'
+      }
+      reader.readAsDataURL(file)
+      document.getElementById('f-bg-url').value = ''
+    } else {
+      label.textContent = 'Choose GIF or image file...'
+      label.classList.remove('has-file')
+      previewBox.style.display = 'none'
+    }
+    updatePreview()
+  })
+
+  // GIF page file input
+  document.getElementById('gif-file-input').addEventListener('change', function(e){
+    const file = e.target.files[0]
+    const label = document.getElementById('gif-file-name-label')
+    const previewBox = document.getElementById('gif-file-preview-box')
+    const previewImg = document.getElementById('gif-file-preview-img')
+    if(file && file.type.startsWith('image/')){
+      label.textContent = file.name
+      label.classList.add('has-file')
+      const reader = new FileReader()
+      reader.onload = ev => {
+        previewImg.src = ev.target.result
+        previewBox.style.display = 'block'
+      }
+      reader.readAsDataURL(file)
+    } else {
+      label.textContent = 'Choose file...'
+      label.classList.remove('has-file')
+      previewBox.style.display = 'none'
+    }
+  })
+})
+
+// ── DM GIF management ──
 const GIF_LIST_PATH='dm_gifs/list.json'
 const GIF_LIST_RAW=`https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/main/${GIF_LIST_PATH}`
 let dmGifList=[]
@@ -563,12 +654,9 @@ let dmGifList=[]
 async function loadDmGifs(){
   document.getElementById('gif-count').textContent='Loading...'
   try{
-    const resp=await fetch(GIF_LIST_RAW+'?t='+Date.now())
-    if(resp.ok){
-      dmGifList=await resp.json()
-    }else{
-      dmGifList=[]
-    }
+    const resp=await fetch(GIF_LIST_RAW+'?cb='+Date.now(), {cache:'no-store'})
+    if(resp.ok) dmGifList=await resp.json()
+    else dmGifList=[]
   }catch{dmGifList=[]}
   renderGifLibrary()
 }
@@ -577,75 +665,72 @@ function renderGifLibrary(){
   const el=document.getElementById('gif-library')
   const cnt=document.getElementById('gif-count')
   cnt.textContent=`${dmGifList.length} GIF${dmGifList.length!==1?'s':''} in library`
-  if(!dmGifList.length){el.innerHTML='<div class="empty"><div class="empty-icon">🖼</div>No GIFs yet — add one above</div>';return}
+  if(!dmGifList.length){
+    el.innerHTML='<div class="empty"><div class="empty-icon">🖼</div>No GIFs yet — add one above</div>'
+    return
+  }
   el.innerHTML=dmGifList.map((g,i)=>{
-    const src=g.thumb||g.url
+    // Add cache-busting to raw GitHub URLs so browser doesn't cache failed loads
+    const src=(g.url||g.thumb||'')
+    const cbSrc = src ? src + (src.includes('?')?'&':'?') + 'cb=' + Date.now() : ''
+    const displayName = g.label || src.split('/').pop().substring(0,20)
     return`<div class="gif-thumb-card">
-      <img src="${src}" alt="${g.label||''}" crossorigin="anonymous"
-        style="width:100%;height:100%;object-fit:cover"
-        onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
-      <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:.7rem;color:#555;padding:4px;text-align:center;word-break:break-all">${g.label||src.split('/').pop()}</div>
+      <div class="gif-img-wrap">
+        <img
+          src="${cbSrc}"
+          alt="${displayName}"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          style="width:100%;height:100%;object-fit:cover;display:block"
+        />
+        <div class="gif-img-placeholder" style="display:none">${displayName}</div>
+      </div>
       <button class="gif-del" onclick="deleteDmGif(${i})">✕</button>
-      <div class="gif-thumb-url" title="${g.url}">${g.label||g.url.split('/').pop()}</div>
+      <div class="gif-thumb-url" title="${src}">${displayName}</div>
     </div>`
   }).join('')
 }
 
-// NEW: upload a local file to GitHub as permanent raw URL
-async function uploadGifFile() {
-  const fileInput = document.getElementById('gif-file-input');
-  const file = fileInput.files[0];
-  if (!file) { toast('Select a file first', 'err'); return; }
-  const label = document.getElementById('gif-upload-label').value.trim();
-  const spin = document.getElementById('gif-upload-spin');
-  const statusDiv = document.getElementById('gif-upload-status');
-  spin.style.display = 'inline-block';
-  statusDiv.style.display = 'none';
+async function uploadGifFile(){
+  const fileInput=document.getElementById('gif-file-input')
+  const file=fileInput.files[0]
+  if(!file){toast('Select a file first','err');return}
+  if(!GH.token){toast('Set GitHub token first — click 🔑','err');return}
+  const label=document.getElementById('gif-upload-label').value.trim()
+  const spin=document.getElementById('gif-upload-spin')
+  const statusDiv=document.getElementById('gif-upload-status')
+  spin.style.display='inline-block'
+  statusDiv.style.display='none'
+  try{
+    // 1. Upload the image file
+    const fileUrl = await uploadFileToGitHub(file, 'dm_gifs')
 
-  const formData = new FormData();
-  formData.append('file', file);
-  if (label) formData.append('label', label);
+    // 2. Update the list.json
+    await loadDmGifs() // refresh current list first
+    dmGifList.push({url: fileUrl, label: label || file.name.replace(/\.[^.]+$/,''), addedAt: Date.now()})
+    const listContent = btoa(unescape(encodeURIComponent(JSON.stringify(dmGifList, null, 2))))
+    await uploadToGitHub(listContent, GIF_LIST_PATH)
 
-  try {
-    const resp = await fetch('/api/upload-gif', { method: 'POST', body: formData });
-    const result = await resp.json();
-    if (!resp.ok) throw new Error(result.error || 'Upload failed');
-
-    fileInput.value = '';
-    document.getElementById('gif-upload-label').value = '';
-    document.getElementById('gif-file-preview').style.display = 'none';
-    statusDiv.style.display = 'block';
-    statusDiv.style.background = 'rgba(0,200,100,.07)';
-    statusDiv.style.border = '1px solid rgba(0,200,100,.2)';
-    statusDiv.style.color = '#4ade80';
-    statusDiv.textContent = `✓ Uploaded! ${result.url}`;
-    toast('GIF permanently uploaded', 'ok');
-    await loadDmGifs();   // refresh the library
-  } catch (e) {
-    statusDiv.style.display = 'block';
-    statusDiv.style.background = 'rgba(220,60,60,.07)';
-    statusDiv.style.border = '1px solid rgba(220,60,60,.2)';
-    statusDiv.style.color = '#f87171';
-    statusDiv.textContent = 'Failed: ' + e.message;
-    toast('Upload failed', 'err');
-  } finally {
-    spin.style.display = 'none';
+    // 3. Reset UI
+    fileInput.value=''
+    document.getElementById('gif-upload-label').value=''
+    document.getElementById('gif-file-preview-box').style.display='none'
+    document.getElementById('gif-file-name-label').textContent='Choose file...'
+    document.getElementById('gif-file-name-label').classList.remove('has-file')
+    statusDiv.style.display='block'
+    statusDiv.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(0,200,100,.07);border:1px solid rgba(0,200,100,.2);color:#4ade80'
+    statusDiv.textContent='✓ Uploaded! '+fileUrl
+    toast('GIF permanently uploaded','ok')
+    renderGifLibrary()
+  }catch(e){
+    statusDiv.style.display='block'
+    statusDiv.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171'
+    statusDiv.textContent='Failed: '+e.message
+    toast('Upload failed','err')
+  }finally{
+    spin.style.display='none'
   }
 }
-
-// Preview selected file
-document.getElementById('gif-file-input')?.addEventListener('change', function(e) {
-  const previewDiv = document.getElementById('gif-file-preview');
-  const previewImg = document.getElementById('gif-file-preview-img');
-  const file = e.target.files[0];
-  if (file && file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = (ev) => { previewImg.src = ev.target.result; previewDiv.style.display = 'block'; };
-    reader.readAsDataURL(file);
-  } else {
-    previewDiv.style.display = 'none';
-  }
-});
 
 async function deleteDmGif(idx){
   if(!confirm('Remove this GIF from the library?')) return
@@ -658,13 +743,13 @@ async function deleteDmGif(idx){
   }catch(e){toast('Failed to save: '+e.message,'err')}
 }
 
-// ── GitHub modal ──────────────────────────────────────────────────────────
+// ── GitHub modal ──
 function showGhModal(){document.getElementById('gh-modal').style.display='flex'}
 function saveGhToken(){const t=document.getElementById('gh-token-input').value.trim();if(!t){toast('Paste your token first','err');return};localStorage.setItem('ac_gh_token',t);document.getElementById('gh-modal').style.display='none';toast('✓ GitHub token saved','ok')}
 function skipGhToken(){document.getElementById('gh-modal').style.display='none'}
 function resetGhToken(){localStorage.removeItem('ac_gh_token');document.getElementById('gh-token-input').value='';showGhModal()}
 
-// ── Pagination & other existing functions (unchanged) ──────────────────────
+// ── Page navigation ──
 function showPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
   document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'))
@@ -675,11 +760,12 @@ function showPage(id,btn){
   if(id==='scriptusers') loadScriptUsers()
 }
 
+// ── Live polling ──
 async function pollLive(){
   if(!pass) return
   const start=Date.now()
   try{
-    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${start}`, {cache:'no-store',headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}})
+    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${start}`,{cache:'no-store',headers:{'Cache-Control':'no-cache','Pragma':'no-cache'}})
     const d=await r.json()
     if(d.ok){
       execData=d.executing||[]
@@ -688,11 +774,11 @@ async function pollLive(){
       if(document.getElementById("page-scriptusers").classList.contains("active")) renderScriptUsers()
       const ping=Date.now()-start
       const pingEl=document.getElementById('live-ping')
-      pingEl.textContent=ping+'ms'; pingEl.className='live-ping active'
+      pingEl.textContent=ping+'ms';pingEl.className='live-ping active'
     }
   }catch{
     const pingEl=document.getElementById('live-ping')
-    pingEl.textContent='error'; pingEl.className='live-ping'
+    pingEl.textContent='error';pingEl.className='live-ping'
   }
 }
 
@@ -723,7 +809,7 @@ function updateStats(){
 
 function renderLive(users){
   const ul=document.getElementById('live-users'),dot=document.getElementById('lstatus'),cnt=document.getElementById('lcnt')
-  const n=users.length; cnt.textContent=n>0?`${n} online`:'0 online'; dot.className='lstatus'+(n>0?' on':'')
+  const n=users.length;cnt.textContent=n>0?`${n} online`:'0 online';dot.className='lstatus'+(n>0?' on':'')
   if(n>0){
     ul.innerHTML=users.map(u=>`<span class="live-chip"><span class="ldot"></span>${u}<span style="font-size:.7rem;opacity:.5;margin-left:2px">executing</span></span>`).join('')
   }else{
@@ -733,342 +819,351 @@ function renderLive(users){
   if(bar&&n>0){bar.style.borderColor='rgba(0,255,136,.35)';setTimeout(()=>bar.style.borderColor='',600)}
 }
 
-// ── Color palette (unchanged) ──
-const GLOW_PRESETS=[
-  {c:'#0066ff',n:'Blue'},{c:'#00ccff',n:'Cyan'},{c:'#00ff88',n:'Green'},{c:'#ff3366',n:'Red'},
-  {c:'#ff9900',n:'Orange'},{c:'#cc44ff',n:'Purple'},{c:'#ffffff',n:'White'},{c:'#ffdd00',n:'Gold'},
-  {c:'#ff66cc',n:'Pink'},{c:'#44ffdd',n:'Teal'},{c:'#ff4400',n:'Flame'},{c:'#aaaaff',n:'Lavender'},
-]
-function initColorPalette(){
-  const el=document.getElementById('color-palette')
-  el.innerHTML=GLOW_PRESETS.map(p=>`<div class="color-swatch${p.c.toLowerCase()===glowColor.toLowerCase()?' selected':''}" style="background:${p.c};box-shadow:0 0 8px ${p.c}66" title="${p.n}" onclick="selectColor('${p.c}',this)"></div>`).join('')
-  applyPreviewGlow(glowColor)
-}
-function selectColor(c,el){glowColor=c;document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));el.classList.add('selected');document.getElementById('f-custom-color').value=c;applyPreviewGlow(c)}
-function setCustomColor(c){glowColor=c;document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));applyPreviewGlow(c)}
-function applyPreviewGlow(c){const ntag=document.getElementById('prev-ntag');ntag.style.boxShadow=`0 0 18px ${c}55, 0 2px 8px rgba(0,0,0,.6)`;ntag.style.borderColor=c}
-function toggleEffect(key){effects[key]=!effects[key];const sw=document.getElementById('tog-'+key);sw.className='toggle-switch'+(effects[key]?' on':'');const row=sw.closest('.toggle-row');if(row)row.className='toggle-row'+(effects[key]?' tog-active':'');updatePreview()}
-function getEffectsFromForm(){return{...effects,glowColor}}
-
-// ── Preview (unchanged) ──
+// ── Preview ──
 function updatePreview(){
   const tag=document.getElementById('f-tag').value||'AC USER'
   const user=document.getElementById('f-user').value||'username'
-  const tagEl=document.getElementById('prev-tag')
-  tagEl.textContent=tag; document.getElementById('prev-user').textContent='@'+user
-  const pfpVal=document.getElementById('f-pfp').value.trim()
-  const pi=document.getElementById('prev-pfp')
-  if(pfpVal){pi.src=pfpVal.startsWith('http')?pfpVal:`https://assetdelivery.roblox.com/v1/asset/?id=${pfpVal}`;pi.style.display='block';pi.onerror=()=>pi.style.display='none'}else{pi.style.display='none'}
-  applyPreviewGlow(glowColor)
-  const bgVal=document.getElementById('f-bg').value.trim()
+  document.getElementById('prev-tag').textContent=tag
+  document.getElementById('prev-user').textContent='@'+user
+  // PFP: use live preview from file if available, else stored URL
+  const pfpUrl=document.getElementById('f-pfp-url').value
+  const prevPfp=document.getElementById('prev-pfp')
+  if(pfpUrl){prevPfp.src=pfpUrl;prevPfp.style.display='block'}
   const q=s=>document.getElementById(s)
-  q('pi-user').textContent=user==='username'?'—':user;q('pi-tag').textContent=tag==='AC USER'?'—':tag
-  q('pi-pfp').textContent=pfpVal?'✓ Set':'Not set';q('pi-pfp').className='prev-info-val '+(pfpVal?'active':'inactive')
-  q('pi-bg').textContent=bgVal?(gifData?'🎞 GIF ready':'🖼 Static'):'Not set';q('pi-bg').className='prev-info-val '+(bgVal?'active':'inactive')
-  q('pi-glow').textContent=glowColor;q('pi-glow').style.color=glowColor
-  const ae=Object.entries(effects).filter(([k,v])=>v===true).map(([k])=>({glitched:'⚡Glitch',typewriter:'⌨ Type',animProfile:'🖼 PFP',animBg:'🎞 BG',tagEffects:'✨ FX'}[k]||k))
-  q('pi-effects').textContent=ae.length?ae.join(' · '):'None';q('pi-effects').className='prev-info-val '+(ae.length?'active':'inactive')
+  q('pi-user').textContent=user==='username'?'—':user
+  q('pi-tag').textContent=tag==='AC USER'?'—':tag
+  const hasPfpFile=document.getElementById('pfp-file-input').files.length>0
+  const hasPfpUrl=!!pfpUrl
+  q('pi-pfp').textContent=(hasPfpFile||hasPfpUrl)?'✓ Set':'Not set'
+  q('pi-pfp').className='prev-info-val '+(hasPfpFile||hasPfpUrl?'active':'inactive')
+  const hasBgFile=document.getElementById('bg-file-input').files.length>0
+  const hasBgUrl=!!document.getElementById('f-bg-url').value
+  q('pi-bg').textContent=(hasBgFile||hasBgUrl)?'✓ Set':'Not set'
+  q('pi-bg').className='prev-info-val '+(hasBgFile||hasBgUrl?'active':'inactive')
 }
 
-// ── GIF processing (sprite sheet) unchanged ───────────────────────────────
-function onBgInput(){const val=document.getElementById('f-bg').value.trim();document.getElementById('gif-btn').disabled=!val;if(gifData){gifData=null;stopPreviewAnim();document.getElementById('prev-anim-canvas').style.display='none';document.getElementById('sheet-preview').style.display='none';setGifStatus('','')}}
-function setGifStatus(type,msg){const el=document.getElementById('gif-status');el.className=`gif-status ${type}`;el.textContent=msg;el.style.display=type?'flex':'none'}
-function setProgress(pct){const bar=document.getElementById('gif-progress');const inner=document.getElementById('gif-bar');if(pct<0){bar.style.display='none';return};bar.style.display='block';inner.style.width=pct+'%'}
-function loadImage(src){return new Promise((res,rej)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>res(img);img.onerror=()=>rej(new Error('Image load failed'));img.src=src})}
-
-function extractGifMeta(bytes){
-  const frames=[];let i=6;const flags=bytes[10];const hasGCT=(flags>>7)&1;const gctSize=hasGCT?3*(1<<((flags&7)+1)):0;i=13+gctSize
-  let currentDelay=100,startMs=0,totalDurationMs=0
-  while(i<bytes.length){const block=bytes[i];if(block===0x3B)break;if(block===0x21){const label=bytes[i+1];if(label===0xF9){currentDelay=(bytes[i+4]|(bytes[i+5]<<8))*10||100;i+=8}else{i+=2;while(bytes[i]!==0)i+=bytes[i]+1;i++}}else if(block===0x2C){frames.push({delay:currentDelay,startMs});startMs+=currentDelay;totalDurationMs+=currentDelay;currentDelay=100;const hasLCT=(bytes[i+9]>>6)&1;const lctSize=hasLCT?3*(1<<((bytes[i+9]&7)+1)):0;i+=10+lctSize+1;while(bytes[i]!==0)i+=bytes[i]+1;i++}else{i++}}
-  frames.totalDurationMs=totalDurationMs||1000;return frames
-}
-function buildSpriteSheet(frames,W,H){
-  const COLS=Math.min(frames.length,Math.ceil(Math.sqrt(frames.length*(W/H))));const ROWS=Math.ceil(frames.length/COLS)
-  const sheet=document.createElement('canvas');sheet.width=W*COLS;sheet.height=H*ROWS;const ctx=sheet.getContext('2d')
-  for(let i=0;i<frames.length;i++){const col=i%COLS;const row=Math.floor(i/COLS);ctx.drawImage(frames[i].canvas,col*W,row*H)}
-  const fps=Math.round(1000/(frames.reduce((s,f)=>s+f.delay,0)/frames.length))
-  return{sheet,cols:COLS,rows:ROWS,frameW:W,frameH:H,totalFrames:frames.length,fps}
-}
-async function processGif(){
-  const url=document.getElementById('f-bg').value.trim();if(!url)return
-  const btn=document.getElementById('gif-btn');btn.disabled=true;btn.textContent='⏳ Processing...';setGifStatus('loading','Fetching image...');setProgress(0);gifData=null;stopPreviewAnim()
-  try{
-    const resp=await fetch(url).catch(()=>null);if(!resp||!resp.ok)throw new Error('Could not fetch — check URL and CORS.')
-    const bytes=await resp.arrayBuffer();const arr=new Uint8Array(bytes);const isGif=arr[0]===0x47&&arr[1]===0x49&&arr[2]===0x46
-    let frames,W,H
-    if(isGif){
-      setGifStatus('loading','Parsing GIF...');setProgress(20)
-      const blob=new Blob([bytes],{type:'image/gif'});const burl=URL.createObjectURL(blob);const img=await loadImage(burl);W=img.naturalWidth;H=img.naturalHeight
-      const meta=extractGifMeta(arr);const frameCount=meta.length;setGifStatus('loading',`Found ${frameCount} frames...`);setProgress(30)
-      frames=[]
-      for(let fi=0;fi<frameCount;fi++){
-        setProgress(30+Math.round((fi/frameCount)*55))
-        const fc=document.createElement('canvas');fc.width=W;fc.height=H;const fctx=fc.getContext('2d')
-        const fimg=new Image();fimg.crossOrigin='anonymous';await new Promise(r=>{fimg.onload=r;fimg.src=burl})
-        fimg.style.cssText='position:fixed;visibility:hidden;left:0;top:0';document.body.appendChild(fimg);await new Promise(r=>setTimeout(r,20));fctx.drawImage(fimg,0,0);document.body.removeChild(fimg)
-        frames.push({canvas:fc,delay:meta[fi]?.delay||100})
-      }
-      URL.revokeObjectURL(burl)
-    }else{
-      setGifStatus('loading','Loading static image...');setProgress(50)
-      const blob=new Blob([bytes]);const burl=URL.createObjectURL(blob);const img=await loadImage(burl);URL.revokeObjectURL(burl);W=img.naturalWidth;H=img.naturalHeight
-      const fc=document.createElement('canvas');fc.width=W;fc.height=H;fc.getContext('2d').drawImage(img,0,0);frames=[{canvas:fc,delay:100}]
-    }
-    setProgress(90);setGifStatus('loading','Building sprite sheet...')
-    const result=buildSpriteSheet(frames,W,H)
-    const dataUrl=result.sheet.toDataURL('image/png');const sheetBlob=await new Promise(res=>result.sheet.toBlob(res,'image/png'))
-    gifData={sheetDataUrl:dataUrl,sheetBlob,frameW:result.frameW,frameH:result.frameH,cols:result.cols,rows:result.rows,totalFrames:result.totalFrames,fps:result.fps,frames}
-    setProgress(100);setGifStatus('ok',`✓ ${result.totalFrames} frames · ${result.cols}×${result.rows} grid · ${result.fps}fps`);setTimeout(()=>setProgress(-1),1200)
-    const sp=document.getElementById('sheet-preview');const sc2=document.getElementById('sheet-canvas');const previewH=80;const previewW=Math.round(result.sheet.width*(previewH/result.sheet.height));sc2.width=previewW;sc2.height=previewH;sc2.getContext('2d').drawImage(result.sheet,0,0,previewW,previewH);document.getElementById('sheet-meta').innerHTML=`Sheet: ${result.sheet.width}×${result.sheet.height}px · ${result.totalFrames} frames · ${result.fps}fps`;sp.style.display='block'
-    startPreviewAnim(frames,W,H);toast(`✓ GIF processed — ${result.totalFrames} frames ready`,'ok')
-  }catch(e){setGifStatus('err','⚠ '+e.message);setProgress(-1);toast('GIF process failed','err')}
-  btn.disabled=false;btn.textContent='⚙ Process'
-}
-function startPreviewAnim(frames,W,H){stopPreviewAnim();const cv=document.getElementById('prev-anim-canvas');const ctx=cv.getContext('2d');cv.style.display='block';cv.style.opacity='0.35';let frame=0;function step(){const f=frames[frame];cv.width=cv.offsetWidth||200;cv.height=cv.offsetHeight||40;ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(f.canvas,0,0,cv.width,cv.height);frame=(frame+1)%frames.length;previewAnimInterval=setTimeout(step,f.delay)};step()}
-function stopPreviewAnim(){if(previewAnimInterval){clearTimeout(previewAnimInterval);previewAnimInterval=null}}
-
-// ── Save tag (unchanged) ──
+// ── Save tag ──
 async function saveTag(){
-  const username=document.getElementById('f-user').value.trim(),tag=document.getElementById('f-tag').value.trim(),pfpId=document.getElementById('f-pfp').value.trim()
+  const username=document.getElementById('f-user').value.trim()
+  const tag=document.getElementById('f-tag').value.trim()
   if(!username||!tag){toast('Username and tag required','err');return}
+  if(!GH.token){toast('Set GitHub token first — click 🔑','err');return}
   document.getElementById('save-spin').style.display='inline-block'
-  let bgId=document.getElementById('f-bg').value.trim(),animMeta=null
-  if(gifData){
-    try{
-      setGifStatus('loading','Uploading sprite sheet...')
-      const filename=`${username.toLowerCase().replace(/[^a-z0-9]/g,'_')}_${Date.now()}.png`
-      const apiUrl=`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/sprites/${filename}`
-      const base64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(gifData.sheetBlob)})
-      let sha=null;try{const check=await fetch(apiUrl,{headers:{'Authorization':`token ${GH.token}`}});if(check.ok){sha=(await check.json()).sha}}catch{}
-      const body={message:`Upload sprite: ${filename}`,content:base64,branch:GH.branch};if(sha)body.sha=sha
-      const resp=await fetch(apiUrl,{method:'PUT',headers:{'Authorization':`token ${GH.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)})
-      if(!resp.ok)throw new Error((await resp.json()).message)
-      bgId=`https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/sprites/${filename}`
-      animMeta={sheetUrl:bgId,frameW:gifData.frameW,frameH:gifData.frameH,cols:gifData.cols,totalFrames:gifData.totalFrames,fps:gifData.fps}
-      setGifStatus('ok',`✓ Uploaded → ${filename}`)
-    }catch(e){toast('GitHub upload failed: '+e.message,'err');setGifStatus('err','Upload failed — '+e.message);document.getElementById('save-spin').style.display='none';return}
+  let pfpId=document.getElementById('f-pfp-url').value  // existing URL if editing
+  let bgId=document.getElementById('f-bg-url').value    // existing URL if editing
+
+  try{
+    // Upload PFP file if a new one was selected
+    const pfpFile=document.getElementById('pfp-file-input').files[0]
+    if(pfpFile){
+      toast('Uploading profile picture...','')
+      pfpId = await uploadFileToGitHub(pfpFile, 'pfps')
+    }
+
+    // Upload BG file if a new one was selected
+    const bgFile=document.getElementById('bg-file-input').files[0]
+    if(bgFile){
+      toast('Uploading background...','')
+      bgId = await uploadFileToGitHub(bgFile, 'backgrounds')
+    }
+
+    const body={auth:pass,action:'set',username,tag,pfpId,bgId,effects:{glowColor:'#0066ff'}}
+    const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    const d=await r.json()
+    if(d.ok){
+      tagData=d.users||{}
+      renderTags();renderQuickList();clearTagForm()
+      toast(`✓ ${username} saved`,'ok')
+    }else{
+      toast(d.error||'Failed','err')
+    }
+  }catch(e){
+    toast('Upload failed: '+e.message,'err')
+  }finally{
+    document.getElementById('save-spin').style.display='none'
   }
-  const body={auth:pass,action:'set',username,tag,pfpId,bgId,effects:getEffectsFromForm()};if(animMeta)body.animMeta=animMeta
-  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json()
-  if(d.ok){tagData=d.users||{};renderTags();renderQuickList();clearTagForm();toast(`✓ ${username} saved`,'ok')}else{toast(d.error||'Failed','err')}
-  document.getElementById('save-spin').style.display='none'
 }
-async function deleteTag(u){if(!confirm(`Remove tag for ${u}?`))return;const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username:u})});const d=await r.json();if(d.ok){tagData=d.users||{};renderTags();renderQuickList();toast(`${u} removed`,'ok')}}
+
+async function deleteTag(u){
+  if(!confirm(`Remove tag for ${u}?`))return
+  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'delete',username:u})})
+  const d=await r.json()
+  if(d.ok){tagData=d.users||{};renderTags();renderQuickList();toast(`${u} removed`,'ok')}
+}
+
 function editTag(u){
-  const d=tagData[u];document.getElementById('f-user').value=u;document.getElementById('f-tag').value=d.tag;document.getElementById('f-pfp').value=d.pfpId||'';document.getElementById('f-bg').value=d.bgId||''
-  document.getElementById('form-title').textContent='Editing: '+u;document.getElementById('clear-btn').style.display='inline-flex'
-  const ue=d.effects||{}
-  effects={glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false,...ue}
-  Object.keys(effects).forEach(k=>{const sw=document.getElementById('tog-'+k);if(!sw)return;sw.className='toggle-switch'+(effects[k]?' on':'');const row=sw.closest('.toggle-row');if(row)row.className='toggle-row'+(effects[k]?' tog-active':'')})
-  const savedGlow=(ue.glowColor&&ue.glowColor!=='')?ue.glowColor:'#960096'
-  glowColor=savedGlow;document.getElementById('f-custom-color').value=savedGlow
-  document.querySelectorAll('.color-swatch').forEach(s=>{const m=s.getAttribute('onclick')?.match(/'(#[0-9a-fA-F]{6})'/)?.[1];s.classList.toggle('selected',m===savedGlow.toLowerCase())})
-  applyPreviewGlow(savedGlow);updatePreview()
-  if(d.animMeta){const m=d.animMeta;setGifStatus('ok',`✓ ${m.totalFrames} frames · ${m.cols} cols · ${m.fps}fps`)}
+  const d=tagData[u]
+  document.getElementById('f-user').value=u
+  document.getElementById('f-tag').value=d.tag
+  // Store existing URLs in hidden fields (so we don't re-upload if user doesn't change them)
+  document.getElementById('f-pfp-url').value=d.pfpId||''
+  document.getElementById('f-bg-url').value=d.bgId||''
+  // Show existing PFP in preview
+  if(d.pfpId){
+    document.getElementById('prev-pfp').src=d.pfpId
+    document.getElementById('prev-pfp').style.display='block'
+    document.getElementById('pfp-preview-img').src=d.pfpId
+    document.getElementById('pfp-preview-box').style.display='block'
+    document.getElementById('pfp-file-label').textContent='Current image set (choose to replace)'
+    document.getElementById('pfp-file-label').classList.add('has-file')
+  }
+  if(d.bgId){
+    document.getElementById('bg-preview-img').src=d.bgId
+    document.getElementById('bg-preview-box').style.display='block'
+    document.getElementById('bg-file-label').textContent='Current BG set (choose to replace)'
+    document.getElementById('bg-file-label').classList.add('has-file')
+  }
+  document.getElementById('form-title').textContent='Editing: '+u
+  document.getElementById('clear-btn').style.display='inline-flex'
+  updatePreview()
   window.scrollTo({top:0,behavior:'smooth'})
 }
+
 function clearTagForm(){
-  ['f-user','f-tag','f-pfp','f-bg'].forEach(id=>document.getElementById(id).value='')
-  document.getElementById('form-title').textContent='Add Tag User';document.getElementById('clear-btn').style.display='none'
-  document.getElementById('gif-btn').disabled=true;document.getElementById('sheet-preview').style.display='none';setGifStatus('','');setProgress(-1);gifData=null;stopPreviewAnim();document.getElementById('prev-anim-canvas').style.display='none'
-  effects={glitched:false,typewriter:false,animProfile:false,animBg:false,tagEffects:false}
-  Object.keys(effects).forEach(k=>{const el=document.getElementById('tog-'+k);if(el)el.className='toggle-switch'})
-  glowColor='#0066ff';document.getElementById('f-custom-color').value='#0066ff';initColorPalette();applyPreviewGlow('#0066ff');updatePreview()
+  document.getElementById('f-user').value=''
+  document.getElementById('f-tag').value=''
+  document.getElementById('f-pfp-url').value=''
+  document.getElementById('f-bg-url').value=''
+  document.getElementById('pfp-file-input').value=''
+  document.getElementById('bg-file-input').value=''
+  document.getElementById('pfp-file-label').textContent='Choose image file...'
+  document.getElementById('pfp-file-label').classList.remove('has-file')
+  document.getElementById('bg-file-label').textContent='Choose GIF or image file...'
+  document.getElementById('bg-file-label').classList.remove('has-file')
+  document.getElementById('pfp-preview-box').style.display='none'
+  document.getElementById('bg-preview-box').style.display='none'
+  document.getElementById('prev-pfp').style.display='none'
+  document.getElementById('form-title').textContent='Add Tag User'
+  document.getElementById('clear-btn').style.display='none'
+  updatePreview()
 }
+
 function renderTags(q=''){
   const keys=Object.keys(tagData).filter(k=>!q||k.toLowerCase().includes(q.toLowerCase()))
   const el=document.getElementById('tag-list');updateStats()
   if(!keys.length){el.innerHTML=`<div class="empty"><div class="empty-icon">🏷</div>${q?'No matches':'No tag users yet'}</div>`;return}
   el.innerHTML=keys.map(u=>{
-    const d=tagData[u];const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';const hasAnim=!!d.animMeta;const gc=(d.effects&&d.effects.glowColor)?d.effects.glowColor:'#960096'
-    return`<div class="urow"><div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta" style="display:flex;align-items:center;gap:6px">${d.pfpId?'Has PFP':'No PFP'} · ${hasAnim?`Animated ${d.animMeta.totalFrames}fr`:(d.bgId?'Has BG':'No BG')} <span style="width:8px;height:8px;border-radius:50%;background:${gc};box-shadow:0 0 6px ${gc};display:inline-block"></span></div></div>${hasAnim?'<span class="chip chip-anim">🎞 GIF</span>':`<span class="chip chip-acc">${d.tag||'—'}</span>`}<div class="urow-actions"><button class="btn btn-ghost btn-sm" onclick="editTag('${u}')">Edit</button><button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button></div></div>`
+    const d=tagData[u]
+    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';
+    const hasBg=!!d.bgId
+    return`<div class="urow">
+      <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
+      <div class="urow-info">
+        <div class="urow-name">${u}</div>
+        <div class="urow-meta">${d.pfpId?'Has PFP':'No PFP'} · ${hasBg?'Has BG':'No BG'}</div>
+      </div>
+      <span class="chip chip-acc">${d.tag||'—'}</span>
+      <div class="urow-actions">
+        <button class="btn btn-ghost btn-sm" onclick="editTag('${u}')">Edit</button>
+        <button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button>
+      </div>
+    </div>`
   }).join('')
 }
-function renderExec(){const el=document.getElementById('exec-list');if(!execData.length){el.innerHTML='<div class="empty"><div class="empty-icon">👾</div>No one executing right now</div>';return};el.innerHTML=execData.map(u=>`<div class="urow"><div class="urow-icon">👾</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Currently running the script</div></div><span class="chip chip-live">ONLINE</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="quickBan('${u}')">🚫 Ban</button></div></div>`).join('')}
-async function banUser(u){const un=u||document.getElementById('ban-user').value.trim();if(!un){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_add',username:un})});const d=await r.json();if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`🚫 ${un} banned`,'ok');document.getElementById('ban-user').value=''}else toast(d.error||'Failed','err')}
-function quickBan(u){banUser(u)}
-async function unbanUser(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_remove',username:u})});const d=await r.json();if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`${u} unbanned`,'ok')}}
-function renderBans(q=''){const el=document.getElementById('ban-list');const list=banData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">🚫</div>No banned users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">🚫</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Gets ban screen on execute</div></div><span class="chip chip-red">BANNED</span><div class="urow-actions"><button class="btn btn-green btn-sm" onclick="unbanUser('${u}')">Unban</button></div></div>`).join('')}
-async function wlAdd(){const u=document.getElementById('wl-user').value.trim();if(!u){toast('Enter a username','err');return};const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_add',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`✅ ${u} whitelisted`,'ok');document.getElementById('wl-user').value=''}else toast(d.error||'Failed','err')}
-async function wlRemove(u){const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_remove',username:u})});const d=await r.json();if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`${u} removed from whitelist`,'ok')}}
-function renderWl(q=''){const el=document.getElementById('wl-list');const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()));if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return};el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')}
-async function quickAdd(){
-  const username=document.getElementById('qa-user').value.trim();if(!username){toast('Enter a username','err');return}
-  const qs=document.getElementById('qa-status');qs.style.display='block';qs.style.background='rgba(0,150,255,.07)';qs.style.border='1px solid rgba(0,150,255,.2)';qs.style.color='#60b8ff';qs.textContent='Checking...'
-  if(tagData[username]){qs.style.background='rgba(0,200,100,.07)';qs.style.border='1px solid rgba(0,200,100,.2)';qs.style.color='#4ade80';qs.textContent=`✓ ${username} already has tag: "${tagData[username].tag}"`;document.getElementById('qa-user').value='';renderQuickList();return}
-  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set',username,tag:'AC USER',pfpId:'',bgId:'',effects:{glowColor:'#960096'}})})
+
+function renderExec(){
+  const el=document.getElementById('exec-list')
+  if(!execData.length){el.innerHTML='<div class="empty"><div class="empty-icon">👾</div>No one executing right now</div>';return}
+  el.innerHTML=execData.map(u=>`<div class="urow"><div class="urow-icon">👾</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Currently running the script</div></div><span class="chip chip-live">ONLINE</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="quickBan('${u}')">🚫 Ban</button></div></div>`).join('')
+}
+
+async function banUser(u){
+  const un=u||document.getElementById('ban-user').value.trim()
+  if(!un){toast('Enter a username','err');return}
+  const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_add',username:un})})
   const d=await r.json()
-  if(d.ok){tagData=d.users||{};qs.style.background='rgba(0,200,100,.07)';qs.style.border='1px solid rgba(0,200,100,.2)';qs.style.color='#4ade80';qs.textContent=`✓ ${username} added`;document.getElementById('qa-user').value='';renderQuickList();renderTags();updateStats();toast(`⚡ ${username} quick-added`,'ok')}
-  else{qs.style.background='rgba(220,60,60,.07)';qs.style.border='1px solid rgba(220,60,60,.2)';qs.style.color='#f87171';qs.textContent='Failed: '+(d.error||'Unknown');toast('Failed','err')}
+  if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`🚫 ${un} banned`,'ok');document.getElementById('ban-user').value=''}
+  else toast(d.error||'Failed','err')
+}
+function quickBan(u){banUser(u)}
+async function unbanUser(u){
+  const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'ban_remove',username:u})})
+  const d=await r.json()
+  if(d.ok){banData=d.banned||[];renderBans();updateStats();toast(`${u} unbanned`,'ok')}
+}
+function renderBans(q=''){
+  const el=document.getElementById('ban-list')
+  const list=banData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()))
+  if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">🚫</div>No banned users</div>';return}
+  el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">🚫</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Gets ban screen on execute</div></div><span class="chip chip-red">BANNED</span><div class="urow-actions"><button class="btn btn-green btn-sm" onclick="unbanUser('${u}')">Unban</button></div></div>`).join('')
+}
+async function wlAdd(){
+  const u=document.getElementById('wl-user').value.trim()
+  if(!u){toast('Enter a username','err');return}
+  const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_add',username:u})})
+  const d=await r.json()
+  if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`✅ ${u} whitelisted`,'ok');document.getElementById('wl-user').value=''}
+  else toast(d.error||'Failed','err')
+}
+async function wlRemove(u){
+  const r=await fetch(MANAGE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'whitelist_remove',username:u})})
+  const d=await r.json()
+  if(d.ok){wlData=d.whitelist||[];renderWl();updateStats();toast(`${u} removed from whitelist`,'ok')}
+}
+function renderWl(q=''){
+  const el=document.getElementById('wl-list')
+  const list=wlData.filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()))
+  if(!list.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div>No whitelisted users</div>';return}
+  el.innerHTML=list.map(u=>`<div class="urow"><div class="urow-icon">✅</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">Bypasses key system</div></div><span class="chip chip-green">WHITELISTED</span><div class="urow-actions"><button class="btn btn-red btn-sm" onclick="wlRemove('${u}')">Remove</button></div></div>`).join('')
+}
+async function quickAdd(){
+  const username=document.getElementById('qa-user').value.trim()
+  if(!username){toast('Enter a username','err');return}
+  const qs=document.getElementById('qa-status')
+  qs.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(0,150,255,.07);border:1px solid rgba(0,150,255,.2);color:#60b8ff'
+  qs.textContent='Checking...'
+  if(tagData[username]){
+    qs.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(0,200,100,.07);border:1px solid rgba(0,200,100,.2);color:#4ade80'
+    qs.textContent=`✓ ${username} already has tag: "${tagData[username].tag}"`
+    document.getElementById('qa-user').value='';renderQuickList();return
+  }
+  const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set',username,tag:'AC USER',pfpId:'',bgId:'',effects:{glowColor:'#0066ff'}})})
+  const d=await r.json()
+  if(d.ok){
+    tagData=d.users||{}
+    qs.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(0,200,100,.07);border:1px solid rgba(0,200,100,.2);color:#4ade80'
+    qs.textContent=`✓ ${username} added`
+    document.getElementById('qa-user').value='';renderQuickList();renderTags();updateStats();toast(`⚡ ${username} quick-added`,'ok')
+  }else{
+    qs.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171'
+    qs.textContent='Failed: '+(d.error||'Unknown');toast('Failed','err')
+  }
 }
 function renderQuickList(q=''){
   const el=document.getElementById('qa-list');if(!el)return
   const keys=Object.keys(tagData).filter(u=>!q||u.toLowerCase().includes(q.toLowerCase()))
   if(!keys.length){el.innerHTML='<div class="empty"><div class="empty-icon">⚡</div>No users in system yet</div>';return}
   el.innerHTML=keys.map(u=>{
-    const d=tagData[u];const gc=(d.effects&&d.effects.glowColor)?d.effects.glowColor:'#960096'
-    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';const hasAnim=!!d.animMeta
-    return`<div class="urow"><div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div><div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta" style="display:flex;align-items:center;gap:6px">${d.tag} · ${hasAnim?`🎞 ${d.animMeta.totalFrames}fr`:(d.bgId?'Has BG':'No BG')} <span style="width:7px;height:7px;border-radius:50%;background:${gc};display:inline-block"></span></div></div><div class="urow-actions"><button class="btn btn-ghost btn-sm" onclick="editTag('${u}');showPage('tags',document.querySelector('.ntab'))">Edit</button><button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button></div></div>`
+    const d=tagData[u]
+    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';
+    const hasBg=!!d.bgId
+    return`<div class="urow">
+      <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
+      <div class="urow-info">
+        <div class="urow-name">${u}</div>
+        <div class="urow-meta">${d.tag} · ${hasBg?'Has BG':'No BG'}</div>
+      </div>
+      <div class="urow-actions">
+        <button class="btn btn-ghost btn-sm" onclick="editTag('${u}');showPage('tags',document.querySelector('.ntab'))">Edit</button>
+        <button class="btn btn-red btn-sm" onclick="deleteTag('${u}')">✕</button>
+      </div>
+    </div>`
   }).join('')
 }
 
 function toast(msg,type){const e=document.getElementById('toast');e.textContent=msg;e.className=`show ${type||''}`;setTimeout(()=>e.className='',3500)}
 
-// ── Tag visibility control (unchanged) ──
-let globalTagsEnabled = true
+// ── Tag visibility control ──
+let globalTagsEnabled=true
 async function loadTagToggleState(){
   try{
-    const r = await fetch(`${TAGS_API}?auth=${encodeURIComponent(pass)}`)
-    const d = await r.json()
-    if(d.ok){ tagData=d.users||{}; globalTagsEnabled=d.globalTagsEnabled!==false; renderTagToggleList(); updateGlobalTagBtn() }
+    const r=await fetch(`${TAGS_API}?auth=${encodeURIComponent(pass)}`)
+    const d=await r.json()
+    if(d.ok){tagData=d.users||{};globalTagsEnabled=d.globalTagsEnabled!==false;renderTagToggleList();updateGlobalTagBtn()}
   }catch{}
 }
 function updateGlobalTagBtn(){
-  const btn = document.getElementById('global-tag-btn')
-  const lbl = document.getElementById('global-tag-label')
-  if(!btn) return
-  if(globalTagsEnabled){
-    btn.style.background='rgba(0,180,90,.12)'; btn.style.border='1px solid rgba(0,200,100,.3)'; btn.style.color='#4ade80'
-    lbl.textContent='✅ Tags ON — click to disable'
-  }else{
-    btn.style.background='rgba(180,0,0,.12)'; btn.style.border='1px solid rgba(220,60,60,.3)'; btn.style.color='#f87171'
-    lbl.textContent='🚫 Tags OFF — click to enable'
-  }
+  const btn=document.getElementById('global-tag-btn'),lbl=document.getElementById('global-tag-label')
+  if(!btn)return
+  if(globalTagsEnabled){btn.style.cssText='min-width:140px;justify-content:center;background:rgba(0,180,90,.12);border:1px solid rgba(0,200,100,.3);color:#4ade80';lbl.textContent='✅ Tags ON — click to disable'}
+  else{btn.style.cssText='min-width:140px;justify-content:center;background:rgba(180,0,0,.12);border:1px solid rgba(220,60,60,.3);color:#f87171';lbl.textContent='🚫 Tags OFF — click to enable'}
 }
 async function toggleGlobalTags(){
-  globalTagsEnabled = !globalTagsEnabled
-  updateGlobalTagBtn()
+  globalTagsEnabled=!globalTagsEnabled;updateGlobalTagBtn()
   try{
-    const r = await fetch(TAGS_API, {method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({auth:pass, action:'set_global_tags', enabled:globalTagsEnabled})})
-    const d = await r.json()
-    if(d.ok){ toast(globalTagsEnabled ? '✅ Tags visible globally' : '🚫 Tags hidden globally', globalTagsEnabled?'ok':'err') }
-    else{ globalTagsEnabled=!globalTagsEnabled; updateGlobalTagBtn(); toast('Failed: '+(d.error||'unknown'),'err') }
-  }catch{ globalTagsEnabled=!globalTagsEnabled; updateGlobalTagBtn(); toast('Request failed','err') }
+    const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set_global_tags',enabled:globalTagsEnabled})})
+    const d=await r.json()
+    if(d.ok){toast(globalTagsEnabled?'✅ Tags visible globally':'🚫 Tags hidden globally',globalTagsEnabled?'ok':'err')}
+    else{globalTagsEnabled=!globalTagsEnabled;updateGlobalTagBtn();toast('Failed: '+(d.error||'unknown'),'err')}
+  }catch{globalTagsEnabled=!globalTagsEnabled;updateGlobalTagBtn();toast('Request failed','err')}
 }
 async function toggleUserTag(){
-  const username = document.getElementById('tt-user').value.trim()
-  if(!username){ toast('Enter a username','err'); return }
-  const spin = document.getElementById('tt-spin')
-  const status = document.getElementById('tt-status')
-  spin.style.display='inline-block'; status.style.display='none'
-  const user = tagData[username]
-  if(!user){ 
+  const username=document.getElementById('tt-user').value.trim()
+  if(!username){toast('Enter a username','err');return}
+  const spin=document.getElementById('tt-spin'),status=document.getElementById('tt-status')
+  spin.style.display='inline-block';status.style.display='none'
+  const user=tagData[username]
+  if(!user){
     spin.style.display='none'
-    status.style.display='block'; status.style.background='rgba(220,60,60,.07)'; status.style.border='1px solid rgba(220,60,60,.2)'; status.style.color='#f87171'
-    status.textContent=`${username} is not in the tag system — add them in the Tags tab first`
-    return
+    status.style.cssText='display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:rgba(220,60,60,.07);border:1px solid rgba(220,60,60,.2);color:#f87171'
+    status.textContent=`${username} is not in the tag system — add them in the Tags tab first`;return
   }
-  const nowHidden = !user.hidden
+  const nowHidden=!user.hidden
   try{
-    const r = await fetch(TAGS_API, {method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({auth:pass, action:'set_tag_hidden', username, hidden:nowHidden})})
-    const d = await r.json()
+    const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set_tag_hidden',username,hidden:nowHidden})})
+    const d=await r.json()
     if(d.ok){
-      tagData = d.users||{}
-      renderTagToggleList()
+      tagData=d.users||{};renderTagToggleList()
       status.style.display='block'
-      status.style.background = nowHidden ? 'rgba(220,60,60,.07)' : 'rgba(0,200,100,.07)'
-      status.style.border = nowHidden ? '1px solid rgba(220,60,60,.2)' : '1px solid rgba(0,200,100,.2)'
-      status.style.color = nowHidden ? '#f87171' : '#4ade80'
-      status.textContent = nowHidden ? `🚫 ${username}'s tag is now hidden from others` : `✅ ${username}'s tag is now visible to everyone`
-      document.getElementById('tt-user').value=''
-      toast(nowHidden ? `${username} tag hidden` : `${username} tag visible`, nowHidden?'err':'ok')
-    }else{ status.style.display='block'; status.style.color='#f87171'; status.textContent='Failed: '+(d.error||'unknown'); toast('Failed','err') }
-  }catch{ toast('Request failed','err') }
+      status.style.cssText=`display:block;font-size:.82rem;padding:8px 12px;border-radius:8px;margin-top:4px;background:${nowHidden?'rgba(220,60,60,.07)':'rgba(0,200,100,.07)'};border:1px solid ${nowHidden?'rgba(220,60,60,.2)':'rgba(0,200,100,.2)'};color:${nowHidden?'#f87171':'#4ade80'}`
+      status.textContent=nowHidden?`🚫 ${username}'s tag is now hidden from others`:`✅ ${username}'s tag is now visible to everyone`
+      document.getElementById('tt-user').value='';toast(nowHidden?`${username} tag hidden`:`${username} tag visible`,nowHidden?'err':'ok')
+    }else{status.style.display='block';status.style.color='#f87171';status.textContent='Failed: '+(d.error||'unknown');toast('Failed','err')}
+  }catch{toast('Request failed','err')}
   spin.style.display='none'
 }
-async function setTagHidden(username, hidden){
+async function setTagHidden(username,hidden){
   try{
-    const r = await fetch(TAGS_API, {method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({auth:pass, action:'set_tag_hidden', username, hidden})})
-    const d = await r.json()
-    if(d.ok){ tagData=d.users||{}; renderTagToggleList(); renderTags(); toast(hidden?`${username} tag hidden`:`${username} tag visible`, hidden?'err':'ok') }
+    const r=await fetch(TAGS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({auth:pass,action:'set_tag_hidden',username,hidden})})
+    const d=await r.json()
+    if(d.ok){tagData=d.users||{};renderTagToggleList();renderTags();toast(hidden?`${username} tag hidden`:`${username} tag visible`,hidden?'err':'ok')}
     else toast(d.error||'Failed','err')
-  }catch{ toast('Request failed','err') }
+  }catch{toast('Request failed','err')}
 }
 function renderTagToggleList(q=''){
-  const el = document.getElementById('tt-list'); if(!el) return
-  const keys = Object.keys(tagData).filter(k=>!q||k.toLowerCase().includes(q.toLowerCase()))
-  if(!keys.length){ el.innerHTML='<div class="empty"><div class="empty-icon">🏷</div>No tag users yet</div>'; return }
-  el.innerHTML = keys.map(u=>{
-    const d = tagData[u]
-    const isHidden = !!d.hidden
-    const pfpUrl = d.pfpId ? (d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`) : ''
-    const gc = (d.effects&&d.effects.glowColor)||'#960096'
+  const el=document.getElementById('tt-list');if(!el)return
+  const keys=Object.keys(tagData).filter(k=>!q||k.toLowerCase().includes(q.toLowerCase()))
+  if(!keys.length){el.innerHTML='<div class="empty"><div class="empty-icon">🏷</div>No tag users yet</div>';return}
+  el.innerHTML=keys.map(u=>{
+    const d=tagData[u],isHidden=!!d.hidden
+    const pfpUrl=d.pfpId?(d.pfpId.startsWith('http')?d.pfpId:`https://assetdelivery.roblox.com/v1/asset/?id=${d.pfpId}`):'';
     return`<div class="urow">
       <div class="urow-icon">${pfpUrl?`<img src="${pfpUrl}" onerror="this.style.display='none'"/>`:'👤'}</div>
-      <div class="urow-info">
-        <div class="urow-name">${u}</div>
-        <div class="urow-meta" style="display:flex;align-items:center;gap:6px">
-          ${d.tag||'AC USER'}
-          <span style="width:7px;height:7px;border-radius:50%;background:${gc};display:inline-block"></span>
-        </div>
-      </div>
-      <span class="chip ${isHidden?'chip-red':'chip-green'}" style="flex-shrink:0">
-        ${isHidden?'HIDDEN':'VISIBLE'}
-      </span>
-      <div class="urow-actions">
-        <button class="btn ${isHidden?'btn-green':'btn-red'} btn-sm" onclick="setTagHidden('${u}',${!isHidden})">
-          ${isHidden?'Show':'Hide'}
-        </button>
-      </div>
+      <div class="urow-info"><div class="urow-name">${u}</div><div class="urow-meta">${d.tag||'AC USER'}</div></div>
+      <span class="chip ${isHidden?'chip-red':'chip-green'}" style="flex-shrink:0">${isHidden?'HIDDEN':'VISIBLE'}</span>
+      <div class="urow-actions"><button class="btn ${isHidden?'btn-green':'btn-red'} btn-sm" onclick="setTagHidden('${u}',${!isHidden})">${isHidden?'Show':'Hide'}</button></div>
     </div>`
   }).join('')
 }
 
-// ── Script Users — persistent list ────────────────────────────────────────
-let scriptUsers = {}
+// ── Script Users ──
+let scriptUsers={}
 async function loadScriptUsers(){
   try{
-    const r = await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${Date.now()}`,{cache:'no-store'})
-    const d = await r.json()
-    if(d.ok){
-      scriptUsers = d.allUsers || {}
-      execData = d.executing || []
-      renderScriptUsers()
-      document.getElementById('su-count').textContent = `${Object.keys(scriptUsers).length} total users`
-    }
+    const r=await fetch(`${MANAGE_API}?auth=${encodeURIComponent(pass)}&_t=${Date.now()}`,{cache:'no-store'})
+    const d=await r.json()
+    if(d.ok){scriptUsers=d.allUsers||{};execData=d.executing||[];renderScriptUsers();document.getElementById('su-count').textContent=`${Object.keys(scriptUsers).length} total users`}
   }catch{}
 }
 function renderScriptUsers(q=''){
-  const el = document.getElementById('su-list'); if(!el) return
-  const entries = Object.entries(scriptUsers)
-    .filter(([u])=>!q||u.toLowerCase().includes(q.toLowerCase()))
-    .sort((a,b)=>(b[1].lastSeen||0)-(a[1].lastSeen||0))
-  if(!entries.length){
-    el.innerHTML='<div class="empty"><div class="empty-icon">👥</div>No script users recorded yet</div>'
-    return
-  }
-  const now = Date.now()
-  el.innerHTML = entries.map(([username, info])=>{
-    const isOnline = execData.includes(username)
-    const lastSeen = info.lastSeen ? new Date(info.lastSeen).toLocaleString() : 'Unknown'
-    const firstSeen = info.firstSeen ? new Date(info.firstSeen).toLocaleDateString() : 'Unknown'
-    const pfp = info.userId ? `https://thumbs.metaapi.co/v1/avatar-headshot/${info.userId}` : ''
+  const el=document.getElementById('su-list');if(!el)return
+  const entries=Object.entries(scriptUsers).filter(([u])=>!q||u.toLowerCase().includes(q.toLowerCase())).sort((a,b)=>(b[1].lastSeen||0)-(a[1].lastSeen||0))
+  if(!entries.length){el.innerHTML='<div class="empty"><div class="empty-icon">👥</div>No script users recorded yet</div>';return}
+  el.innerHTML=entries.map(([username,info])=>{
+    const isOnline=execData.includes(username)
+    const lastSeen=info.lastSeen?new Date(info.lastSeen).toLocaleString():'Unknown'
+    const firstSeen=info.firstSeen?new Date(info.firstSeen).toLocaleDateString():'Unknown'
+    const pfp=info.userId?`https://thumbs.metaapi.co/v1/avatar-headshot/${info.userId}`:''
     return`<div class="urow" style="${isOnline?'border-color:rgba(0,255,136,.3);background:rgba(0,40,20,.15)':''}">
-      <div class="urow-icon">
-        <img src="${pfp}" onerror="this.src=''" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>
-      </div>
+      <div class="urow-icon"><img src="${pfp}" onerror="this.src=''" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/></div>
       <div class="urow-info">
         <div class="urow-name" style="display:flex;align-items:center;gap:7px">
           ${isOnline?'<span style="width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px #00ff88;flex-shrink:0"></span>':''}
           ${username}
-          ${info.displayName && info.displayName !== username ? `<span style="font-size:.75rem;color:#666">(${info.displayName})</span>`:''}
+          ${info.displayName&&info.displayName!==username?`<span style="font-size:.75rem;color:#666">(${info.displayName})</span>`:''}
         </div>
-        <div class="urow-meta">
-          ID: ${info.userId||'—'} &nbsp;·&nbsp; First: ${firstSeen} &nbsp;·&nbsp; Last: ${lastSeen}
-        </div>
+        <div class="urow-meta">ID: ${info.userId||'—'} · First: ${firstSeen} · Last: ${lastSeen}</div>
       </div>
       ${isOnline?'<span class="chip chip-live">ONLINE</span>':'<span class="chip" style="background:rgba(80,80,80,.15);border:1px solid #282828;color:#555">OFFLINE</span>'}
-      <div class="urow-actions">
-        <button class="btn btn-red btn-sm" onclick="quickBan('${username}')">🚫</button>
-      </div>
+      <div class="urow-actions"><button class="btn btn-red btn-sm" onclick="quickBan('${username}')">🚫</button></div>
     </div>`
   }).join('')
 }
 
-window.onload=()=>{initColorPalette();const s=localStorage.getItem('ac_p');if(s){document.getElementById('auth-pw').value=s;login()}}
+window.onload=()=>{
+  const s=localStorage.getItem('ac_p')
+  if(s){document.getElementById('auth-pw').value=s;login()}
+}
 </script>
 </body>
 </html>
