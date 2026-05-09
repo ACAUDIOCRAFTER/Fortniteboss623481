@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AudioCrafter Key System</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+  #bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100vw; min-height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .container {
+    position: relative; z-index: 10;
+    background: rgba(10,10,10,0.88);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 420px; max-width: 90vw;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 60px rgba(255,255,255,0.04);
+  }
+  .logo { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; }
+  .blacklist-warning { color: #ff2222; font-weight: 900; font-size: 13px; letter-spacing: 0.5px; margin-bottom: 20px; text-transform: uppercase; }
+  .badge { display: inline-block; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: #aaa; font-size: 11px; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  .title { color: #fff; font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .subtitle { color: #666; font-size: 13px; margin-bottom: 24px; }
+  .key-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: monospace; letter-spacing: 1px; margin-bottom: 12px; word-break: break-all; min-height: 48px; display: flex; align-items: center; justify-content: center; }
+  .copy-btn { width: 100%; padding: 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: #fff; font-size: 14px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .copy-btn:hover { background: rgba(255,255,255,0.15); }
+  .copy-btn.copied { border-color: #22cc55; color: #22cc55; }
+  .expire-note { color: #444; font-size: 11px; margin-top: 16px; }
+  #error-state { display: none; color: #ff4444; font-size: 14px; line-height: 1.6; }
+  .loading { color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+<img id="bg" src="circle.gif" alt="">
+<div class="container">
+  <img class="logo" src="circle.gif" alt="logo">
+  <div class="blacklist-warning">⚠ KEY SHARING WILL GET YOU BLACKLISTED</div>
+  <div id="main-state">
+    <div class="badge">Key System</div>
+    <div class="title">You've completed all checkpoints!</div>
+    <div class="subtitle">Here's your key — do not share it.</div>
+    <div class="key-box" id="key-display"><span class="loading">Generating key...</span></div>
+    <button class="copy-btn" id="copy-btn" onclick="copyKey()">📋 copy key</button>
+    <div class="expire-note" id="expire-note"></div>
+  </div>
+  <div id="error-state">
+    <p>❌ Invalid or expired session.</p>
+    <p style="margin-top:8px;color:#555;font-size:12px;">Please complete the checkpoints again to get a new key.</p>
+  </div>
+</div>
+<script>
+  let currentKey = '';
+  setInterval(() => {
+    const rand = Math.random().toString(36).substring(2, 10);
+    history.replaceState(null, '', '/key?t=' + rand + Date.now());
+  }, 1000);
+  async function fetchKey() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      const res = await fetch('/api/keysystem?action=getkey' + (token ? '&token=' + token : ''));
+      const data = await res.json();
+      if (!data.ok || !data.key) {
+        document.getElementById('main-state').style.display = 'none';
+        document.getElementById('error-state').style.display = 'block';
+        return;
+      }
+      currentKey = data.key;
+      document.getElementById('key-display').textContent = data.key;
+      if (data.expiresAt) {
+        const exp = new Date(data.expiresAt);
+        const hours = Math.round((exp - Date.now()) / 3600000);
+        document.getElementById('expire-note').textContent = 'Key expires in ~' + hours + ' hours';
+      }
+    } catch(e) {
+      document.getElementById('main-state').style.display = 'none';
+      document.getElementById('error-state').style.display = 'block';
+    }
+  }
+  function copyKey() {
+    if (!currentKey) return;
+    navigator.clipboard.writeText(currentKey).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = '📋 copy key'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+  fetchKey();
+</script>
+</body>
+</html>
