@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potassium Theme Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --app-bg: #0a0a0c;
+    --panel-bg: #0f0f12;
+    --panel-border: #1e1e26;
+    --accent: #5881FC;
+    --accent2: #92DAFC;
+    --accent-glow: rgba(88,129,252,0.18);
+    --text-primary: #e8e8f0;
+    --text-secondary: #7a7a9a;
+    --text-dim: #3a3a52;
+    --input-bg: #13131a;
+    --input-border: #22222e;
+    --scrollbar-track: #0f0f12;
+    --scrollbar-thumb: #22222e;
+  }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--app-bg);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 44px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--panel-border);
+    flex-shrink: 0;
+    z-index: 100;
+  }
+  .topbar-logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-shadow: 0 0 20px var(--accent-glow);
+  }
+  .topbar-logo span { color: var(--accent2); }
+  .topbar-actions { display: flex; gap: 8px; align-items: center; }
+  .topbar-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--panel-border);
+    background: var(--input-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 1px;
+  }
+  .topbar-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+  .topbar-btn.primary { border-color: var(--accent); color: var(--accent); background: rgba(88,129,252,0.1); }
+  .topbar-btn.primary:hover { background: rgba(88,129,252,0.25); }
+  .topbar-btn.success { border-color: #4D8C4E; color: #7dc97f; background: rgba(77,140,78,0.1); }
+  .topbar-btn.success:hover { background: rgba(77,140,78,0.25); }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    display: grid;
+    grid-template-columns: 260px 1fr 280px;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ── LEFT PANEL ── */
+  .left-panel {
+    background: var(--panel-bg);
+    border-right: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .panel-section-header {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .left-scroll { flex: 1; overflow-y: auto; padding: 10px 0; }
+  .left-scroll::-webkit-scrollbar { width: 4px; }
+  .left-scroll::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  .left-scroll::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+
+  /* Category groups */
+  .cat-group { margin-bottom: 4px; }
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    transition: color 0.15s;
+    user-select: none;
+  }
+  .cat-header:hover { color: var(--text-primary); }
+  .cat-header.active { color: var(--accent); }
+  .cat-arrow { font-size: 8px; margin-left: auto; transition: transform 0.2s; }
+  .cat-header.open .cat-arrow { transform: rotate(90deg); }
+  .cat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .cat-items { display: none; }
+  .cat-items.open { display: block; }
+
+  .prop-row {
+    display: flex;
+    align-items: center;
+    padding: 4px 16px 4px 32px;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: all 0.12s;
+    gap: 8px;
+  }
+  .prop-row:hover { background: rgba(255,255,255,0.03); }
+  .prop-row.selected { border-left-color: var(--accent); background: rgba(88,129,252,0.06); }
+  .prop-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+  .prop-name { font-size: 10px; color: var(--text-secondary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .prop-row.selected .prop-name { color: var(--text-primary); }
+
+  /* Background section at bottom of left panel */
+  .bg-section {
+    border-top: 1px solid var(--panel-border);
+    padding: 12px;
+  }
+  .bg-section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .drop-zone {
+    border: 1px dashed var(--panel-border);
+    border-radius: 6px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .drop-zone:hover, .drop-zone.dragover { border-color: var(--accent); background: var(--accent-glow); }
+  .drop-zone-text { font-size: 10px; color: var(--text-dim); line-height: 1.6; }
+  .drop-zone-preview {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    display: none;
+  }
+  .drop-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .sync-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--panel-border);
+    background: var(--input-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.15s;
+  }
+  .sync-btn:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(146,218,252,0.08); }
+  .remove-bg-btn {
+    width: 100%;
+    margin-top: 4px;
+    padding: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border-radius: 4px;
+    border: 1px solid #3a1a1a;
+    background: rgba(255,60,60,0.05);
+    color: #884444;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.15s;
+    display: none;
+  }
+  .remove-bg-btn:hover { border-color: #ff4444; color: #ff6666; background: rgba(255,60,60,0.12); }
+
+  /* ── CENTER: EXECUTOR PREVIEW ── */
+  .center-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #080809;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(88,129,252,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(146,218,252,0.03) 0%, transparent 40%);
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+  }
+  .center-label {
+    position: absolute;
+    top: 12px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── EXECUTOR MOCK ── */
+  .executor {
+    width: 680px;
+    height: 460px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+  .exec-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: opacity 0.3s;
+  }
+  .exec-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    display: none;
+  }
+
+  /* Title bar */
+  .exec-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 36px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .exec-title { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 2px; }
+  .exec-controls { display: flex; gap: 6px; }
+  .exec-ctrl {
+    width: 28px; height: 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .exec-topicons { display: flex; gap: 8px; align-items: center; }
+  .exec-icon { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; cursor: pointer; }
+
+  /* Tabs bar */
+  .exec-tabbar {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    padding: 0 8px;
+    gap: 2px;
+  }
+  .exec-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    height: 26px;
+    border-radius: 4px 4px 0 0;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  .exec-tab-x { font-size: 9px; opacity: 0.5; }
+  .exec-tab-add { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; border-radius: 3px; margin-left: 4px; }
+  .exec-search { margin-left: auto; width: 120px; height: 22px; border-radius: 3px; border: none; padding: 0 8px; font-size: 9px; font-family: 'JetBrains Mono'; }
+
+  /* Editor area */
+  .exec-editor {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    overflow: hidden;
+  }
+  .exec-gutter {
+    width: 36px;
+    padding: 8px 0;
+    text-align: right;
+    padding-right: 8px;
+    font-size: 11px;
+    opacity: 0.35;
+    flex-shrink: 0;
+  }
+  .exec-gutter div { line-height: 20px; }
+  .exec-code {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 20px;
+    overflow-y: auto;
+  }
+  .exec-code::-webkit-scrollbar { width: 5px; }
+  .code-line { white-space: nowrap; }
+  .code-fn { color: #569cd6; }
+  .code-str { color: #ce9178; }
+  .code-kw { color: #c586c0; }
+  .code-num { color: #b5cea8; }
+  .code-comment { color: #6a9955; opacity: 0.7; }
+  .code-cursor-line { position: relative; }
+
+  /* Bottom bar */
+  .exec-bottombar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px;
+    height: 38px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .exec-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .exec-btn:hover { opacity: 0.75; }
+  .exec-attach {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  .exec-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid;
+    font-size: 10px;
+    cursor: pointer;
+    min-width: 80px;
+  }
+
+  /* ── RIGHT PANEL ── */
+  .right-panel {
+    background: var(--panel-bg);
+    border-left: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .right-scroll { flex: 1; overflow-y: auto; padding: 12px; }
+  .right-scroll::-webkit-scrollbar { width: 4px; }
+  .right-scroll::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  .right-scroll::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+
+  /* Color editor */
+  .color-editor-block {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .color-editor-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .color-editor-name {
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .color-editor-picker {
+    width: 100%;
+    height: 100px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .color-editor-picker input[type=color] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+  .color-swatch-big {
+    width: 100%;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 8px;
+    transition: background 0.2s;
+  }
+  .hex-input-row { display: flex; gap: 6px; align-items: center; }
+  .hex-input {
+    flex: 1;
+    background: var(--app-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .hex-input:focus { border-color: var(--accent); }
+  .opacity-row { margin-top: 8px; }
+  .opacity-label { font-size: 10px; color: var(--text-dim); margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .opacity-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, transparent, #fff);
+    outline: none;
+    cursor: pointer;
+  }
+  .opacity-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(88,129,252,0.5);
+  }
+
+  /* Preset themes */
+  .presets-block {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .presets-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .preset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .preset-btn {
+    padding: 8px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    background: var(--app-bg);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .preset-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .preset-btn.active { border-color: var(--accent); background: var(--accent-glow); color: var(--text-primary); }
+
+  /* Import */
+  .import-block {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .import-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .import-btn {
+    width: 100%;
+    padding: 7px;
+    border-radius: 4px;
+    border: 1px dashed var(--input-border);
+    background: var(--app-bg);
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .import-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .import-btn input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+  /* Theme name */
+  .theme-name-block {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .theme-name-label { font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .theme-name-input {
+    width: 100%;
+    background: var(--app-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .theme-name-input:focus { border-color: var(--accent); }
+
+  /* Notification toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: #1a1a24;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--accent2);
+    transition: transform 0.3s ease;
+    z-index: 9999;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Placeholder for no selection */
+  .no-selection {
+    text-align: center;
+    padding: 30px 12px;
+    color: var(--text-dim);
+    font-size: 11px;
+    line-height: 2;
+  }
+  .no-selection-icon { font-size: 28px; margin-bottom: 10px; opacity: 0.3; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">Potassium<span>.</span>Theme</div>
+  <div class="topbar-actions">
+    <button class="topbar-btn" id="btn-import-top" onclick="document.getElementById('json-import-input').click()">📂 Import JSON</button>
+    <input type="file" id="json-import-input" accept=".json" style="display:none" onchange="importJSON(event)">
+    <button class="topbar-btn primary" id="btn-export">💾 Export Theme</button>
+    <button class="topbar-btn success" id="btn-sync-colors">⚡ Auto-Sync Text</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT: color properties -->
+  <div class="left-panel">
+    <div class="panel-section-header">Theme Properties</div>
+    <div class="left-scroll" id="left-scroll">
+      <!-- Populated by JS -->
+    </div>
+    <div class="bg-section">
+      <div class="bg-section-title">Background / GIF</div>
+      <div class="drop-zone" id="bg-drop-zone">
+        <img class="drop-zone-preview" id="bg-preview-img" src="" alt="">
+        <div class="drop-zone-text" id="bg-drop-text">Drop image or GIF here<br>or click to browse</div>
+        <input type="file" accept="image/*,image/gif" onchange="handleBgFile(event)">
+      </div>
+      <button class="sync-btn" onclick="syncBackground()">⚡ Sync Background to Preview</button>
+      <button class="remove-bg-btn" id="remove-bg-btn" onclick="removeBg()">✕ Remove Background</button>
+    </div>
+  </div>
+
+  <!-- CENTER: executor preview -->
+  <div class="center-panel">
+    <div class="center-label">Live Preview</div>
+
+    <div class="executor" id="executor-preview">
+      <!-- Background layers -->
+      <div class="exec-bg-layer" id="exec-bg-layer"></div>
+      <img class="exec-bg-video" id="exec-bg-gif" src="" alt="">
+
+      <!-- Title bar -->
+      <div class="exec-titlebar" id="exec-titlebar">
+        <span class="exec-title" id="exec-title-text" style="color:#B1B1B1">Potassium</span>
+        <div class="exec-topicons">
+          <div class="exec-icon" id="exec-icon1">⬡</div>
+          <div class="exec-icon" id="exec-icon2">⚙</div>
+          <div class="exec-icon" id="exec-icon3">🌐</div>
+          <div class="exec-icon" id="exec-icon4">✏</div>
+        </div>
+        <div class="exec-controls">
+          <button class="exec-ctrl" id="exec-ctrl-min" style="font-size:13px">─</button>
+          <button class="exec-ctrl" id="exec-ctrl-max">□</button>
+          <button class="exec-ctrl" id="exec-ctrl-close">✕</button>
+        </div>
+      </div>
+
+      <!-- Tab bar -->
+      <div class="exec-tabbar" id="exec-tabbar">
+        <div class="exec-tab" id="exec-tab-active">
+          <span style="font-size:10px">❝</span>
+          <span id="exec-tab-text">Untitled Tab</span>
+          <span class="exec-tab-x">✕</span>
+        </div>
+        <div class="exec-tab-add" id="exec-tab-add">+</div>
+        <input class="exec-search" id="exec-search" placeholder="🔍" readonly>
+      </div>
+
+      <!-- Editor -->
+      <div class="exec-editor" id="exec-editor">
+        <div class="exec-gutter" id="exec-gutter">
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+          <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+        </div>
+        <div class="exec-code" id="exec-code">
+          <div class="code-line"><span class="code-comment">-- Potassium Script Executor</span></div>
+          <div class="code-line"><span class="code-comment">-- Theme Editor Preview</span></div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line"><span class="code-kw">local</span> <span style="color:#9cdcfe">player</span> = <span class="code-fn">game</span>.<span class="code-fn">Players</span>.<span class="code-fn">LocalPlayer</span></div>
+          <div class="code-line"><span class="code-kw">local</span> <span style="color:#9cdcfe">char</span> = <span style="color:#9cdcfe">player</span>.<span class="code-fn">Character</span></div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line code-cursor-line" id="exec-highlight-line"><span class="code-fn">print</span>(<span class="code-str">"Hello, world!"</span>)</div>
+          <div class="code-line"><span class="code-kw">for</span> i = <span class="code-num">1</span>, <span class="code-num">10</span> <span class="code-kw">do</span></div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">wait</span>(<span class="code-num">0.5</span>)</div>
+          <div class="code-line"><span class="code-kw">end</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="exec-bottombar" id="exec-bottombar">
+        <button class="exec-btn" id="exec-btn-execute">▶ Execute</button>
+        <button class="exec-btn" id="exec-btn-clear">⬡ Clear</button>
+        <button class="exec-btn" id="exec-btn-open">📂 Open</button>
+        <button class="exec-btn" id="exec-btn-save">💾 Save</button>
+        <div class="exec-attach" id="exec-btn-attach">📡 Attach</div>
+        <div class="exec-dropdown" id="exec-dropdown">👤 None ▾</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: color editor + presets + import -->
+  <div class="right-panel">
+    <div class="panel-section-header">Color Editor</div>
+    <div class="right-scroll">
+
+      <!-- Theme name -->
+      <div class="theme-name-block">
+        <div class="theme-name-label">Theme Name</div>
+        <input class="theme-name-input" id="theme-name-input" value="My Theme" placeholder="Enter theme name...">
+      </div>
+
+      <!-- Presets -->
+      <div class="presets-block">
+        <div class="presets-label">Load Preset</div>
+        <div class="preset-grid">
+          <button class="preset-btn active" onclick="loadPreset('Default')">Default</button>
+          <button class="preset-btn" onclick="loadPreset('Gruvbox Dark')">Gruvbox Dark</button>
+          <button class="preset-btn" onclick="loadPreset('Nord')">Nord</button>
+          <button class="preset-btn" onclick="loadPreset('Rose')">Rose</button>
+        </div>
+      </div>
+
+      <!-- Import -->
+      <div class="import-block">
+        <div class="import-label">Import Theme JSON</div>
+        <div class="import-btn">
+          📁 Drop or click to import .json
+          <input type="file" accept=".json" onchange="importJSON(event)">
+        </div>
+      </div>
+
+      <!-- Color editor (dynamic) -->
+      <div id="color-editor-area">
+        <div class="no-selection">
+          <div class="no-selection-icon">🎨</div>
+          Click any color property<br>on the left to edit it
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// THEME DATA
+// ─────────────────────────────────────────────
+const PRESETS = {
+  "Default": {"Name":"Default","EditorImage":"","Categories":{"Surfaces":{"WindowBackground":"#161616","PageBackground":"#161616","ContentBackground":"#171717","InputBackground":"#141414","TitleBarBackground":"#00000000","CardBackground":"#161616","DialogBackground":"#161616","EditorBackground":"#171717","EditorLineHighlightBackground":"#00000000","ConsoleBackground":"#151515","ScriptsFolderBackground":"#1A1A1A","ScriptsFolderSeparator":"#141414","SettingsCategoryBackground":"#282828","SearchBackground":"#202020","TabBackground":"#242424","TabActiveBackground":"#1F1F1F","TabHoverBackground":"#0A0A0A","TabInactiveBackground":"#151616","TabShadow":"#1F1F1F","CheckboxBackground":"#262626","ProgressBarBackground":"#303030","LoginOverlay":"#70000000","LoadingOverlay":"#80000000"},"Text":{"TitleText":"#B1B1B1","PrimaryText":"#FFFFFF","SecondaryText":"#a3a3a3","TertiaryText":"#D8D8D8","PlaceholderText":"#606060","IconTextForeground":"#A7A7A7","AuthorText":"#AAAAAA","SearchText":"#C7C7C7","ScriptFileText":"#CECECE","TabActiveText":"#D3D3D3","TabInactiveText":"#808080","IconDefault":"#8C8C8C","IconHover":"#B1B1B1","IconSelected":"#FFFFFF","IconSelectedBackground":"#20FFFFFF","SearchIcon":"#8C8C8C","ScriptFileIcon":"#5974BA","AddTabButton":"#6D6D6D","CheckMarkStroke":"#000000","ComboBoxText":"#e2e2e2"},"Controls":{"ControlButtonForeground":"#FFFFFF","ControlButtonBackground":"#151616","ControlButtonHoverOverlay":"#20FFFFFF","ButtonBackground":"#1A1A1A","ButtonBackgroundHover":"#191919","ButtonBackgroundHoverEnd":"#212121","ButtonForeground":"#BDBDBD","ButtonForegroundHover":"#FFFFFF","ButtonDisabledBackground":"#0E0E0E","ButtonDisabledBackgroundEnd":"#121212","ButtonDisabledText":"#555555","ButtonStyle1Background":"#252525","ButtonStyle1BackgroundHover":"#2F2F2F","ButtonStyle1BackgroundPressed":"#1C1C1C","ButtonStyle1DisabledBackground":"#1A1A1A","GeneralButtonBackground":"#4A4A4A","GeneralButtonForeground":"#BFBFBF","RoundedButtonBackground":"#1C1C1C","RoundedButtonHover":"#5881FC","ScrollbarTrack":"#1D1D1D","ScrollbarThumb":"#444444"},"Borders":{"ButtonBorder":"#323232","ButtonStyle1Border":"#3A3A3A","CardBorder":"#292A2A","DialogBorder":"#292A2A","CheckboxBorder":"#3A3A3A","RoundedButtonBorder":"#494949","SeparatorColor":"#232323","TabBarBorder":"#202020","EditorLineHighlightBorder":"#2A2A2A"},"Accents":{"AccentBlue":"#5881FC","AccentGreen":"#4D8C4E","NeutralGray":"#BEBEBE","CheckboxChecked":"#92DAFC"}}},
+  "Gruvbox Dark": {"Name":"Gruvbox Dark","EditorImage":"","Categories":{"Surfaces":{"WindowBackground":"#1D2021","PageBackground":"#1D2021","ContentBackground":"#282828","InputBackground":"#1D2021","TitleBarBackground":"#00000000","CardBackground":"#3C3836","DialogBackground":"#3C3836","EditorBackground":"#282828","EditorLineHighlightBackground":"#2d2d2d","ConsoleBackground":"#1D2021","ScriptsFolderBackground":"#3C3836","ScriptsFolderSeparator":"#1D2021","SettingsCategoryBackground":"#504945","SearchBackground":"#3C3836","TabBackground":"#3C3836","TabActiveBackground":"#504945","TabHoverBackground":"#282828","TabInactiveBackground":"#1D2021","TabShadow":"#1D2021","CheckboxBackground":"#504945","ProgressBarBackground":"#504945","LoginOverlay":"#70282828","LoadingOverlay":"#80282828"},"Text":{"TitleText":"#D5C4A1","PrimaryText":"#FBF1C7","SecondaryText":"#BDAE93","TertiaryText":"#EBDBB2","PlaceholderText":"#7C6F64","IconTextForeground":"#A89984","AuthorText":"#7C6F64","SearchText":"#D5C4A1","ScriptFileText":"#D5C4A1","TabActiveText":"#FBF1C7","TabInactiveText":"#7C6F64","IconDefault":"#7C6F64","IconHover":"#D5C4A1","IconSelected":"#FABD2F","IconSelectedBackground":"#20FABD2F","SearchIcon":"#7C6F64","ScriptFileIcon":"#FABD2F","AddTabButton":"#7C6F64","CheckMarkStroke":"#1D2021","ComboBoxText":"#e2d9b3"},"Controls":{"ControlButtonForeground":"#FBF1C7","ControlButtonBackground":"#1D2021","ControlButtonHoverOverlay":"#20FABD2F","ButtonBackground":"#3C3836","ButtonBackgroundHover":"#504945","ButtonBackgroundHoverEnd":"#665C54","ButtonForeground":"#BDAE93","ButtonForegroundHover":"#FBF1C7","ButtonDisabledBackground":"#1D2021","ButtonDisabledBackgroundEnd":"#282828","ButtonDisabledText":"#504945","ButtonStyle1Background":"#504945","ButtonStyle1BackgroundHover":"#665C54","ButtonStyle1BackgroundPressed":"#3C3836","ButtonStyle1DisabledBackground":"#3C3836","GeneralButtonBackground":"#504945","GeneralButtonForeground":"#BDAE93","RoundedButtonBackground":"#3C3836","RoundedButtonHover":"#FE8019","ScrollbarTrack":"#282828","ScrollbarThumb":"#504945"},"Borders":{"ButtonBorder":"#504945","ButtonStyle1Border":"#665C54","CardBorder":"#504945","DialogBorder":"#504945","CheckboxBorder":"#665C54","RoundedButtonBorder":"#665C54","SeparatorColor":"#3C3836","TabBarBorder":"#1D2021","EditorLineHighlightBorder":"#00000000"},"Accents":{"AccentBlue":"#83A598","AccentGreen":"#B8BB26","NeutralGray":"#D5C4A1","CheckboxChecked":"#FABD2F"}}},
+  "Nord": {"Name":"Nord","EditorImage":"","Categories":{"Surfaces":{"WindowBackground":"#2E3440","PageBackground":"#2E3440","ContentBackground":"#2E3440","InputBackground":"#2A2F3C","TitleBarBackground":"#00000000","CardBackground":"#3B4252","DialogBackground":"#3B4252","EditorBackground":"#2E3440","EditorLineHighlightBackground":"#383f4f","ConsoleBackground":"#242833","ScriptsFolderBackground":"#3B4252","ScriptsFolderSeparator":"#2E3440","SettingsCategoryBackground":"#434C5E","SearchBackground":"#3B4252","TabBackground":"#2E3440","TabActiveBackground":"#4C566A","TabHoverBackground":"#373f4f","TabInactiveBackground":"#2E3440","TabShadow":"#2A2F3C","CheckboxBackground":"#434C5E","ProgressBarBackground":"#434C5E","LoginOverlay":"#702E3440","LoadingOverlay":"#802E3440"},"Text":{"TitleText":"#D8DEE9","PrimaryText":"#ECEFF4","SecondaryText":"#b4bac4","TertiaryText":"#E5E9F0","PlaceholderText":"#4C566A","IconTextForeground":"#81A1C1","AuthorText":"#5E6876","SearchText":"#D8DEE9","ScriptFileText":"#D8DEE9","TabActiveText":"#ECEFF4","TabInactiveText":"#5E6876","IconDefault":"#606e89","IconHover":"#81A1C1","IconSelected":"#88C0D0","IconSelectedBackground":"#2088C0D0","SearchIcon":"#606e89","ScriptFileIcon":"#88C0D0","AddTabButton":"#5E6876","CheckMarkStroke":"#2E3440","ComboBoxText":"#d4d8dd"},"Controls":{"ControlButtonForeground":"#ECEFF4","ControlButtonBackground":"#2E3440","ControlButtonHoverOverlay":"#2088C0D0","ButtonBackground":"#3B4252","ButtonBackgroundHover":"#434C5E","ButtonBackgroundHoverEnd":"#4C566A","ButtonForeground":"#D8DEE9","ButtonForegroundHover":"#ECEFF4","ButtonDisabledBackground":"#2E3440","ButtonDisabledBackgroundEnd":"#353B48","ButtonDisabledText":"#4C566A","ButtonStyle1Background":"#434C5E","ButtonStyle1BackgroundHover":"#4C566A","ButtonStyle1BackgroundPressed":"#3B4252","ButtonStyle1DisabledBackground":"#3B4252","GeneralButtonBackground":"#4C566A","GeneralButtonForeground":"#D8DEE9","RoundedButtonBackground":"#3B4252","RoundedButtonHover":"#5E81AC","ScrollbarTrack":"#3B4252","ScrollbarThumb":"#4C566A"},"Borders":{"ButtonBorder":"#4C566A","ButtonStyle1Border":"#4C566A","CardBorder":"#4C566A","DialogBorder":"#4C566A","CheckboxBorder":"#4C566A","RoundedButtonBorder":"#4C566A","SeparatorColor":"#434C5E","TabBarBorder":"#3B4252","EditorLineHighlightBorder":"#00000000"},"Accents":{"AccentBlue":"#5E81AC","AccentGreen":"#A3BE8C","NeutralGray":"#D8DEE9","CheckboxChecked":"#88C0D0"}}},
+  "Rose": {"Name":"Rose","EditorImage":"","Categories":{"Surfaces":{"WindowBackground":"#1C1118","PageBackground":"#1C1118","ContentBackground":"#1E131A","InputBackground":"#170E13","TitleBarBackground":"#00000000","CardBackground":"#1C1118","DialogBackground":"#1C1118","EditorBackground":"#1E131A","EditorLineHighlightBackground":"#00000000","ConsoleBackground":"#150B11","ScriptsFolderBackground":"#1E1018","ScriptsFolderSeparator":"#170E13","SettingsCategoryBackground":"#2A1625","SearchBackground":"#261420","TabBackground":"#321A2A","TabActiveBackground":"#3E2238","TabHoverBackground":"#1A0C15","TabInactiveBackground":"#1C1118","TabShadow":"#1A0C15","CheckboxBackground":"#301A28","ProgressBarBackground":"#301A28","LoginOverlay":"#701A1015","LoadingOverlay":"#801A1015"},"Text":{"TitleText":"#C48A9F","PrimaryText":"#F5E0EA","SecondaryText":"#C8A0B2","TertiaryText":"#E0BCC8","PlaceholderText":"#5A3545","IconTextForeground":"#A06B82","AuthorText":"#8A5A70","SearchText":"#C48A9F","ScriptFileText":"#C8A0B2","TabActiveText":"#F0D0DE","TabInactiveText":"#7A4A60","IconDefault":"#8A5A70","IconHover":"#C48A9F","IconSelected":"#FFB8D0","IconSelectedBackground":"#20FFB8D0","SearchIcon":"#7A4A60","ScriptFileIcon":"#B86090","AddTabButton":"#7A4A60","CheckMarkStroke":"#1A0C15","ComboBoxText":"#ddc7d2"},"Controls":{"ControlButtonForeground":"#F0D0DE","ControlButtonBackground":"#1A1015","ControlButtonHoverOverlay":"#205F1E3A","ButtonBackground":"#261420","ButtonBackgroundHover":"#301A28","ButtonBackgroundHoverEnd":"#3A2030","ButtonForeground":"#C8A0B2","ButtonForegroundHover":"#F0D0DE","ButtonDisabledBackground":"#180C14","ButtonDisabledBackgroundEnd":"#1E1018","ButtonDisabledText":"#503040","ButtonStyle1Background":"#301830","ButtonStyle1BackgroundHover":"#3E2240","ButtonStyle1BackgroundPressed":"#221020","ButtonStyle1DisabledBackground":"#1E1020","GeneralButtonBackground":"#4A2838","GeneralButtonForeground":"#C8A0B2","RoundedButtonBackground":"#261420","RoundedButtonHover":"#C060A0","ScrollbarTrack":"#1E1018","ScrollbarThumb":"#4A2838"},"Borders":{"ButtonBorder":"#4A2838","ButtonStyle1Border":"#5A3050","CardBorder":"#3A1E30","DialogBorder":"#3A1E30","CheckboxBorder":"#5A3050","RoundedButtonBorder":"#5A3050","SeparatorColor":"#3A1E30","TabBarBorder":"#2A1620","EditorLineHighlightBorder":"#2d1c27"},"Accents":{"AccentBlue":"#C060A0","AccentGreen":"#5A9A6A","NeutralGray":"#A07A8A","CheckboxChecked":"#E080A8"}}}
+};
+
+const CAT_COLORS = {
+  Surfaces: '#5881FC', Text: '#92DAFC', Controls: '#4D8C4E', Borders: '#FE8019', Accents: '#E080A8'
+};
+
+let currentTheme = JSON.parse(JSON.stringify(PRESETS['Default']));
+let selectedProp = null; // { cat, key }
+let bgDataUrl = '';
+let bgIsGif = false;
+
+// ─────────────────────────────────────────────
+// PARSE HEX (supports #AARRGGBB or #RRGGBB)
+// ─────────────────────────────────────────────
+function parseThemeColor(val) {
+  if (!val || val === 'transparent') return { r: 0, g: 0, b: 0, a: 0 };
+  val = val.replace('#', '');
+  if (val.length === 8) {
+    const a = parseInt(val.slice(0,2), 16) / 255;
+    const r = parseInt(val.slice(2,4), 16);
+    const g = parseInt(val.slice(4,6), 16);
+    const b = parseInt(val.slice(6,8), 16);
+    return { r, g, b, a };
+  } else if (val.length === 6) {
+    return { r: parseInt(val.slice(0,2),16), g: parseInt(val.slice(2,4),16), b: parseInt(val.slice(4,6),16), a: 1 };
+  }
+  return { r: 0, g: 0, b: 0, a: 1 };
+}
+
+function colorToCSS(val) {
+  const { r, g, b, a } = parseThemeColor(val);
+  return `rgba(${r},${g},${b},${a.toFixed(3)})`;
+}
+
+function colorToHex6(val) {
+  const { r, g, b } = parseThemeColor(val);
+  return '#' + [r, g, b].map(x => x.toString(16).padStart(2,'0')).join('').toUpperCase();
+}
+
+function getAlpha(val) {
+  return parseThemeColor(val).a;
+}
+
+function buildThemeHex(hex6, alpha) {
+  // output as #AARRGGBB if alpha < 1, else #RRGGBB
+  const rgb = hex6.replace('#','');
+  if (alpha >= 1) return '#' + rgb.toUpperCase();
+  const aa = Math.round(alpha * 255).toString(16).padStart(2,'0').toUpperCase();
+  return '#' + aa + rgb.toUpperCase();
+}
+
+// ─────────────────────────────────────────────
+// BUILD LEFT PANEL
+// ─────────────────────────────────────────────
+function buildLeftPanel() {
+  const scroll = document.getElementById('left-scroll');
+  scroll.innerHTML = '';
+  const cats = currentTheme.Categories;
+  for (const [catName, props] of Object.entries(cats)) {
+    const group = document.createElement('div');
+    group.className = 'cat-group';
+    const dotColor = CAT_COLORS[catName] || '#888';
+    const header = document.createElement('div');
+    header.className = 'cat-header open';
+    header.innerHTML = `<span class="cat-dot" style="background:${dotColor}"></span>${catName}<span class="cat-arrow">▶</span>`;
+    header.onclick = () => {
+      header.classList.toggle('open');
+      items.classList.toggle('open');
+    };
+    const items = document.createElement('div');
+    items.className = 'cat-items open';
+    for (const [key, val] of Object.entries(props)) {
+      const row = document.createElement('div');
+      row.className = 'prop-row';
+      row.id = `prop-row-${catName}-${key}`;
+      row.innerHTML = `<span class="prop-swatch" id="swatch-${catName}-${key}" style="background:${colorToCSS(val)}"></span><span class="prop-name">${key}</span>`;
+      row.onclick = () => selectProp(catName, key);
+      items.appendChild(row);
+    }
+    group.appendChild(header);
+    group.appendChild(items);
+    scroll.appendChild(group);
+  }
+}
+
+// ─────────────────────────────────────────────
+// SELECT PROPERTY
+// ─────────────────────────────────────────────
+function selectProp(cat, key) {
+  if (selectedProp) {
+    const old = document.getElementById(`prop-row-${selectedProp.cat}-${selectedProp.key}`);
+    if (old) old.classList.remove('selected');
+  }
+  selectedProp = { cat, key };
+  const row = document.getElementById(`prop-row-${cat}-${key}`);
+  if (row) row.classList.add('selected');
+  buildColorEditor(cat, key);
+}
+
+// ─────────────────────────────────────────────
+// BUILD COLOR EDITOR
+// ─────────────────────────────────────────────
+function buildColorEditor(cat, key) {
+  const val = currentTheme.Categories[cat][key];
+  const hex6 = colorToHex6(val);
+  const alpha = getAlpha(val);
+  const area = document.getElementById('color-editor-area');
+  area.innerHTML = `
+    <div class="color-editor-block">
+      <div class="color-editor-label">${cat}</div>
+      <div class="color-editor-name">${key}</div>
+      <div class="color-swatch-big" id="ce-swatch" style="background:${colorToCSS(val)}"></div>
+      <div class="hex-input-row">
+        <input class="hex-input" id="ce-hex" value="${hex6}" maxlength="7" oninput="onHexInput()">
+        <input type="color" id="ce-color-picker" value="${hex6}" oninput="onColorPickerInput()" style="width:40px;height:32px;border:1px solid #22222e;border-radius:4px;cursor:pointer;background:none;padding:2px;">
+      </div>
+      <div class="opacity-row">
+        <div class="opacity-label"><span>Opacity</span><span id="ce-opacity-val">${Math.round(alpha*100)}%</span></div>
+        <input class="opacity-slider" type="range" id="ce-opacity" min="0" max="1" step="0.01" value="${alpha}" oninput="onOpacityInput()">
+      </div>
+    </div>
+  `;
+}
+
+function onHexInput() {
+  const hex = document.getElementById('ce-hex').value;
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
+  document.getElementById('ce-color-picker').value = hex;
+  commitColor();
+}
+
+function onColorPickerInput() {
+  const hex = document.getElementById('ce-color-picker').value;
+  document.getElementById('ce-hex').value = hex;
+  commitColor();
+}
+
+function onOpacityInput() {
+  const val = parseFloat(document.getElementById('ce-opacity').value);
+  document.getElementById('ce-opacity-val').textContent = Math.round(val*100) + '%';
+  commitColor();
+}
+
+function commitColor() {
+  if (!selectedProp) return;
+  const hex = document.getElementById('ce-hex').value;
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
+  const alpha = parseFloat(document.getElementById('ce-opacity').value);
+  const newVal = buildThemeHex(hex, alpha);
+  currentTheme.Categories[selectedProp.cat][selectedProp.key] = newVal;
+  // Update swatch
+  const css = colorToCSS(newVal);
+  const swatch = document.getElementById(`swatch-${selectedProp.cat}-${selectedProp.key}`);
+  if (swatch) swatch.style.background = css;
+  const bigSwatch = document.getElementById('ce-swatch');
+  if (bigSwatch) bigSwatch.style.background = css;
+  applyThemeToPreview();
+}
+
+// ─────────────────────────────────────────────
+// APPLY THEME TO PREVIEW EXECUTOR
+// ─────────────────────────────────────────────
+function applyThemeToPreview() {
+  const C = currentTheme.Categories;
+  const S = C.Surfaces;
+  const T = C.Text;
+  const Ctrl = C.Controls;
+  const B = C.Borders;
+  const A = C.Accents;
+
+  const ex = document.getElementById('executor-preview');
+
+  // Window background (with possible transparency for bg image)
+  const hasBg = !!bgDataUrl;
+  ex.style.background = hasBg ? 'transparent' : colorToCSS(S.WindowBackground);
+
+  // Titlebar
+  const tb = document.getElementById('exec-titlebar');
+  tb.style.background = S.TitleBarBackground && S.TitleBarBackground !== '#00000000'
+    ? colorToCSS(S.TitleBarBackground) : colorToCSS(S.WindowBackground);
+  document.getElementById('exec-title-text').style.color = colorToCSS(T.TitleText);
+
+  // Control buttons
+  const ctrlBtns = ['exec-ctrl-min','exec-ctrl-max','exec-ctrl-close'];
+  ctrlBtns.forEach(id => {
+    const btn = document.getElementById(id);
+    btn.style.background = colorToCSS(Ctrl.ControlButtonBackground);
+    btn.style.color = colorToCSS(Ctrl.ControlButtonForeground);
+    btn.style.border = '1px solid ' + colorToCSS(B.ButtonBorder || '#333');
+  });
+
+  // Icons
+  ['exec-icon1','exec-icon2','exec-icon3','exec-icon4'].forEach(id => {
+    document.getElementById(id).style.color = colorToCSS(T.IconDefault);
+  });
+
+  // Tabbar
+  const tabbar = document.getElementById('exec-tabbar');
+  tabbar.style.background = colorToCSS(S.TabBackground);
+  tabbar.style.borderBottom = '1px solid ' + colorToCSS(B.TabBarBorder);
+
+  const tabActive = document.getElementById('exec-tab-active');
+  tabActive.style.background = colorToCSS(S.TabActiveBackground);
+  document.getElementById('exec-tab-text').style.color = colorToCSS(T.TabActiveText);
+
+  const tabAdd = document.getElementById('exec-tab-add');
+  tabAdd.style.color = colorToCSS(T.AddTabButton);
+
+  const search = document.getElementById('exec-search');
+  search.style.background = colorToCSS(S.SearchBackground);
+  search.style.color = colorToCSS(T.SearchText);
+  search.style.border = 'none';
+
+  // Editor
+  const editor = document.getElementById('exec-editor');
+  editor.style.background = hasBg ? 'transparent' : colorToCSS(S.EditorBackground);
+
+  const gutter = document.getElementById('exec-gutter');
+  gutter.style.background = hasBg ? 'transparent' : colorToCSS(S.EditorBackground);
+  gutter.style.color = colorToCSS(T.SecondaryText);
+
+  const code = document.getElementById('exec-code');
+  code.style.background = 'transparent';
+  code.style.color = colorToCSS(T.PrimaryText);
+
+  const highlight = document.getElementById('exec-highlight-line');
+  highlight.style.background = colorToCSS(S.EditorLineHighlightBackground);
+  highlight.style.outline = '1px solid ' + colorToCSS(B.EditorLineHighlightBorder);
+
+  // Bottom bar
+  const bb = document.getElementById('exec-bottombar');
+  bb.style.background = hasBg ? 'transparent' : colorToCSS(S.WindowBackground);
+  bb.style.borderTop = '1px solid ' + colorToCSS(B.SeparatorColor);
+
+  // Buttons
+  const btnStyle = (id) => {
+    const btn = document.getElementById(id);
+    btn.style.background = colorToCSS(Ctrl.ButtonStyle1Background);
+    btn.style.color = colorToCSS(Ctrl.ButtonForeground);
+    btn.style.borderColor = colorToCSS(B.ButtonStyle1Border);
+  };
+  btnStyle('exec-btn-execute');
+  btnStyle('exec-btn-clear');
+  btnStyle('exec-btn-open');
+  btnStyle('exec-btn-save');
+
+  const attach = document.getElementById('exec-btn-attach');
+  attach.style.background = colorToCSS(Ctrl.ButtonStyle1Background);
+  attach.style.color = colorToCSS(Ctrl.ButtonForeground);
+  attach.style.borderColor = colorToCSS(B.ButtonStyle1Border);
+
+  const dropdown = document.getElementById('exec-dropdown');
+  dropdown.style.background = colorToCSS(S.InputBackground);
+  dropdown.style.color = colorToCSS(T.ComboBoxText);
+  dropdown.style.borderColor = colorToCSS(B.ButtonBorder);
+
+  // Scrollbar
+  const scrollStyle = document.getElementById('scrollbar-style') || (() => {
+    const s = document.createElement('style');
+    s.id = 'scrollbar-style';
+    document.head.appendChild(s);
+    return s;
+  })();
+  scrollStyle.textContent = `
+    #exec-code::-webkit-scrollbar { width: 6px; }
+    #exec-code::-webkit-scrollbar-track { background: ${colorToCSS(Ctrl.ScrollbarTrack)}; }
+    #exec-code::-webkit-scrollbar-thumb { background: ${colorToCSS(Ctrl.ScrollbarThumb)}; border-radius: 3px; }
+  `;
+
+  // Accent glow on execute button
+  document.getElementById('exec-btn-execute').style.borderColor = colorToCSS(A.AccentBlue);
+  document.getElementById('exec-btn-execute').style.color = colorToCSS(A.AccentBlue);
+
+  // Background sync (bg layer)
+  const bgLayer = document.getElementById('exec-bg-layer');
+  const bgGif = document.getElementById('exec-bg-gif');
+  if (bgDataUrl) {
+    if (bgIsGif) {
+      bgLayer.style.backgroundImage = '';
+      bgGif.src = bgDataUrl;
+      bgGif.style.display = 'block';
+    } else {
+      bgGif.style.display = 'none';
+      bgLayer.style.backgroundImage = `url(${bgDataUrl})`;
+      bgLayer.style.backgroundSize = 'cover';
+      bgLayer.style.backgroundPosition = 'center';
+    }
+    // Make all sections transparent so bg shows through entire executor
+    editor.style.background = 'transparent';
+    gutter.style.background = 'transparent';
+    bb.style.background = colorToCSS(S.WindowBackground) + '99'; // slight tint
+    tabbar.style.background = colorToCSS(S.TabBackground) + 'cc';
+    tb.style.background = 'transparent';
+    ex.style.background = 'transparent';
+  } else {
+    bgLayer.style.backgroundImage = '';
+    bgGif.style.display = 'none';
+    bgGif.src = '';
+  }
+}
+
+// ─────────────────────────────────────────────
+// BACKGROUND HANDLING
+// ─────────────────────────────────────────────
+function handleBgFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  bgIsGif = file.type === 'image/gif';
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    bgDataUrl = e.target.result;
+    currentTheme.EditorImage = bgDataUrl;
+    const preview = document.getElementById('bg-preview-img');
+    const text = document.getElementById('bg-drop-text');
+    preview.src = bgDataUrl;
+    preview.style.display = 'block';
+    text.style.display = 'none';
+    document.getElementById('remove-bg-btn').style.display = 'block';
+    applyThemeToPreview();
+    showToast('Background applied! ' + (bgIsGif ? '🎞️ GIF detected — synced across entire executor' : '🖼️ Image synced'));
+  };
+  reader.readAsDataURL(file);
+}
+
+function syncBackground() {
+  if (!bgDataUrl) { showToast('No background set — drop an image or GIF first'); return; }
+  applyThemeToPreview();
+  showToast('⚡ Background synced across entire executor!');
+}
+
+function removeBg() {
+  bgDataUrl = '';
+  bgIsGif = false;
+  currentTheme.EditorImage = '';
+  document.getElementById('bg-preview-img').style.display = 'none';
+  document.getElementById('bg-drop-text').style.display = 'block';
+  document.getElementById('remove-bg-btn').style.display = 'none';
+  document.getElementById('exec-bg-gif').src = '';
+  document.getElementById('exec-bg-gif').style.display = 'none';
+  document.getElementById('exec-bg-layer').style.backgroundImage = '';
+  applyThemeToPreview();
+  showToast('Background removed');
+}
+
+// ─────────────────────────────────────────────
+// DRAG AND DROP ON BG ZONE
+// ─────────────────────────────────────────────
+const dropZone = document.getElementById('bg-drop-zone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (!file || !file.type.startsWith('image/')) return;
+  bgIsGif = file.type === 'image/gif';
+  const reader = new FileReader();
+  reader.onload = ev => {
+    bgDataUrl = ev.target.result;
+    currentTheme.EditorImage = bgDataUrl;
+    const preview = document.getElementById('bg-preview-img');
+    preview.src = bgDataUrl;
+    preview.style.display = 'block';
+    document.getElementById('bg-drop-text').style.display = 'none';
+    document.getElementById('remove-bg-btn').style.display = 'block';
+    applyThemeToPreview();
+    showToast('Background dropped! ' + (bgIsGif ? '🎞️ GIF synced' : '🖼️ Image synced'));
+  };
+  reader.readAsDataURL(file);
+});
+
+// ─────────────────────────────────────────────
+// LOAD PRESET
+// ─────────────────────────────────────────────
+function loadPreset(name) {
+  currentTheme = JSON.parse(JSON.stringify(PRESETS[name]));
+  document.getElementById('theme-name-input').value = currentTheme.Name;
+  bgDataUrl = '';
+  bgIsGif = false;
+  currentTheme.EditorImage = '';
+  document.getElementById('bg-preview-img').style.display = 'none';
+  document.getElementById('bg-drop-text').style.display = 'block';
+  document.getElementById('remove-bg-btn').style.display = 'none';
+  document.getElementById('exec-bg-gif').src = '';
+  document.getElementById('exec-bg-gif').style.display = 'none';
+  document.getElementById('exec-bg-layer').style.backgroundImage = '';
+
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === name);
+  });
+  selectedProp = null;
+  document.getElementById('color-editor-area').innerHTML = `
+    <div class="no-selection">
+      <div class="no-selection-icon">🎨</div>
+      Click any color property<br>on the left to edit it
+    </div>`;
+  buildLeftPanel();
+  applyThemeToPreview();
+  showToast(`Loaded preset: ${name}`);
+}
+
+// ─────────────────────────────────────────────
+// IMPORT JSON
+// ─────────────────────────────────────────────
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.Categories) { showToast('⚠️ Invalid theme file'); return; }
+      currentTheme = data;
+      document.getElementById('theme-name-input').value = currentTheme.Name || 'Imported Theme';
+      if (currentTheme.EditorImage) {
+        bgDataUrl = currentTheme.EditorImage;
+        bgIsGif = bgDataUrl.includes('data:image/gif');
+        const preview = document.getElementById('bg-preview-img');
+        preview.src = bgDataUrl;
+        preview.style.display = 'block';
+        document.getElementById('bg-drop-text').style.display = 'none';
+        document.getElementById('remove-bg-btn').style.display = 'block';
+      }
+      selectedProp = null;
+      document.getElementById('color-editor-area').innerHTML = `<div class="no-selection"><div class="no-selection-icon">🎨</div>Click any color property<br>on the left to edit it</div>`;
+      buildLeftPanel();
+      applyThemeToPreview();
+      showToast('✅ Theme imported: ' + (currentTheme.Name || 'Unknown'));
+    } catch { showToast('⚠️ Failed to parse JSON file'); }
+  };
+  reader.readAsText(file);
+}
+
+// ─────────────────────────────────────────────
+// EXPORT JSON
+// ─────────────────────────────────────────────
+document.getElementById('btn-export').onclick = () => {
+  currentTheme.Name = document.getElementById('theme-name-input').value || 'My Theme';
+  const json = JSON.stringify(currentTheme, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = (currentTheme.Name.toLowerCase().replace(/\s+/g,'-') || 'theme') + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('💾 Theme exported as ' + a.download);
+};
+
+// ─────────────────────────────────────────────
+// AUTO-SYNC TEXT COLORS TO BACKGROUND
+// ─────────────────────────────────────────────
+document.getElementById('btn-sync-colors').onclick = () => {
+  const bg = currentTheme.Categories.Surfaces.EditorBackground || currentTheme.Categories.Surfaces.WindowBackground;
+  const { r, g, b } = parseThemeColor(bg);
+  const luminance = (0.299*r + 0.587*g + 0.114*b) / 255;
+  const isDark = luminance < 0.5;
+  if (isDark) {
+    currentTheme.Categories.Text.PrimaryText = '#FFFFFF';
+    currentTheme.Categories.Text.SecondaryText = '#B0B0C0';
+    currentTheme.Categories.Text.TertiaryText = '#D0D0E0';
+  } else {
+    currentTheme.Categories.Text.PrimaryText = '#111111';
+    currentTheme.Categories.Text.SecondaryText = '#444455';
+    currentTheme.Categories.Text.TertiaryText = '#222233';
+  }
+  buildLeftPanel();
+  applyThemeToPreview();
+  if (selectedProp && selectedProp.cat === 'Text') buildColorEditor(selectedProp.cat, selectedProp.key);
+  showToast(`⚡ Text synced — ${isDark ? 'light text for dark bg' : 'dark text for light bg'}`);
+};
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+let toastTimeout;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+buildLeftPanel();
+applyThemeToPreview();
+</script>
+</body>
+</html>
