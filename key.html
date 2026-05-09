@@ -68,16 +68,25 @@
   </div>
 </div>
 <script>
-  let currentKey = '';
+  // Save the token FIRST before the URL scrambler touches anything
+  const savedToken = new URLSearchParams(window.location.search).get('token');
+
+  // Now start scrambling the URL every second
   setInterval(() => {
     const rand = Math.random().toString(36).substring(2, 10);
     history.replaceState(null, '', '/key?t=' + rand + Date.now());
   }, 1000);
+
+  let currentKey = '';
+
   async function fetchKey() {
     try {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
-      const res = await fetch('/api/keysystem?action=getkey' + (token ? '&token=' + token : ''));
+      if (!savedToken) {
+        document.getElementById('main-state').style.display = 'none';
+        document.getElementById('error-state').style.display = 'block';
+        return;
+      }
+      const res = await fetch('/api/keysystem?action=getkey&token=' + savedToken);
       const data = await res.json();
       if (!data.ok || !data.key) {
         document.getElementById('main-state').style.display = 'none';
@@ -96,6 +105,7 @@
       document.getElementById('error-state').style.display = 'block';
     }
   }
+
   function copyKey() {
     if (!currentKey) return;
     navigator.clipboard.writeText(currentKey).then(() => {
@@ -105,6 +115,7 @@
       setTimeout(() => { btn.innerHTML = '📋 copy key'; btn.classList.remove('copied'); }, 2000);
     });
   }
+
   fetchKey();
 </script>
 </body>
