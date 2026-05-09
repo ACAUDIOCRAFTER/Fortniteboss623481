@@ -1,9 +1,9 @@
 // functions/api/keysystem.js
-// Handles: generating keys, validating keys, checking tokens from Linkvertise
+// Uses Cloudflare KV (AC_KV binding) — no Upstash needed
 
 const KEY_PREFIX = 'AudioCrafter-';
-const KEY_TTL_MS = 14 * 60 * 60 * 1000; // 14 hours
-const TOKEN_TTL_MS = 10 * 60 * 1000;     // 10 min to use token after linkvertise
+const KEY_TTL_SEC = 14 * 60 * 60;   // 14 hours
+const TOKEN_TTL_SEC = 10 * 60;       // 10 minutes to use token
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -18,29 +18,7 @@ export async function onRequest(context) {
 
   if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
-  const kvUrl   = env.KV_REST_API_URL;
-  const kvToken = env.KV_REST_API_TOKEN;
-  const hdrs    = { Authorization: 'Bearer ' + kvToken };
-
-  async function kvGet(key) {
-    try {
-      const r = await fetch(`${kvUrl}/get/${encodeURIComponent(key)}`, { headers: hdrs });
-      const d = await r.json();
-      return d.result ? JSON.parse(d.result) : null;
-    } catch { return null; }
-  }
-
-  async function kvSet(key, value, ttlSeconds) {
-    const enc = encodeURIComponent(JSON.stringify(value));
-    const path = ttlSeconds
-      ? `${kvUrl}/setex/${encodeURIComponent(key)}/${ttlSeconds}/${enc}`
-      : `${kvUrl}/set/${encodeURIComponent(key)}/${enc}`;
-    await fetch(path, { method: 'POST', headers: hdrs });
-  }
-
-  async function kvDel(key) {
-    await fetch(`${kvUrl}/del/${encodeURIComponent(key)}`, { method: 'POST', headers: hdrs });
-  }
+  const KV = env.AC_KV;
 
   function generateKey() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -53,15 +31,14 @@ export async function onRequest(context) {
 
   const action = url.searchParams.get('action');
 
-  // ── Generate a one-time token (called by your Linkvertise redirect) ─────────
+  // ── Generate a one-time token (called by redirect.html after Linkvertise) ────
   if (action === 'gentoken') {
-    // Only allow if request comes with exec secret
     const secret = url.searchParams.get('secret');
     if (secret !== env.AC_EXEC_SECRET) {
       return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), { status: 403, headers: cors });
     }
     const token = crypto.randomUUID().replace(/-/g, '');
-    await kvSet('ac_keytoken_' + token, { used: false, createdAt: Date.now() }, Math.floor(TOKEN_TTL_MS / 1000));
+    await KV.put('token_' + token, JSON.stringify({ used: false, createdAt: Date.now() }), { expirationTtl: TOKEN_TTL_SEC });
     return new Response(JSON.stringify({ ok: true, token }), { headers: cors });
   }
 
@@ -72,18 +49,23 @@ export async function onRequest(context) {
       return new Response(JSON.stringify({ ok: false, error: 'No token' }), { status: 400, headers: cors });
     }
 
-    const tokenData = await kvGet('ac_keytoken_' + token);
-    if (!tokenData || tokenData.used) {
-      return new Response(JSON.stringify({ ok: false, error: 'Invalid or used token' }), { status: 403, headers: cors });
+    const raw = await KV.get('token_' + token);
+    if (!raw) {
+      return new Response(JSON.stringify({ ok: false, error: 'Invalid or expired token' }), { status: 403, headers: cors });
     }
 
-    // Mark token as used
-    await kvSet('ac_keytoken_' + token, { used: true }, 60);
+    const tokenData = JSON.parse(raw);
+    if (tokenData.used) {
+      return new Response(JSON.stringify({ ok: false, error: 'Token already used' }), { status: 403, headers: cors });
+    }
+
+    // Mark token as used immediately
+    await KV.put('token_' + token, JSON.stringify({ used: true }), { expirationTtl: 60 });
 
     // Generate and store the key
     const key = generateKey();
-    const expiresAt = Date.now() + KEY_TTL_MS;
-    await kvSet('ac_key_' + key, { valid: true, expiresAt }, Math.floor(KEY_TTL_MS / 1000));
+    const expiresAt = Date.now() + (KEY_TTL_SEC * 1000);
+    await KV.put('key_' + key, JSON.stringify({ valid: true, expiresAt }), { expirationTtl: KEY_TTL_SEC });
 
     return new Response(JSON.stringify({ ok: true, key, expiresAt }), { headers: cors });
   }
@@ -95,13 +77,14 @@ export async function onRequest(context) {
       return new Response(JSON.stringify({ ok: false, valid: false }), { status: 400, headers: cors });
     }
 
-    const keyData = await kvGet('ac_key_' + key);
-    if (!keyData || !keyData.valid) {
+    const raw = await KV.get('key_' + key);
+    if (!raw) {
       return new Response(JSON.stringify({ ok: true, valid: false, reason: 'Invalid key' }), { headers: cors });
     }
 
+    const keyData = JSON.parse(raw);
     if (Date.now() > keyData.expiresAt) {
-      await kvDel('ac_key_' + key);
+      await KV.delete('key_' + key);
       return new Response(JSON.stringify({ ok: true, valid: false, reason: 'Expired' }), { headers: cors });
     }
 
