@@ -1,132 +1,128 @@
-// api/custom-users.js — AC AudioCrafter Tag Manager
+export async function onRequest(context) {
+  const { request, env } = context;
+  const url = new URL(request.url);
 
-export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Content-Type', 'application/json');
-    if (req.method === 'OPTIONS') return res.status(200).end();
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
 
-    const url   = process.env.KV_REST_API_URL;
-    const token = process.env.KV_REST_API_TOKEN;
-    if (!url || !token) return res.status(500).json({ error: 'KV not configured' });
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
 
-    const ADMIN_PASS = process.env.AC_ADMIN_PASS;
-    if (!ADMIN_PASS) return res.status(500).json({ error: 'AC_ADMIN_PASS env var not set' });
-    const hdrs = { Authorization: 'Bearer ' + token };
-    const KEY  = 'ac_custom_users';
+  const kvUrl    = env.KV_REST_API_URL;
+  const kvToken  = env.KV_REST_API_TOKEN;
+  const ADMIN_PASS = env.AC_ADMIN_PASS;
 
-    // ── Read from KV ─────────────────────────────────────────────────────────
-    async function getUsers() {
-        try {
-            const r = await fetch(`${url}/get/${KEY}`, { headers: hdrs });
-            const d = await r.json();
-            if (!d.result) return {};
-            return JSON.parse(d.result);
-        } catch { return {}; }
-    }
+  if (!kvUrl || !kvToken) {
+    return new Response(JSON.stringify({ error: 'KV not configured' }), { status: 500, headers: corsHeaders });
+  }
+  if (!ADMIN_PASS) {
+    return new Response(JSON.stringify({ error: 'AC_ADMIN_PASS not set' }), { status: 500, headers: corsHeaders });
+  }
 
-    // ── Write to KV ───────────────────────────────────────────────────────────
-    async function setUsers(data) {
-        const encoded = encodeURIComponent(JSON.stringify(data));
-        await fetch(`${url}/set/${KEY}/${encoded}`, {
-            method: 'POST',
-            headers: hdrs
+  const hdrs = { Authorization: 'Bearer ' + kvToken };
+  const KEY  = 'ac_custom_users';
+
+  async function getUsers() {
+    try {
+      const r = await fetch(`${kvUrl}/get/${KEY}`, { headers: hdrs });
+      const d = await r.json();
+      if (!d.result) return {};
+      return JSON.parse(d.result);
+    } catch { return {}; }
+  }
+
+  async function setUsers(data) {
+    const encoded = encodeURIComponent(JSON.stringify(data));
+    await fetch(`${kvUrl}/set/${KEY}/${encoded}`, { method: 'POST', headers: hdrs });
+  }
+
+  if (request.method === 'GET') {
+    const action = url.searchParams.get('action');
+
+    if (action === 'online') {
+      try {
+        const r = await fetch(`${kvUrl}/keys/ac_exec_*`, { headers: hdrs });
+        const d = await r.json();
+        const keys = d.result || [];
+        const names = await Promise.all(keys.map(async k => {
+          try {
+            const r2 = await fetch(`${kvUrl}/get/${k}`, { headers: hdrs });
+            const d2 = await r2.json();
+            return d2.result || null;
+          } catch { return null; }
+        }));
+        return new Response(JSON.stringify({ ok: true, users: names.filter(Boolean) }), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
+      } catch {
+        return new Response(JSON.stringify({ ok: true, users: [] }), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
     }
 
-    // ── GET ───────────────────────────────────────────────────────────────────
-    if (req.method === 'GET') {
-        // Live online users scan
-        if (req.query.action === 'online') {
-            try {
-                const r = await fetch(`${url}/keys/ac_exec_*`, { headers: hdrs });
-                const d = await r.json();
-                const keys = d.result || [];
-                const names = await Promise.all(keys.map(async k => {
-                    try {
-                        const r2 = await fetch(`${url}/get/${k}`, { headers: hdrs });
-                        const d2 = await r2.json();
-                        return d2.result || null;
-                    } catch { return null; }
-                }));
-                return res.status(200).json({ ok: true, users: names.filter(Boolean) });
-            } catch {
-                return res.status(200).json({ ok: true, users: [] });
-            }
-        }
+    const auth = url.searchParams.get('auth');
+    if (auth !== undefined && auth !== ADMIN_PASS) {
+      return new Response(JSON.stringify({ ok: false, error: 'Wrong password' }), { status: 401, headers: corsHeaders });
+    }
+    const users = await getUsers();
+    return new Response(JSON.stringify({ ok: true, users }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
 
-        // Normal user list — requires auth
-        const auth = req.query.auth;
-        if (auth !== undefined && auth !== ADMIN_PASS) {
-            return res.status(401).json({ ok: false, error: 'Wrong password' });
-        }
-        const users = await getUsers();
-        return res.status(200).json({ ok: true, users });
+  if (request.method === 'POST') {
+    const action = url.searchParams.get('action');
+
+    if (action === 'exec') {
+      const key  = url.searchParams.get('key');
+      const name = url.searchParams.get('name');
+      if (key && name) {
+        try {
+          await fetch(`${kvUrl}/set/${key}/${encodeURIComponent(name)}`, { method: 'POST', headers: hdrs });
+          await fetch(`${kvUrl}/expire/${key}/30`, { headers: hdrs });
+        } catch {}
+      }
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
     }
 
-    // ── POST ──────────────────────────────────────────────────────────────────
-    if (req.method === 'POST') {
-        // Script presence ping
-        if (req.query.action === 'exec') {
-            const key  = req.query.key;
-            const name = req.query.name;
-            if (key && name) {
-                try {
-                    await fetch(`${url}/set/${key}/${encodeURIComponent(name)}`, {
-                        method: 'POST', headers: hdrs
-                    });
-                    await fetch(`${url}/expire/${key}/30`, { headers: hdrs });
-                } catch {}
-            }
-            return res.status(200).json({ ok: true });
-        }
+    let body = {};
+    try { body = await request.json(); } catch {}
 
-        let body = req.body;
-        if (typeof body === 'string') {
-            try { body = JSON.parse(body); }
-            catch { return res.status(400).json({ ok: false, error: 'Bad JSON' }); }
-        }
-
-        const { auth, action, username, tag, pfpId, bgId, effects, animMeta } = body || {};
-        if (auth !== ADMIN_PASS) return res.status(401).json({ ok: false, error: 'Wrong password' });
-        if (!username) return res.status(400).json({ ok: false, error: 'username required' });
-
-        const users = await getUsers();
-
-        if (action === 'set') {
-            if (!tag) return res.status(400).json({ ok: false, error: 'tag required' });
-
-            // ── Build user record — save ALL fields including effects + animMeta ──
-            const record = {
-                tag:   tag.trim(),
-                pfpId: (pfpId || '').trim(),
-                bgId:  (bgId  || '').trim(),
-            };
-
-            // Save effects (glitched, typewriter, animProfile, animBg, tagEffects, glowColor)
-            if (effects && typeof effects === 'object') {
-                record.effects = effects;
-            }
-
-            // Save animated sprite sheet metadata
-            if (animMeta && typeof animMeta === 'object') {
-                record.animMeta = animMeta;
-            }
-
-            users[username] = record;
-            await setUsers(users);
-            return res.status(200).json({ ok: true, users });
-        }
-
-        if (action === 'delete') {
-            delete users[username];
-            await setUsers(users);
-            return res.status(200).json({ ok: true, users });
-        }
-
-        return res.status(400).json({ ok: false, error: 'Unknown action' });
+    const { auth, action: bodyAction, username, tag, pfpId, bgId, effects, animMeta } = body;
+    if (auth !== ADMIN_PASS) {
+      return new Response(JSON.stringify({ ok: false, error: 'Wrong password' }), { status: 401, headers: corsHeaders });
+    }
+    if (!username) {
+      return new Response(JSON.stringify({ ok: false, error: 'username required' }), { status: 400, headers: corsHeaders });
     }
 
-    return res.status(405).json({ ok: false, error: 'Method not allowed' });
+    const users = await getUsers();
+
+    if (bodyAction === 'set') {
+      if (!tag) return new Response(JSON.stringify({ ok: false, error: 'tag required' }), { status: 400, headers: corsHeaders });
+      const record = { tag: tag.trim(), pfpId: (pfpId || '').trim(), bgId: (bgId || '').trim() };
+      if (effects && typeof effects === 'object') record.effects = effects;
+      if (animMeta && typeof animMeta === 'object') record.animMeta = animMeta;
+      users[username] = record;
+      await setUsers(users);
+      return new Response(JSON.stringify({ ok: true, users }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    if (bodyAction === 'delete') {
+      delete users[username];
+      await setUsers(users);
+      return new Response(JSON.stringify({ ok: true, users }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    return new Response(JSON.stringify({ ok: false, error: 'Unknown action' }), { status: 400, headers: corsHeaders });
+  }
+
+  return new Response(JSON.stringify({ ok: false, error: 'Method not allowed' }), { status: 405, headers: corsHeaders });
 }

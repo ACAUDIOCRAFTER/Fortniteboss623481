@@ -1,29 +1,60 @@
-export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    const { action, job, user } = req.query;
-    if (!job) return res.status(400).json([]);
-    const url   = process.env.KV_REST_API_URL;
-    const token = process.env.KV_REST_API_TOKEN;
-    if (!url || !token) return res.status(500).json({ error: 'misconfigured' });
-    const SECRET = process.env.AC_SECRET;
-    if (SECRET && req.query.auth !== SECRET) return res.status(403).json({ error: 'Forbidden' });
-    const key = 'ac2:' + job;
-    const headers = { Authorization: 'Bearer ' + token };
-    try {
-        if (action === 'join' && user) {
-            await fetch(`${url}/sadd/${key}/${encodeURIComponent(user)}`, { headers });
-            await fetch(`${url}/expire/${key}/8`, { headers });
-            return res.json({ ok: true });
-        }
-        if (action === 'list') {
-            const r = await fetch(`${url}/smembers/${key}`, { headers });
-            const data = await r.json();
-            return res.json(data.result || []);
-        }
-        if (action === 'leave' && user) {
-            await fetch(`${url}/srem/${key}/${encodeURIComponent(user)}`, { headers });
-            return res.json({ ok: true });
-        }
-    } catch(e) { return res.status(500).json({ error: e.message }); }
-    return res.status(400).json([]);
+export async function onRequest(context) {
+  const { request, env } = context;
+  const url = new URL(request.url);
+
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  const kvUrl   = env.KV_REST_API_URL;
+  const kvToken = env.KV_REST_API_TOKEN;
+  const SECRET  = env.AC_SECRET;
+
+  if (!kvUrl || !kvToken) {
+    return new Response(JSON.stringify({ error: 'misconfigured' }), { status: 500, headers: corsHeaders });
+  }
+
+  const action = url.searchParams.get('action');
+  const job    = url.searchParams.get('job');
+  const user   = url.searchParams.get('user');
+
+  if (!job) {
+    return new Response(JSON.stringify([]), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+  }
+
+  if (SECRET && url.searchParams.get('auth') !== SECRET) {
+    return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers: corsHeaders });
+  }
+
+  const hdrs = { Authorization: 'Bearer ' + kvToken };
+  const key  = 'ac2:' + job;
+
+  try {
+    if (action === 'join' && user) {
+      await fetch(`${kvUrl}/sadd/${encodeURIComponent(key)}/${encodeURIComponent(user)}`, { headers: hdrs });
+      await fetch(`${kvUrl}/expire/${encodeURIComponent(key)}/8`, { headers: hdrs });
+      return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    if (action === 'list') {
+      const r = await fetch(`${kvUrl}/smembers/${encodeURIComponent(key)}`, { headers: hdrs });
+      const d = await r.json();
+      return new Response(JSON.stringify(d.result || []), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    if (action === 'leave' && user) {
+      await fetch(`${kvUrl}/srem/${encodeURIComponent(key)}/${encodeURIComponent(user)}`, { headers: hdrs });
+      return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    return new Response(JSON.stringify([]), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+  }
 }
