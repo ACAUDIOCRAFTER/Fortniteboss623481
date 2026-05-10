@@ -7,7 +7,7 @@ export const config = { api: { bodyParser: false } };
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const OWNER = "ACAUDIOCRAFTER";
-const REPO = "AUDIO-CRAFTER";
+const REPO = "Fortniteboss623481";
 const BRANCH = "main";
 const GIFS_FOLDER = "dm_gifs";
 const LIST_PATH = `${GIFS_FOLDER}/list.json`;
