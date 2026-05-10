@@ -12,32 +12,27 @@ export async function onRequest(context) {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const kvUrl    = env.KV_REST_API_URL;
-  const kvToken  = env.KV_REST_API_TOKEN;
   const ADMIN_PASS = env.AC_ADMIN_PASS;
+  const KV = env.AC_KV;
 
-  if (!kvUrl || !kvToken) {
+  if (!KV) {
     return new Response(JSON.stringify({ error: 'KV not configured' }), { status: 500, headers: corsHeaders });
   }
   if (!ADMIN_PASS) {
     return new Response(JSON.stringify({ error: 'AC_ADMIN_PASS not set' }), { status: 500, headers: corsHeaders });
   }
 
-  const hdrs = { Authorization: 'Bearer ' + kvToken };
-  const KEY  = 'ac_custom_users';
+  const KEY = 'ac_custom_users';
 
   async function getUsers() {
     try {
-      const r = await fetch(`${kvUrl}/get/${KEY}`, { headers: hdrs });
-      const d = await r.json();
-      if (!d.result) return {};
-      return JSON.parse(d.result);
+      const data = await KV.get(KEY, { type: 'json' });
+      return data || {};
     } catch { return {}; }
   }
 
   async function setUsers(data) {
-    const encoded = encodeURIComponent(JSON.stringify(data));
-    await fetch(`${kvUrl}/set/${KEY}/${encoded}`, { method: 'POST', headers: hdrs });
+    await KV.put(KEY, JSON.stringify(data));
   }
 
   if (request.method === 'GET') {
@@ -45,14 +40,10 @@ export async function onRequest(context) {
 
     if (action === 'online') {
       try {
-        const r = await fetch(`${kvUrl}/keys/ac_exec_*`, { headers: hdrs });
-        const d = await r.json();
-        const keys = d.result || [];
-        const names = await Promise.all(keys.map(async k => {
+        const list = await KV.list({ prefix: 'ac_exec_' });
+        const names = await Promise.all(list.keys.map(async ({ name: k }) => {
           try {
-            const r2 = await fetch(`${kvUrl}/get/${k}`, { headers: hdrs });
-            const d2 = await r2.json();
-            return d2.result || null;
+            return await KV.get(k);
           } catch { return null; }
         }));
         return new Response(JSON.stringify({ ok: true, users: names.filter(Boolean) }), {
@@ -83,8 +74,7 @@ export async function onRequest(context) {
       const name = url.searchParams.get('name');
       if (key && name) {
         try {
-          await fetch(`${kvUrl}/set/${key}/${encodeURIComponent(name)}`, { method: 'POST', headers: hdrs });
-          await fetch(`${kvUrl}/expire/${key}/30`, { headers: hdrs });
+          await KV.put(key, name, { expirationTtl: 30 });
         } catch {}
       }
       return new Response(JSON.stringify({ ok: true }), {
