@@ -1,60 +1,52 @@
+// functions/api/acusers.js — uses Cloudflare native KV (AC_KV binding)
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
+  const KV = env.AC_KV;
 
-  const corsHeaders = {
+  const cors = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json',
   };
 
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
-  const kvUrl   = env.KV_REST_API_URL;
-  const kvToken = env.KV_REST_API_TOKEN;
-  const SECRET  = env.AC_SECRET;
-
-  if (!kvUrl || !kvToken) {
-    return new Response(JSON.stringify({ error: 'misconfigured' }), { status: 500, headers: corsHeaders });
-  }
-
+  const SECRET = env.AC_SECRET;
   const action = url.searchParams.get('action');
   const job    = url.searchParams.get('job');
   const user   = url.searchParams.get('user');
 
-  if (!job) {
-    return new Response(JSON.stringify([]), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
-  }
-
+  if (!job) return new Response(JSON.stringify([]), { status: 400, headers: cors });
   if (SECRET && url.searchParams.get('auth') !== SECRET) {
-    return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers: corsHeaders });
+    return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403, headers: cors });
   }
 
-  const hdrs = { Authorization: 'Bearer ' + kvToken };
-  const key  = 'ac2:' + job;
+  const key = 'ac2_' + job;
 
   try {
     if (action === 'join' && user) {
-      await fetch(`${kvUrl}/sadd/${encodeURIComponent(key)}/${encodeURIComponent(user)}`, { headers: hdrs });
-      await fetch(`${kvUrl}/expire/${encodeURIComponent(key)}/8`, { headers: hdrs });
-      return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      const members = JSON.parse((await KV.get(key)) || '[]');
+      if (!members.includes(user)) members.push(user);
+      await KV.put(key, JSON.stringify(members), { expirationTtl: 8 });
+      return new Response(JSON.stringify({ ok: true }), { headers: cors });
     }
 
     if (action === 'list') {
-      const r = await fetch(`${kvUrl}/smembers/${encodeURIComponent(key)}`, { headers: hdrs });
-      const d = await r.json();
-      return new Response(JSON.stringify(d.result || []), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      const members = JSON.parse((await KV.get(key)) || '[]');
+      return new Response(JSON.stringify(members), { headers: cors });
     }
 
     if (action === 'leave' && user) {
-      await fetch(`${kvUrl}/srem/${encodeURIComponent(key)}/${encodeURIComponent(user)}`, { headers: hdrs });
-      return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      const members = JSON.parse((await KV.get(key)) || '[]').filter(u => u !== user);
+      await KV.put(key, JSON.stringify(members), { expirationTtl: 8 });
+      return new Response(JSON.stringify({ ok: true }), { headers: cors });
     }
 
-    return new Response(JSON.stringify([]), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify([]), { status: 400, headers: cors });
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: cors });
   }
 }
