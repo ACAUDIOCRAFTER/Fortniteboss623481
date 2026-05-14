@@ -1,112 +1,73 @@
 -- This script was generated using the MoonVeil Obfuscator v1.4.5 [https://moonveil.cc]
 
-local xg=(getfenv())
-local Nj,Mh,xj=(string.char),(string.byte),(bit32 .bxor)
-local hl=function(Ek,Oj)
-    local oa=''
-    for N=-132372/-3677,(#Ek- -4.267850283812044e-05*-23431)+(-29354+29390)do
-        oa=oa..Nj(xj(Mh(Ek,(N-1156932/32137)+(-22996+22997)),Mh(Oj,(N-0.011128284389489953*3235)%#Oj+(1040-1039))))
-    end
-    return oa
-end
-local dl,qf=(string.gsub),(string.char)
-local _f=(function(Ki)
-    Ki=dl(Ki,'[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=]','')
-    return(Ki:gsub('.',function(Ka)
-        if(Ka=='=')then
-            return''
-        end
-        local Gh,vk='',(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'):find(Ka)-1)
-        for Yj=6,1,-1 do
-            Gh=Gh..(vk%2^Yj-vk%2^(Yj-1)>0 and'1'or'0')
-        end
-        return Gh
-    end):gsub('%d%d%d?%d?%d?%d?%d?%d?',function(ml)
-        if(#ml~=8)then
-            return''
-        end
-        local g=0
-        for Gg=1,8 do
-            g=g+(ml:sub(Gg,Gg)=='1'and 2^(8-Gg)or 0)
-        end
-        return qf(g)
-    end))
-end)
-local tc,Dl,Rf,rf,Pf,an_=xg[hl('\139\132\129\128','\236\229')]:GetService(hl('^!\249w(\234}','\14M\152')),xg[hl('L\219F\223','+\186')]:GetService(hl('\26\208{\217>\207h\209(','M\191\t\178')),xg[hl('B\142H\138','%\239')]:GetService(hl('\212\232\17\211\240\226z\201\245\200\17\211\207\229i\217','\129\155t\161\185\140\n\188')),xg[hl('\233}\227y','\142\28')]:GetService(hl('t)&4dT*!\4d','&\\Hg\1')),xg[hl('W\229]\225','0\132')]:GetService(hl('\17s\19Epx\132\185&r0]vi\132\170&','C\22c)\25\27\229\205')),xg[hl('\174i\164m','\201\b')]:GetService(hl('\t\131G$\151\f\56\134T(\154:',']\244\"A\249_'))
-local le,Qi,ld,Tm,Eb,ol,cm,jn,Mb,_j,Qj,Uf,hc,sa=tc[hl('\20\237\18$E\b\238\16<L*','X\130qE)')],nil,xg[hl('\6\246\f\242','a\151')]:GetService(hl('u\132\150\206\146X\130\148\215\162X','=\240\226\190\193')),false,nil,nil,nil,nil,nil,nil,{},{},{},{[hl('K/N.','\"K')]=nil,[hl('Sm\153Oe\155C','$\f\245')]=nil,[hl('\209\31G\203\3D\220','\187j*')]=nil}
-local gj=xg[hl('\1\19\162\145\a\21\191\130','u|\209\229')](le[hl('p\196WW\254V','%\183\50')])
-local lb=hl('\149=\6\18\222\149\48\48\r\228','\244^Y\96\187')..gj
-local z,wa,rc,p=lb..hl('\147zV\255\232.#m\142\129-\221}K\241\242\56Rf\147\135.','\188\t\"\158\156K|\f\224\232@'),{},{[hl('\251\143\5\174\164\231\185\15\168\160\246','\147\234l\201\204')]=4.3671936413660584e-05*22898,[hl('\217\208D\144\249\253\218A\136\244','\174\185 \228\145')]=29994+-29993},lb..hl('\173\198\196\231$\251\153\151\199J\129va\241\211\245\237(\249\133\155\134N\173uf','\130\167\170\142I\154\237\254\168$\222\26\b');
-xg[hl('\230\254','\185')][hl('\226\216\218\141]\200\28\229\213\199\185Y\212*\249','\138\177\190\233\56\166^')]=xg[hl('f~','9')][hl('\2\179\203Y\196\175 \5\190\214m\192\179\22\25','j\218\175=\161\193b')]or{}
-local ic,ui,lf,Ql,pk,of,kb,Cg,n_,Rg,Ge,wi,nd,oj,Jb=xg[hl('\23\15','H')][hl('7,\166\53\194ly0!\187\1\198pO,','_E\194Q\167\2;')],{hl(':\232\19\233','r\141'),hl('oD\164\178\198n[\166\164\219',':4\212\215\180'),hl('\219\16\227J\27\195\16\230\\\6','\151\127\148/i'),hl('I&\157\55qgu&\137\2Vz','\5C\251C$\23'),hl("\179\'\15}\194}\136\'\27H\252\127",'\255Bi\t\142\18'),hl('=a\175h9e\167x','q\4\201\28'),hl('\138h\245\149!9\168q\247\143\20\30\181','\216\1\146\253Ul'),hl('I\200+ \151Ot\214):\162qv','\27\161LH\227\3'),hl('\233\178\t\228\207\147\15\226\223','\187\219n\140'),hl('0\b\138\206fA\f\b\158\246VV','|m\236\186\51\49'),hl("\28D\25p\155=\'D\rH\178\53",'P!\127\4\215R'),hl('\29^\t\131\23T\0\131','Q;o\247'),hl('\176\198\215\29\201E\146\223\213\a\241u\133','\226\175\176u\189\16'),hl('f\16},et[\14\127\54]]S','4y\26D\17\56'),hl('\176^\199Y\150q\207^\150','\226\55\160\49'),hl('\193~\231b\250','\149\17'),hl('\144__\212\252{K\205','\220:9\160'),hl('\219IQ\155\253\0w\129\228','\137 6\243'),hl('i{\181\202\5R\182\217','%\30\211\190'),hl('\210\199\213\53\244\142\254\56\231','\128\174\178]'),hl("\133\167Oo\25\168\127\129\159\189Mz\'\166d\145",'\205\210\"\14w\199\22\229')},false,-662- -663,false,{[hl('O\159f\158','\a\250')]=xg[hl('\132\6\129\166\f\144\225','\210c\226')][hl('\184\179\161','\214')](-1141098/-11298,-21703+21706,-12459- -10307),[hl(')w\229\230\154(h\231\240\135','|\a\149\131\232')]=xg[hl('N\238\162l\228\179+','\24\139\193')][hl('\181\190\172','\219')](0.021484790470112741*4701,22536+-22533,-26625624768/12384),[hl('\96\161:\226\196x\161?\244\217',',\206M\135\182')]=xg[hl('\150\160 \180\170\49\243','\192\197C')][hl('V]O','8')](-23997+24098,-15208- -15211,144.89836905243294*-14838),[hl('/\130\t\158\20','{\237')]=xg[hl('Z\211\218x\217\203?','\f\182\185')][hl('\251\240\226','\149')](-0.0036966547104897154*-27322,-26139/-8713,-2152054- -2052),[hl('\a\243\127\174\159+;\243k\155\184\54','K\150\25\218\202[')]=xg[hl('\128\146M\162\152\\\229','\214\247.')][hl('\174\165\183','\192')](0,-0.00014667057788207686*-20454,0),[hl('D\177\19\206\217y\127\177\a\251\231{','\b\212u\186\149\22')]=xg[hl('1vk\19|zT','g\19\b')][hl('\195\200\218','\173')](0,-0.00013333925952264546*-22499,0),[hl('\220\156\96\18\216\152h\2','\144\249\6f')]=xg[hl('\142\54,\172<=\235','\216SO')][hl('\164\175\189','\202')](0,6364+-6361,0),[hl('\157\181\227\f\241\145\247\21','\209\208\133x')]=xg[hl('P\227\223r\233\206\53','\6\134\188')][hl('=6$','S')](0,-11708+11711,0),[hl('\149\208WO\130u\183\201UU\183R\170',"\199\185\48\'\246 ")]=xg[hl('0\155\197\18\145\212U','f\254\166')][hl('\175\164\182','\193')](989224+10775,-0.0001164641484529679*-25759,0),[hl('\167[\193\203\143&\154E\195\209\186\24\152','\245\50\166\163\251j')]=xg[hl('\28\215\20>\221\5y','J\178w')][hl('\201\194\208','\167')](0,22354+-22351,0),[hl('\167\224d\226\129\193b\228\145','\245\137\3\138')]=xg[hl('U\227pw\233a0','\3\134\19')][hl('\15\4\22','a')](0,-27924+27927,0),[hl('\155FW\170\189\15q\176\164','\201/0\194')]=xg[hl('2\200q\16\194\96W','d\173\18')][hl('\21\30\f','{')](31.906036628166678*31342,-1029- -1032,0),[hl('\167\4\56\166\235\55\155\4,\158\219 ','\235a^\210\190G')]=xg[hl('\239\166\129\205\172\144\138','\185\195\226')][hl('\254\245\231','\144')](16510000000/-1651,18471-18468,-1130.4544426859597*-22115),[hl('\221q\23\206\207%\230q\3\246\230-','\145\20q\186\131J')]=xg[hl('\179\212\186\145\222\171\214','\229\177\217')][hl('\131\136\154','\237')](-305.91330416959835*32689,40596/13532,42650000000/-1706),[hl('g\143\133hm\133\140h','+\234\227\28')]=xg[hl('\205\214\\\239\220M\168','\155\179?')][hl('\215\220\206','\185')](0,-17486- -17489,0),[hl('\212\49\14\189\184\24\r\174','\152Th\201')]=xg[hl('\156!Z\190+K\249','\202D9')][hl(')\"\48','G')](810000000/-81,-12975+12978,1129.3820021684135*22136),[hl('\164\227\144U\146\1\134\250\146O\170\49\145','\246\138\247=\230T')]=xg[hl('qx\2Sr\19\20',"\'\29a")][hl('\202\193\211','\164')](10005588-5588,-20445- -20448,11687.70453482936*2139),[hl('\131\167\142\162b\231\190\185\140\184Z\206\182','\209\206\233\202\22\171')]=xg[hl('\166\220\181\132\214\164\195','\240\185\214')][hl('NEW',' ')](997.40674246957906*10026,26785-26782,-24974148+-25852),[hl('\30aH\147\56N@\148\56','L\b/\251')]=xg[hl('\185\24x\155\18i\220','\239}\27')][hl('\20\31\r','z')](0,28217-28214,0),[hl('c3\6\53Ez-8V','1Za]')]=xg[hl('mwkO}z\b',';\18\b')][hl('\219\208\194','\181')](9969598- -30402,-55983/-18661,25016299-16299)},{[hl('\139(\162)','\195M')]=xg[hl('\203\250\198\233\240\215\174','\157\159\165')][hl('YR@','7')](23283-23182,-25823238/-25746,1198+-3350),[hl('_\206\193\224\216^\209\195\246\197','\n\190\177\133\170')]=xg[hl('\248\246\151\218\252\134\157','\174\147\244')][hl('\130\137\155','\236')](3275632/32432,-23566270/-23218,-114.63620367901893*18755),[hl('$;Ru\192<;Wc\221','hT%\16\178')]=xg[hl('f\255jD\245{\3','0\154\t')][hl('\149\158\140','\251')](2605-2504,0.061599307872945243*16182,144.66437895303457*-14862),[hl('\22@0\\-','B/')]=xg[hl('\238Y\219\204S\202\139','\184<\184')][hl('\220\215\197','\178')](-2048785/-20285,19681+-18666,21833270310/-10155),[hl('\236\222\209\153V\253\208\222\197\172q\224','\160\187\183\237\3\141')]=xg[hl('\236?\240\206\53\225\137','\186Z\147')][hl('\159\148\134','\241')](0,-30303- -31303,0),[hl('\165Y0\191\201\225\158Y$\138\247\227','\233<V\203\133\142')]=xg[hl('\200\137F\234\131W\173','\158\236%')][hl('JAS','$')](0,-28700+29700,0),[hl('c\155\t\210g\159\1\194','/\254o\166')]=xg[hl('\0\234Q\"\224@e','V\143\50')][hl('\206\197\215','\160')](0,0.039086929330831771*25584,0),[hl('\217\199\148Y\181\227\128@','\149\162\242-')]=xg[hl('g\240\187E\250\170\2','1\149\216')][hl('\27\16\2','u')](0,-15480+16480,0),[hl('2H\15,\188G\16Q\r\54\137\96\r','\96!hD\200\18')]=xg[hl('\172\152K\142\146Z\201','\250\253(')][hl('en|','\v')](-22409977590/-22410,-0.052419143471195681*-19077,0),[hl('3\n\48\245c\232\14\20\50\239V\214\f','acW\157\23\164')]=xg[hl('r\14\175P\4\190\23','$k\204')][hl('\154\145\131','\244')](0,-22978+23978,0),[hl('\244\222*\132\210\255,\130\194','\166\183M\236')]=xg[hl('\t\200\195+\194\210l','_\173\160')][hl('\208\219\201','\190')](0,10021+-9021,0),[hl('\241\151\194\153\215\222\228\131\206','\163\254\165\241')]=xg[hl('A\vic\1x$','\23n\n')][hl(">5\'",'P')](447999552/448,5834-4834,0),[hl('\182g\188\154\221\242\138g\168\162\237\229','\250\2\218\238\136\130')]=xg[hl("B\133\207\96\143\222\'",'\20\224\172')][hl(';0\"','U')](-10013461+13461,-31451805/-30987,-61124.694376528118*-409),[hl('\252\222\202\235oP\199\222\222\211FX','\176\187\172\159#?')]=xg[hl('i\134\151K\140\134\f','?\227\244')][hl('\231\236\254','\137')](-83840000000/8384,-11385+12400,880.68482051643355*-28387),[hl('\168\29\250R\162\23\243R','\228x\156&')]=xg[hl('-W\243\15]\226H','{2\144')][hl('#(:','M')](0,-3435000/-3435,0),[hl('B?\223\205.\22\220\222','\14Z\185\185')]=xg[hl('>r\"\28x3[','h\23A')][hl('\146\153\139','\252')](167990000000/-16799,-1316+2331,1494.2322634630327*16731),[hl('\a<\145*]t%%\147\48eD2','UU\246B)!')]=xg[hl('8\199\26\26\205\v]','n\162y')][hl('*!3','D')](10001142+-1142,26788-25773,-443700000000/-17748),[hl('\129\164)+\230\1\188\186+1\222(\180','\211\205NC\146M')]=xg[hl('\204\145)\238\155\56\169','\154\244J')][hl('\138\129\147','\228')](-182810000000/-18281,-0.043755658059231796*-23197,-24975810+-24190),[hl('\230\18\253\223\192=\245\216\192','\180{\154\183')]=xg[hl('\147\55\143\177=\158\246','\197R\236')][hl('\2\t\27','l')](0,-0.036831055946373981*-27151,0),[hl('\3\16\27\201%Y0\196\54','Qy|\161')]=xg[hl(';U\143\25_\158^','m0\236')][hl('\248\243\225','\150')](-143700000000/-14370,33495/33,24968308- -31692)},{},{},{},{hl('\192\28\233\29','\136y'),hl('%\163^s\224$\188\\e\253','p\211.\22\146'),hl('\156\190\n\0\214\132\190\15\22\203','\208\209}e\164'),hl('\167\29v\215^\134\155\29b\226y\155','\235x\16\163\v\246'),hl('z\180+Lh8A\180?yV:','6\209M8$W'),hl('r-\214\143v)\222\159','>H\176\251'),hl(":G\252\'\228\135\24^\254=\209\160\5",'h.\155O\144\210'),hl('\17\208?\22\220k,\206=\f\233U.',"C\185X~\168\'"),hl('\255\190\180\163\217\159\178\165\201','\173\215\211\203'),hl('\246\224?\174\169\148\202\224+\150\153\131','\186\133Y\218\252\228'),hl('\213\127yr\24\49\238\127mJ19','\153\26\31\6T^'),hl('%Q:;/[3;','i4\\O'),hl('\248\25x\196\27\231\218\0z\222#\215\205','\170p\31\172o\178'),hl('\161-\154\189\240\246\156\51\152\167\200\223\148','\243D\253\213\132\186'),hl('+>\229\176\r\17\237\183\r','yW\130\216')},{[hl('\152\253\209\230\159\224\234\253\150','\241\142\131\147')]=false,[hl('\175\232\232\19\169\243\238(\168','\204\157\154a')]=nil,[hl('~\227\155lg\231\143of','\21\134\226\n')]=nil,[hl('\174\196\253\127\25n\175\217\232j\28E\180','\218\171\137\30u*')]=0,[hl("\3V\'H\230\3^\18Q\248\3",'f:F8\149')]=0,[hl('\238a\248t\249','\157\17')]=0.00038535645472061658*2595,[hl('\17\197#t\162\17\222$u\169','r\170M\26\199')]=nil},{},{},false;
+local v,fh,cb,Y,Qb,Ci=game:GetService'Players',game:GetService'Workspace',game:GetService'UserInputService',game:GetService'RunService',game:GetService'ReplicatedStorage',game:GetService'TweenService'
+local ym,Kg,Tc,Pg,xm,Dh,Ie,Vf,C,dl,Hj,Oa,fd,ma=v.LocalPlayer,nil,game:GetService'HttpService',false,nil,nil,nil,nil,nil,nil,{},{},{},{idle=nil,walking=nil,jumping=nil}
+local dd=tostring(ym.UserId)
+local ud='ac_reanim_'..dd
+local Zf,Uf,aa,Sa=ud..'/state_animations.json',{},{heightScale=1,widthScale=1},ud..'/animation_list_cache.json';
+_G.hiddenBodyParts=_G.hiddenBodyParts or{}
+local El,Wd,yk,Ij,la,xg,Fg,zk,Rl,p,el_,Rf,md,vc,Ni=_G.hiddenBodyParts,{'Head','UpperTorso','LowerTorso','LeftUpperArm','LeftLowerArm','LeftHand','RightUpperArm','RightLowerArm','RightHand','LeftUpperLeg','LeftLowerLeg','LeftFoot','RightUpperLeg','RightLowerLeg','RightFoot','Torso','Left Arm','Right Arm','Left Leg','Right Leg','HumanoidRootPart'},false,1,false,{Head=Vector3 .new(101,3,-2152),UpperTorso=Vector3 .new(101,3,-2150002),LowerTorso=Vector3 .new(101,3,-2150002),Torso=Vector3 .new(101,3,-2150002),LeftUpperArm=Vector3 .new(0,3,0),LeftLowerArm=Vector3 .new(0,3,0),LeftHand=Vector3 .new(0,3,0),['Left Arm']=Vector3 .new(0,3,0),RightUpperArm=Vector3 .new(999999,3,0),RightLowerArm=Vector3 .new(0,3,0),RightHand=Vector3 .new(0,3,0),['Right Arm']=Vector3 .new(999999,3,0),LeftUpperLeg=Vector3 .new(-10000000,3,25000000),LeftLowerLeg=Vector3 .new(-10000000,3,-25000000),LeftFoot=Vector3 .new(0,3,0),['Left Leg']=Vector3 .new(-10000000,3,25000000),RightUpperLeg=Vector3 .new(10000000,3,25000000),RightLowerLeg=Vector3 .new(10000000,3,-25000000),RightFoot=Vector3 .new(0,3,0),['Right Leg']=Vector3 .new(10000000,3,25000000)},{Head=Vector3 .new(101,1003,-2152),UpperTorso=Vector3 .new(101,1015,-2150002),LowerTorso=Vector3 .new(101,996.79999999999995,-2150002),Torso=Vector3 .new(101,1015,-2150002),LeftUpperArm=Vector3 .new(0,1000,0),LeftLowerArm=Vector3 .new(0,1000,0),LeftHand=Vector3 .new(0,1000,0),['Left Arm']=Vector3 .new(0,1000,0),RightUpperArm=Vector3 .new(999999,1000,0),RightLowerArm=Vector3 .new(0,1000,0),RightHand=Vector3 .new(0,1000,0),['Right Arm']=Vector3 .new(999999,1000,0),LeftUpperLeg=Vector3 .new(-10000000,1015,25000000),LeftLowerLeg=Vector3 .new(-10000000,1015,-25000000),LeftFoot=Vector3 .new(0,1000,0),['Left Leg']=Vector3 .new(-10000000,1015,25000000),RightUpperLeg=Vector3 .new(10000000,1015,25000000),RightLowerLeg=Vector3 .new(10000000,1015,-25000000),RightFoot=Vector3 .new(0,1000,0),['Right Leg']=Vector3 .new(10000000,1015,25000000)},{},{},{},{'Head','UpperTorso','LowerTorso','LeftUpperArm','LeftLowerArm','LeftHand','RightUpperArm','RightLowerArm','RightHand','LeftUpperLeg','LeftLowerLeg','LeftFoot','RightUpperLeg','RightLowerLeg','RightFoot'},{isRunning=false,currentId=nil,keyframes=nil,totalDuration=0,elapsedTime=0,speed=1,connection=nil},{},{},false;
 (function()
-    local function uj(Ij)
-        if Qi then
-            local be=Ij:WaitForChild(hl('\fg\153\188R\241\226\141\22}\155\169l\255\249\157','D\18\244\221<\158\139\233'),13120-13115)
-            if be then
-                be[hl('\6\t\200$\"\223','EO\186')]=Qi
+    local function I(Qk)
+        if Kg then
+            local Ym=Qk:WaitForChild('HumanoidRootPart',5)
+            if Ym then
+                Ym.CFrame=Kg
             end
-            Qi=nil
+            Kg=nil
         end
-        local al=Ij:FindFirstChildOfClass(hl('\237\49\201\30\203+\205\27','\165D\164\127'))
-        if al then
-            al[hl('MYlT','\t\48')]:Connect(function()
-                local T=Ij:FindFirstChild(hl('1\160\241\196\164\52\192\241+\186\243\209\154:\219\225','y\213\156\165\202[\169\149'))
-                if not(T)then
-                else
-                    Qi=T[hl('\211\151\128\241\188\151','\144\209\242')]
+        local xk=Qk:FindFirstChildOfClass'Humanoid'
+        if xk then
+            xk.Died:Connect(function()
+                local nd=Qk:FindFirstChild'HumanoidRootPart'
+                if nd then
+                    Kg=nd.CFrame
                 end
             end)
         end
     end
-    if not(le[hl('M\15\241\fo\4\228\27|','\14g\144~')])then
-    else
-        uj(le[hl('H?\229\248j4\240\239y','\vW\132\138')])
+    if ym.Character then
+        I(ym.Character)
     end
-    le[hl('\29\223\169\146\226\161u;\197\137\132\231\167e','^\183\200\224\131\194\1')]:Connect(uj)
+    ym.CharacterAdded:Connect(I)
 end)()
-local m,ym,sg,Se,Lc,ej={},{},{},lb..hl("g\173\146 \14\r\180\235,\230\142%\175\147:\21\f\170\154\'\251\136&",'H\206\231Szb\217\180M\136\231'),lb..hl('\225\239-\241\156\23;\181@u\172\245\51\240\138]\14\173Jb','\206\156]\148\249sd\222%\f'),{}
-local function _n()
-    if not(not xg[hl('\179[sr\182Lpo','\218(\21\29')](lb))then
-    else
-        xg[hl('\229\1\186\215w\231\f\181\215c','\136\96\209\178\17')](lb)
+local me,Hi,Ue,Gi,Ng,Sg={},{},{},ud..'/custom_animations.json',ud..'/speed_keybinds.json',{}
+local function Ii()
+    if not isfolder(ud)then
+        makefolder(ud)
     end
-    if not(not xg[hl('\237\158\185\243\232\137\186\238','\132\237\223\156')](hl('\28s\186\53\181\250\52\149\189\56\30H\153\0\198\144/\159\161]','X\1\213E\149\176g\218\243\24')))then
-    else
-        xg[hl('\195S\194b<\193^\205b(','\174\50\169\aZ')](hl('78\202\143\23\207\228\130\219\195\53\3\233\186d\165\255\136\199\166','sJ\165\255\55\133\183\205\149\227'))
+    if not isfolder'Drop JSON FILES HERE'then
+        makefolder'Drop JSON FILES HERE'
     end
 end
-local function on()
-    _n();
-    xg[hl(',\246=\249\48','\\\149')](function()
-        local Ck=xg[hl('c\6+\177i\6\52\160|','\15oX\197')](hl('\24\182\250\242\236\244\19o\28\176\26\141\217\199\159\158\be\0\213','\\\196\149\130\204\190@ R\144'))
-        for fm,Xa in xg[hl('k\184\228k\186\246','\2\200\133')](Ck)do
-            if not(Xa:lower():match(hl('H3\234\30r\238I','m\29\128')))then
-            else
-                local S,If=xg[hl('J\130[\141V',':\225')](xg[hl('i\200\240\227}\196\253\226','\27\173\145\135')],Xa)
-                if S and If and If~=''then
-                    local Bl,Ib=xg[hl('\14\30\31\17\18','~}')](ld[hl('\145\225k\b\r\190\209K\",','\219\178$FI')],ld,If)
-                    if Bl and xg[hl('\156p\152l','\232\t')](Ib)==hl('c)u$r','\23H')then
-                        if Ib[3.7616611495636476e-05*26584]and xg[hl('\160\129\164\157','\212\248')](Ib[-3.4646433149707237e-05*-28863])==hl('\175\228\185\233\190','\219\133')then
-                            for Uc,sf in xg[hl('\175\215b\175\213p','\198\167\3')](Ib)do
-                                if not(sf[hl('\236\166\239\162','\130\199')]and sf[hl('\171\166','\194')])then
-                                else
-                                    local Fk,gl=xg[hl('\255\177F$\249\183[7','\139\222\53P')](sf[hl('\162h\161l','\204\t')]),xg[hl('0\b\145\154\54\14\140\137','Dg\226\238')](sf[hl('\134\139','\239')]);
-                                    sg[Fk]=gl;
-                                    nd[Fk]=gl
-                                    if not xg[hl('I\249_\244X','=\152')][hl('\154\143\146\130','\252\230')](oj,Fk)then
-                                        xg[hl('n\215x\218\127','\26\182')][hl('\204\157\137\192\129\142','\165\243\250')](oj,Fk)
+local function bd()
+    Ii();
+    pcall(function()
+        local wi=listfiles'Drop JSON FILES HERE'
+        for Cb,_n in ipairs(wi)do
+            if _n:lower():match'%.json$'then
+                local Xl,Mf=pcall(readfile,_n)
+                if Xl and Mf and Mf~=''then
+                    local x,uk=pcall(Tc.JSONDecode,Tc,Mf)
+                    if x and type(uk)=='table'then
+                        if uk[1]and type(uk[1])=='table'then
+                            for ml,Sb in ipairs(uk)do
+                                if Sb.name and Sb.id then
+                                    local O,zd=tostring(Sb.name),tostring(Sb.id);
+                                    Ue[O]=zd;
+                                    md[O]=zd
+                                    if not table.find(vc,O)then
+                                        table.insert(vc,O)
                                     end
                                 end
                             end
                         else
-                            for bh,Fg in xg[hl('Z\216C\203Y','*\185')](Ib)do
-                                local Hk,Rl=xg[hl('u\158\184\51s\152\165 ','\1\241\203G')](bh),xg[hl('\130\197-m\132\195\48~','\246\170^\25')](Fg);
-                                sg[Hk]=Rl;
-                                nd[Hk]=Rl
-                                if not(not xg[hl('\200m\222\96\217','\188\f')][hl('=\127\53r','[\22')](oj,Hk))then
-                                else
-                                    xg[hl('$\127\50r5','P\30')][hl('/\t\229#\21\226','Fg\150')](oj,Hk)
+                            for ki,xh in pairs(uk)do
+                                local jb,Am=tostring(ki),tostring(xh);
+                                Ue[jb]=Am;
+                                md[jb]=Am
+                                if not table.find(vc,jb)then
+                                    table.insert(vc,jb)
                                 end
                             end
                         end
@@ -116,519 +77,522 @@ local function on()
         end
     end)
 end
-local function qn()
-    _n()
-    local uk={[hl('\158$\196O\133\139#\194L\151','\255J\173\"\228')]=nd,[hl('i\139b\156t','\6\249')]=oj,[hl('\158S\236\235\153N\224\227\154','\234:\129\142')]=xg[hl('\0\28','o')][hl('s\240j\252','\a\153')]()}
-    local wl,gh=xg[hl('\18#\3,\14','b@')](ld[hl('\195\156K*I\231\172k\0i','\137\207\4d\f')],ld,uk)
-    if wl then
-        xg[hl('=z,u!','M\25')](function()
-            xg[hl('\188\27~4\174\15~,\174','\203i\23@')](p,gh)
+local function rl()
+    Ii()
+    local Va={animations=md,order=vc,timestamp=os.time()}
+    local jn,Ne=pcall(Tc.JSONEncode,Tc,Va)
+    if jn then
+        pcall(function()
+            writefile(Sa,Ne)
         end)
     end
 end
-local function pc()
-    _n()
-    local Wh,fe=xg[hl('S.B!O','#M')](xg[hl('\234\184\51\1\254\180>\0','\152\221Re')],p)
-    if Wh then
-        local dk,yb=xg[hl(')H8G5','Y+')](ld[hl('z\181\26\194UU\133:\232t','0\230U\140\17')],ld,fe)
-        if not(dk and(xg[hl('B\191\249S\169\239','6\198\137')](yb)==hl('\138/\156\"\155','\254N')and(yb[hl('\t\25|\212\216\28\30z\215\202','hw\21\185\185')]and yb[hl('\247\197\252\210\234','\152\183')])))then
-        else
-            nd=yb[hl('\140\146\231\140\158\153\149\225\143\140','\237\252\142\225\255')];
-            oj=yb[hl('\252;\247,\225','\147I')]
+local function ig()
+    Ii()
+    local gc,wm=pcall(readfile,Sa)
+    if gc then
+        local ia,xd=pcall(Tc.JSONDecode,Tc,wm)
+        if ia and(typeof(xd)=='table'and(xd.animations and xd.order))then
+            md=xd.animations;
+            vc=xd.order
             return true
         end
     end
     return false
 end
-local function Vf()
-    if Jb then
+local function G()
+    if Ni then
         return
     else
-        Jb=true
-        local ve,kj=xg[hl('?\208.\223#','O\179')](xg[hl('\3\207\t\203','d\174')][hl('\238\130\180\214\177\165\210','\166\246\192')],xg[hl('\96\165j\161','\a\196')],hl(_f'MT/1WTX37GKsXnJWjcqbKhsu4k9gAdxJLmfQRdx2OOJbL723PvpQbEWaxJ00UT2iUGgf1l82Z91AzQ==',_f'WUuBKUbNw03VMQck/qn0Wn5czDkFc78sQkmxNaw='),true)
-        if not(ve)then
-            return
-        else
-            local Tb,hi=xg[hl('\250\208\235\223\230','\138\179')](xg[hl('\4\52\182b\181\28)\190h\161','h[\215\6\198')](kj))
-            if not(Tb and xg[hl('\172\247\168\235','\216\142')](hi)==hl('\0\143\22\130\17','t\238'))then
-            else
-                nd={}
-                local Y,sb,re_=xg[hl('\185\25\160\n\186','\201x')](hi)
+        Ni=true
+        local mf,if_=pcall(game.HttpGet,game,'https://yourscoper.vercel.app/scripts/akadmin/animlist.lua',true)
+        if mf then
+            local rm,ob=pcall(loadstring(if_))
+            if rm and type(ob)=='table'then
+                md={}
+                local Nh,ad,mg=pairs(ob)
                 while true do
-                    local xn;
-                    re_,xn=Y(sb,re_)
-                    if not(re_==nil)then
-                    else
+                    local q;
+                    mg,q=Nh(ad,mg)
+                    if mg==nil then
                         break
                     end
-                    nd[re_]=xn
+                    md[mg]=q
                 end
-                qn()
+                rl()
             end
+        else
+            return
         end
     end
 end
-local function cj()
-    _n()
-    local Bh,Ac,mk=xg[hl('\129\149\152\134\130','\241\244')](m)
-    local oh={}
+local function Ad()
+    Ii()
+    local mb,Oj,Ik=pairs(me)
+    local Dc={}
     while true do
-        local Dk;
-        mk,Dk=Bh(Ac,mk)
-        if not(mk==nil)then
-        else
+        local Be;
+        Ik,Be=mb(Oj,Ik)
+        if Ik==nil then
             break
         end
-        oh[mk]=xg[hl('\220\\\52\202\218Z)\217','\168\51G\190')](Dk)
+        Dc[Ik]=tostring(Be)
     end
-    local Tg,tb=xg[hl('H\bY\aT','8k')](ld[hl('\228\6\194c\240\192\54\226I\208','\174U\141-\181')],ld,oh)
-    if Tg then
-        xg[hl('\160G\177H\188','\208$')](function()
-            xg[hl('\184\208\236\188\170\196\236\164\170','\207\162\133\200')](lb..hl('+\250\151\162\180\183r\232B,\t\179m\241\151\160\178\170u\239\t\25\27\178j',"\4\156\246\212\219\197\27\156\'sh\221"),tb)
+    local Bl,jj=pcall(Tc.JSONEncode,Tc,Dc)
+    if Bl then
+        pcall(function()
+            writefile(ud..'/favorite_animations.json',jj)
         end)
     end
 end
-local function vj()
-    _n()
-    local Ph,cl=xg[hl('w\31f\16k','\a|')](xg[hl('\234\130\155\173\254\142\150\172','\152\231\250\201')],lb..hl('\142\216\182ISV\191\219%\185\n\165\200\211\182KUK\184\220n\140\24\164\207','\161\190\215?<$\214\175@\230k\203'))
-    if not(Ph)then
-        m={}
-    else
-        local qg,Ga=xg[hl('G\244V\251[','7\151')](ld[hl('Is\131e\201fC\163O\232','\3 \204+\141')],ld,cl)
-        if qg and xg[hl('\215I\182\198_\160','\163\48\198')](Ga)==hl('FhPeW','2\t')then
-            m={}
-            local ai,da,Vh=xg[hl('6\210/\193\53','F\179')](Ga)
+local function Oh()
+    Ii()
+    local Lh,Oi=pcall(readfile,ud..'/favorite_animations.json')
+    if Lh then
+        local Tg,kb=pcall(Tc.JSONDecode,Tc,Oi)
+        if Tg and typeof(kb)=='table'then
+            me={}
+            local ha,gl,jd=pairs(kb)
             while true do
-                local Gj;
-                Vh,Gj=ai(da,Vh)
-                if Vh==nil then
+                local Cj;
+                jd,Cj=ha(gl,jd)
+                if jd==nil then
                     break
                 end
-                m[Vh]=Gj
-                if not(not nd[Vh])then
-                else
-                    nd[Vh]=Gj
-                    if not xg[hl('\163\229\181\232\178','\215\132')][hl('\144\51\152>','\246Z')](oj,Vh)then
-                        xg[hl('\18_\4R\3','f>')][hl('%\253\201)\225\206','L\147\186')](oj,Vh)
+                me[jd]=Cj
+                if not md[jd]then
+                    md[jd]=Cj
+                    if not table.find(vc,jd)then
+                        table.insert(vc,jd)
                     end
                 end
             end
         else
-            m={}
+            me={}
         end
+    else
+        me={}
     end
 end
-local function Bn()
-    _n()
-    local Qm,ig,Vi=xg[hl('m\227t\240n','\29\130')](ym)
-    local he={}
+local function Jl()
+    Ii()
+    local Rd,Ol,zc=pairs(Hi)
+    local cf={}
     while true do
-        local Tj;
-        Vi,Tj=Qm(ig,Vi)
-        if not(Vi==nil)then
-        else
+        local li;
+        zc,li=Rd(Ol,zc)
+        if zc==nil then
             break
         end
-        he[Vi]=Tj[hl('b\23A\19',',v')]
+        cf[zc]=li.Name
     end
-    local Ak,vi=xg[hl('\148\254\133\241\136','\228\157')](ld[hl('\182ze:=\146JE\16\29','\252)*tx')],ld,he)
-    if Ak then
-        xg[hl('2\178#\189.','B\209')](function()
-            xg[hl('\177\140\23\135\163\152\23\159\163','\198\254~\243')](lb..hl('k\165\177\185\144\130\150\n\211\244qv!\189\189\185\147\135\145M\214\233As','D\196\223\208\253\227\226c\188\154.\29'),vi)
+    local ab,Ek=pcall(Tc.JSONEncode,Tc,cf)
+    if ab then
+        pcall(function()
+            writefile(ud..'/animation_keybinds.json',Ek)
         end)
     end
 end
-local function Yg()
-    _n()
-    local Um,ac=xg[hl('\169\231\184\232\181','\217\132')](xg[hl('d\175\182\173p\163\187\172','\22\202\215\201')],lb..hl("\207 \192\159+\135\239\250\226\3q\'\133\56\204\159(\130\232\189\231\30A\"",'\224A\174\246F\230\155\147\141m.L'))
-    if not(Um)then
-        ym={}
-    else
-        local un_,dm=xg[hl('\14C\31L\18','~ ')](ld[hl('\31\5L\243\215\48\53l\217\246','UV\3\189\147')],ld,ac)
-        if un_ and xg[hl('[\129\129J\151\151','/\248\241')](dm)==hl('\239\210\249\223\254','\155\179')then
-            ym={}
-            local Pl,zb,_e=xg[hl('\163\152\186\139\160','\211\249')](dm)
+local function g()
+    Ii()
+    local k,rj=pcall(readfile,ud..'/animation_keybinds.json')
+    if k then
+        local Vg,sj=pcall(Tc.JSONDecode,Tc,rj)
+        if Vg and typeof(sj)=='table'then
+            Hi={}
+            local le,P,de=pairs(sj)
             while true do
-                local wc;
-                _e,wc=Pl(zb,_e)
-                if not(_e==nil)then
-                else
+                local al;
+                de,al=le(P,de)
+                if de==nil then
                     break
                 end
-                local cd=xg[hl('ULeO','\16\"')][hl('\203 \251\195*\230\229','\128E\130')][wc]
-                if cd then
-                    ym[_e]=cd
+                local Dg=Enum.KeyCode[al]
+                if Dg then
+                    Hi[de]=Dg
                 end
             end
         else
-            ym={}
+            Hi={}
         end
+    else
+        Hi={}
     end
 end
-local function Re()
-    _n()
-    local Ih={}
-    for Va=0.0051941825155825475*12514,(78360/15672)+-564352/-8818 do
-        if not(ej[(Va-(5199+-5135))])then
-        else
-            Ih[hl('\208\\\204D','\163\48')..(Va-(2416+-2352))]={[hl('\146~\132k\133','\225\14')]=ej[(Va-(-23631- -23695))][hl('\174\212\184\193\185','\221\164')]or(Va- -470976/-7359)*(-56910/-28455)- -7.2170900692840645e-05*-13856,[hl('\3\r\17','h')]=ej[(Va-1814912/28358)][hl('FHT','-')]or''}
+local function ji()
+    Ii()
+    local Xi={}
+    for mj=1,5 do
+        if Sg[mj]then
+            Xi['slot'..mj]={speed=Sg[mj].speed or mj*2-1,key=Sg[mj].key or''}
         end
     end
-    local ag,Pb=xg[hl('\185Z\168U\165','\201\57')](ld[hl('\28\244\192\179\223\56\196\224\153\255','V\167\143\253\154')],ld,Ih)
-    if ag then
-        xg[hl('\183\30\166\17\171','\199}')](function()
-            xg[hl(']\6\172\157O\18\172\133O','*t\197\233')](Lc,Pb)
+    local dn,Uk=pcall(Tc.JSONEncode,Tc,Xi)
+    if dn then
+        pcall(function()
+            writefile(Ng,Uk)
         end)
     end
 end
-local function fk()
-    _n()
-    local Eg,wm=xg[hl('\189\2\172\r\161','\205a')](xg[hl('a\152\147\192u\148\158\193','\19\253\242\164')],Lc)
-    if Eg then
-        local Ke,vh=xg[hl('\216\168\201\167\196','\168\203')](ld[hl('0~\fYP\31N,sq','z-C\23\20')],ld,wm)
-        if Ke and xg[hl('[\134\136J\144\158','/\255\248')](vh)==hl('\218~\204s\203','\174\31')then
-            for wk=12759-12672,(-0.00022073106127494261*-22652)+(-30102- -30188)do
-                local yj=hl('\227\254\255\230','\144\146')..(wk-(-22523+22609))
-                if not(vh[yj])then
-                else
-                    ej[(wk-0.0038663849300903655*22243)]={[hl('J#\\\54]','9S')]=vh[yj][hl('\255\253\233\232\232','\140\141')]or(wk-657556/7646)*(-17998/-8999)-6181/6181,[hl('KEY',' ')]=vh[yj][hl('+%9','@')]or''}
+local function ag()
+    Ii()
+    local o_,_h=pcall(readfile,Ng)
+    if o_ then
+        local ui,fk=pcall(Tc.JSONDecode,Tc,_h)
+        if ui and typeof(fk)=='table'then
+            for Qf=1,5 do
+                local mm='slot'..Qf
+                if fk[mm]then
+                    Sg[Qf]={speed=fk[mm].speed or Qf*2-1,key=fk[mm].key or''}
                 end
             end
         end
     end
 end
-local function bb()
-    _n()
-    local He={[hl('\150L\147M','\255(')]=sa[hl('g\206b\207','\14\170')],[hl('\224,:\252$8\240','\151MV')]=sa[hl('\221\"\21\193*\23\205','\170Cy')],[hl('e\200h\127\212kh','\15\189\5')]=sa[hl('\207\147@\213\143C\194','\165\230-')]}
-    local mg,og=xg[hl('\v\128\26\143\23','{\227')](ld[hl('Z\217W-p~\233w\aP','\16\138\24c5')],ld,He)
-    if not(mg)then
-    else
-        xg[hl('\22P\a_\n','f3')](function()
-            xg[hl('\142\130\221\v\156\150\221\19\156','\249\240\180\127')](z,og)
+local function Yc()
+    Ii()
+    local ec={idle=ma.idle,walking=ma.walking,jumping=ma.jumping}
+    local im,Ye=pcall(Tc.JSONEncode,Tc,ec)
+    if im then
+        pcall(function()
+            writefile(Zf,Ye)
         end)
     end
 end
-local function ga()
-    _n()
-    local Gn,Hb=xg[hl('\254\166\239\169\226','\142\197')](xg[hl('R\155ORF\151BS',' \254.6')],z)
-    if not(Gn)then
-    else
-        local rj,r_=xg[hl('\29\251\f\244\1','m\152')](ld[hl('\207\184v\163\250\224\136V\137\219','\133\235\57\237\190')],ld,Hb)
-        if not(rj and xg[hl('\227L\196\242Z\210','\151\53\180')](r_)==hl('7l!a&','C\r'))then
-        else
-            sa[hl('\221\253\216\252','\180\153')]=r_[hl('\18\157\23\156','{\249')];
-            sa[hl('\171\158\203\183\150\201\187','\220\255\167')]=r_[hl('|\132\4\96\140\6l','\v\229h')];
-            sa[hl("\205]\'\215A$\192",'\167(J')]=r_[hl('b\222\170x\194\169o','\b\171\199')]
+local function uc()
+    Ii()
+    local Gk,Gj=pcall(readfile,Zf)
+    if Gk then
+        local Jg,Pc=pcall(Tc.JSONDecode,Tc,Gj)
+        if Jg and typeof(Pc)=='table'then
+            ma.idle=Pc.idle;
+            ma.walking=Pc.walking;
+            ma.jumping=Pc.jumping
         end
     end
 end
-local function Xe()
-    _n()
-    local xm,Vd,Df=xg[hl('\24\50\1!\27','hS')](sg)
-    local l_={}
+local function Wi()
+    Ii()
+    local kl,Ok,pf=pairs(Ue)
+    local Xh={}
     while true do
-        local gk;
-        Df,gk=xm(Vd,Df)
-        if Df==nil then
+        local Ri;
+        pf,Ri=kl(Ok,pf)
+        if pf==nil then
             break
         end
-        l_[Df]=gk
+        Xh[pf]=Ri
     end
-    local ch,Ma=xg[hl('\194\136\211\135\222','\178\235')](ld[hl('\201\158\28\236\\\237\174<\198|','\131\205S\162\25')],ld,l_)
-    if ch then
-        xg[hl('\222G\207H\194','\174$')](function()
-            xg[hl('\24a\19\198\nu\19\222\n','o\19z\178')](Se,Ma)
+    local ya,Td=pcall(Tc.JSONEncode,Tc,Xh)
+    if ya then
+        pcall(function()
+            writefile(Gi,Td)
         end)
     end
 end
-local function Mi()
-    _n()
-    local Ml,Xk=xg[hl('\240o\225\96\236','\128\f')](xg[hl('\211p\1\26\199|\f\27','\161\21\96~')],Se)
-    if Ml then
-        local vm,qe=xg[hl('\252h\237g\224','\140\v')](ld[hl("U\'\19\219Sz\23\51\241r",'\31t\\\149\23')],ld,Xk)
-        if vm and xg[hl('yIch_u','\r\48\19')](qe)==hl('\155\240\141\253\138','\239\145')then
-            sg={}
-            local Ul,vb,K=xg[hl('\169\163\176\176\170','\217\194')](qe)
+local function Ml()
+    Ii()
+    local l_,Id=pcall(readfile,Gi)
+    if l_ then
+        local dg,lm=pcall(Tc.JSONDecode,Tc,Id)
+        if dg and typeof(lm)=='table'then
+            Ue={}
+            local Gf,Qd,fm=pairs(lm)
             while true do
-                local hg;
-                K,hg=Ul(vb,K)
-                if K==nil then
+                local Ac;
+                fm,Ac=Gf(Qd,fm)
+                if fm==nil then
                     break
                 end
-                sg[K]=hg;
-                nd[K]=hg
-                if not(not xg[hl('78!5&','CY')][hl('(X U','N1')](oj,K))then
-                else
-                    xg[hl('z\243l\254k','\14\146')][hl('\2\206[\14\210\\','k\160(')](oj,K)
+                Ue[fm]=Ac;
+                md[fm]=Ac
+                if not table.find(vc,fm)then
+                    table.insert(vc,fm)
                 end
             end
         else
-            sg={}
+            Ue={}
         end
     else
-        sg={}
+        Ue={}
     end
-    on()
+    bd()
 end
-local function ak()
-    _n();
-    pc();
-    Yg();
-    vj();
-    Mi();
-    ga();
-    fk();
-    xg[hl('\236\199\235\205','\152\166')][hl('\227K\241L\254','\144;')](function()
-        xg[hl('\149&\139\51','\226G')](-1020/-510)
-        if not(xg[hl('\241\234v\241\245u','\152\153\16')](p))then
-        else
-            xg[hl('o\236~\227s','\31\143')](function()
-                xg[hl('k\r\216i\1\216j','\15h\180')](p)
+local function Cg()
+    Ii();
+    ig();
+    g();
+    Oh();
+    Ml();
+    uc();
+    ag();
+    task.spawn(function()
+        wait(2)
+        if isfile(Sa)then
+            pcall(function()
+                delfile(Sa)
             end);
-            xg[hl('\158=\135!\154','\238O')](hl('\22\149J\239\177j\164?:\n\203Sx<\153K\235\177f\175qu\5\206\16q7','R\240&\138\197\15\192\31Uf\175s\25'))
+            print'Deleted old animation cache'
         end
-        Vf();
-        Mi()
+        G();
+        Ml()
     end)
 end
-local P={}
-local function i_()
-    local tj=le:FindFirstChildWhichIsA(hl("\209\53\138+\228+\172\'\232",'\129Y\235R'))
-    if not(tj)then
-    else
-        local mj,w_,Cf=xg[hl('Gu\182Gw\164','.\5\215')](tj:GetChildren())
+local gk={}
+local function vk()
+    local Zj=ym:FindFirstChildWhichIsA'PlayerGui'
+    if Zj then
+        local Um,Kh,Hd=ipairs(Zj:GetChildren())
         while true do
-            local bf;
-            Cf,bf=mj(w_,Cf)
-            if not(Cf==nil)then
-            else
+            local Fk;
+            Hd,Fk=Um(Kh,Hd)
+            if Hd==nil then
                 break
             end
-            if not(bf:IsA(hl('\165\229k\213\147\232^\197\159','\246\134\25\176'))and bf[hl('\17\188g\129\245\148-\138d\133\246\181','C\217\20\228\129\219')])then
-            else
-                xg[hl('q\166g\171\96','\5\199')][hl('\4\220\176\b\192\183','m\178\195')](P,bf);
-                bf[hl('&\242.(\154]\26\196-,\153|','t\151]M\238\18')]=false
+            if Fk:IsA'ScreenGui'and Fk.ResetOnSpawn then
+                table.insert(gk,Fk);
+                Fk.ResetOnSpawn=false
             end
         end
     end
+end
+local function bl()
+    local Ef,Qc,hg=ipairs(gk)
+    while true do
+        local Qa;
+        hg,Qa=Ef(Qc,hg)
+        if hg==nil then
+            break
+        end
+        Qa.ResetOnSpawn=true
+    end
+    table.clear(gk)
 end
 local function bk()
-    local Bi,Qh,Jd=xg[hl('\150\0z\150\2h','\255p\27')](P)
-    while true do
-        local va;
-        Jd,va=Bi(Qh,Jd)
-        if not(Jd==nil)then
-        else
-            break
-        end
-        va[hl('V\"c=\22\192j\20\96\57\21\225','\4G\16Xb\143')]=true
-    end
-    xg[hl('Y\196O\201H','-\165')][hl('\216\168\222\165\201','\187\196')](P)
-end
-local function eb()
-    if not(ol)then
-    else
-        local Ui=ol
-        local Wb,lk,Di=xg[hl('tmm~w','\4\f')](Ui:GetDescendants())
+    if Dh then
+        local ka=Dh
+        local ua,Il,um=pairs(ka:GetDescendants())
         while true do
-            local La;
-            Di,La=Wb(lk,Di)
-            if not(Di==nil)then
-            else
+            local J;
+            um,J=ua(Il,um)
+            if um==nil then
                 break
             end
-            if not(La:IsA(hl('\173\235\154*\191\235\155;','\239\138\233O')))then
-            else
-                La[hl('~*y\n\203\50K*}\n\219;','*X\24d\184B')]=0.076923076923076927*13
+            if J:IsA'BasePart'then
+                J.Transparency=1
             end
         end
-        local nc=ol:FindFirstChild(hl('\27D2E','S!'))
-        if not(nc)then
-        else
-            local Gm,nb,Cd=xg[hl('\25\245\156\25\247\142','p\133\253')](nc:GetChildren())
+        local hm=Dh:FindFirstChild'Head'
+        if hm then
+            local Pl,sb,Pm=ipairs(hm:GetChildren())
             while true do
-                local Ca;
-                Cd,Ca=Gm(nb,Cd)
-                if not(Cd==nil)then
-                else
+                local cl;
+                Pm,cl=Pl(sb,Pm)
+                if Pm==nil then
                     break
                 end
-                if Ca:IsA(hl('\220)\251-\244','\152L'))then
-                    Ca[hl('}# \198\21#H#$\198\5*',')QA\168fS')]=-3.9366978978033224e-05*-25402
+                if cl:IsA'Decal'then
+                    cl.Transparency=1
                 end
             end
         end
     end
 end
-local function _k(Gf)
-    if not(not(Tm and(Eb and(Eb[hl('\169n/\156a)','\249\15]')]and(ol and ol[hl('M\244\245x\251\243','\29\149\135')])))))then
-    else
+local function F(Dl)
+    if not(Pg and(xm and(xm.Parent and(Dh and Dh.Parent))))then
         return
     end
-    if not(not lf)then
-    else
+    if not yk then
         return
     end
-    local Pm=ol:FindFirstChild(hl('\239\23-,\156-\195W\245\r/9\162#\216G','\167b@M\242B\170\51'))
-    if not Pm then
+    local wj=Dh:FindFirstChild'HumanoidRootPart'
+    if not wj then
         return
     end
-    if not n_ then
-        n_={}
+    if not Rl then
+        Rl={}
     end
-    if not Cg then
-        Cg={}
+    if not zk then
+        zk={}
     end
-    if not(#Ge==0)then
-    else
+    if#el_==0 then
         return
     end
-    local mi=Pm[hl(" \5e\20\14\207P\166\254\226\130\4\23d\'\6\193S\188\219\255\149",'av\22qc\173<\223\178\139\236')][hl('\20Xf,0Mt&<','Y9\1B')]>-928/-9280
-    if not Rg then
-        Rg={}
+    local Zi=wj.AssemblyLinearVelocity.Magnitude>0.10000000000000001
+    if not p then
+        p={}
     end
-    xg[hl('\211\57\197\52\194','\167X')][hl('\"\247P.\235W','K\153#')](Rg,-14991/-14991,{[hl('nqm','\30')]=Pm[hl('o\252xzK\250d}','?\147\v\19')],[hl('gza','\21')]=Pm[hl('Ej\254gA\233','\6,\140')]-Pm[hl('\22\172\180\150\50\170\168\145','F\195\199\255')]})
-    if 0.2432103769760843*12335<#Rg then
-        xg[hl('mh{e|','\25\t')][hl(';L\211&_\219','I)\190')](Rg)
+    table.insert(p,1,{pos=wj.Position,rot=wj.CFrame-wj.Position})
+    if 3000<#p then
+        table.remove(p)
     end
     do
-        local nf=Ge[-7707- -7708]
-        local kk=Eb:FindFirstChild(nf)
-        if not(kk)then
-        else
-            if not n_[nf]then
-                n_[nf]=kk[hl('\201\252\247\235\215\224','\138\186\133')]
+        local Ib=el_[1]
+        local Sf=xm:FindFirstChild(Ib)
+        if Sf then
+            if not Rl[Ib]then
+                Rl[Ib]=Sf.CFrame
             end
-            if not(not Cg[nf])then
-            else
-                Cg[nf]=kk[hl('\131\157U\161\182B',"\192\219\'")]
+            if not zk[Ib]then
+                zk[Ib]=Sf.CFrame
             end
-            if mi then
-                local hm,qk=Pm[hl('m\159b\173I\153~\170','=\240\17\196')],Pm[hl('\225\26j\195\49}','\162\\\24')]-Pm[hl('9A4\29\29G(\26','i.Gt')];
-                n_[nf]=xg[hl('\170z\210\136Q\197','\233<\160')][hl(">5\'",'P')](hm)*qk
+            if Zi then
+                local ie,Wg=wj.Position,wj.CFrame-wj.Position;
+                Rl[Ib]=CFrame.new(ie)*Wg
             end
-            local zg=Cg[nf]:Lerp(n_[nf],-2713.5/-27135);
-            kk[hl('\147o\250\177D\237','\208)\136')]=zg;
-            kk[hl("\137\':\186\253|\131E\194J\20\173\53;\137\245r\128_\231W\3",'\200TI\223\144\30\239<\142#z')]=xg[hl('\174*\203\140 \218\203','\248O\168')][hl('\239\237\231\231','\149\136')];
-            kk[hl('\230\146\200\197#\231\225\132\246\246\v\210\141\218\210\24\224\225\146\212\241\24\222','\167\225\187\160N\133\141\253\183\152l')]=xg[hl('\227&\130\193,\147\134','\181C\225')][hl('\143\5\135\15','\245\96')];
-            Cg[nf]=zg
-            for Jh=-0.0046511627906976744*-3225,(#Ge)+(-16014+16027)do
-                local xk=Ge[(Jh-217815/16755)]
-                local Ei,xb=Eb:FindFirstChild(xk),Eb:FindFirstChild(Ge[(Jh-153881/11837)-(26329-26328)])
-                if Ei then
-                    if not(xb)then
-                    else
-                        if not(not n_[xk])then
-                        else
-                            n_[xk]=Ei[hl('&P\30\4{\t','e\22l')]
+            local Hh=zk[Ib]:Lerp(Rl[Ib],0.10000000000000001);
+            Sf.CFrame=Hh;
+            Sf.AssemblyLinearVelocity=Vector3 .zero;
+            Sf.AssemblyAngularVelocity=Vector3 .zero;
+            zk[Ib]=Hh
+            for ef=2,#el_ do
+                local di=el_[ef]
+                local xl,hc=xm:FindFirstChild(di),xm:FindFirstChild(el_[ef-1])
+                if xl then
+                    if hc then
+                        if not Rl[di]then
+                            Rl[di]=xl.CFrame
                         end
-                        if not(not Cg[xk])then
-                        else
-                            Cg[xk]=Ei[hl('F\130\155d\169\140','\5\196\233')]
+                        if not zk[di]then
+                            zk[di]=xl.CFrame
                         end
-                        if mi then
-                            local Bg,Pe=xb[hl("N!k\215j\'w\208",'\30N\24\190')],xb[hl('\224\247\t\194\220\30','\163\177{')]-xb[hl("#!\96\174\a\'|\169",'sN\19\199')]
-                            local ke
-                            if(Jh-(-14464+14477))==23610+-23608 then
-                                ke=(Bg-Pm[hl("\134\179\15 \162\181\19\'",'\214\220|I')])[hl('\209\239\237\245','\132\129')]
+                        if Zi then
+                            local eb,Xm=hc.Position,hc.CFrame-hc.Position
+                            local fi
+                            if ef==2 then
+                                fi=(eb-wj.Position).Unit
                             else
-                                local hj=Eb:FindFirstChild(Ge[(Jh-(-26922+26935))-(18187+-18185)])
-                                if hj then
-                                    ke=(Bg-hj[hl('\129cLE\165ePB','\209\f?,')])[hl('\241\204\205\214','\164\162')]
+                                local rh=xm:FindFirstChild(el_[ef-2])
+                                if rh then
+                                    fi=(eb-rh.Position).Unit
                                 else
-                                    ke=Pe[hl('\5\199K\14c,\203P\nG','I\168$e5')]
+                                    fi=Xm.LookVector
                                 end
                             end
-                            if ke[hl('\rW\154\f)B\136\6%','@6\253b')]<-2988/-29880 then
-                                ke=Pe[hl('\216\197L\188\217\241\201W\184\253','\148\170#\215\143')]
+                            if fi.Magnitude<0.10000000000000001 then
+                                fi=Xm.LookVector
                             end
-                            local Jj=Bg+ke*Ql;
-                            n_[xk]=xg[hl('v.\201T\5\222','5h\187')][hl('\244\255\237','\154')](Jj)*Pe
+                            local zf=eb+fi*Ij;
+                            Rl[di]=CFrame.new(zf)*Xm
                         end
-                        local pn=Cg[xk]:Lerp(n_[xk],3.2303915234526428e-06*30956);
-                        Ei[hl('\151\182\204\181\157\219','\212\240\190')]=pn;
-                        Ei[hl('\4vP\158\n\147\210\206\3vQ dQ\173\2\157\209\212&kF','E\5#\251g\241\190\183O\31?')]=xg[hl('\164F\205\134L\220\193','\242#\174')][hl('\"E*O','X ')];
-                        Ei[hl('\226:\149%\181:+\142\189!<\214%\135\50\142=+\152\159&/\218','\163I\230@\216XG\247\252O[')]=xg[hl('={R\31qCX','k\30\49')][hl('T\185\\\179','.\220')];
-                        Cg[xk]=pn
+                        local Ag=zk[di]:Lerp(Rl[di],0.10000000000000001);
+                        xl.CFrame=Ag;
+                        xl.AssemblyLinearVelocity=Vector3 .zero;
+                        xl.AssemblyAngularVelocity=Vector3 .zero;
+                        zk[di]=Ag
                     end
                 end
             end
         end
     end
 end
-local function A(rh)
-    if Tm and(Eb and(Eb[hl('\29\16\139(\31\141','Mq\249')]and(ol and ol[hl('S\25\255f\22\249','\3x\141')])))then
-        if lf then
-            _k(rh)
+local function ce(Nf)
+    if Pg and(xm and(xm.Parent and(Dh and Dh.Parent)))then
+        if yk then
+            F(Nf)
             return
-        elseif xg[hl('\199\55Qy\191\56\219\164\196 {b\176>\250\174\196','\160E>\f\209\\\150\203')]then
-            local e_,Rd,en_=xg[hl('\234\144\243\131\233','\154\241')](of)
+        elseif groundModeEnabled then
+            local tg,xa,lh=pairs(xg)
             while true do
-                local il;
-                en_,il=e_(Rd,en_)
-                if en_==nil then
+                local zb;
+                lh,zb=tg(xa,lh)
+                if lh==nil then
                     break
                 end
-                local cb=Eb:FindFirstChild(en_)
-                if not(cb and cb:IsA(hl('\189\239\4y\175\239\5h','\255\142w\28')))then
-                else
-                    cb[hl('\193\236\31\227\199\b','\130\170m')]=xg[hl('v\245\146T\222\133','5\179\224')][hl('\146\153\139','\252')](il);
-                    cb[hl('\25\210\24\192\229\a\132\207\b?\227=\192\25\243\237\t\135\213-\"\244','X\161k\165\136e\232\182DV\141')]=xg[hl(',\154\f\14\144\29I','z\255o')][hl('\181x\189r','\207\29')];
-                    cb[hl('\218h\5]\179Z\231_\198T_\238w\23J\136]\231I\228SL\226','\155\27v8\222\56\139&\135:8')]=xg[hl('@8\192b2\209%','\22]\163')][hl('\15\222\a\212','u\187')]
+                local Te=xm:FindFirstChild(lh)
+                if Te and Te:IsA'BasePart'then
+                    Te.CFrame=CFrame.new(zb);
+                    Te.AssemblyLinearVelocity=Vector3 .zero;
+                    Te.AssemblyAngularVelocity=Vector3 .zero
                 end
             end
             return
-        elseif not(pk)then
-            local za,Cb,Gk=xg[hl('\167\217\155\167\219\137','\206\169\250')](ui)
+        elseif la then
+            local Pk,bi,na=pairs(Fg)
             while true do
-                local gd;
-                Gk,gd=za(Cb,Gk)
-                if Gk==nil then
+                local lj;
+                na,lj=Pk(bi,na)
+                if na==nil then
                     break
                 end
-                local kl,Ic=Eb:FindFirstChild(gd),ol:FindFirstChild(gd)
-                if kl and Ic then
-                    if not(xg[hl('nv','1')][hl(')\138\53\149M\162\213.\135(\161I\190\227\50','A\227Q\241(\204\151')][gd])then
-                        if not(xg[hl('VN','\t')][hl('\151\233\250\211\220m\138\t\232\203\f\158\242\234\231\214p\161\18\229\221\50\140','\255\128\158\183\185\3\200f\140\178\\')])then
-                        else
-                            xg[hl('\183\175','\232')][hl("<\237\4\193\222p\192\249\247a\n\53\246\20\245\212m\235\226\250w4\'",'T\132\96\165\187\30\130\150\147\24Z')][gd]=nil
+                local eg=xm:FindFirstChild(na)
+                if eg and eg:IsA'BasePart'then
+                    eg.CFrame=CFrame.new(lj);
+                    eg.AssemblyLinearVelocity=Vector3 .zero;
+                    eg.AssemblyAngularVelocity=Vector3 .zero
+                end
+            end
+        else
+            local Nm,ea,th_=ipairs(Wd)
+            while true do
+                local kg;
+                th_,kg=Nm(ea,th_)
+                if th_==nil then
+                    break
+                end
+                local Ki,Qh=xm:FindFirstChild(kg),Dh:FindFirstChild(kg)
+                if Ki and Qh then
+                    if _G.hiddenBodyParts[kg]then
+                        if not _G.hiddenBodyPartPositions then
+                            _G.hiddenBodyPartPositions={}
                         end
-                        kl[hl('*6$2\4*\">','kXGZ')]=false;
-                        kl[hl('\1\202\219#\225\204','B\140\169')]=Ic[hl('i\179\252K\152\235','*\245\142')]
+                        if not _G.hiddenBodyPartPositions[kg]then
+                            local rb,_g=Vector3 .new(0,-500,0),Ki.CFrame-Ki.Position;
+                            _G.hiddenBodyPartPositions[kg]=CFrame.new(rb)*_g
+                        end
+                        Ki.CFrame=_G.hiddenBodyPartPositions[kg]
                     else
-                        if not xg[hl('\177\169','\238')][hl('\22\222\28\166t\248\249\228y\255\186\31\197\f\146~\229\210\255t\233\132\r','~\183x\194\17\150\187\139\29\134\234')]then
-                            xg[hl('UM','\n')][hl('t|\213\136\v\177\6p \242/}g\197\188\1\172-k-\228\17o','\28\21\177\236n\223D\31D\139\127')]={}
+                        if _G.hiddenBodyPartPositions then
+                            _G.hiddenBodyPartPositions[kg]=nil
                         end
-                        if not xg[hl('\179\171','\236')][hl('\215\178\214\136z\248*\154I\226\168\222\169\198\188p\229\1\129D\244\150\204','\191\219\178\236\31\150h\245-\155\248')][gd]then
-                            local Lj,Ve=xg[hl('c1\156A;\141\6','5T\255')][hl('\t\2\16','g')](0,2371+-2871,0),kl[hl('\154\234F\184\193Q','\217\172\52')]-kl[hl('9\19\225#\29\21\253$','i|\146J')];
-                            xg[hl('\178\170','\237')][hl('G,\212\221\31\248\155\166\22\167)N7\196\233\21\229\176\189\27\177\23\\','/E\176\185z\150\217\201r\222y')][gd]=xg[hl('\237\226)\207\201>','\174\164[')][hl('\254\245\231','\144')](Lj)*Ve
-                        end
-                        kl[hl('\192y\162\226R\181','\131?\208')]=xg[hl('\171\179','\244')][hl('\226u\189n/o\186\197\b\21\152\235n\173Z%r\145\222\5\3\166\249','\138\28\217\nJ\1\248\170ll\200')][gd]
+                        Ki.Anchored=false;
+                        Ki.CFrame=Qh.CFrame
                     end
-                    kl[hl('/\240\187\206p\209\30\152\177\218\243\v\226\186\253x\223\29\130\148\199\228','n\131\200\171\29\179r\225\253\179\157')]=xg[hl('\171\22\179\137\28\162\206','\253s\208')][hl('j\253b\247','\16\152')];
-                    kl[hl('\210M&\215j\136q:\252\a\162\230R4\192Q\143q,\222\0\177\234','\147>U\178\a\234\29C\189i\197')]=xg[hl('\192C\224\226I\241\165','\150&\131')][hl('d\174l\164','\30\203')]
+                    Ki.AssemblyLinearVelocity=Vector3 .zero;
+                    Ki.AssemblyAngularVelocity=Vector3 .zero
                 end
             end
-            local Oe=ol:FindFirstChildWhichIsA(hl('\234\29\143\21\204\a\139\16','\162h\226t'))
-            if Oe and(rc[hl("nCg!Zrum\'^c",'\6&\14F2')]~=22478/22478 or rc[hl('\142\135\26\193\136\170\141\31\217\133','\249\238~\181\224')]~=8390+-8389)then
-                local C=_j*rc[hl('\186\178\138\150o\166\132\128\144k\183','\210\215\227\241\a')]-3.6051625928329368e-05*13869;
-                Oe[hl('\174C}1\131Cj\17\146','\230*\ry')]=xg[hl('\231Z\254S','\138;')][hl('\138\134\159','\231')](C,-3043.2000000000003/-15216)
+            local Mk=Dh:FindFirstChildWhichIsA'Humanoid'
+            if Mk and(aa.heightScale~=1 or aa.widthScale~=1)then
+                local _k=dl*aa.heightScale-0.5;
+                Mk.HipHeight=math.max(_k,0.20000000000000001)
             end
-        else
-            local xf,ck,Vg=xg[hl('@FYUC',"0\'")](kb)
+        end
+    else
+        return
+    end
+end
+local function Bg()
+    if Pg and Dh then
+        local ta=Dh:FindFirstChildWhichIsA'Humanoid'
+        if ta then
+            local Ce=dl*aa.heightScale-0.5;
+            ta.HipHeight=math.max(Ce,0.20000000000000001)
+            local ge,ll,Ji=pairs(Hj)
             while true do
-                local Of;
-                Vg,Of=xf(ck,Vg)
-                if not(Vg==nil)then
-                else
+                local Tk;
+                Ji,Tk=ge(ll,Ji)
+                if Ji==nil then
                     break
                 end
-                local Fd=Eb:FindFirstChild(Vg)
-                if not(Fd and Fd:IsA(hl('\232\163#-\250\163\"<','\170\194PH')))then
-                else
-                    Fd[hl(' P9\2{.','c\22K')]=xg[hl('\205\204\14\239\231\25','\142\138|')][hl('\229\238\252','\139')](Of);
-                    Fd[hl("i\14\167\26\48\251\213=B\244\138M\28\166)8\245\214\'g\233\157",'(}\212\127]\153\185D\14\157\228')]=xg[hl('\136\218\2\170\208\19\237','\222\191a')][hl('\145\a\153\r','\235b')];
-                    Fd[hl('+\224\15\160\218\24g\4\201\127v\31\255\29\183\225\31g\18\235xe\19','j\147|\197\183z\v}\136\17\17')]=xg[hl('T\180\234v\190\251\49','\2\209\137')][hl('\147\173\155\167','\233\200')]
+                if Ji and Ji:IsA'BasePart'then
+                    Ji.Size=Vector3 .new(Tk.X*aa.widthScale,Tk.Y*aa.heightScale,Tk.Z*aa.widthScale)
+                end
+            end
+            local ln,Ll,Bm=pairs(Oa)
+            while true do
+                local bg;
+                Bm,bg=ln(Ll,Bm)
+                if Bm==nil then
+                    break
+                end
+                if Bm and Bm:IsA'Motor6D'then
+                    local sa=bg.C0 .Position
+                    local Df=Vector3 .new(sa.X*aa.widthScale,sa.Y*aa.heightScale,sa.Z*aa.widthScale);
+                    Bm.C0=CFrame.new(Df)*(bg.C0-bg.C0 .Position)
+                    local fl=bg.C1 .Position
+                    local Aa=Vector3 .new(fl.X*aa.widthScale,fl.Y*aa.heightScale,fl.Z*aa.widthScale);
+                    Bm.C1=CFrame.new(Aa)*(bg.C1-bg.C1 .Position)
                 end
             end
         end
@@ -636,2957 +600,2768 @@ local function A(rh)
         return
     end
 end
-local function ci()
-    if Tm and ol then
-        local lh=ol:FindFirstChildWhichIsA(hl('&\231\225O\0\253\229J','n\146\140.'))
-        if lh then
-            local ub=_j*rc[hl('!\239\163\246\15=\217\169\240\v,','I\138\202\145g')]-12844.5/25689;
-            lh[hl("J\23\48\240g\23\'\208v",'\2~@\184')]=xg[hl('x\152a\145','\21\249')][hl('\157\145\136','\240')](ub,1.0709504685408301e-05*18675)
-            local ea,Zj,ek=xg[hl('\156\235\133\248\159','\236\138')](Qj)
-            while true do
-                local li;
-                ek,li=ea(Zj,ek)
-                if ek==nil then
-                    break
-                end
-                if not(ek and ek:IsA(hl('+\186\187\153\57\186\186\136','i\219\200\252')))then
-                else
-                    ek[hl('$\175\r\163','w\198')]=xg[hl('P[\192rQ\209\53','\6>\163')][hl('29+','\\')](li[hl('^','\6')]*rc[hl('\27{\242\216#?q\247\192.','l\18\150\172K')],li[hl('\255','\166')]*rc[hl('\a\178\132O\18\27\132\142I\22\n','o\215\237(z')],li[hl('\136','\210')]*rc[hl("\215\212\238p*\243\222\235h\'",'\160\189\138\4B')])
-                end
-            end
-            local xc,We,Jk=xg[hl('?h&{<','O\t')](Uf)
-            while true do
-                local Dg;
-                Jk,Dg=xc(We,Jk)
-                if Jk==nil then
-                    break
-                end
-                if Jk and Jk:IsA(hl('f\177TD\172\22o','+\222 '))then
-                    local gb=Dg[hl('d\23',"\'")][hl("L!\23\216h\'\v\223",'\28Nd\177')]
-                    local Te=xg[hl('\27\244t9\254e~','M\145\23')][hl(')\"\48','G')](gb[hl('\215','\143')]*rc[hl('\191\221\182rQ\155\215\179j\\','\200\180\210\6\57')],gb[hl('\20','M')]*rc[hl('\177\54\236\206X\173\0\230\200\\\188','\217S\133\169\48')],gb[hl('<','f')]*rc[hl('\158\50\212n\172\186\56\209v\161','\233[\176\26\196')]);
-                    Jk[hl('c\16',' ')]=xg[hl('\141\189\227\175\150\244','\206\251\145')][hl('\140\135\149','\226')](Te)*(Dg[hl('\163\208','\224')]-Dg[hl('\150\229','\213')][hl('#\154\16.\a\156\f)','s\245cG')])
-                    local fg=Dg[hl('\202\184','\137')][hl('\t\230\211S-\224\207T','Y\137\160:')]
-                    local Pj=xg[hl('\\\27\155~\17\138\57','\n~\248')][hl('\a\f\30','i')](fg[hl('\168','\240')]*rc[hl('<[[*u\24Q^2x','K2?^\29')],fg[hl('[','\2')]*rc[hl("Z\244\169+\'F\194\163-#W",'2\145\192LO')],fg[hl('\184','\226')]*rc[hl(',\148fF\217\b\158c^\212','[\253\2\50\177')]);
-                    Jk[hl('\170\216','\233')]=xg[hl('\198S\185\228x\174','\133\21\203')][hl('\5\14\28','k')](Pj)*(Dg[hl('\30l',']')]-Dg[hl('\137\251','\202')][hl('F\130d\198b\132x\193','\22\237\23\175')])
-                end
+local function Xb()
+    pcall(function()
+        local Ak=fh:FindFirstChild'VirtuallyNad'
+        if Ak then
+            local Jb=Ak:FindFirstChild'HeadMovement'
+            if Jb and Jb:IsA'LocalScript'then
+                Jb.Disabled=true
             end
         end
-    else
-        return
-    end
-end
-local function Lk()
-    xg[hl('W\185F\182K',"\'\218")](function()
-        local Hf=Dl:FindFirstChild(hl('\195\222\145\171V\n\249\219\154\145B\15','\149\183\227\223#k'))
-        if Hf then
-            local sd=Hf:FindFirstChild(hl('\251A\28\171\208=\197A\16\170\243&','\179$}\207\157R'))
-            if not(sd and sd:IsA(hl('A\206\202\144\127^\194\219\152cy','\r\161\169\241\19')))then
-            else
-                sd[hl('b\229_=D\224I8','&\140,\\')]=true
-            end
-        end
-        le:SetAttribute(hl('\206!\197\182\210\49\214\188','\154T\183\216'),false)
+        ym:SetAttribute('TurnHead',false)
     end)
 end
-local function Hi()
-    xg[hl('Q\1@\14M','!b')](function()
-        local xa=Dl:FindFirstChild(hl('d\21\28\207Wv^\16\23\245Cs','2|n\187\"\23'))
-        if xa then
-            local ah=xa:FindFirstChild(hl('s\182\26\3\249\\M\182\22\2\218G',';\211{g\180\51'))
-            if not(ah and ah:IsA(hl('\96(p\227,\127$a\235\48X',',G\19\130@')))then
-            else
-                ah[hl('\193\157\140\194\231\152\154\199','\133\244\255\163')]=false
+local function Md()
+    pcall(function()
+        local Sm=fh:FindFirstChild'VirtuallyNad'
+        if Sm then
+            local Kj=Sm:FindFirstChild'HeadMovement'
+            if Kj and Kj:IsA'LocalScript'then
+                Kj.Disabled=false
             end
         end
     end)
 end
-local zc,je=nil,false
-local function pm(bn)
-    if not(je)then
-    else
+local Og,gm=nil,false
+local function Nk(tk)
+    if gm then
         return
     end
-    je=true
-    local Ym,Lm,q={hl('\251s\190=\vtZ\129\253@\167\50\1RK\155','\152\31\215^\96+.\233'),hl('1w(l,','X\25'),hl('\22\26\v','{'),hl('S|\128\250\189\235\217\157Wz\188\239\190\248\200\163Q','#\21\227\142\200\153\188\194'),hl('\139\143','\253')},le:FindFirstChildWhichIsA(hl('\235b\247\16\222|\209\28\210','\187\14\150i')),xg[hl('\\<V8',';]')]:GetService(hl('K\158\164\160S\176\15\155|\159\135\184U\161\15\136|','\25\251\212\204:\211n\239')):FindFirstChild(hl('\r\140g,\153o;','^\248\b'))or xg[hl('K\131A\135',',\226')]:GetService(hl('o\17\195\218\145%\30\149X\16\224\194\151\52\30\134X','=t\179\182\248F\127\225'))
-    if Lm then
-        for Zg,fn in xg[hl('\226\196;\226\198)','\139\180Z')](Lm:GetChildren())do
-            if not(fn:IsA(hl('\23\158\148\53\148\138','Q\241\248'))and xg[hl('[\186M\183J','/\219')][hl('i8a5','\15Q')](Ym,fn[hl('*3\t\55','dR')]))then
-            else
-                if not q:FindFirstChild(fn[hl('c\255@\251','-\158')])then
-                    local cg=fn:Clone();
-                    cg[hl('\231\56\135\210\55\129','\183Y\245')]=q
+    gm=true
+    local h,Vd,zh={'click_the_player','input','map','picture_to_avatar','vr'},ym:FindFirstChildWhichIsA'PlayerGui',game:GetService'ReplicatedStorage':FindFirstChild'Storage'or game:GetService'ReplicatedStorage'
+    if Vd then
+        for ed,Gg in ipairs(Vd:GetChildren())do
+            if Gg:IsA'Folder'and table.find(h,Gg.Name)then
+                if not zh:FindFirstChild(Gg.Name)then
+                    local yd=Gg:Clone();
+                    yd.Parent=zh
                 end
             end
         end
     end
-    rf[hl('IC\242\204uD\246\223u','\1&\147\190')]:Connect(function()
-        if not(not Lm)then
-        else
+    Y.Heartbeat:Connect(function()
+        if not Vd then
             return
         end
-        for Dm,oc in xg[hl('\150\251E\150\249W','\255\139$')](q:GetChildren())do
-            if not(oc:IsA(hl('\23\235\227\53\225\253','Q\132\143'))and xg[hl('\237\b\251\5\252','\153i')][hl('v\209~\220','\16\184')](Ym,oc[hl('@KcO','\14*')]))then
-            else
-                if not Lm:FindFirstChild(oc[hl('\222\246\253\242','\144\151')])then
-                    local _m=oc:Clone();
-                    _m[hl(':\183\236\15\184\234','j\214\158')]=Lm
+        for Af,Gd in ipairs(zh:GetChildren())do
+            if Gd:IsA'Folder'and table.find(h,Gd.Name)then
+                if not Vd:FindFirstChild(Gd.Name)then
+                    local dc=Gd:Clone();
+                    dc.Parent=Vd
                 end
             end
         end
     end);
-    Tm=bn
-    local Id,Ll,dc,Nh=xg[hl('Z\148P\144','=\245')]:GetService(hl('\204\15\156\181\155\131D&\251\14\191\173\157\146D5\251','\158j\236\217\242\224%R')):FindFirstChild(hl('\2\168\t\225\19\129\30\238\0','g\222l\143')),xg[hl('\160\53\170\49','\199T')]:GetService(hl('\210\246\199\55\165.z\234\229\247\228/\163?z\249\229','\128\147\183[\204M\27\158')):FindFirstChild(hl('\163\144\22\149\158\29\157','\241\241q')),xg[hl('\212\225\222\229','\179\128')]:GetService(hl('\233\180\140\246_B+j\222\181\175\238YS+y\222','\187\209\252\154\54!J\30')):FindFirstChild(hl('+V\187\185\25\\\166\180\18','~8\201\216')),nil
-    if not(not(Id or Ll))then
-    else
-        local wh_,Lf=xg[hl('\155\48\138?\135','\235S')](function()
-            local Pi=Pf:FindFirstChild(hl('\198\19\152\172\223\233\229\24\142\161\214\215','\138|\251\205\179\164'),true)
-            local ya=Pi and Pi:FindFirstChild(hl('\228\241\152\205\245\149\194','\166\144\251'))
-            if not(ya)then
-            else
-                local Ba,De=xg[hl('\212\129\157\211\141\158\195','\166\228\236')],ya[hl('&\15\216\192K\245\188\19\18\245\204d\240\170','\96f\182\164\r\156\206')]
+    Pg=tk
+    local Gm,ai,Ai,Wj=game:GetService'ReplicatedStorage':FindFirstChild'event_rag',game:GetService'ReplicatedStorage':FindFirstChild'Ragdoll',game:GetService'ReplicatedStorage':FindFirstChild'Unragdoll',nil
+    if not(Gm or ai)then
+        local ja,_i=pcall(function()
+            local ok=Qb:FindFirstChild('LocalModules',true)
+            local gn=ok and ok:FindFirstChild'Backend'
+            if gn then
+                local N,qa=require,gn.FindFirstChild
             end
         end);
-        Nh=wh_ and Lf and Lf or Nh
+        Wj=ja and _i and _i or Wj
     end
-    if not(Tm)then
-        local Ik,dh,t_=xg[hl('\171\184\178\171\168','\219\217')](wa)
-        while true do
-            local Gi;
-            t_,Gi=Ik(dh,t_)
-            if t_==nil then
-                break
-            end
-            if not(Gi)then
-            else
-                Gi:Disconnect()
-            end
-        end
-        wa={}
-        if not(Mb)then
-        else
-            Mb:Disconnect();
-            Mb=nil
-        end
-        if not(wi[hl('\29|\226\18S\29g\229\19X','~\19\140|6')])then
-        else
-            wi[hl('\187\180,\153\199\187\175+\152\204','\216\219B\247\162')]:Disconnect();
-            wi[hl('\189\244\56\224;\189\239?\225\48','\222\155V\142^')]=nil
-        end
-        wi[hl('{P\222#|M\229\56u','\18#\140V')]=false
-        if not(Eb and ol)then
+    if Pg then
+        local in_=ym.Character
+        if not in_ then
             return
         end
-        for Xg=-0.016768864973094731*-7991,(-28125/-9375)+(-22101+22234)do
-            xg[hl('\243\211\226\220\239','\131\176')](function()
-                if not(Id)then
-                    if not(dc)then
-                        if Nh then
-                            Nh[hl('ce\247Uk\252]','1\4\144')]:Fire(false);
-                            Hi()
+        local yb,_a=in_:FindFirstChildOfClass'Humanoid',in_:FindFirstChild'HumanoidRootPart'
+        if not(yb and _a)then
+            return
+        end
+        xm=in_;
+        Ie=_a.CFrame;
+        in_.Archivable=true;
+        Dh=in_:Clone();
+        in_.Archivable=false
+        local Ja=xm.Name;
+        Dh.Name=Ja..'Celeste'
+        local bh=Dh:FindFirstChildWhichIsA'Humanoid'
+        if bh then
+            bh.DisplayName=Ja..'Celeste';
+            dl=bh.HipHeight;
+            aa={heightScale=1,widthScale=1};
+            bh.WalkSpeed=yb.WalkSpeed;
+            bh.JumpPower=yb.JumpPower
+        end
+        local Wb=not Dh.PrimaryPart and Dh:FindFirstChild'HumanoidRootPart'
+        if Wb then
+            Dh.PrimaryPart=Wb
+        end
+        bk();
+        Hj={};
+        Oa={}
+        local Mg=Dh
+        local sd,pe,s_=ipairs(Mg:GetDescendants())
+        while true do
+            local hi;
+            s_,hi=sd(pe,s_)
+            if s_==nil then
+                break
+            end
+            if hi:IsA'BasePart'then
+                Hj[hi]=hi.Size
+            elseif hi:IsA'Motor6D'then
+                Oa[hi]={C0=hi.C0,C1=hi.C1}
+            end
+        end
+        local Wh=xm:FindFirstChild'Animate'
+        if Wh then
+            Vf=Wh:Clone();
+            Vf.Parent=Dh;
+            Vf.Disabled=true
+        end
+        vk();
+        Dh.Parent=fh;
+        ym.Character=Dh
+        if bh then
+            fh.CurrentCamera.CameraSubject=bh
+        end
+        bl()
+        if Vf then
+            Vf.Disabled=false
+        end
+        if bh then
+            bh:ChangeState(Enum.HumanoidStateType.Running)
+        end
+        task.spawn(function()
+            if Pg then
+                if Gm then
+                    pcall(function()
+                        local nb=game:GetService'ReplicatedStorage':FindFirstChild'event_rag'
+                        if nb then
+                            local jm=xm and(xm:FindFirstChildOfClass'Humanoid'and xm:FindFirstChildOfClass'Humanoid')
+                            if jm then
+                                game.Players.LocalPlayer.Character.Humanoid.HipHeight=jm.HipHeight
+                            end
+                            nb:FireServer(unpack{'Hinge'})
                         end
-                    else
-                        local yc=xg[hl('\176~\186z','\215\31')]:GetService(hl('\226\231\215\188q\206j\189\213\230\244\164w\223j\174\213','\176\130\167\208\24\173\v\201')):FindFirstChild(hl('f9\6\238T3\27\227_','3Wt\143'))
-                        if not(yc)then
-                        else
-                            yc:FireServer()
+                    end)
+                elseif ai then
+                    pcall(function()
+                        local tj=game:GetService'ReplicatedStorage':FindFirstChild'Ragdoll'
+                        if tj then
+                            tj:FireServer(unpack{'Ball'})
                         end
+                    end)
+                elseif Wj then
+                    pcall(function()
+                        Wj.Ragdoll:Fire(true);
+                        Xb()
+                    end)
+                end
+                if C then
+                    C:Disconnect()
+                end
+                C=Y.Heartbeat:Connect(ce);
+                gm=false
+            end
+        end)
+    else
+        local A,Ql,Vj=pairs(Uf)
+        while true do
+            local ee;
+            Vj,ee=A(Ql,Vj)
+            if Vj==nil then
+                break
+            end
+            if ee then
+                ee:Disconnect()
+            end
+        end
+        Uf={}
+        if C then
+            C:Disconnect();
+            C=nil
+        end
+        if Rf.connection then
+            Rf.connection:Disconnect();
+            Rf.connection=nil
+        end
+        Rf.isRunning=false
+        if not(xm and Dh)then
+            return
+        end
+        for Ze=1,3 do
+            pcall(function()
+                if Gm then
+                    local b_=game:GetService'ReplicatedStorage':FindFirstChild'event_rag'
+                    if b_ then
+                        b_:FireServer(unpack{'Hinge'})
                     end
-                else
-                    local wn=xg[hl('\187V\177R','\220\55')]:GetService(hl('\20\206\144\")\243\173T#\207\179:/\226\173G#','F\171\224N@\144\204 ')):FindFirstChild(hl('\2lk3\19E|<\0','g\26\14]'))
-                    if wn then
-                        wn:FireServer(xg[hl('?\131\197+\142\222','J\237\181')]{hl('\199m\225c\234','\143\4')})
+                elseif Ai then
+                    local f_=game:GetService'ReplicatedStorage':FindFirstChild'Unragdoll'
+                    if f_ then
+                        f_:FireServer()
                     end
+                elseif Wj then
+                    Wj.Ragdoll:Fire(false);
+                    Md()
                 end
             end);
-            xg[hl('\242\223\245\213','\134\190')][hl('@\27^\14','7z')](4.0819658747652872e-06*24498)
+            task.wait(0.10000000000000001)
         end
-        local Th,Mj=Eb:FindFirstChild(hl('\215\250\t\159\167k\132_\205\224\v\138\153e\159O','\159\143d\254\201\4\237;')),ol:FindFirstChild(hl('Z\199\208L\149\156\173v@\221\210Y\171\146\182f','\18\178\189-\251\243\196\18'))
-        local gc,ei=Mj and Mj[hl('\217\239\218\251\196\205','\154\169\168')]or cm,ol:FindFirstChild(hl('l\252\18@\243\15H','-\146{'))
-        if not(ei)then
-        else
-            ei[hl('by\127Wvy','2\24\r')]=Eb;
-            ei[hl(']\209,\190{\212:\187','\25\184_\223')]=true
+        local wa,vh=xm:FindFirstChild'HumanoidRootPart',Dh:FindFirstChild'HumanoidRootPart'
+        local Nl,gh=vh and vh.CFrame or Ie,Dh:FindFirstChild'Animate'
+        if gh then
+            gh.Parent=xm;
+            gh.Disabled=true
         end
-        ol:Destroy()
-        if Th then
-            Th[hl('\nM\\(fK','I\v.')]=gc
+        Dh:Destroy()
+        if wa then
+            wa.CFrame=Nl
         end
-        local em=Eb:FindFirstChildWhichIsA(hl('%\149\57\29\3\143=\24','m\224T|'));
-        i_();
-        le[hl('\29\198\129\242?\205\148\229,','^\174\224\128')]=Eb
-        if not(em)then
-        else
-            Dl[hl('[\174:\184\135\30l\152)\167\135\2y','\24\219H\202\226p')][hl('\153\19\151\5\184/\137\a\152\n\175-\174','\218r\250\96\202N')]=em
+        local Gc=xm:FindFirstChildWhichIsA'Humanoid';
+        vk();
+        ym.Character=xm
+        if Gc then
+            fh.CurrentCamera.CameraSubject=Gc
         end
-        bk()
-        if ei then
-            xg[hl('.()\"','ZI')][hl('\185r\167g','\206\19')](202.90000000000001/2029);
-            ei[hl('\14\49\183~(4\161{','JX\196\31')]=false
+        bl()
+        if gh then
+            task.wait(0.10000000000000001);
+            gh.Disabled=false
         end
-        zc=nil;
-        je=false
-    else
-        local gm=le[hl('V\204V\191t\199C\168g','\21\164\55\205')]
-        if not(not gm)then
-        else
-            return
-        end
-        local zn,Uk=gm:FindFirstChildOfClass(hl('b\19(YD\t,\\','*fE8')),gm:FindFirstChild(hl('\175fA\168\r\183/\220\181|C\189\51\185\52\204','\231\19,\201c\216F\184'))
-        if not(not(zn and Uk))then
-        else
-            return
-        end
-        Eb=gm;
-        cm=Uk[hl('\b\143\186*\164\173','K\201\200')];
-        gm[hl(' \\p\253w\23Oq\249{','a.\19\149\30')]=true;
-        ol=gm:Clone();
-        gm[hl('7\174aON\0\189\96KB',"v\220\2\'\'")]=false
-        local fb=Eb[hl('\209\141\242\137','\159\236')];
-        ol[hl('\"\23\1\19','lv')]=fb..hl('4\218\157\18\204\133\18','w\191\241')
-        local Ej=ol:FindFirstChildWhichIsA(hl('~\20\57\20X\14=\17','6aTu'))
-        if not(Ej)then
-        else
-            Ej[hl('\162\255\243\255\\\135\239\206\238]\131','\230\150\128\143\48')]=fb..hl('Bq(dg0d','\1\20D');
-            _j=Ej[hl('\219W\r[\246W\26{\231','\147>}\19')];
-            rc={[hl('\22\179\214\217C\n\133\220\223G\27','~\214\191\190+')]=-9704+9705,[hl('/L+)M\vF.1@','X%O]%')]=-1561- -1562};
-            Ej[hl('\226s\204\r\230b\197\3\209','\181\18\160f')]=zn[hl('=\162\213N9\179\220@\14','j\195\185%')];
-            Ej[hl('\28\253\196\173\6\231\222\184$','V\136\169\221')]=zn[hl('\163j\203\198\185p\209\211\155','\233\31\166\182')]
-        end
-        local qm=not ol[hl('i\190 y\227K\181\25u\240M','9\204I\20\130')]and ol:FindFirstChild(hl('\14\48\140bOG5>\20*\142wqI..','FE\225\3!(\\Z'))
-        if not(qm)then
-        else
-            ol[hl('\22b%\233C4i\28\229P2','F\16L\132\"')]=qm
-        end
-        eb();
-        Qj={};
-        Uf={}
-        local Dh=ol
-        local L,Nd,Wk=xg[hl('\160^\129\160\\\147','\201.\224')](Dh:GetDescendants())
-        while true do
-            local oe;
-            Wk,oe=L(Nd,Wk)
-            if not(Wk==nil)then
-            else
-                break
-            end
-            if not(oe:IsA(hl('\a\239\22\153\21\239\23\136','E\142e\252')))then
-                if not(oe:IsA(hl('\3\238(!\243j\n','N\129\\')))then
-                else
-                    Uf[oe]={[hl('\157\238','\222')]=oe[hl('\219\168','\152')],[hl('P\"','\19')]=oe[hl('\1s','B')]}
-                end
-            else
-                Qj[oe]=oe[hl('\26\28\51\16','Iu')]
-            end
-        end
-        local wd=Eb:FindFirstChild(hl('V.0z!-r','\23@Y'))
-        if wd then
-            jn=wd:Clone();
-            jn[hl('}k\149Hd\147','-\n\231')]=ol;
-            jn[hl('{\241\189\230]\244\171\227','?\152\206\135')]=true
-        end
-        i_();
-        ol[hl('\139C\15\190L\t','\219\"}')]=Dl;
-        le[hl('\197\138~\205\231\129k\218\244','\134\226\31\191')]=ol
-        if Ej then
-            Dl[hl('\164W\b\170b\138\147a\27\181b\150\134','\231\"z\216\a\228')][hl('\248Q\247\244\195\219\232E\248\251\212\217\207','\187\48\154\145\177\186')]=Ej
-        end
-        bk()
-        if jn then
-            jn[hl('\243\2\57\127\213\a/z','\183kJ\30')]=false
-        end
-        if not(Ej)then
-        else
-            Ej:ChangeState(xg[hl('\202j\250i','\143\4')][hl('\255\161\152\5\238\16\247\143\228\160\148\16\229+\231\155\210','\183\212\245d\128\127\158\235')][hl('\214\164\17\234\184\17\227','\132\209\127')])
-        end
-        xg[hl('\15\55\b=','{V')][hl(';S)T&','H#')](function()
-            if not(Tm)then
-            else
-                if not(Id)then
-                    if not(Ll)then
-                        if Nh then
-                            xg[hl('\198\230\215\233\218','\182\133')](function()
-                                Nh[hl('vV\199@X\204H','$7\160')]:Fire(true);
-                                Lk()
-                            end)
-                        end
-                    else
-                        xg[hl('m\244|\251q','\29\151')](function()
-                            local Ha=xg[hl('\175o\165k','\200\14')]:GetService(hl('E\162\158\219b\246dNr\163\189\195d\231d]r','\23\199\238\183\v\149\5:')):FindFirstChild(hl('\144y\227\166w\232\174','\194\24\132'))
-                            if not(Ha)then
-                            else
-                                Ha:FireServer(xg[hl('~\243\246j\254\237','\v\157\134')]{hl(' !\14,','b@')})
-                            end
-                        end)
-                    end
-                else
-                    xg[hl('\176k\161d\172','\192\b')](function()
-                        local Ig=xg[hl('l\159f\155','\v\254')]:GetService(hl('+\241\174\151\57\18\232\253\28\240\141\143?\3\232\238\28','y\148\222\251Pq\137\137')):FindFirstChild(hl('\141V+\245\156\127<\250\143','\232 N\155'))
-                        if Ig then
-                            local Dj=Eb and(Eb:FindFirstChildOfClass(hl('\252Zho\218@lj','\180/\5\14'))and Eb:FindFirstChildOfClass(hl('\218\183\240j\252\173\244o','\146\194\157\v')))
-                            if Dj then
-                                xg[hl('\153F\147B',"\254\'")][hl('\232\145\151\193\152\132\203','\184\253\246')][hl('h\128Q\4\52t\131S\28=V','$\239\50eX')][hl('\213\209G\201\247\218R\222\228','\150\185&\187')][hl('#R\174\57\5H\170<',"k\'\195X")][hl('\147U\148\132\190U\131\164\175','\219<\228\204')]=Dj[hl('\174\216\19\165\131\216\4\133\146','\230\177c\237')]
-                            end
-                            Ig:FireServer(xg[hl('\229\16\23\241\29\f','\144~g')]{hl('\217U\255[\244','\145<')})
-                        end
-                    end)
-                end
-                if not(Mb)then
-                else
-                    Mb:Disconnect()
-                end
-                Mb=rf[hl('F\0\218\229z\a\222\246z','\14e\187\151')]:Connect(A);
-                je=false
-            end
-        end)
+        Og=nil;
+        gm=false
     end
-    je=false
+    gm=false
 end
-local ok={}
-local function Sb()
-    wi[hl('\199\r\158\2\192\16\165\25\201','\174~\204w')]=false
-    if not(ol)then
-    else
-        local Me,Ce,Ti=xg[hl('\218\51\195 \217','\170R')](Uf)
+local Hk={}
+local function L()
+    Rf.isRunning=false
+    if Dh then
+        local ol,Ed,Sh=pairs(Oa)
         while true do
-            local Vj;
-            Ti,Vj=Me(Ce,Ti)
-            if Ti==nil then
+            local qe;
+            Sh,qe=ol(Ed,Sh)
+            if Sh==nil then
                 break
             end
-            if not(Ti and Ti:IsA(hl('f\243\28D\238^o','+\156h')))then
-            else
-                Ti[hl('\24k','[')]=Vj[hl('\163\208','\224')]
+            if Sh and Sh:IsA'Motor6D'then
+                Sh.C0=qe.C0
             end
         end
-        local Bf=ol
-        local Rm,Xl,qc=xg[hl("$~=m\'",'T\31')](Bf:GetChildren())
+        local cj=Dh
+        local Cf,hf,Re=pairs(cj:GetChildren())
         while true do
-            local Pg;
-            qc,Pg=Rm(Xl,qc)
-            if not(qc==nil)then
-            else
+            local db;
+            Re,db=Cf(hf,Re)
+            if Re==nil then
                 break
             end
-            if not(Pg:IsA(hl('\t\56\129\249\239\22\52\144\241\243\49','EW\226\152\131'))and(not Pg[hl('V\134\207q\132\203w','\19\232\174')]and Pg~=jn))then
-            else
-                Pg[hl('\31\132w8\134s>','Z\234\22')]=true
+            if db:IsA'LocalScript'and(not db.Enabled and db~=Vf)then
+                db.Enabled=true
             end
         end
-        if not(jn)then
-        else
-            jn[hl('!Q2\170\aT$\175','e8A\203')]=false
+        if Vf then
+            Vf.Disabled=false
         end
     end
-    if wi[hl('\212\0i\162\232\212\27n\163\227','\183o\a\204\141')]then
-        wi[hl('\165\48K\b\\\165+L\tW','\198_%f9')]:Disconnect();
-        wi[hl('\240\170\27\230\201\240\177\28\231\194','\147\197u\136\172')]=nil
+    if Rf.connection then
+        Rf.connection:Disconnect();
+        Rf.connection=nil
     end
-    local Wd,ni_,fh=xg[hl(':\177#\162\57','J\208')](ok)
+    local kk,mn,Pe=pairs(Hk)
     while true do
-        local kd;
-        fh,kd=Wd(ni_,fh)
-        if fh==nil then
+        local gf;
+        Pe,gf=kk(mn,Pe)
+        if Pe==nil then
             break
         end
-        kd[hl('\196\224\rv\156\255\245\20|\176','\138\129\96\19\222')][hl('\241\222\17\17\158\182\141+\221\219\49\21\149\171\144m','\179\191rz\249\196\226^')]=xg[hl("\221\'J\241:\21",'\158H&')][hl('JN\\Antn',',<3')](-6195/-413,-123225/-8215,-31733+31753)
+        gf.NameButton.BackgroundColor3=Color3 .fromRGB(15,15,20)
     end
 end
-local function ul(ka)
-    if not ol then
-        xg[hl('\190\157\187\146','\201\252')](hl('\a\25\229ok.\241\178\48\\\226hp0\228\231','U|\132\1\2C\144\198'))
+local function Ka(ni_)
+    if not Dh then
+        warn'Reanimate first!'
         return
     end
-    if ka==''then
+    if ni_==''then
         return
     end
-    local fl=ol:FindFirstChildWhichIsA(hl('YE\212u\127_\208p','\17\48\185\20'))
-    if not(not fl)then
-    else
+    local bm=Dh:FindFirstChildWhichIsA'Humanoid'
+    if not bm then
         return
     end
-    local gi=ol:FindFirstChild(hl('\21\138\31c\2\r\138\26u\31','Y\229h\6p'))~=nil
-    if not(gi and ol:FindFirstChild(hl('\141J<\214\221\149J9\192\192','\193%K\179\175'))or ol:FindFirstChild(hl('\170O\140S\145','\254 ')))then
+    local Pj=Dh:FindFirstChild'LowerTorso'~=nil
+    if not(Pj and Dh:FindFirstChild'LowerTorso'or Dh:FindFirstChild'Torso')then
         return
     end
-    if not(wi[hl('\237\28%\136\234\1\30\147\227','\132ow\253')]and wi[hl('3\\\182\254\53G\176\197\52','P)\196\140')]==ka)then
-    else
-        Sb();
-        wi[hl(',\157\\\53*\134Z\14+','O\232.G')]=nil
+    if Rf.isRunning and Rf.currentId==ni_ then
+        L();
+        Rf.currentId=nil
         return
     end
-    local ta,qh,cn=xg[hl('b\224{\243a','\18\129')](ok)
+    local vj,Uh,Zb=pairs(Hk)
     while true do
-        local M;
-        cn,M=ta(qh,cn)
-        if cn==nil then
+        local ri;
+        Zb,ri=vj(Uh,Zb)
+        if Zb==nil then
             break
         end
-        M[hl('\254]W^N\197HNTb','\176<:;\f')][hl('Ey\191\53\234\181\a\15i|\159\49\225\168\26I','\a\24\220^\141\199hz')]=xg[hl('\180\139\137\152\150\214','\247\228\229')][hl('?\212\203\52\244\227\27','Y\166\164')](-101670/-6778,-9142- -9157,-0.017873100983020553*-1119)
+        ri.NameButton.BackgroundColor3=Color3 .fromRGB(15,15,20)
     end
-    local gg={nd,m}
-    local a_,uh,Dc=xg[hl('%}<n&','U\28')](gg)
-    local Pd=nil
+    local ic={md,me}
+    local Wc,ak,Rg=pairs(ic)
+    local jh=nil
     while true do
-        local Ae;
-        Dc,Ae=a_(uh,Dc)
-        if not(Dc==nil)then
-        else
-            xg[hl('%YaZ','Sj')]=Pd
+        local em;
+        Rg,em=Wc(ak,Rg)
+        if Rg==nil then
+            v320=jh
         end
-        local Jf,Zm,Xd=xg[hl('\155\176\130\163\152','\235\209')](Ae)
+        local Pd,ej,Dk=pairs(em)
         while true do
-            local zj;
-            Xd,zj=Jf(Zm,Xd)
-            if Xd==nil then
-                Xd=Pd
+            local wc;
+            Dk,wc=Pd(ej,Dk)
+            if Dk==nil then
+                Dk=jh
                 break
             end
-            if xg[hl('r\177I\139t\183T\152','\6\222:\255')](zj)==ka then
+            if tostring(wc)==ni_ then
                 break
             end
         end
-        if Xd then
+        if Dk then
             break
         end
-        Pd=Xd
+        jh=Dk
     end
-    if xg[hl('3\152w\155','E\171')]and ok[xg[hl('R\192\22\195','$\243')]]then
-        ok[xg[hl('qJ5I','\ay')]][hl('E8\17\216v~-\b\210Z','\vY|\189\52')][hl('\203\rN>\255\207\233\179\231\bn:\244\210\244\245','\137l-U\152\189\134\198')]=xg[hl('\170F\133\134[\218','\233)\233')][hl('\15\174H\4\142\96+',"i\220\'")](4063360/25396,3384960/21156,-21347- -21522)
+    if v320 and Hk[v320]then
+        Hk[v320].NameButton.BackgroundColor3=Color3 .fromRGB(160,160,175)
     end
-    if jn and(fl[hl(':=ux%\27\5\55\96i\b\29\25','wR\3\29ar')][hl('\n\141\96L.\152rF\"','G\236\a\"')]>0 or fl:GetState()==xg[hl('\129\230\177\229','\196\136')][hl('\147\137\238hS$\133\132\136\136\226}X\31\149\144\190','\219\252\131\t=K\236\224')][hl('\202\128=\246\156=\255','\152\245S')])then
-        jn[hl('\159*\149\19\185/\131\22','\219C\230r')]=true
-        local Lh,ee,pg=xg[hl('\180\165\173\182\183','\196\196')](fl:GetPlayingAnimationTracks())
+    if Vf and(bm.MoveDirection.Magnitude>0 or bm:GetState()==Enum.HumanoidStateType.Running)then
+        Vf.Disabled=true
+        local gj,oe,Nb=pairs(bm:GetPlayingAnimationTracks())
         while true do
-            local Ad;
-            pg,Ad=Lh(ee,pg)
-            if pg==nil then
+            local ld;
+            Nb,ld=gj(oe,Nb)
+            if Nb==nil then
                 break
             end
-            Ad:Stop()
+            ld:Stop()
         end
     end
-    local o_=hc[ka]
-    if not(not o_)then
-    else
-        local Yk=nil
-        if not(xg[hl('\131z\31\187\133|\2\168','\247\21l\207')](ka):match(hl('F\16l\fh','\24x')))then
-            if xg[hl('g\21\144\24~\24\155\31','\19z\254m')](ka)then
-                if not(hc[ka])then
-                    xg[hl('\29\t\26\3','ih')][hl('\212\29\198\26\201','\167m')](function()
-                        local Km,Sh=xg[hl('b\227s\236~','\18\128')](function()
-                            return xg[hl('UX_\\','29')]:GetObjects(hl("\168(g\'\127\29\191>v\"\54A\245",'\218J\31F\fn')..ka)[-20589/-20589]
-                        end)
-                        if Km and Sh then
-                            hc[ka]=Sh
-                        end
-                    end);
-                    Yk,o_=xg[hl('\131\27\146\20\159','\243x')](function()
-                        return xg[hl('\139\153\129\157','\236\248')]:GetObjects(hl('\16H<IkN\a^-L\"\18M','b*D(\24=')..ka)[29384-29383]
-                    end)
-                else
-                    Yk=true;
-                    o_=hc[ka]
-                end
-            else
-                local Mf;
-                Mf,o_=xg[hl('\150\18\135\29\138','\230q')](function()
-                    return xg[hl("\182\157\'\186k\174\128/\176\127",'\218\242F\222\24')](ka)()
-                end)
-                if not(Mf and xg[hl('\152<\156 ','\236E')](o_)==hl('\v\151\29\154\26','\127\246'))then
-                    o_=nil
-                else
-                    Yk=true
-                end
-            end
-        else
-            local qa,Ni=xg[hl('\27\212\n\219\a','k\183')](function()
-                return xg[hl('3&9\"','TG')]:HttpGet(ka)
+    local Em=fd[ni_]
+    if not Em then
+        local xf=nil
+        if tostring(ni_):match'^http'then
+            local dk,Ub=pcall(function()
+                return game:HttpGet(ni_)
             end)
-            if not(qa)then
-                o_=nil
-            else
-                local ge;
-                ge,o_=xg[hl('A\199P\200]','1\164')](function()
-                    return xg[hl('\25 \209\3\210\1=\217\t\198','uO\176g\161')](Ni)()
+            if dk then
+                local yc;
+                yc,Em=pcall(function()
+                    return loadstring(Ub)()
                 end)
-                if not(ge and xg[hl('\193\4\197\24','\181}')](o_)==hl("1\212\'\217 ",'E\181'))then
-                    o_=nil
+                if yc and type(Em)=='table'then
+                    xf=true
                 else
-                    Yk=true
+                    Em=nil
                 end
+            else
+                Em=nil
+            end
+        elseif tonumber(ni_)then
+            if fd[ni_]then
+                xf=true;
+                Em=fd[ni_]
+            else
+                task.spawn(function()
+                    local hn,df=pcall(function()
+                        return game:GetObjects('rbxassetid://'..ni_)[1]
+                    end)
+                    if hn and df then
+                        fd[ni_]=df
+                    end
+                end);
+                xf,Em=pcall(function()
+                    return game:GetObjects('rbxassetid://'..ni_)[1]
+                end)
+            end
+        else
+            local yi;
+            yi,Em=pcall(function()
+                return loadstring(ni_)()
+            end)
+            if yi and type(Em)=='table'then
+                xf=true
+            else
+                Em=nil
             end
         end
-        if not(Yk and o_)then
+        if not(xf and Em)then
             return
         end
-        hc[ka]=o_
+        fd[ni_]=Em
     end
-    if xg[hl('\25\208\29\204','m\169')](o_)~=hl('_\23I\26N','+v')then
-        o_[hl("\223\204\'\'\253\215:1",'\143\190NH')]=xg[hl('\253\159\205\156','\184\241')][hl('\"\252\15\166\181[u\142\r\194\20\162\187]u\149\26','c\146f\203\212/\28\225')][hl('\255\144\n\215\156\16','\190\243~')];
-        wi[hl('i\176\167\151p\180\179\148q','\2\213\222\241')]=o_:GetKeyframes()
-        if not(not wi[hl('fp\139\190\127t\159\189~','\r\21\242\216')]or#wi[hl('g&\224\216~\"\244\219\127','\fC\153\190')]==0)then
-        else
+    if type(Em)~='table'then
+        Em.Priority=Enum.AnimationPriority.Action;
+        Rf.keyframes=Em:GetKeyframes()
+        if not Rf.keyframes or#Rf.keyframes==0 then
             return
         end
-        wi[hl('\191\140/\238\24\208\190\145:\251\29\251\165','\203\227[\143t\148')]=wi[hl('T\142\158VM\138\138UL','?\235\231\48')][#wi[hl('n\142\137Ww\138\157Tv','\5\235\240\49')]][hl('\195\22\250\26','\151\127')]
+        Rf.totalDuration=Rf.keyframes[#Rf.keyframes].Time
     else
-        local zf=xg[hl('\v\144\29\129','e\245')](o_)
-        if not(not zf)then
-        else
+        local kf=next(Em)
+        if not kf then
             return
         end
-        wi[hl('\204\215\205W\213\211\217T\212','\167\178\180\49')]=o_[zf]
-        if not(not wi[hl('\19\29\96\140\n\25t\143\v','xx\25\234')]or#wi[hl('\"\149\56\n;\145,\t:','I\240Al')]==0)then
-        else
+        Rf.keyframes=Em[kf]
+        if not Rf.keyframes or#Rf.keyframes==0 then
             return
         end
-        wi[hl('\192c\21&\211\238\193~\0\51\214\197\218','\180\faG\191\170')]=wi[hl('\193\a\238\148\216\3\250\151\217','\170b\151\242')][#wi[hl('\147P\134!\138T\146\"\139','\248\53\255G')]][hl('\187\168\130\164','\239\193')]
+        Rf.totalDuration=Rf.keyframes[#Rf.keyframes].Time
     end
-    wi[hl('D\147>\153B\136\56\162C',"\'\230L\235")]=ka;
-    wi[hl('\156\27\29]\96\156\19(D~\156','\249w|-\19')]=0;
-    wi[hl('m\132\132Xj\153\191Cc','\4\247\214-')]=true
-    local kc=ol
-    local Ie
-    if gi then
-        local jf,bg,Ia,vn,se_,yl,um,Kh,nm,Fb,od,ud,nl,fi,Bc,kn=kc:FindFirstChild(hl('OR\248\146\203\139\154\160UH\250\135\245\133\129\176',"\a\'\149\243\165\228\243\196")),kc:FindFirstChild(hl('_\192v\193','\23\165')),kc:FindFirstChild(hl('\222#\148\4\216;\226#\128\49\255&','\146F\242p\141K')),kc:FindFirstChild(hl('w\218\168\232sMU\195\170\242FjH','%\179\207\128\a\24')),kc:FindFirstChild(hl('\21Q\244gR\a)Q\224_b\16','Y4\146\19\aw')),kc:FindFirstChild(hl('\214bP\165\27/\244{R\191#\31\227','\132\v\55\205oz')),kc:FindFirstChild(hl('_*\252\212U \245\212','\19O\154\160')),kc:FindFirstChild(hl('\196\249J\203\226\214B\204\226','\150\144-\163')),kc:FindFirstChild(hl('\237X\5\154\233\\\r\138','\161=c\238')),kc:FindFirstChild(hl('\226_\22\20\196~\16\18\212','\176\54q|')),kc:FindFirstChild(hl('\154\198\227\5\232\185\161\198\247\48\214\187','\214\163\133q\164\214')),kc:FindFirstChild(hl("\146I\'\17;\14\175W%\v\14\48\173",'\192 @yOB')),kc:FindFirstChild(hl('\151kE\0\231Z\172kQ8\206R','\219\14#t\171\53')),kc:FindFirstChild(hl('\226\247\184e\244\127\223\233\186\127\204V\215','\176\158\223\r\128\51')),kc:FindFirstChild(hl('\143q\149{\29\151q\144m\0','\195\30\226\30o')),kc:FindFirstChild(hl('\208\252\215\166\219\209\227\213\176\198','\133\140\167\195\169'));
-        Ie={}
-        if jf then
-            jf=jf:FindFirstChild(hl('W\26\a\aO\26\1\29q','\5uhs'))
+    Rf.currentId=ni_;
+    Rf.elapsedTime=0;
+    Rf.isRunning=true
+    local Zc=Dh
+    local Cm
+    if Pj then
+        local Fm,i_,ul,La,Kl,ff,lc,_d,gd,Fe,wd,Le,Gl,te,nh,ik=Zc:FindFirstChild'HumanoidRootPart',Zc:FindFirstChild'Head',Zc:FindFirstChild'LeftUpperArm',Zc:FindFirstChild'RightUpperArm',Zc:FindFirstChild'LeftUpperLeg',Zc:FindFirstChild'RightUpperLeg',Zc:FindFirstChild'LeftFoot',Zc:FindFirstChild'RightFoot',Zc:FindFirstChild'LeftHand',Zc:FindFirstChild'RightHand',Zc:FindFirstChild'LeftLowerArm',Zc:FindFirstChild'RightLowerArm',Zc:FindFirstChild'LeftLowerLeg',Zc:FindFirstChild'RightLowerLeg',Zc:FindFirstChild'LowerTorso',Zc:FindFirstChild'UpperTorso';
+        Cm={}
+        if Fm then
+            Fm=Fm:FindFirstChild'RootJoint'
         end
-        Ie[hl('P\187v\167k','\4\212')]=jf
-        if not(bg)then
-        else
-            bg=bg:FindFirstChild(hl('}\232P\230','3\141'))
+        Cm.Torso=Fm
+        if i_ then
+            i_=i_:FindFirstChild'Neck'
         end
-        Ie[hl('Vr\127s','\30\23')]=bg
-        if Ia then
-            Ia=Ia:FindFirstChild(hl('B\231b}\201xa\247hm\255b','\14\130\4\t\154\16'))
+        Cm.Head=i_
+        if ul then
+            ul=ul:FindFirstChild'LeftShoulder'
         end
-        Ie[hl('\250\232\148u\193\241\198\232\128@\230\236','\182\141\242\1\148\129')]=Ia
-        if not(vn)then
-        else
-            vn=vn:FindFirstChild(hl('\3\20\56\178g79\18*\182w\1#','Q}_\218\19d'))
+        Cm.LeftUpperArm=ul
+        if La then
+            La=La:FindFirstChild'RightShoulder'
         end
-        Ie[hl('H\128\222\176\248\\j\153\220\170\205{w','\26\233\185\216\140\t')]=vn
-        if se_ then
-            se_=se_:FindFirstChild(hl('D\f\168|!\167x','\bi\206'))
+        Cm.RightUpperArm=La
+        if Kl then
+            Kl=Kl:FindFirstChild'LeftHip'
         end
-        Ie[hl('3\177\r\178\31$\15\177\25\138/3','\127\212k\198JT')]=se_
-        if yl then
-            yl=yl:FindFirstChild(hl('\244\31m\f\210>c\20','\166v\nd'))
+        Cm.LeftUpperLeg=Kl
+        if ff then
+            ff=ff:FindFirstChild'RightHip'
         end
-        Ie[hl('\233\145Z\191\216\26\203\136X\165\224*\220','\187\248=\215\172O')]=yl
-        if um then
-            um=um:FindFirstChild(hl('\206\225\b\51\195\234\5+\231','\130\132nG'))
+        Cm.RightUpperLeg=ff
+        if lc then
+            lc=lc:FindFirstChild'LeftAnkle'
         end
-        Ie[hl('C6\132\57I<\141\57','\15S\226M')]=um
-        if not(Kh)then
-        else
-            Kh=Kh:FindFirstChild(hl('z\167\128\185\255i\160\140\189\238','(\206\231\209\139'))
+        Cm.LeftFoot=lc
+        if _d then
+            _d=_d:FindFirstChild'RightAnkle'
         end
-        Ie[hl('\20\245\157}2\218\149z2','F\156\250\21')]=Kh
-        if nm then
-            nm=nm:FindFirstChild(hl('\208%pj\203\50\127m\232','\156@\22\30'))
+        Cm.RightFoot=_d
+        if gd then
+            gd=gd:FindFirstChild'LeftWrist'
         end
-        Ie[hl('_\157\6z[\153\14j','\19\248\96\14')]=nm
-        if not(Fb)then
-        else
-            Fb=Fb:FindFirstChild(hl('\213\162\230=F\208\185\232&F','\135\203\129U2'))
+        Cm.LeftHand=gd
+        if Fe then
+            Fe=Fe:FindFirstChild'RightWrist'
         end
-        Ie[hl('[\232 \193}\201&\199m','\t\129G\169')]=Fb
-        if not(od)then
-        else
-            od=od:FindFirstChild(hl('\27\242\14\6\18\251\n\29 ','W\151hr'))
+        Cm.RightHand=Fe
+        if wd then
+            wd=wd:FindFirstChild'LeftElbow'
         end
-        Ie[hl('h{\30\141\21VS{\n\184+T','$\30x\249Y9')]=od
-        if not(ud)then
-        else
-            ud=ud:FindFirstChild(hl('\228\214\14c3\243\211\vd0','\182\191i\vG'))
+        Cm.LeftLowerArm=wd
+        if Le then
+            Le=Le:FindFirstChild'RightElbow'
         end
-        Ie[hl('/\134U\242n)\18\152W\232[\23\16','}\239\50\154\26e')]=ud
-        if nl then
-            nl=nl:FindFirstChild(hl('{\240[\130|\251X\147','7\149=\246'))
+        Cm.RightLowerArm=Le
+        if Gl then
+            Gl=Gl:FindFirstChild'LeftKnee'
         end
-        Ie[hl('\3\151\163\247\155s8\151\183\207\178{','O\242\197\131\215\28')]=nl
-        if not(fi)then
-        else
-            fi=fi:FindFirstChild(hl('\209b\255\54\247@\246;\230','\131\v\152^'))
+        Cm.LeftLowerLeg=Gl
+        if te then
+            te=te:FindFirstChild'RightKnee'
         end
-        Ie[hl('\134f>\239bx\187x<\245ZQ\179','\212\15Y\135\22\52')]=fi
-        if not(Bc)then
-        else
-            Bc=Bc:FindFirstChild(hl('\17\177,\170','C\222'))
+        Cm.RightLowerLeg=te
+        if nh then
+            nh=nh:FindFirstChild'Root'
         end
-        Ie[hl("\204\54\'\208l\212\54\"\198q",'\128YP\181\30')]=Bc
-        if not(kn)then
-        else
-            kn=kn:FindFirstChild(hl('\203g\245u\232','\156\6'))
+        Cm.LowerTorso=nh
+        if ik then
+            ik=ik:FindFirstChild'Waist'
         end
-        Ie[hl('t\162\223I\173u\189\221_\176','!\210\175,\223')]=kn
+        Cm.UpperTorso=ik
     else
-        Ie=(function(Sj)
-            local Ci,ln,rg=xg[hl('\v\239\18\252\b','{\142')](Sj:GetChildren())
-            local _i={}
+        Cm=(function(Uc)
+            local Bh,T,kd=pairs(Uc:GetChildren())
+            local pj={}
             while true do
-                local Qa;
-                rg,Qa=Ci(ln,rg)
-                if not(rg==nil)then
-                else
+                local an_;
+                kd,an_=Bh(T,kd)
+                if kd==nil then
                     break
                 end
-                if not(Qa:IsA(hl('\206\235\224\17\220\235\225\0','\140\138\147t')))then
-                else
-                    local Vm,si,El=xg[hl('\246+\239\56\245','\134J')](Qa:GetChildren())
+                if an_:IsA'BasePart'then
+                    local Zg,Je,Nj=pairs(an_:GetChildren())
                     while true do
-                        local ae;
-                        El,ae=Vm(si,El)
-                        if not(El==nil)then
-                        else
+                        local Li;
+                        Nj,Li=Zg(Je,Nj)
+                        if Nj==nil then
                             break
                         end
-                        if not(ae:IsA(hl('\129\96o\163}-\136','\204\15\27'))and(ae[hl('\234\21\200\0\139','\186t')]and ae[hl('\174\27\140\14\207','\254z')][hl('\162\5q\151\nw','\242d\3')]==Sj))then
-                        else
-                            local dd=ae[hl('\151\190\181\171\246','\199\223')][hl('\b\191+\187','F\222')];
-                            _i[dd]=ae
-                            if not(dd==hl('\189m>\169\209I*\176','\241\bX\221'))then
-                                if dd==hl('Y\144\20\24\127\217\50\2f','\v\249sp')then
-                                    _i[hl('\200\190A\29\238\150T\24','\154\215&u')]=ae
-                                elseif not(dd==hl('\0\152\164\233l\177\167\250','L\253\194\157'))then
-                                    if not(dd==hl('_\248\214Uy\177\253Xj','\r\145\177='))then
-                                        if dd==hl('\246\142\223\143','\190\235')then
-                                            _i[hl('0\238\25\239','x\139')]=ae
-                                        elseif dd==hl('\28\r\159{\246\165=u\6\23\157n\200\171&e','Tx\242\26\152\202T\17')then
-                                            _i[hl('\135\178\161\174\188','\211\221')]=ae
-                                        end
-                                    else
-                                        _i[hl('\153[lt\191~n{','\203\50\v\28')]=ae
-                                    end
-                                else
-                                    _i[hl("B\199\'z\238$i",'\14\162A')]=ae
-                                end
-                            else
-                                _i[hl('\21\204g-\232s4','Y\169\1')]=ae
+                        if Li:IsA'Motor6D'and(Li.Part1 and Li.Part1 .Parent==Uc)then
+                            local Da=Li.Part1 .Name;
+                            pj[Da]=Li
+                            if Da=='Left Arm'then
+                                pj.LeftArm=Li
+                            elseif Da=='Right Arm'then
+                                pj.RightArm=Li
+                            elseif Da=='Left Leg'then
+                                pj.LeftLeg=Li
+                            elseif Da=='Right Leg'then
+                                pj.RightLeg=Li
+                            elseif Da=='Head'then
+                                pj.Head=Li
+                            elseif Da=='HumanoidRootPart'then
+                                pj.Torso=Li
                             end
                         end
                     end
                 end
             end
-            return _i
-        end)(kc)
+            return pj
+        end)(Zc)
     end
-    local rn={}
-    if not(not Uf)then
-    else
-        Uf={}
+    local Yd={}
+    if not Oa then
+        Oa={}
     end
-    local ba,fa_,Tc=xg[hl('\211\168\202\187\208','\163\201')](Ie)
+    local Qm,qg,Di=pairs(Cm)
     while true do
-        local nn;
-        Tc,nn=ba(fa_,Tc)
-        if Tc==nil then
+        local om;
+        Di,om=Qm(qg,Di)
+        if Di==nil then
             break
         end
-        if nn and nn:IsA(hl(';.\216\25\51\154\50','vA\172'))then
-            rn[Tc]=nn
-            if not Uf[nn]then
-                Uf[nn]={[hl('\204\191','\143')]=nn[hl('\192\179','\131')],[hl('\214\164','\149')]=nn[hl('\20f','W')]}
+        if om and om:IsA'Motor6D'then
+            Yd[Di]=om
+            if not Oa[om]then
+                Oa[om]={C0=om.C0,C1=om.C1}
             end
         end
     end
-    if not wi[hl('\204|\24\242\193\204g\31\243\202','\175\19v\156\164')]then
-        local Ja=ol
-        local tm,Zf,Sa=xg[hl('0Y)J3','@8')](Ja:GetChildren())
+    if not Rf.connection then
+        local Ui=Dh
+        local rc,Xe,bf=pairs(Ui:GetChildren())
         while true do
-            local rk;
-            Sa,rk=tm(Zf,Sa)
-            if Sa==nil then
+            local B;
+            bf,B=rc(Xe,bf)
+            if bf==nil then
                 break
             end
-            if not(rk:IsA(hl('\153\155\248\49\5\134\151\233\57\25\161','\213\244\155Pi'))and(rk[hl('\234\156\252\205\158\248\203','\175\242\157')]and rk~=jn))then
-            else
-                rk[hl('\239\183U\200\181Q\206','\170\217\52')]=false
+            if B:IsA'LocalScript'and(B.Enabled and B~=Vf)then
+                B.Enabled=false
             end
         end
-        wi[hl('1\241\147/\194\49\234\148.\201','R\158\253A\167')]=rf[hl('0FG]\fACN\f','x#&/')]:Connect(function(Xb)
-            if not(not(wi[hl('\196Q\156Q\195L\167J\202','\173\"\206$')]and ol))then
-            else
-                Sb()
+        Rf.connection=Y.Heartbeat:Connect(function(ve)
+            if not(Rf.isRunning and Dh)then
+                L()
                 return
             end
-            if not(not wi[hl('\171\31;\225\178\27/\226\179','\192zB\135')])then
-            else
+            if not Rf.keyframes then
                 return
             end
-            wi[hl('\133P&z3\133X\19c-\133','\224<G\n@')]=wi[hl('Z\157L#<Z\149y:\"Z','?\241-SO')]+Xb*wi[hl('r\205d\216e','\1\189')]
-            if wi[hl('\130n\216\173\6\135\131s\205\184\3\172\152','\246\1\172\204j\195')]>0 then
-                wi[hl('})\15\147l}!:\138r}','\24En\227\31')]=wi[hl('\143\160$h#\143\168\17q=\143','\234\204E\24P')]%wi[hl("\'\131,k\136\163&\158\57~\141\136=",'S\236X\n\228\231')]
+            Rf.elapsedTime=Rf.elapsedTime+ve*Rf.speed
+            if Rf.totalDuration>0 then
+                Rf.elapsedTime=Rf.elapsedTime%Rf.totalDuration
             end
-            local Ug,Bj=nil,nil
-            for hh=-2380595/-28007,(#wi[hl('\231O\184\163\254K\172\160\255','\140*\193\197')]-(7992+-7991))+(-19453+19537)do
-                if wi[hl('\249w\189\170\51\249\127\136\179-\249','\156\27\220\218@')]>=wi[hl('\146r\185?\139v\173<\138','\249\23\192Y')][(hh- -1447656/-17234)][hl('\14\5\55\t','Zl')]then
-                    if wi[hl('s8\183G\235s0\130^\245s','\22T\214\55\152')]<wi[hl('f\16_L\127\20KO~','\ru&*')][(hh-(-14517- -14601))+11735/11735][hl('\236\141\213\129','\184\228')]then
-                        Ug=wi[hl('.\22\216\n\55\18\204\t\54','Es\161l')][(hh-(-29484- -29568))];
-                        Bj=wi[hl('\238\137\230O\247\141\242L\246','\133\236\159)')][(hh- -0.0062189975568223881*-13507)+(-32243- -32244)]
+            local ga,se_=nil,nil
+            for pl=1,#Rf.keyframes-1 do
+                if Rf.elapsedTime>=Rf.keyframes[pl].Time then
+                    if Rf.elapsedTime<Rf.keyframes[pl+1].Time then
+                        ga=Rf.keyframes[pl];
+                        se_=Rf.keyframes[pl+1]
                         break
                     end
                 end
             end
-            if not(not Ug)then
-            else
-                Ug=wi[hl('\209\232a&\200\236u%\201','\186\141\24@')][#wi[hl('\166\216T\r\191\220@\14\190','\205\189-k')]];
-                Bj=wi[hl('1\202\174^(\206\186])','Z\175\215\56')][-13440- -13441]
+            if not ga then
+                ga=Rf.keyframes[#Rf.keyframes];
+                se_=Rf.keyframes[1]
             end
-            local ze=Bj[hl('\140\221\181\209','\216\180')]-Ug[hl('S^jR','\a\55')]
-            if not(ze<=0)then
-            else
-                ze=wi[hl('\143p\176\161\241t\142m\165\180\244_\149','\251\31\196\192\157\48')]
+            local Rb=se_.Time-ga.Time
+            if Rb<=0 then
+                Rb=Rf.totalDuration
             end
-            local bd=wi[hl('0\227\216\28\2\48\235\237\5\28\48','U\143\185lq')]-Ug[hl('\145\156\168\144','\197\245')]
-            local yh=0<ze and bd/ze or 0
-            local E=xg[hl(':\226#\235','W\131')][hl('\189>\191?\174','\222R')](yh,0,-0.00016849199663016007*-5935)
-            if Ug[hl('\167\209\151\209','\227\176')]then
-                local d_,h,ik=xg[hl('\16\24\t\v\19','\96y')](Ug[hl('\231\175\215\175','\163\206')])
+            local Ca=Rf.elapsedTime-ga.Time
+            local D=0<Rb and Ca/Rb or 0
+            local Pb=math.clamp(D,0,1)
+            if ga.Data then
+                local wf,z,sm=pairs(ga.Data)
                 while true do
-                    local Hh;
-                    ik,Hh=d_(h,ik)
-                    if not(ik==nil)then
-                    else
+                    local ci;
+                    sm,ci=wf(z,sm)
+                    if sm==nil then
                         break
                     end
-                    local V=rn[ik]
-                    if not(V and(Uf and Uf[V]))then
-                    else
-                        local Kl,f_=Uf[V][hl('v\5','5')]*Hh,Bj[hl('\29n-n','Y\15')]
-                        if not(f_)then
-                        else
-                            f_=Bj[hl('1\129\1\129','u\224')][ik]
+                    local Q=Yd[sm]
+                    if Q and(Oa and Oa[Q])then
+                        local Fb,cc=Oa[Q].C0*ci,se_.Data
+                        if cc then
+                            cc=se_.Data[sm]
                         end
-                        if not(f_)then
-                            V[hl('\201\186','\138')]=Kl
+                        if cc then
+                            Q.C0=Fb:Lerp(Oa[Q].C0*cc,Pb)
                         else
-                            V[hl('\206\189','\141')]=Kl:Lerp(Uf[V][hl('\253\142','\190')]*f_,E)
+                            Q.C0=Fb
                         end
                     end
                 end
             else
-                local Zk,sh,xl=xg[hl('\173X\180K\174','\221\57')](Ug:GetDescendants())
+                local Xg,Xk,xj=pairs(ga:GetDescendants())
                 while true do
-                    local Yh;
-                    xl,Yh=Zk(sh,xl)
-                    if not(xl==nil)then
-                    else
+                    local zl;
+                    xj,zl=Xg(Xk,xj)
+                    if xj==nil then
                         break
                     end
-                    if Yh:IsA(hl('\28U?_','L:'))then
-                        local Wi=rn[Yh[hl('\140\224\175\228','\194\129')]]
-                        if Wi and(Uf and Uf[Wi])then
-                            local ia,j=Uf[Wi][hl('\250\137','\185')]*Yh[hl('f\185\164D\146\179','%\255\214')],Bj:FindFirstChild(Yh[hl('\178\130\145\134','\252\227')],true)
-                            if j and j:IsA(hl('X\245{\255','\b\154'))then
-                                Wi[hl('\139\248','\200')]=ia:Lerp(Uf[Wi][hl('6E','u')]*j[hl('\v\n\r)!\26','HL\127')],E)
+                    if zl:IsA'Pose'then
+                        local jl=Yd[zl.Name]
+                        if jl and(Oa and Oa[jl])then
+                            local Ia,e_=Oa[jl].C0*zl.CFrame,se_:FindFirstChild(zl.Name,true)
+                            if e_ and e_:IsA'Pose'then
+                                jl.C0=Ia:Lerp(Oa[jl].C0*e_.CFrame,Pb)
                             else
-                                Wi[hl('\245\134','\182')]=ia
+                                jl.C0=Ia
                             end
                         end
                     end
                 end
             end
-            if rc[hl('\223\202\155F\172\195\252\145@\168\210','\183\175\242!\196')]~=-22814+22815 or rc[hl('\0M\247\141\28$G\242\149\17','w$\147\249t')]~=11875-11874 then
-                local md,Oa,lj=xg[hl('\137\19\144\0\138','\249r')](Uf)
+            if aa.heightScale~=1 or aa.widthScale~=1 then
+                local Om,zg,lg=pairs(Oa)
                 while true do
-                    local ji;
-                    lj,ji=md(Oa,lj)
-                    if not(lj==nil)then
-                    else
+                    local _m;
+                    lg,_m=Om(zg,lg)
+                    if lg==nil then
                         break
                     end
-                    if lj and lj:IsA(hl('\191\177U\157\172\23\182','\242\222!'))then
-                        local Nb,fj=lj[hl('\247\132','\180')]-lj[hl('i\26','*')][hl('Z\245W\224~\243K\231','\n\154$\137')],ji[hl('>M','}')][hl('\169\172\210\16\141\170\206\23','\249\195\161y')]
-                        local Yb=xg[hl('\245\212(\215\222\57\144','\163\177K')][hl('\254\245\231','\144')](fj[hl('\184','\224')]*rc[hl(']\2\226\164\183y\b\231\188\186','*k\134\208\223')],fj[hl('u',',')]*rc[hl('\226Z\222\213\246\254l\212\211\242\239','\138?\183\178\158')],fj[hl('8','b')]*rc[hl('\0\49&.+$;#6&','wXBZC')]);
-                        lj[hl('\0s','C')]=xg[hl('B$\a\96\15\16','\1bu')][hl('&-?','H')](Yb)*Nb
+                    if lg and lg:IsA'Motor6D'then
+                        local hk,af=lg.C0-lg.C0 .Position,_m.C0 .Position
+                        local sk=Vector3 .new(af.X*aa.widthScale,af.Y*aa.heightScale,af.Z*aa.widthScale);
+                        lg.C0=CFrame.new(sk)*hk
                     end
                 end
             end
         end)
     end
 end
-local function Ya(ye)
-    if not(not(ol and Tm))then
-    else
+local function aj(Rk)
+    if not(Dh and Pg)then
         return
     end
-    local yn,ll=sa[ye],false
-    if wi[hl("\223L\221\'\216Q\230<\209",'\182?\143R')]and wi[hl('\209)\173\217\215\50\171\226\214','\178\\\223\171')]then
-        local Be,Zh,bc=xg[hl('3\14*\29\48','Co')](sa)
+    local lb,sc=ma[Rk],false
+    if Rf.isRunning and Rf.currentId then
+        local Fl,Rm,dh=pairs(ma)
         while true do
-            local hn;
-            bc,hn=Be(Zh,bc)
-            if not(bc==nil)then
-            else
+            local Aj;
+            dh,Aj=Fl(Rm,dh)
+            if dh==nil then
                 break
             end
-            if hn and(hn~=''and xg[hl('l\255{\23j\249f\4','\24\144\bc')](hn)==xg[hl('\nh\192\191\fn\221\172','~\a\179\203')](wi[hl('Ue\136\223S~\142\228R','6\16\250\173')]))then
-                ll=true
+            if Aj and(Aj~=''and tostring(Aj)==tostring(Rf.currentId))then
+                sc=true
                 break
             end
         end
     end
-    if not(yn and yn~='')then
-        if not(ll)then
-        else
-            Sb()
-        end
-        return
-    else
-        if ol then
-            if not(ol:FindFirstChildWhichIsA(hl('\190\133s\254\152\159w\251','\246\240\30\159')))then
-                return
-            else
-                if wi[hl('P\156\245WW\129\206L^','9\239\167\"')]and wi[hl('\r(5o\v\51\51T\n','n]G\29')]then
-                    if not(not ll)then
-                    else
+    if lb and lb~=''then
+        if Dh then
+            if Dh:FindFirstChildWhichIsA'Humanoid'then
+                if Rf.isRunning and Rf.currentId then
+                    if not sc then
                         return
                     end
-                    if xg[hl('\199_\v\177\193Y\22\162','\179\48x\197')](wi[hl('h>Y\221n%_\230o','\vK+\175')])==xg[hl(';)\169\188=/\180\175','OF\218\200')](yn)then
+                    if tostring(Rf.currentId)==tostring(lb)then
                         return
                     end
                 end
-                if not(wi[hl('T\209?\218S\204\4\193Z','=\162m\175')])then
-                else
-                    Sb();
-                    xg[hl('\243%\244/','\135D')][hl('\14\129\16\148','y\224')](7.7555452148286028e-06*6447)
+                if Rf.isRunning then
+                    L();
+                    task.wait(0.050000000000000003)
                 end
-                if not(ol and Tm)then
-                else
-                    xg[hl('\4\v\21\4\24','th')](function()
-                        ul(xg[hl('=\190\135\138;\184\154\153','I\209\244\254')](yn))
+                if Dh and Pg then
+                    pcall(function()
+                        Ka(tostring(lb))
                     end)
                 end
+            else
+                return
             end
         else
             return
         end
+    else
+        if sc then
+            L()
+        end
+        return
     end
 end
-local function ib()
-    if not(ol and Tm)then
+local function Dm()
+    if not(Dh and Pg)then
         return
     end
-    if not(not ol:FindFirstChildWhichIsA(hl('@\a\226,f\29\230)','\br\143M')))then
-    else
+    if not Dh:FindFirstChildWhichIsA'Humanoid'then
         return
     end
-    local ed,yi,cf=xg[hl('\212r\205a\215','\164\19')](wa)
+    local Hl,pg,gg=pairs(Uf)
     while true do
-        local yk,Cc=ed(yi,cf)
-        if not(yk==nil)then
-        else
+        local Zh,Hg=Hl(pg,gg)
+        if Zh==nil then
             break
         end
-        cf=yk
-        if not(Cc)then
-        else
-            xg[hl('\147v\130y\143','\227\21')](function()
-                Cc:Disconnect()
+        gg=Zh
+        if Hg then
+            pcall(function()
+                Hg:Disconnect()
             end)
         end
     end
-    wa={}
-    if not(wi[hl('n\141]\246i\144f\237\96','\a\254\15\131')]and wi[hl('\213SZ(\211H\\\19\210','\182&(Z')])then
-    else
-        local Oc,tn,ue=xg[hl('Q?H,R','!^')](sa)
+    Uf={}
+    if Rf.isRunning and Rf.currentId then
+        local Wk,Ih,gb=pairs(ma)
         while true do
-            local Il;
-            ue,Il=Oc(tn,ue)
-            if ue==nil then
+            local il;
+            gb,il=Wk(Ih,gb)
+            if gb==nil then
                 break
             end
-            if not(Il and(Il~=''and xg[hl('\172\145\16\162\170\151\r\177','\216\254c\214')](Il)==xg[hl('mf\178\130k\96\175\145','\25\t\193\246')](wi[hl('v\200\170/p\211\172\20q','\21\189\216]')])))then
-            else
-                Sb()
+            if il and(il~=''and tostring(il)==tostring(Rf.currentId))then
+                L()
                 break
             end
         end
     end
-    local function el_()
-        if not ol then
-            return hl('\176\129\181\128','\217\229')
+    local function Ej()
+        if not Dh then
+            return'idle'
         end
-        local Cj=ol:FindFirstChildWhichIsA(hl('\19\226-\206\53\248)\203','[\151@\175'))
-        if not Cj then
-            return hl('\254W\251V','\151\51')
+        local Sd=Dh:FindFirstChildWhichIsA'Humanoid'
+        if not Sd then
+            return'idle'
         end
-        local Dn=Cj[hl('\181u\16\216\135\225\138\127\5\201\170\231\150','\248\26f\189\195\136')][hl('m\212\55\234I\193%\224E',' \181P\132')]
-        local vf,ca=xg[hl('[\232J\231G','+\139')](function()
-            return Cj:GetState()
+        local Ba=Sd.MoveDirection.Magnitude
+        local dj,ek=pcall(function()
+            return Sd:GetState()
         end)
-        return vf and((ca==xg[hl('\2\205\50\206','G\163')][hl('\151_\203\159\169Q\228\204\140^\199\138\162j\244\216\186','\223*\166\254\199>\141\168')][hl('\16\159\243*\131\240=','Z\234\158')]or ca==xg[hl('\204\23\252\20','\137y')][hl('\173O\1H\177F&\130\182N\r]\186}6\150\128','\229:l)\223)O\230')][hl('^0r}~#{t','\24B\23\24')])and hl('\205w\242\215k\241\192','\167\2\159')or(7.1864893999281354e-06*13915<Dn and hl('\130KE\158CG\146','\245*)')or hl('\212\53\209\52','\189Q')))or hl('5\205\48\204','\\\169')
+        return dj and((ek==Enum.HumanoidStateType.Jumping or ek==Enum.HumanoidStateType.Freefall)and'jumping'or(0.10000000000000001<Ba and'walking'or'idle'))or'idle'
     end
-    local Qd=el_()
-    local mn,b_=Qd,Qd
-    if not(sa[Qd]and sa[Qd]~='')then
-    else
-        xg[hl('\228\169\227\163','\144\200')][hl('\16\247\18\247\6','t\146')](function()
-            if not(ol and Tm)then
-            else
-                Ya(Qd)
+    local wl=Ej()
+    local qf,Tf=wl,wl
+    if ma[wl]and ma[wl]~=''then
+        task.defer(function()
+            if Dh and Pg then
+                aj(wl)
             end
         end)
     end
-    wa[hl('?\195.\175j\130#\217&\175\96\189','L\183O\219\15\207')]=rf[hl('\5(OK9/KX9','MM.9')]:Connect(function(ki)
-        if not(not(ol and Tm))then
-        else
-            if not(wa[hl(' D\176\57\127\196<^\184\57u\251','S0\209M\26\137')])then
-            else
-                xg[hl('\25\19\b\28\5','ip')](function()
-                    wa[hl('hL\183\14x\247tV\191\14r\200','\27\56\214z\29\186')]:Disconnect()
+    Uf.stateMonitor=Y.Heartbeat:Connect(function(Im)
+        if not(Dh and Pg)then
+            if Uf.stateMonitor then
+                pcall(function()
+                    Uf.stateMonitor:Disconnect()
                 end);
-                wa[hl('<qmm\201\218 kem\195\229','O\5\f\25\172\151')]=nil
+                Uf.stateMonitor=nil
             end
             return
         end
-        if not(not ol:FindFirstChildWhichIsA(hl('\159\214+\227\185\204/\230','\215\163F\130')))then
-        else
-            if not(wa[hl('\177@\181\v\189\141\173Z\189\v\183\178','\194\52\212\127\216\192')])then
-            else
-                xg[hl('\19N\2A\15','c-')](function()
-                    wa[hl('\202\212@\209\237*\214\206H\209\231\21','\185\160!\165\136g')]:Disconnect()
+        if not Dh:FindFirstChildWhichIsA'Humanoid'then
+            if Uf.stateMonitor then
+                pcall(function()
+                    Uf.stateMonitor:Disconnect()
                 end);
-                wa[hl('(7F \227L4-N \233s',"[C\'T\134\1")]=nil
+                Uf.stateMonitor=nil
             end
             return
         end
-        local aa=el_()
-        if aa~=b_ then
-            b_=aa
-            local Vc=false
-            if wi[hl('\142g\180G\137z\143\\\128','\231\20\230\50')]and wi[hl('\138\197B\199\140\222D\252\141','\233\176\48\181')]then
-                local ii,wf,Hg=xg[hl('\228\190\253\173\231','\148\223')](sa)
+        local De=Ej()
+        if De~=Tf then
+            Tf=De
+            local ae=false
+            if Rf.isRunning and Rf.currentId then
+                local en_,Yb,sh=pairs(ma)
                 while true do
-                    local Oh;
-                    Hg,Oh=ii(wf,Hg)
-                    if Hg==nil then
+                    local Yl;
+                    sh,Yl=en_(Yb,sh)
+                    if sh==nil then
                         break
                     end
-                    if Oh and(Oh~=''and xg[hl('/\171\15\235)\173\18\248','[\196|\159')](Oh)==xg[hl('a\165\56[g\163%H','\21\202K/')](wi[hl('\18\174\241\128\20\181\247\187\21','q\219\131\242')]))then
-                        Vc=true
+                    if Yl and(Yl~=''and tostring(Yl)==tostring(Rf.currentId))then
+                        ae=true
                         break
                     end
                 end
             end
-            if not(Vc)then
-            else
-                Sb()
+            if ae then
+                L()
             end
-            if sa[aa]and(sa[aa]~=''and(ol and Tm))then
-                xg[hl('\213\200\210\194','\161\169')][hl('\165\253\167\253\179','\193\152')](function()
-                    if ol and Tm then
-                        Ya(aa)
+            if ma[De]and(ma[De]~=''and(Dh and Pg))then
+                task.defer(function()
+                    if Dh and Pg then
+                        aj(De)
                     end
                 end)
             end
         end
-        mn=aa
-        if(rc[hl('J\129\146\247\197V\183\152\241\193G','\"\228\251\144\173')]~=24954+-24953 or rc[hl('\242\180Y\5\226\214\190\\\29\239','\133\221=q\138')]~=-29433+29434)and Uf then
-            local Sk,pl,Qb=xg[hl('\183\178\174\161\180','\199\211')](Uf)
+        qf=De
+        if(aa.heightScale~=1 or aa.widthScale~=1)and Oa then
+            local Rc,yj,re_=pairs(Oa)
             while true do
-                local B;
-                Qb,B=Sk(pl,Qb)
-                if not(Qb==nil)then
-                else
+                local Xd;
+                re_,Xd=Rc(yj,re_)
+                if re_==nil then
                     break
                 end
-                if not(Qb and(Qb:IsA(hl("\5e#\'xa\f",'H\nW'))and Qb[hl('\160\171\197\149\164\195','\240\202\183')]))then
-                else
-                    local zd,O=Qb[hl('n\29','-')]-Qb[hl('\ny','I')][hl('\188\30\53\198\152\24)\193','\236qF\175')],B[hl('\137\250','\202')][hl('\24\205\221\226<\203\193\229','H\162\174\139')]
-                    local Mm=xg[hl('l\a-N\r<\t',':bN')][hl('\230\237\255','\136')](O[hl('\149','\205')]*rc[hl('a\17\207\135\208E\27\202\159\221','\22x\171\243\184')],O[hl('@','\25')]*rc[hl('\193&q\246\176\221\16{\240\180\204','\169C\24\145\216')],O[hl('\155','\193')]*rc[hl('*\139\188\233\19\14\129\185\241\30',']\226\216\157{')]);
-                    Qb[hl('W$','\20')]=xg[hl('\138\183\188\168\156\171','\201\241\206')][hl('\25\18\0','w')](Mm)*zd
+                if re_ and(re_:IsA'Motor6D'and re_.Parent)then
+                    local Ck,Cc=re_.C0-re_.C0 .Position,Xd.C0 .Position
+                    local Jj=Vector3 .new(Cc.X*aa.widthScale,Cc.Y*aa.heightScale,Cc.Z*aa.widthScale);
+                    re_.C0=CFrame.new(Jj)*Ck
                 end
             end
         end
     end)
 end
-local function Kd()
-    local Ta,jd,ti={[hl('q\a\243d\n\223f','\1f\157')]=xg[hl('a\133\248M\152\167','\"\234\148')][hl(']{\222V[\246y',';\t\177')](0,0,0),[hl('\188\145]\252\160\178T\171','\204\240\51\153')]=xg[hl('\17\146\199=\143\152','R\253\171')][hl('\30\219\252\21\251\212:','x\169\147')](0,0,0),[hl('\27\130\30\175\14','i\237')]=xg[hl('\189@\201\145]\150','\254/\165')][hl('\14\161_\5\129w*','h\211\48')](-0.0018321010272852188*-15283,806652/28809,-3763- -3793),[hl('_\\\15\246\ve\\\14\209\30','-3x\180l')]=xg[hl('n\218\238B\199\177','-\181\130')][hl('\15\138]\4\170u+','i\248\50')](0.0023551577955723034*21230,0.0016996396763886057*29418,-25189- -25244),[hl('\204\15\174\2\219\26\165\53\221','\184n\204C')]=xg[hl('\228\135\245\200\154\170','\167\232\153')][hl('\135=a\140\29I\163','\225O\14')](391850/7837,-26846- -26896,564245/10259),[hl('\229K\207\216N\193\244','\145*\173')]=xg[hl('L\204\198\96\209\153','\15\163\170')][hl('-!-&\1\5\t','KSB')](1283-1261,-309980/-14090,-27024- -27048),[hl('\181C|\169YN\187','\220-\f')]=xg[hl('or\127Co ',',\29\19')][hl('4\129\212?\161\252\16','R\243\187')](0.00079312623925974885*22695,9236-9218,0.0018969932656739069*10543),[hl('-\225P\201\53\235x\200?','Y\142\55\174')]=xg[hl('$l\157\bq\194','g\3\241')][hl('E\188hN\156@a','#\206\a')](-0.003867873443180939*-12927,-6362- -6414,413205/6357),[hl('f\196]\212\139s\247R\208\156','\a\167>\177\229')]=xg[hl('\246g\213\218z\138','\181\b\185')][hl('\28b\195\23B\235\56','z\16\172')](-0.0061963627350745112*-32277,2250+-2040,1972825/8395),[hl('7s;E2','U\a')]=xg[hl('s\4[_\25\4','0k7')][hl('\180\200P\191\232x\144','\210\186?')](-646212/-23079,204876/7317,334500/11150),[hl('CG\232\253\aEK\253\232%N','7\"\144\137W')]=xg[hl('\157\26@\177\a\31','\222u,')][hl('Pi\30[I6t','6\27q')](15996-15761,7659554/32183,-20302- -20550),[hl('\248\197\184\154A\233\195\175\128v','\140\160\192\238\18')]=xg[hl(' \150\151\f\139\200','c\249\251')][hl('b\233pi\201XF','\4\155\31')](20643-20463,12157+-11972,-25969- -26174),[hl(']\134\223]\167\206D',')\227\167')]=xg[hl('F\174\178j\179\237','\5\193\222')][hl('\212\52~\223\20V\240','\178F\17')](-23538- -23653,6422-6302,19655-19515),[hl('\viGh8cSx','\127\f?\28')]=xg[hl('\155\254\138\183\227\213','\216\145\230')][hl('ZY\203Qy\227~','<+\164')](-2013735/-7897,-26253+26468,29924+-29844),[hl('\157\bG\157?Z\141','\233m?')]=xg[hl('\172M \128P\127','\239\"L')][hl('\a\219\248\f\251\208#','a\169\151')](-0.010399514689314498*-23078,-13747+13827,868800/10860),[hl('\28\145\160\30/\134\189\15\6','h\244\216j')]=xg[hl('\187s5\151nj','\248\28Y')][hl('B~6I^\30f','$\fY')](-25145+25245,-3727- -3947,-0.42207792207792205*-308),[hl('\211\154\25gV\194\147\r|x','\167\255a\19\15')]=xg[hl('\200_\209\228B\142','\139\48\189')][hl('\167\175\20\172\143<\131','\193\221{')](27346+-27106,-1.2804878048780488*-164,259-179),[hl('\v^\31O\20Q\15A\n','x=m ')]=xg[hl('\253>B\209#\29','\190Q.')][hl('0\220x;\252P\20','V\174\23')](-0.0093826840947327551*-15454,28789+-28639,-5021120/-29536),[hl('\157U\204\229\133_\228\236','\233:\171\130')]=xg[hl('\194\145t\238\140+','\129\254\24')][hl('\142\170\147\133\138\187\170','\232\216\252')](0.0070642112442755528*20526,4315680/26973,-0.0070252910477719794*-29892),[hl('1m\162\56L\171<','Z\3\205')]=xg[hl('\171\248\55\135\229h','\232\151[')][hl('\218\30(\209>\0\254','\188lG')](-2255820/-21484,28072-27962,-0.0075301204819277108*-17264),[hl('\251+P\242\nQ','\144E?')]=xg[hl('\225\225\250\205\252\165','\162\142\150')][hl('EP\161Np\137a','#\"\206')](-27514- -27749,-2743+2983,-3762780/-14756),[hl('\19\178\4\15\173\19','\96\198v')]=xg[hl('Mg\razR','\14\ba')][hl('\138\160\147\129\128\187\174','\236\210\252')](30780+-30710,-1578150/-21042,14326-14231),[hl('\220\230\151K\3>\237\224\140C\0/','\175\146\229$h[')]=xg[hl(',\234\207\0\247\144','o\133\163')][hl('\190\190\200\181\158\224\154','\216\204\167')](-2316000/-19300,0.023858341099720411*5365,5479-5324)},{[hl('o\144q\148s','\31\241')]=0,[hl('\128po\149}3','\240\17\1')]=0,[hl('\28\1\25','n')]=0,[hl('\b\216\r\255','z\183')]=0,[hl('\153\140\143','\237')]=0,[hl('\20i\2I','\96\b')]=0,[hl('\246\51\239(\235','\159]')]=0,[hl('\127is','\29')]=0,[hl('\147y\159E','\241\r')]=3.0432136335970788e-05*6572,[hl('\255\226y\226\248}\233','\144\148\28')]=0},le:WaitForChild(hl('QLE\177dRc\189h','\1 $\200'))
-    if not ti:FindFirstChild(hl('\3\165\160\232\181,\135\159\202\129\v','B\238\242\141\212'))then
-        local Og=xg[hl('tp\174\149\\p\190\132','=\30\221\225')][hl('\152\147\129','\246')](hl('\158S(\165\168^\29\181\164','\205\48Z\192'));
-        Og[hl('\253\204\222\200','\179\173')]=hl('\23q\28\149\151\56S#\183\163\31','V:N\240\246');
-        Og[hl('\203J\247\0\57>\247|\244\4:\31','\153/\132eMq')]=false;
-        Og[hl('\14\185\200;\182\206','^\216\186')]=ti
-        local af=xg[hl('\163\138\239?\139\138\255.','\234\228\156K')][hl('\176\187\169','\222')](hl('\227e\196z\192','\165\23'));
-        af[hl("\14\136\'\132",']\225')]=xg[hl('J]vt-','\31\25')][hl('\248\243\225','\150')](0,0.022530577211930476*13981,0,-3748320/-7809);
-        af[hl('\198)\192!\226/\220&','\150F\179H')]=xg[hl('\244\156\200\181\147','\161\216')][hl('\140\135\149','\226')](8.8237889349686752e-05*11333,9094140/-27558,0,15966-15946);
-        af[hl('Y\17\155\167!\14P,u\20\187\163*\19Mj','\27p\248\204F|?Y')]=Ta[hl("2A\135\'L\171%",'B \233')];
-        af[hl('2fZ\135\184\232\162L\240ul\2fW\159\175\251\191\\\240rA','p\a\57\236\223\154\205\57\158\17\56')]=jd[hl('\133\209\155\213\153','\245\176')];
-        af[hl('\162\24\217\224\144\249z\137\r\206\212\156\243L\140','\224w\171\132\245\139)')]=0;
-        af[hl('\235\224a\222\239g','\187\129\19')]=Og
-        local aj=xg[hl('\163E8\208\139E(\193','\234+K\164')][hl('\3\b\26','m')](hl('-\\\187\230\nz\131\247','x\21\232\146'));
-        aj[hl('\198\26\233\26\247','\133u')]=xg[hl('\"\n\\\14\23\3','ae0')][hl('\"\218r)\250Z\6','D\168\29')](4406240/27539,-0.0061698923941386026*-27229,-4145+4345);
-        aj[hl('\221\202nA\226\204bQ\250','\137\162\a\"')]=-8.1214976041582069e-05*-12313;
-        aj[hl('+jN\163\166x\30jJ\163\182q','\127\24/\205\213\b')]=0;
-        aj[hl('\183\6\96\130\tf','\231g\18')]=af
-        local jg=xg[hl('2\16\178\30\26\16\162\15','{~\193j')][hl('\199\204\222','\169')](hl('{\232\231\140\\\207\193\145','.\161\164\227'));
-        jg[hl('H\173\5^\184\151Y\163\19Y\168\150','\v\194w0\221\229')]=xg[hl('\238r\210[','\187\54')][hl('\140\135\149','\226')](0,-0.002331002331002331*-5148);
-        jg[hl('\231y\v\210v\r','\183\24y')]=af
-        local Ol=xg[hl('\\ia\24tiq\t','\21\a\18l')][hl('\213\222\204','\187')](hl('x=_\"[','>O'));
-        Ol[hl('2\b\27\4','aa')]=xg[hl('25\14\28U','gq')][hl('\b\3\17','f')](-10449- -10450,0,0,469590/15653);
-        Ol[hl('\155\aK*\191\1W-','\203h8C')]=xg[hl('\144\227\172\202\247','\197\167')][hl('chz','\r')](0,0,0,0);
-        Ol[hl('R\29$\219\232\136\222\b~\24\4\223\227\149\195N','\16|G\176\143\250\177}')]=Ta[hl('T\171\246\54H\136\255a','$\202\152S')];
-        Ol[hl('\146G\211i/\175\205Gbq\171\162G\222q8\188\208Wbv\134','\208&\176\2H\221\162\50\f\21\255')]=jd[hl('\242x\138\231u\214','\130\25\228')];
-        Ol[hl('\223\130\193\172\244\191e\244\151\214\152\248\181S\241','\157\237\179\200\145\205\54')]=0;
-        Ol[hl('I\223w|\208q','\25\190\5')]=af
-        local Ef=xg[hl('J\202\148Ob\202\132^','\3\164\231;')][hl('SXJ','=')](hl('/\140\228\127\b\170\220n','z\197\183\v'));
-        Ef[hl('\27\137\52\137*','X\230')]=Ta[hl('c@\228\127_\243','\16\52\150')];
-        Ef[hl('\229\1wA\218\a{Q\194','\177i\30\"')]=-31115+31116;
-        Ef[hl('\183\193\181}\250\134\130\193\177}\234\143','\227\179\212\19\137\246')]=2.0970955227010593e-05*19074;
-        Ef[hl(':\30\16\15\17\22','j\127b')]=Ol
-        local wb=xg[hl('\166W<\196\142W,\213','\239\57O\176')][hl('+ 2','E')](hl('\194\31\208\n\229\56\246\23','\151V\147e'));
-        wb[hl('|\6\180\16\164\6m\b\162\23\180\a','?i\198~\193t')]=xg[hl('lUP|','9\17')][hl('\202\193\211','\164')](0,12358-12346);
-        wb[hl('K\189w~\178q','\27\220\5')]=Ol
-        local pj=xg[hl('\17-\128\180\57-\144\165','XC\243\192')][hl('\149\158\140','\251')](hl('\234O\185k\242K\163z\210','\190*\193\31'));
-        pj[hl('\194\225\235\237','\145\136')]=xg[hl(',\137\16\160K','y\205')][hl('\180\191\173','\218')](9377-9376,-872960/7936,-5.0291691812512574e-05*-19884,0);
-        pj[hl('\181\210\168.\145\212\180)','\229\189\219G')]=xg[hl('\146Z\174s\245','\199\30')][hl('w|n','\25')](0,24165+-24113,0,0);
-        pj[hl('\251\168\200\194\142=\185\149\252\231\214\203\168\197\218\153.\164\133\252\224\251','\185\201\171\169\233O\214\224\146\131\130')]=28808-28807;
-        pj[hl(',\255\0\238','x\154')]=hl('\21\204\vj\17\206eq\25','T\143+8');
-        pj[hl('[\nF\200\158\96\3Q\206\238','\15o>\188\221')]=Ta[hl("*\\\190>\246,P\171+\212\'",'^9\198J\166')];
-        pj[hl("\146\150%\248\149\154\'\233",'\198\243]\140')]=22779-22763;
-        pj[hl('\225\194\201\217','\167\173')]=xg[hl('\223\175\239\172','\154\193')][hl('Q\150y\141','\23\249')][hl(',T0t\140\6y(}\142\0','k;D\28\237')];
-        pj[hl('\153\198\v/9G\\\164\196\29\54\4hD','\205\163s[a\6\48')]=xg[hl('\25\182)\181','\\\216')][hl('\23_\211\254\215\212\214*]\197\231\234\251\206','C:\171\138\143\149\186')][hl('W\216\56\96\216$','\20\189V')];
-        pj[hl('\190\17>\139\30\56','\238pL')]=Ol
-        local Wa=xg[hl('\141.\159\225\165.\143\240','\196@\236\149')][hl('FM_','(')](hl("\30N\'\t\6J=\24&",'J+_}'));
-        Wa[hl('\133z\172v','\214\19')]=xg[hl('b\162^\139\5','7\230')][hl('\14\5\23','\96')](0,1463680/18296,0,-6638+6652);
-        Wa[hl('\240\29\190\19\212\27\162\20','\160r\205z')]=xg[hl('\155y\167P\252','\206=')][hl('\221\214\196','\179')](0,-16686- -16738,-8577.5/-17155,-19492/-4873);
-        Wa[hl('-\144\245\177\55}D\135*jG\29\144\248\169 nY\151*mj','o\241\150\218P\15+\242D\14\19')]=7983-7982;
-        Wa[hl('%x\ti','q\29')]=hl('\4\144w\244','M\212')..gj;
-        Wa[hl('\200\157\148\144x\243\148\131\150\b','\156\248\236\228;')]=Ta[hl('\168\200q\168\233\96\177','\220\173\t')];
-        Wa[hl('0\218]\191\55\214_\174','d\191%\203')]=-12010+12018;
-        Wa[hl('\129\185\169\162','\199\214')]=xg[hl('. \30#','kN')][hl('\167i\143r','\225\6')][hl('\218\254\27\245\240\2','\157\145o')];
-        Wa[hl('\247\149\129\29\190\158K\202\151\151\4\131\177S',"\163\240\249i\230\223\'")]=xg[hl('\239y\223z','\170\23')][hl('}Y[\aW\205\n@[M\30j\226\18',')<#s\15\140f')][hl('\131-\164\180-\184','\192H\202')];
-        Wa[hl('T\239\179a\224\181','\4\142\193')]=Ol
-        local Wg=xg[hl(']1Uku1Ez','\20_&\31')][hl('\17\26\b','\127')](hl('\195\16\129\180C\226\1\141\175o','\151u\249\192\1'));
-        Wg[hl('\219\171\242\167','\136\194')]=xg[hl('V\4j-1','\3@')][hl('\255\244\230','\145')](0,3057-2992,0,-19913+19937);
-        Wg[hl('\250+\219\227\222-\199\228','\170D\168\138')]=xg[hl('\240\22\204?\151','\165R')][hl('\220\215\197','\178')](0,-182454/-30409,0,73887/24629);
-        Wg[hl('}\170\160\20r\141\228\128Q\175\128\16y\144\249\198','?\203\195\127\21\255\139\245')]=xg[hl('!;\195\r&\156','bT\175')][hl('tY\23\127y?P','\18+x')](0,0,0);
-        Wg[hl('\213\96Z\173}s\tO\235\214\232\229\96W\181j\96\20_\235\209\197','\151\1\57\198\26\1f:\133\178\188')]=0;
-        Wg[hl('t\232\\!\148\225\182_\253K\21\152\235\128Z','6\135.E\241\147\229')]=0;
-        Wg[hl(']\136q\153','\t\237')]=hl('\201\192\192','\134');
-        Wg[hl('\146\251\149\184[\169\242\130\190+','\198\158\237\204\24')]=Ta[hl('\229\242\137\174i\227\254\156\187K\232','\145\151\241\218\57')];
-        Wg[hl('i!I\230n-K\247','=D1\146')]=25151+-25138;
-        Wg[hl('\186\21\146\14','\252z')]=xg[hl('\186D\138G','\255*')][hl('VC~X','\16,')][hl('\193\55\222L\24\235\26\197H\29','\134X\170$y')];
-        Wg[hl('\0\143\157\53\128\155','P\238\239')]=Ol
-        local xd=xg[hl('11b\235\25\49r\250','x_\17\159')][hl('\5\14\28','k')](hl('\194<\247O\229\27\209R','\151u\180 '));
-        xd[hl('o\211]:\164\171~\221K=\180\170',',\188/T\193\217')]=xg[hl('q-M\4','$i')][hl('\240\251\233','\158')](0,-12818- -12825);
-        xd[hl('\229\221F\208\210@','\181\188\52')]=Wg
-        local Eh=xg[hl('Run\217zu~\200','\27\27\29\173')][hl('\227\232\250','\141')](hl('\212\216\19\4\243\254+\21','\129\145@p'));
-        Eh[hl(')\194\6\194\24','j\173')]=xg[hl('\2#\220.>\131','AL\176')][hl('\131\165\53\136\133\29\167','\229\215Z')](-11641- -11761,-12352+12480,26574+-26419);
-        Eh[hl('\16\237|;/\235p+7','D\133\21X')]=-25557- -25558;
-        Eh[hl('\221p\244\232\127\242','\141\17\134')]=Wg
-        local pi=xg[hl('U\130fZ}\130vK','\28\236\21.')][hl('\240\251\233','\158')](hl('\179\49\148.\144','\245C'));
-        pi[hl('\187\n\146\6','\232c')]=xg[hl("\27~\'W|",'N:')][hl('\\WE','2')](0,0,0,0);
-        pi[hl('{\183\50\209\183Iw5\b\156$K\183?\201\160Zj%\b\155\t','9\214Q\186\208;\24@f\248p')]=-14413/-14413;
-        pi[hl('\17\231\"$\232$','A\134P')]=Wg
-        local Jl=false;
-        Wg[hl('-\220\228\r\218S\193\198\20\220\255O\252}\221\209\v','\96\179\145~\191\17\180\178')]:Connect(function()
-            if je then
+local function Ud()
+    local He,Hm,nc={panelBg=Color3 .fromRGB(0,0,0),panelBg2=Color3 .fromRGB(0,0,0),rowBg=Color3 .fromRGB(28,28,30),rowBgHover=Color3 .fromRGB(50,50,55),tabActive=Color3 .fromRGB(50,50,55),tabIdle=Color3 .fromRGB(22,22,24),inputBg=Color3 .fromRGB(18,18,20),toggleOff=Color3 .fromRGB(50,52,65),accentPlay=Color3 .fromRGB(200,210,235),btnBg=Color3 .fromRGB(28,28,30),textPrimary=Color3 .fromRGB(235,238,248),textSecond=Color3 .fromRGB(180,185,205),textDim=Color3 .fromRGB(115,120,140),textGold=Color3 .fromRGB(255,215,80),textRed=Color3 .fromRGB(240,80,80),textGreen=Color3 .fromRGB(100,220,130),textYellow=Color3 .fromRGB(240,210,80),scrollbar=Color3 .fromRGB(145,150,170),toggleOn=Color3 .fromRGB(145,160,210),knobOff=Color3 .fromRGB(105,110,130),knobOn=Color3 .fromRGB(235,240,255),stroke=Color3 .fromRGB(70,75,95),strokeBright=Color3 .fromRGB(120,128,155)},{panel=0,panel2=0,row=0,rowH=0,tab=0,tabA=0,input=0,btn=0,btnH=0.20000000000000001,overlay=0},ym:WaitForChild'PlayerGui'
+    if not nc:FindFirstChild'AKReanimGUI'then
+        local _f=Instance.new'ScreenGui';
+        _f.Name='AKReanimGUI';
+        _f.ResetOnSpawn=false;
+        _f.Parent=nc
+        local sg=Instance.new'Frame';
+        sg.Size=UDim2 .new(0,315,0,480);
+        sg.Position=UDim2 .new(1,-330,0,20);
+        sg.BackgroundColor3=He.panelBg;
+        sg.BackgroundTransparency=Hm.panel;
+        sg.BorderSizePixel=0;
+        sg.Parent=_f
+        local jg=Instance.new'UIStroke';
+        jg.Color=Color3 .fromRGB(160,168,200);
+        jg.Thickness=1;
+        jg.Transparency=0;
+        jg.Parent=sg
+        local Ug=Instance.new'UICorner';
+        Ug.CornerRadius=UDim.new(0,12);
+        Ug.Parent=sg
+        local hh=Instance.new'Frame';
+        hh.Size=UDim2 .new(1,0,0,30);
+        hh.Position=UDim2 .new(0,0,0,0);
+        hh.BackgroundColor3=He.panelBg2;
+        hh.BackgroundTransparency=Hm.panel2;
+        hh.BorderSizePixel=0;
+        hh.Parent=sg
+        local H=Instance.new'UIStroke';
+        H.Color=He.stroke;
+        H.Thickness=1;
+        H.Transparency=0.40000000000000002;
+        H.Parent=hh
+        local Ig=Instance.new'UICorner';
+        Ig.CornerRadius=UDim.new(0,12);
+        Ig.Parent=hh
+        local oc=Instance.new'TextLabel';
+        oc.Size=UDim2 .new(1,-110,1,0);
+        oc.Position=UDim2 .new(0,52,0,0);
+        oc.BackgroundTransparency=1;
+        oc.Text='AC REANIM';
+        oc.TextColor3=He.textPrimary;
+        oc.TextSize=16;
+        oc.Font=Enum.Font.GothamBlack;
+        oc.TextXAlignment=Enum.TextXAlignment.Center;
+        oc.Parent=hh
+        local Bk=Instance.new'TextLabel';
+        Bk.Size=UDim2 .new(0,80,0,14);
+        Bk.Position=UDim2 .new(0,52,0.5,4);
+        Bk.BackgroundTransparency=1;
+        Bk.Text='ID: '..dd;
+        Bk.TextColor3=He.textDim;
+        Bk.TextSize=8;
+        Bk.Font=Enum.Font.Gotham;
+        Bk.TextXAlignment=Enum.TextXAlignment.Center;
+        Bk.Parent=hh
+        local Jf=Instance.new'TextButton';
+        Jf.Size=UDim2 .new(0,65,0,24);
+        Jf.Position=UDim2 .new(0,6,0,3);
+        Jf.BackgroundColor3=Color3 .fromRGB(0,0,0);
+        Jf.BackgroundTransparency=0;
+        Jf.BorderSizePixel=0;
+        Jf.Text='OFF';
+        Jf.TextColor3=He.textPrimary;
+        Jf.TextSize=13;
+        Jf.Font=Enum.Font.GothamBold;
+        Jf.Parent=hh
+        local Ge=Instance.new'UICorner';
+        Ge.CornerRadius=UDim.new(0,7);
+        Ge.Parent=Jf
+        local Lj=Instance.new'UIStroke';
+        Lj.Color=Color3 .fromRGB(120,128,155);
+        Lj.Thickness=1;
+        Lj.Parent=Jf
+        local Bi=Instance.new'Frame';
+        Bi.Size=UDim2 .new(0,0,0,0);
+        Bi.BackgroundTransparency=1;
+        Bi.Parent=Jf
+        local Lb=false;
+        Jf.MouseButton1Click:Connect(function()
+            if gm then
                 return
             end
-            Jl=not Jl
-            if not(Jl)then
-                Wg[hl('\136\164\164\181','\220\193')]=hl(' ))','o');
-                Wg[hl('F\152\52.\144\175\164xj\157\20*\155\178\185>','\4\249WE\247\221\203\r')]=xg[hl('\182\201J\154\212\21','\245\166&')][hl('\235U\4\224u,\207',"\141\'k")](0,0,0)
+            Lb=not Lb
+            if Lb then
+                Jf.Text='ON';
+                Jf.BackgroundColor3=Color3 .fromRGB(145,160,210)
             else
-                Wg[hl('\178P\158A','\230\53')]=hl('\244\245','\187');
-                Wg[hl('S\144^6!U\182}\127\149~2*H\171;',"\17\241=]F\'\217\b")]=xg[hl('N\atb\26+','\rh\24')][hl('\214\207\139\221\239\163\242','\176\189\228')](-9495+9640,0.02616516762060507*6115,14181+-13971)
+                Jf.Text='OFF';
+                Jf.BackgroundColor3=Color3 .fromRGB(0,0,0)
             end
-            xg[hl('A\228F\238','5\133')][hl('\199\158\197\158\209','\163\251')](function()
-                pm(Jl)
-                if not(Jl)then
-                else
-                    xg[hl('\127\157x\151','\v\252')][hl('KGY@V','87')](function()
-                        xg[hl('\162x\165r','\214\25')][hl('\2S\28F','u2')](2.305386920771536e-05*13013)
-                        if Tm and ol then
-                            ib()
+            task.defer(function()
+                Nk(Lb)
+                if Lb then
+                    task.spawn(function()
+                        task.wait(0.29999999999999999)
+                        if Pg and Dh then
+                            Dm()
                         end
                     end)
                 end
             end)
         end)
-        local gn=xg[hl('\253+\196\159\213+\212\142','\180E\183\235')][hl('=6$','S')](hl('\217{\20+6\248j\24\48\26','\141\30l_t'));
-        gn[hl('\138\173\163\161','\217\196')]=xg[hl('\183\b\139!\208','\226L')][hl('\167\172\190','\201')](0,7783+-7761,0,-0.0026835813613076361*-8198);
-        gn[hl('\206\235\\\138\234\237@\141','\158\132/\227')]=xg[hl('p\17L8\23','%U')][hl('ajx','\15')](-11055- -11056,28780-28828,0,0.00012245897624295861*32664);
-        gn[hl('\160\243\133\22\155\250\222\148\140\246\165\18\144\231\195\210','\226\146\230}\252\136\177\225')]=Ta[hl('f6j\0c','\4B')];
-        gn[hl('\233\182^\175\206m\240\229\21\21\234\217\182S\183\217~\237\245\21\18\199','\171\215=\196\169\31\159\144{q\190')]=jd[hl('\134\144\138','\228')];
-        gn[hl('|\6P\23','(c')]=hl('\247','\218');
-        gn[hl('%s\220,n\30z\203*\30','q\22\164X-')]=Ta[hl('\252q\17\180\137\250}\4\161\171\241','\136\20i\192\217')];
-        gn[hl('\178\151+\154\228\133\147?\139\211','\230\242S\238\183')]=true;
-        gn[hl('\199/\239\52','\129@')]=xg[hl('\166\198\150\197','\227\168')][hl('\224\184\200\163','\166\215')][hl('A\162\r\96ek\143\21igm','\6\205y\b\4')];
-        gn[hl('\239\145\149\193<\165b\196\132\130\245\48\175T\193','\173\254\231\165Y\215\49')]=0;
-        gn[hl('\211\175b\230\160d','\131\206\16')]=Ol
-        local J=xg[hl('\202\180\174\218\226\180\190\203','\131\218\221\174')][hl('\127tf','\17')](hl('\190p_!\153Wy<','\235\57\28N'));
-        J[hl('[\132b\192\139\52J\138t\199\155\53','\24\235\16\174\238F')]=xg[hl('\206\227\242\202','\155\167')][hl('\195\200\218','\173')](0,-3283+3290);
-        J[hl('o\139\192Z\132\198','?\234\178')]=gn
-        local Oi=xg[hl('}\2Q\249U\2A\232','4l\"\141')][hl('\30\21\a','p')](hl('\229\tC\163O\196\24O\184c','\177l;\215\r'));
-        Oi[hl('\156-\181!','\207D')]=xg[hl('m3Q\26\n','8w')][hl('\225\234\248','\143')](0,-180+202,0,8899+-8877);
-        Oi[hl('\253H\22\147\217N\n\148',"\173\'e\250")]=xg[hl('J\228v\205-','\31\160')][hl('gl~','\t')](24717+-24716,-29679+29655,0,-113344/-28336);
-        Oi[hl('\18\180-\243\57\175\19\209>\177\r\247\50\178\14\151','P\213N\152^\221|\164')]=Ta[hl(':\252\54\202?','X\136')];
-        Oi[hl('CMx\26\154\0g$K\209\236sMu\2\141\19z4K\214\193','\1,\27q\253r\bQ%\181\184')]=jd[hl('\151\129\155','\245')];
-        Oi[hl('\242>\222/','\166[')]=hl('\17','I');
-        Oi[hl('\190\208\242\t\239\133\217\229\15\159','\234\181\138}\172')]=Ta[hl('\135Kd\196y\129Gq\209[\138','\243.\28\176)')];
-        Oi[hl('\147N[3\197\164JO\"\242','\199+#G\150')]=true;
-        Oi[hl('\204J\228Q','\138%')]=xg[hl('Giwj','\2\a')][hl('\245\193\221\218','\179\174')][hl('H\245Mg\251T','\15\154\57')];
-        Oi[hl('\143\152\181\157D\225l\164\141\162\169H\235Z\161','\205\247\199\249!\147?')]=0;
-        Oi[hl('\\\177=i\190;','\f\208O')]=Ol
-        local _l=xg[hl('\167\221\224U\143\221\240D','\238\179\147!')][hl('DO]','*')](hl('(\138\188-\15\173\154\48','}\195\255B'));
-        _l[hl('\15\201\248\96+?\30\199\238g;>','L\166\138\14NM')]=xg[hl('\226c\222J',"\183\'")][hl('\141\134\148','\227')](0,-8114- -8121);
-        _l[hl('?$\165\n+\163','oE\215')]=Oi
-        local Kg=xg[hl("\184\'\145\161\144\'\129\176",'\241I\226\213')][hl('\165\174\188','\203')](hl('\208\155Q4\200\159K%\232','\132\254)@'));
-        Kg[hl('ZNsB',"\t\'")]=xg[hl('%\5\25,B','pA')][hl('\199\204\222','\169')](-18056/-18056,14063+-14079,0,-1096- -1108);
-        Kg[hl('\215\185\166\198\243\191\186\193','\135\214\213\175')]=xg[hl('gj[C\0','2.')][hl('\250\241\227','\148')](0,-0.002523659305993691*-3170,0,25469+-25437);
-        Kg[hl('\249\192S\28\232\254w\170W\206\226\201\192^\4\255\237j\186W\201\207','\187\161\48w\143\140\24\223\57\170\182')]=-5.0952817690818304e-05*-19626;
-        Kg[hl('\254B\210S',"\170\'")]=hl('\158\"o\142\181gr\202','\204G\14\234')..lb;
-        Kg[hl(' \25f\173\51\27\16q\171C','t|\30\217p')]=Ta[hl('\201\213$\201\244\53\208','\189\176\\')];
-        Kg[hl('\241A\"\232\246M \249','\165$Z\156')]=27648+-27638;
-        Kg[hl('0=\24&','vR')]=xg[hl('Mg}d','\b\t')][hl('+\247\3\236','m\152')][hl('+@\143\180o\169\176\tB\146\190a\168\135','l/\251\220\14\196\227')];
-        Kg[hl('\248b\147\205m\149','\168\3\225')]=af
-        local Zd=xg[hl('\247\190\20\249\223\190\4\232','\190\208g\141')][hl('\137\130\144','\231')](hl('U\206r\209v','\19\188'));
-        Zd[hl('\0\48)<','SY')]=xg[hl('_\159c\182\56','\n\219')][hl('\183\188\174','\217')](-10617+10618,13446-13462,0,17537+-17513);
-        Zd[hl("\'x\229\218\3~\249\221",'w\23\150\179')]=xg[hl('B\21~<%','\23Q')][hl('\189\182\164','\211')](0,28174-28166,0,-5659- -5706);
-        Zd[hl(')x\131\184d\nb\23\144%n\25x\142\160s\25\127\a\144\"C','k\25\224\211\3x\rb\254A:')]=-7987/-7987;
-        Zd[hl('k4\157^;\155',';U\239')]=af
-        local Ag,vd,ne={hl('\30\51\51','_'),hl('\147\236\163\254','\213\141'),hl('\164\215#\147\205=','\231\162P'),hl('e5\153B$\139','6A\248'),hl('\161\232\136\228','\242\129'),hl('\204\4\127\230\2d','\131p\23')},{hl('\220\209\209','\189'),hl('O\163\242[[\171\240QZ',')\194\132\52'),hl('\138e{\157\127e','\233\16\b'),hl('\6\160\201\1\177\219','u\212\168'),hl('C\163J\175','0\202'),hl('\226X\15\232^\20','\141,g')},{}
-        local km=(13378/13378)/#Ag
-        for Rc,Td in xg[hl('\159\55\180\159\53\166','\246G\213')](Ag)do
-            local pa=xg[hl('N\201\0>f\201\16/','\a\167sJ')][hl('\127tf','\17')](hl('}\218\28\251\6\\\203\16\224*',')\191d\143D'));
-            pa[hl('\234k\195g','\185\2')]=xg[hl('\180\157\136\180\211','\225\217')][hl('\208\219\201','\190')](km,-0.00042698548249359521*4684,20778/20778,0);
-            pa[hl('\151\201\223\189\179\207\195\186','\199\166\172\212')]=xg[hl('\16\128,\169w','E\196')][hl("\',>",'I')]((Rc-(-30985- -30986))*km,(Rc==26379/26379 and 0 or-0.00016079755587715066*-12438),0,0);
-            pa[hl('\205\19K\250\170S\218g\225\22k\254\161N\199!','\143r(\145\205!\181\18')]=Rc==-658/-658 and Ta[hl('\170u(V\189\96#a\187','\222\20J\23')]or Ta[hl('\229\252n\216\249\96\244','\145\157\f')];
-            pa[hl('\218;M\158\157\129\152\135\215\224\132\234;@\134\138\146\133\151\215\231\169','\152Z.\245\250\243\247\242\185\132\208')]=Rc==-5.2334100900146539e-05*-19108 and jd[hl("\'w1W",'S\22')]or jd[hl('\152\141\142','\236')];
-            pa[hl('\218\180\246\165','\142\209')]=Td;
-            pa[hl('\r\140\242\155\234\54\133\229\157\154','Y\233\138\239\169')]=Rc==-4552/-4552 and Ta[hl('o\191\230z\18i\179\243o0b','\27\218\158\14B')]or Ta[hl('VpL!#Gv[;\20','\"\21\52Up')];
-            pa[hl('_\193\3\aX\205\1\22','\v\164{s')]=-0.00093832636697091184*-11723;
-            pa[hl('\175\22\135\r','\233y')]=xg[hl('\19\186#\185','V\212')][hl('\205\192\229\219','\139\175')][hl('\136\240\29\188\130\162\221\6\184\135','\207\159i\212\227')];
-            pa[hl('\167d\144\199\143T+\140q\135\243\131^\29\137','\229\v\226\163\234&x')]=0;
-            pa[hl('2P|\a_z','b1\14')]=Zd
-            local zm=xg[hl('\171\225\224\220\131\225\240\205','\226\143\147\168')][hl('\210\217\203','\188')](hl('\229U\253\134\194r\219\155','\176\28\190\233'));
-            zm[hl('9v\178\163\a (x\164\164\23!','z\25\192\205bR')]=xg[hl('\165\188\153\149','\240\248')][hl('ryk','\28')](0,-13985+13992);
-            zm[hl('-k2\24d4','}\n@')]=pa;
-            ne[vd[Rc]]=pa
+        local Ya=Instance.new'TextButton';
+        Ya.Size=UDim2 .new(0,22,0,22);
+        Ya.Position=UDim2 .new(1,-48,0,4);
+        Ya.BackgroundColor3=He.btnBg;
+        Ya.BackgroundTransparency=Hm.btn;
+        Ya.Text='-';
+        Ya.TextColor3=He.textPrimary;
+        Ya.TextScaled=true;
+        Ya.Font=Enum.Font.GothamBlack;
+        Ya.BorderSizePixel=0;
+        Ya.Parent=hh
+        local Pi=Instance.new'UICorner';
+        Pi.CornerRadius=UDim.new(0,7);
+        Pi.Parent=Ya
+        local nk=Instance.new'TextButton';
+        nk.Size=UDim2 .new(0,22,0,22);
+        nk.Position=UDim2 .new(1,-24,0,4);
+        nk.BackgroundColor3=He.btnBg;
+        nk.BackgroundTransparency=Hm.btn;
+        nk.Text='X';
+        nk.TextColor3=He.textPrimary;
+        nk.TextScaled=true;
+        nk.Font=Enum.Font.Gotham;
+        nk.BorderSizePixel=0;
+        nk.Parent=hh
+        local uf=Instance.new'UICorner';
+        uf.CornerRadius=UDim.new(0,7);
+        uf.Parent=nk
+        local vd=Instance.new'TextLabel';
+        vd.Size=UDim2 .new(1,-16,0,12);
+        vd.Position=UDim2 .new(0,8,0,32);
+        vd.BackgroundTransparency=1;
+        vd.Text='Ready | '..ud;
+        vd.TextColor3=He.textDim;
+        vd.TextSize=10;
+        vd.Font=Enum.Font.GothamSemibold;
+        vd.Parent=sg
+        local Sk=Instance.new'Frame';
+        Sk.Size=UDim2 .new(1,-16,0,24);
+        Sk.Position=UDim2 .new(0,8,0,47);
+        Sk.BackgroundTransparency=1;
+        Sk.Parent=sg
+        local nf,V,Hc={'All','Favs','Custom','States','Size','Others'},{'all','favorites','custom','states','size','others'},{}
+        local ei=1/#nf
+        for Fa,og in ipairs(nf)do
+            local Ra=Instance.new'TextButton';
+            Ra.Size=UDim2 .new(ei,-2,1,0);
+            Ra.Position=UDim2 .new((Fa-1)*ei,(Fa==1 and 0 or 2),0,0);
+            Ra.BackgroundColor3=Fa==1 and He.tabActive or He.tabIdle;
+            Ra.BackgroundTransparency=Fa==1 and Hm.tabA or Hm.tab;
+            Ra.Text=og;
+            Ra.TextColor3=Fa==1 and He.textPrimary or He.textSecond;
+            Ra.TextSize=11;
+            Ra.Font=Enum.Font.GothamBold;
+            Ra.BorderSizePixel=0;
+            Ra.Parent=Sk
+            local Db=Instance.new'UICorner';
+            Db.CornerRadius=UDim.new(0,7);
+            Db.Parent=Ra;
+            Hc[V[Fa]]=Ra
         end
-        local Cm=xg[hl('\139\139\199N\163\139\215_','\194\229\180:')][hl('\27\16\2','u')](hl('\176\228\29\144\195\n\156','\228\129e'));
-        Cm[hl('J\242c\254','\25\155')]=xg[hl('\b\96\52Io',']$')][hl('\30\21\a','p')](22011+-22010,25364+-25380,0,673-651);
-        Cm[hl('$EU\140\0CI\139','t*&\229')]=xg[hl('\168\221\148\244\207','\253\153')][hl('_TF','1')](0,-1907- -1915,0,3216-3140);
-        Cm[hl('\193n\163\245n\136\24>\237k\131\241e\149\5x','\131\15\192\158\t\250wK')]=Ta[hl('\210\171\53\206\177\a\220','\187\197E')];
-        Cm[hl('3\192\248\5\142\177\130A\217\146\206\3\192\245\29\153\162\159Q\217\149\227','q\161\155n\233\195\237\52\183\246\154')]=jd[hl('\235\212\242\207\246','\130\186')];
-        Cm[hl('\251\0\215\17','\175e')]='';
-        Cm[hl('\246\27\239\171\57v.\202\19\235\186\b{9\210','\166w\142\200\\\30A')]=hl('\157\250\209@\173\247\158\28\224','\206\159\176\50');
-        Cm[hl('\158\246!\138f\165\255\54\140\22','\202\147Y\254%')]=Ta[hl(']\247\191\49{[\251\170$YP',')\146\199E+')];
-        Cm[hl('\237\240-\201\0\24\204\191\217\249>\233\n\28\204\161\142','\189\156L\170ep\163\211')]=Ta[hl('\166\172\200\166\141\217\191','\210\201\176')];
-        Cm[hl('\31\189\132}\24\177\134l','K\216\252\t')]=17966+-17954;
-        Cm[hl('f0N+',' _')]=xg[hl('\135\218\183\217','\194\180')][hl('+X\3C','m7')][hl('\214\172\139\152\207n\138\244\174\150\146\193o\189','\145\195\255\240\174\3\217')];
-        Cm[hl('\185\254*\219\57F\249\146\235=\239\53L\207\151','\251\145X\191\\\52\170')]=0;
-        Cm[hl('\214\247\a\227\248\1','\134\150u')]=af
-        local nj=xg[hl('\236J\3\30\196J\19\15','\165$pj')][hl('\218\209\195','\180')](hl('\206\135\180\208\233\161\140\193','\155\206\231\164'));
-        nj[hl('\18\203=\203#','Q\164')]=xg[hl('R\177\178~\172\237','\17\222\222')][hl('H\v\149C+\189l','.y\250')](-17728+17818,-353760/-3685,-1557960/-12983);
-        nj[hl(':\199Z\250\5\193V\234\29','n\175\51\153')]=25413-25412;
-        nj[hl('\"\129\235\178~\128\23\129\239\178n\137','v\243\138\220\r\240')]=0;
-        nj[hl('\183\135\176\130\136\182','\231\230\194')]=Cm
-        local Jg=xg[hl('\242\249E^\218\249UO','\187\151\54*')][hl('\25\18\0','w')](hl('!\135-\139\6\160\v\150','t\206n\228'));
-        Jg[hl('\239e\174\129\152\22\254k\184\134\136\23','\172\n\220\239\253d')]=xg[hl('o\184S\145',':\252')][hl('\143\132\150','\225')](0,-0.00061933885577146399*-12917);
-        Jg[hl("ON\'zA!",'\31/U')]=Cm
-        local Gb=xg[hl('\132\190\151\176\172\190\135\161','\205\208\228\196')][hl('\160\171\185','\206')](hl('\\\208\242k\235\"\\a\212\198v\230#P','\15\179\128\4\135N5'));
-        Gb[hl('\144k\185g','\195\2')]=xg[hl('t\195H\234\19','!\135')][hl('\216\211\193','\182')](1257-1256,15185-15201,-5.2167562209817936e-05*-19169,0.0067706116764034508*-25847);
-        Gb[hl('\164\238R{\128\232N|','\244\129!\18')]=xg[hl('\234n\214G\141','\191*')][hl('CHZ','-')](0,-0.00063401489935013475*-12618,0,-22141- -22245);
-        Gb[hl('\16K\210\28\137\57f\250\209\16\29 K\223\4\158*{\234\209\23\48','R*\177w\238K\t\143\191tI')]=-2505- -2506;
-        Gb[hl('\202;\128\t\vVV4\28\205\48\155\5\fTq&\29','\153X\242fg:\20Un')]=67785/22595;
-        Gb[hl('\136p\31\2\54\14P\n\241\150\182r\n\b\25\r~\4\241\236','\219\19mmZb\18k\131\223')]=Ta[hl('\242Co\203\237L\127\197\243','\129 \29\164')];
-        Gb[hl('r\138\242\180&\134\231\22\233\252\230J\17D\189\242\186$\153\213\22\233\208\229H\15','!\233\128\219J\234\165w\155\181\139+v')]=1.9574579146548348e-05*15326;
-        Gb[hl('\202\nb\242\51\143/\225\31u\198?\133\25\228','\136e\16\150V\253|')]=0;
-        Gb[hl('\158[\131\155\49\254P\140X\137Q\131\145>\230P\141Q','\205\56\241\244]\146\57\226?')]=xg[hl('\230\186\214\185','\163\212')][hl("\244i\147\15\134\221M&+\227c\147\5\137\197M\'\"",'\167\n\225\96\234\177$HL')][hl('\215','\142')];
-        Gb[hl('\162\3e\151\fc','\242b\23')]=af
-        local zl=xg[hl('\135#\29;\175#\r*','\206MnO')][hl('\231\236\254','\137')](hl('\248\48\181\247Z\189\225\24\128\241\\\189','\173y\249\158)\201'));
-        zl[hl('b\165\192V\173\202U','2\196\164')]=xg[hl('@\146|\187','\21\214')][hl('\5\14\28','k')](0,55743/18581);
-        zl[hl('\132\196\214\n\152\217\192\27\165','\215\171\164~')]=xg[hl('-\b\29\v','hf')][hl('[\131\188\141G\158\170\156z','\b\236\206\249')][hl('\209\127#\194q\233Q(\201a\239','\157\30Z\173\4')];
-        zl[hl('\204\183\130\249\184\132','\156\214\240')]=Gb
-        local na=xg[hl('\252\190?a\212\190/p','\181\208L\21')][hl('\235\224\242','\133')](hl('\133\245\162\234\166','\195\135'));
-        na[hl('\195\0\234\f','\144i')]=xg[hl('^\nb#9','\vN')][hl(">5\'",'P')](15176-15175,-0.00073766712770862147*21690,0,-10896- -10976);
-        na[hl('\b\232\96\15,\238|\b','X\135\19f')]=xg[hl('\199\144\251\185\160','\146\212')][hl('\146\153\139','\252')](0,-150144/-18768,0,-10756- -10860);
-        na[hl('L|U\141\55\235\201\150Gf\250||X\149 \248\212\134Ga\215','\14\29\54\230P\153\166\227)\2\174')]=19260/19260;
-        na[hl('d\189Q[\182NW','2\212\"')]=false;
-        na[hl('uJ[@E]','%+)')]=af
-        local Mg=xg[hl('\29\fm\t\53\f}\24','Tb\30}')][hl('29+','\\')](hl('\134/>\166\b)\170','\210JF'));
-        Mg[hl('t\247]\251',"\'\158")]=xg[hl('\221\23\225>\186','\136S')][hl('\186\177\163','\212')](-0.00023174971031286211*-4315,0,0,24849+-24827);
-        Mg[hl('a\147$\137E\149\56\142','1\252W\224')]=xg[hl('B\254~\215%','\23\186')][hl('en|','\v')](0,0,0,0);
-        Mg[hl('\164J\213\n}\232\143\202\136O\245\14v\245\146\140','\230+\182a\26\154\224\191')]=Ta[hl('Q\139\221M\145\239_','8\229\173')];
-        Mg[hl('\207F\201\190 IA\186\217\205\187\255F\196\166\55Z\\\170\217\202\150',"\141\'\170\213G;.\207\183\169\239")]=jd[hl('\30B\aY\3','w,')];
-        Mg[hl('\187k\151z','\239\14')]='';
-        Mg[hl('\149|P\225[\155d\169tT\240j\150s\177','\197\16\49\130>\243\v')]=hl('\242\238\158\141\134\29\198\b\221\160\185\129\138\f\129I\157','\179\128\247\224\231i\175g');
-        Mg[hl('\155\135\96\252y\160\142w\250\t','\207\226\24\136:')]=Ta[hl('\209\132\b\224\251\215\136\29\245\217\220','\165\225p\148\171')];
-        Mg[hl('\162rm0\137\215\149\186\150{~\16\131\211\149\164\193','\242\30\fS\236\191\250\214')]=Ta[hl('3\143s3\174b*','G\234\v')];
-        Mg[hl('k?\28il3\30x','?Zd\29')]=-234421/-21311;
-        Mg[hl('\215\186\255\161','\145\213')]=xg[hl('Z\135j\132','\31\233')][hl('h3@(','.\\')][hl('D4\26k:\3','\3[n')];
-        Mg[hl('\18?Ct\18\164\235\57*T@\30\174\221<','PP1\16w\214\184')]=0;
-        Mg[hl('e8\188P7\186','5Y\206')]=na
-        local ih=xg[hl('\137\244\205\136\161\244\221\153','\192\154\190\252')][hl('bi{','\f')](hl('\138D\167\232\173c\129\245','\223\r\228\135'));
-        ih[hl('\237?\225\167A3\252\49\247\160Q2','\174P\147\201$A')]=xg[hl('t\138H\163','!\206')][hl('\215\220\206','\185')](0,228992/28624);
-        ih[hl('\134!\v\179.\r','\214@y')]=Mg
-        local Zc=xg[hl('\160\20\197\208\136\20\213\193','\233z\182\164')][hl('\192\203\217','\174')](hl('Mb\172mE\187a','\25\a\212'));
-        Zc[hl('N#g/','\29J')]=xg[hl('\163\178\159\155\196','\246\246')][hl('EN\\','+')](-3.9154267815191856e-05*-25540,0,0,-20605- -20650);
-        Zc[hl('n\132\17>J\130\r\57','>\235bW')]=xg[hl('8q\4X_','m5')][hl('\175\164\182','\193')](0,0,0,0.13300492610837439*203);
-        Zc[hl('\166\178\19\187\4\243~}\138\183\51\191\15\238c;','\228\211p\208c\129\17\b')]=Ta[hl('\195{\156\223a\174\205','\170\21\236')];
-        Zc[hl('t[<\215K\145\170]\190\242\186D[1\207\\\130\183M\190\245\151','6:_\188,\227\197(\208\150\238')]=jd[hl('\161\162\184\185\188','\200\204')];
-        Zc[hl('\221\21\241\4','\137p')]='';
-        Zc[hl("\220\53#\3\241\0Q\224=\'\18\192\rF\248",'\140YB\96\148h>')]=hl("\184\23~\242\t\187\19\55\200\209Z\179\210\4\156\0\'\213\b\169\27&\200\219q\249\153\n",'\243r\a\148{\218~R\232\146\53\215\183$');
-        Zc[hl('Y\26\208@>b\19\199FN','\r\127\168\52}')]=Ta[hl('\212\225;1w\210\237.$U\217',"\160\132CE\'")];
-        Zc[hl('\157\n%)\245\141h\21\169\3\54\t\255\137h\v\254','\205fDJ\144\229\ay')]=Ta[hl('\185\0W\185!F\160','\205e/')];
-        Zc[hl('Z^hv]Rjg','\14;\16\2')]=0.00074472486553578822*12085;
-        Zc[hl('\166\133\142\158','\224\234')]=xg[hl('\237\50\221\49','\168\\')][hl('\24\162\48\185','^\205')][hl('B\145e\155','\1\254')];
-        Zc[hl('\29(\209\28\208;,\217\24\226-','IM\169h\135')]=true;
-        Zc[hl('\156\189\6q\140\192x\161\191\16h\177\239\96','\200\216~\5\212\129\20')]=xg[hl("\23\150\'\149",'R\248')][hl('+\139\210P\186\205\167\22\137\196I\135\226\191','\127\238\170$\226\140\203')][hl('%\241\15\224','i\148')];
-        Zc[hl('DS=\162}<7yQ+\187A\19/','\16\54E\214$}[')]=xg[hl('\158\182\174\181','\219\216')][hl('Z>\234=\192\21\181g<\252$\252:\173','\14[\146I\153T\217')][hl('\133\190\161','\209')];
-        Zc[hl('\158\24\203\127\131\203\235\54\169;\192X\158\252\251=','\221t\174\30\241\159\142N')]=false;
-        Zc[hl('\157\229y\195\185\220|\217\181','\208\144\21\183')]=true;
-        Zc[hl('\222\241\191\241ju\19\245\228\168\197f\127%\240','\156\158\205\149\15\a@')]=0;
-        Zc[hl('_\142\147j\129\149','\15\239\225')]=na
-        local Xh=xg[hl('\187\217\246P\147\217\230A','\242\183\133$')][hl('sxj','\29')](hl('\23\207\177\127\48\232\151b','B\134\242\16'));
-        Xh[hl('A\195+\167{4P\205=\160k5','\2\172Y\201\30F')]=xg[hl('$f\24O','q\"')][hl('\25\18\0','w')](0,3120-3112);
-        Xh[hl('\167\169\14\146\166\b','\247\200|')]=Zc
-        local Af=xg[hl('\225\153?{\201\153/j','\168\247L\15')][hl('\159\148\134','\241')](hl('8\132\31\155\27','~\246'));
-        Af[hl('\194!\235-','\145H')]=xg[hl('\30j\"Cy','K.')][hl('U^L',';')](21606+-21605,276304/-17269,21208+-21207,4087-4262);
-        Af[hl('\195N\220\\\231H\192[','\147!\175\53')]=xg[hl('\233\195\213\234\142','\188\135')][hl('U^L',';')](0,-22770+22778,0,-24660+24764);
-        Af[hl('\216\218\31\236\51\167\218px\196\204\232\218\18\244$\180\199\96x\195\225','\154\187|\135T\213\181\5\22\160\152')]=-19114/-19114;
-        Af[hl('ey\252Zr\227V','3\16\143')]=false;
-        Af[hl('\131\25\179\182\22\181','\211x\193')]=af
-        local eg=xg[hl('\"?\f\178\n?\28\163','kQ\127\198')][hl('\192\203\217','\174')](hl('e\155i\0{\167\193X\159]\29v\166\205','6\248\27o\23\203\168'));
-        eg[hl('arH~','2\27')]=xg[hl("\27[\'r|",'N\31')][hl('\226\233\251','\140')](-20938+20939,0,-910- -911,0);
-        eg[hl('Mw\248\226iq\228\229','\29\24\139\139')]=xg[hl('\132\176\184\153\227','\209\244')][hl('RYK','<')](0,0,0,0);
-        eg[hl('\21v\233\220\159\242N\203\143\5\5%v\228\196\136\225S\219\143\2(','W\23\138\183\248\128!\190\225aQ')]=38/38;
-        eg[hl('i\255\145\180~U{\235\231n\244\138\184yW\\\249\230',':\156\227\219\18\57\57\138\149')]=-2963+2966;
-        eg[hl('\193\20\202\210mR\226Z\217=\255\22\223\216BQ\204T\217G','\146w\184\189\1>\160;\171t')]=Ta[hl('\22h\24\198\tg\b\200\23','e\vj\169')];
-        eg[hl('\23\187\4\184\242.\247\172fZ\2}U!\140\4\182\240\49\197\172fv\1\127K','D\216v\215\158B\181\205\20\19o\28\50')]=8312.3999999999996/27708;
-        eg[hl('O\156i\164\221\137\255d\137~\144\209\131\201a','\r\243\27\192\184\251\172')]=0;
-        eg[hl('\225+\208\212$\214','\177J\162')]=Af
-        local rb=xg[hl('$a\203\219\fa\219\202','m\15\184\175')][hl('\239\228\246','\129')](hl('5\132\187\205\165\181,\172\142\203\163\181','\96\205\247\164\214\193'));
-        rb[hl('\234\23\190\222\31\180\221','\186v\218')]=xg[hl('\198\b\250!','\147L')][hl('\27\16\2','u')](0,-8363+8373);
-        rb[hl('e*\166$y7\176\53D','6E\212P')]=xg[hl('&\161\22\162','c\207')][hl('n\229\200\211r\248\222\194O','=\138\186\167')][hl('\195f=E\172\251H6N\188\253','\143\aD*\217')];
-        rb[hl('\179\49n\134>h','\227P\28')]=eg
-        local function Lg(tl,Cl,F)
-            local uf=xg[hl('49\f\138\28\57\28\155','}W\127\254')][hl('\167\172\190','\201')](hl('*\v\r\20\t','ly'));
-            uf[hl('\v\26\"\22','Xs')]=xg[hl('\145\212\173\253\246','\196\144')][hl('\127tf','\17')](24294+-24293,0,0,0.0046519495897826271*23646);
-            uf[hl('~\194\140R\21k\155CR\199\172V\30v\134\5','<\163\239\57r\25\244\54')]=Ta[hl('\164\18\175z\184\49\166-','\212s\193\31')];
-            uf[hl('Z\255U!I\19\152\193\157x\164j\255X9^\0\133\209\157\127\137','\24\158\54J.a\247\180\243\28\240')]=jd[hl('\219\14\51\206\3o','\171o]')];
-            uf[hl('\b\204o\205\163lP#\217x\249\175ff&','J\163\29\169\198\30\3')]=0;
-            uf[hl('\196\26\221$c\252\52\214/s\250','\136{\164K\22')]=F;
-            uf[hl('Q\158\159d\145\153','\1\255\237')]=eg
-            local G=xg[hl('[\164O\20s\164_\5','\18\202<\96')][hl('\221\214\196','\179')](hl("\'\207\254\56\0\233\198)",'r\134\173L'));
-            G[hl('8,\23,\t','{C')]=xg[hl('\235z\235\199g\180','\168\21\135')][hl('\191\131\54\180\163\30\155','\217\241Y')](-32710- -32760,-25088+25143,-0.017309594460929771*-4044);
-            G[hl('\205@L\166\242F@\182\234','\153(%\197')]=8.6467790747946394e-05*11565;
-            G[hl('\174x\188\50\165\231\155x\184\50\181\238','\250\n\221\\\214\151')]=7778.5-7778;
-            G[hl('D\216\nq\215\f','\20\185x')]=uf
-            local v=xg[hl('\207\159\18\133\231\159\2\148','\134\241a\241')][hl('\154\145\131','\244')](hl('\253\250b\251\218\221D\230','\168\179!\148'));
-            v[hl('O\251\191\217\155G^\245\169\222\139F','\f\148\205\183\254\53')]=xg[hl('9\146\5\187','l\214')][hl('%.<','K')](0,-22954+22964);
-            v[hl('p\251\161E\244\167',' \154\211')]=uf
-            local Lb=xg[hl('q\rg\\Y\rwM','8c\20(')][hl(':1#','T')](hl('\180\130Rv\172\134Hg\140','\224\231*\2'));
-            Lb[hl('\247\233\222\229','\164\128')]=xg[hl('\150\218\170\243\241','\195\158')][hl('\186\177\163','\212')](8.8004928275983458e-05*11363,16555-16565,0,230480/11524);
-            Lb[hl('\19\167\153\149\55\161\133\146','C\200\234\252')]=xg[hl('%[\25rB','p\31')][hl('\253\246\228','\147')](0,0.0003117595710188303*16038,0,30738-30733);
-            Lb[hl("\184{\224\30U_\\\'\254\23\130\136{\237\6BLA7\254\16\175",'\250\26\131u2-3R\144s\214')]=-0.00048449612403100775*-2064;
-            Lb[hl('P\133|\148','\4\224')]=Cl;
-            Lb[hl('\254\243\218,\205\197\250\205*\189','\170\150\162X\142')]=Ta[hl('\209\164\53\170\221\215\168 \191\255\220','\165\193M\222\141')];
-            Lb[hl('q\170\244\138v\166\246\155','%\207\140\254')]=0.00043561912367952955*27547;
-            Lb[hl('d\182L\173','\"\217')]=xg[hl('U\135e\132','\16\233')][hl('&&\14=','\96I')][hl('H\195\193\191=b\238\218\187\56','\15\172\181\215\\')];
-            Lb[hl('\132\135\160i)[m\185\133\182p\20tu','\208\226\216\29q\26\1')]=xg[hl('y@IC','<.')][hl('\29FB\158Wu\23 DT\135jZ\15','I#:\234\15\52{')][hl('\195h\233y','\143\r')];
-            Lb[hl('\\\151\162i\152\164','\f\246\208')]=uf
-            local _d=xg[hl('\f\28(\150$\28\56\135','Er[\226')][hl('\171\160\178','\197')](hl('\186\161\196\231\174\155\176\200\252\130','\238\196\188\147\236'));
-            _d[hl('?\238\22\226','l\135')]=xg[hl('\253\133\193\172\154','\168\193')][hl('\1\n\24','o')](1203+-1202,-20886- -20876,0,191175/7647);
-            _d[hl('Se\229\56wc\249?','\3\n\150Q')]=xg[hl("[\14g\'<",'\14J')][hl('^UG','0')](0,-18950+18955,0,-24537- -24567);
-            _d[hl('\25\215N3\188\19\139\49\53\210n7\183\14\150w','[\182-X\219a\228D')]=Ta[hl('?\25}#\3O1','Vw\r')];
-            _d[hl('hE~\208\201\142um\254\25\225XEs\200\222\157h}\254\30\204','*$\29\187\174\252\26\24\144}\181')]=jd[hl('JfS}W','#\b')]
-            local Vk
-            if sa[tl]and sa[tl]~=''then
-                local th_,Md;
-                th_,Md,Vk=xg[hl('\131\177\154\162\128','\243\208')](nd)
+        local ql=Instance.new'TextBox';
+        ql.Size=UDim2 .new(1,-16,0,22);
+        ql.Position=UDim2 .new(0,8,0,76);
+        ql.BackgroundColor3=He.inputBg;
+        ql.BackgroundTransparency=Hm.input;
+        ql.Text='';
+        ql.PlaceholderText='Search...';
+        ql.TextColor3=He.textPrimary;
+        ql.PlaceholderColor3=He.textDim;
+        ql.TextSize=12;
+        ql.Font=Enum.Font.GothamSemibold;
+        ql.BorderSizePixel=0;
+        ql.Parent=sg
+        local Kd=Instance.new'UIStroke';
+        Kd.Color=Color3 .fromRGB(90,96,120);
+        Kd.Thickness=1;
+        Kd.Transparency=0;
+        Kd.Parent=ql
+        local Xj=Instance.new'UICorner';
+        Xj.CornerRadius=UDim.new(0,8);
+        Xj.Parent=ql
+        local Fj=Instance.new'ScrollingFrame';
+        Fj.Size=UDim2 .new(1,-16,1,-175);
+        Fj.Position=UDim2 .new(0,8,0,104);
+        Fj.BackgroundTransparency=1;
+        Fj.ScrollBarThickness=3;
+        Fj.ScrollBarImageColor3=He.scrollbar;
+        Fj.ScrollBarImageTransparency=0.29999999999999999;
+        Fj.BorderSizePixel=0;
+        Fj.ScrollingDirection=Enum.ScrollingDirection.Y;
+        Fj.Parent=sg
+        local Jm=Instance.new'UIListLayout';
+        Jm.Padding=UDim.new(0,3);
+        Jm.SortOrder=Enum.SortOrder.LayoutOrder;
+        Jm.Parent=Fj
+        local kn=Instance.new'Frame';
+        kn.Size=UDim2 .new(1,-16,0,80);
+        kn.Position=UDim2 .new(0,8,0,104);
+        kn.BackgroundTransparency=1;
+        kn.Visible=false;
+        kn.Parent=sg
+        local dm=Instance.new'TextBox';
+        dm.Size=UDim2 .new(1,0,0,22);
+        dm.Position=UDim2 .new(0,0,0,0);
+        dm.BackgroundColor3=He.inputBg;
+        dm.BackgroundTransparency=Hm.input;
+        dm.Text='';
+        dm.PlaceholderText='Animation Name...';
+        dm.TextColor3=He.textPrimary;
+        dm.PlaceholderColor3=He.textDim;
+        dm.TextSize=11;
+        dm.Font=Enum.Font.Gotham;
+        dm.BorderSizePixel=0;
+        dm.Parent=kn
+        local We=Instance.new'UICorner';
+        We.CornerRadius=UDim.new(0,8);
+        We.Parent=dm
+        local kj=Instance.new'TextBox';
+        kj.Size=UDim2 .new(1,0,0,45);
+        kj.Position=UDim2 .new(0,0,0,27);
+        kj.BackgroundColor3=He.inputBg;
+        kj.BackgroundTransparency=Hm.input;
+        kj.Text='';
+        kj.PlaceholderText='Keyframe Code or Asset ID...';
+        kj.TextColor3=He.textPrimary;
+        kj.PlaceholderColor3=He.textDim;
+        kj.TextSize=9;
+        kj.Font=Enum.Font.Code;
+        kj.TextWrapped=true;
+        kj.TextXAlignment=Enum.TextXAlignment.Left;
+        kj.TextYAlignment=Enum.TextYAlignment.Top;
+        kj.ClearTextOnFocus=false;
+        kj.MultiLine=true;
+        kj.BorderSizePixel=0;
+        kj.Parent=kn
+        local Vb=Instance.new'UICorner';
+        Vb.CornerRadius=UDim.new(0,8);
+        Vb.Parent=kj
+        local Pa=Instance.new'Frame';
+        Pa.Size=UDim2 .new(1,-16,1,-175);
+        Pa.Position=UDim2 .new(0,8,0,104);
+        Pa.BackgroundTransparency=1;
+        Pa.Visible=false;
+        Pa.Parent=sg
+        local tb=Instance.new'ScrollingFrame';
+        tb.Size=UDim2 .new(1,0,1,0);
+        tb.Position=UDim2 .new(0,0,0,0);
+        tb.BackgroundTransparency=1;
+        tb.ScrollBarThickness=3;
+        tb.ScrollBarImageColor3=He.scrollbar;
+        tb.ScrollBarImageTransparency=0.29999999999999999;
+        tb.BorderSizePixel=0;
+        tb.Parent=Pa
+        local tf=Instance.new'UIListLayout';
+        tf.Padding=UDim.new(0,10);
+        tf.SortOrder=Enum.SortOrder.LayoutOrder;
+        tf.Parent=tb
+        local function Ph(cg,pm,ra)
+            local Lk=Instance.new'Frame';
+            Lk.Size=UDim2 .new(1,0,0,110);
+            Lk.BackgroundColor3=He.panelBg2;
+            Lk.BackgroundTransparency=Hm.panel2;
+            Lk.BorderSizePixel=0;
+            Lk.LayoutOrder=ra;
+            Lk.Parent=tb
+            local Mj=Instance.new'UIStroke';
+            Mj.Color=Color3 .fromRGB(50,55,70);
+            Mj.Thickness=1;
+            Mj.Transparency=0.5;
+            Mj.Parent=Lk
+            local yh=Instance.new'UICorner';
+            yh.CornerRadius=UDim.new(0,10);
+            yh.Parent=Lk
+            local be=Instance.new'TextLabel';
+            be.Size=UDim2 .new(1,-10,0,20);
+            be.Position=UDim2 .new(0,5,0,5);
+            be.BackgroundTransparency=1;
+            be.Text=pm;
+            be.TextColor3=He.textPrimary;
+            be.TextSize=12;
+            be.Font=Enum.Font.GothamBold;
+            be.TextXAlignment=Enum.TextXAlignment.Left;
+            be.Parent=Lk
+            local c=Instance.new'TextButton';
+            c.Size=UDim2 .new(1,-10,0,25);
+            c.Position=UDim2 .new(0,5,0,30);
+            c.BackgroundColor3=He.inputBg;
+            c.BackgroundTransparency=Hm.input
+            local Kf
+            if ma[cg]and ma[cg]~=''then
+                local Nd,hj;
+                Nd,hj,Kf=pairs(md)
                 while true do
-                    local Aj;
-                    Vk,Aj=th_(Md,Vk)
-                    if Vk==nil then
-                        Vk=hl('\175\199H\227!lr>\135\149\207E\242+w<Q\199\210','\252\162$\134B\24R\127\233')
+                    local kc;
+                    Kf,kc=Nd(hj,Kf)
+                    if Kf==nil then
+                        Kf='Select Animation...'
                         break
                     end
-                    if xg[hl(';-i\141=+t\158','OB\26\249')](Aj)==xg[hl('\218\226~\131\220\228c\144','\174\141\r\247')](sa[tl])then
+                    if tostring(kc)==tostring(ma[cg])then
                         break
                     end
                 end
-                if Vk==hl('r\251m\186\nv\201\140\aH\243\96\171\0m\135\227G\15','!\158\1\223i\2\233\205i')then
-                    Vk=hl('\140;{\164\31w\172\145\170\55n\162\17w\233\169','\207N\b\208p\26\140\218')
+                if Kf=='Select Animation...'then
+                    Kf='Custom Keyframes'
                 end
             else
-                Vk=hl('%\204\48U\157\166_\202\51\31\196=D\151\189\17\165sX','v\169\\\48\254\210\127\139]')
+                Kf='Select Animation...'
             end
-            _d[hl('\203D\231U','\159!')]=Vk;
-            _d[hl('\130\193Y\fe\185\200N\n\21','\214\164!x&')]=Ta[hl('\242\48plt\227\54gvC',"\134U\b\24\'")];
-            _d[hl('\195\144\160\56\196\156\162)','\151\245\216L')]=-0.00072737852778585971*-13748;
-            _d[hl('\222\204\246\215','\152\163')]=xg[hl('\223\172\239\175','\154\194')][hl('%\171\r\176','c\196')][hl('\28\201a3\199x','[\166\21')];
-            _d[hl('Z\174Yg\5-xg\172O~8\2\96','\14\203!\19]l\20')]=xg[hl('3L\3O','v\"')][hl('q\235#\152e\0\254L\233\53\129X/\230','%\142[\236=A\146')][hl(' M\n\\','l(')];
-            _d[hl('9\130\151GX\162<\18\151\128sT\168\n\23','{\237\229#=\208o')]=0;
-            _d[hl('\r\203s8\196u',']\170\1')]=uf
-            local Kk=xg[hl(':\\-\255\18\\=\238','s2^\139')][hl('7<.','Y')](hl('JRsfmuU{','\31\27\48\t'));
-            Kk[hl('\255\b>\b\182\168\238\6(\15\166\169','\188gLf\211\218')]=xg[hl('\200\29\244\52','\157Y')][hl('\180\191\173','\218')](0,0.00023756999830307145*29465);
-            Kk[hl('\183\222\243\130\209\245','\231\191\129')]=_d
-            local Yi=xg[hl('\202\239$\136\226\239\52\153','\131\129W\252')][hl('\191\180\166','\209')](hl('\215\186+\172\230\151\18\163\229','\130\243{\205'));
-            Yi[hl('\179r\231s\a\141t\207r\b\151','\227\19\131\23n')]=xg[hl('p\242L\219','%\182')][hl('T_M',':')](0,-3178+3186);
-            Yi[hl('\216P8\237_>','\136\49J')]=_d
-            local Ec=xg[hl('\24\20Z\181\48\20J\164','Qz)\193')][hl('\141\134\148','\227')](hl('\170z\1\138]\22\134','\254\31y'));
-            Ec[hl('\0\215)\219','S\190')]=xg[hl('\209$\237\r\182','\132\96')][hl('w|n','\25')](-23449/-23449,-7588- -7578,0,-0.0017248814144027599*-23190);
-            Ec[hl('8\153\224\147\28\159\252\148','h\246\147\250')]=xg[hl('\197T\249}\162','\144\16')][hl('\156\151\133','\242')](0,-29822+29827,0,-21448- -21508);
-            Ec[hl('l\181\21\128\157\247\239\182@\176\53\132\150\234\242\240','.\212v\235\250\133\128\195')]=Ta[hl('+\249\160\55\227\146%','B\151\208')];
-            Ec[hl('\233\241\135{\214\203\167\234\177\212\49\217\241\138c\193\216\186\250\177\211\28','\171\144\228\16\177\185\200\159\223\176e')]=jd[hl('\4\25\29\2\25','mw')];
-            Ec[hl('\202\185\230\168','\158\220')]='';
-            Ec[hl("\\/\147b\242\128U\96\'\151s\195\141Bx",'\fC\242\1\151\232:')]=hl('\194\204\142!\191bO|y\213\242\187\235\204\207<\187\49Xv=\219\185\236\163','\141\190\174Q\222\17;\25Y\190\151\194');
-            Ec[hl('c;\190?\238X2\169\57\158','7^\198K\173')]=Ta[hl('\176\v\221\142\161\182\a\200\155\131\189','\196n\165\250\241')];
-            Ec[hl('z\145%=a\21\231\247N\152\54\29k\17\231\233\25','*\253D^\4}\136\155')]=Ta[hl('\203\175\196\203\142\213\210','\191\202\188')];
-            Ec[hl('\241\30R\26\246\18P\v','\165{*n')]=364-355;
-            Ec[hl('JCbX','\f,')]=xg[hl('\198u\246v','\131\27')][hl('\144\51\184(','\214\\')][hl('\241\166\214\172','\178\201')];
-            Ec[hl('\216\213\196R\6\254\209\204V4\232','\140\176\188&Q')]=true;
-            Ec[hl('\213?\30\134\244\223\244\232=\b\159\201\240\236','\129Zf\242\172\158\152')]=xg[hl('*\246\26\245','o\152')][hl('\171\180\151\213bH\198\150\182\129\204_g\222','\255\209\239\161:\t\170')][hl('y\227S\242','5\134')];
-            Ec[hl('RkMJ\6\239Poi[S:\192H','\6\14\53>_\174<')]=xg[hl(' \252\16\255','e\146')][hl('\255\176\233/\129\53m\194\178\255\54\189\26u','\171\213\145[\216t\1')][hl('Yb}','\r')];
-            Ec[hl('\226O\236\153V\196\177n\213l\231\190K\243\161e','\161#\137\248$\144\212\22')]=false;
-            Ec[hl('\140q\249\177\168H\252\171\164','\193\4\149\197')]=true;
-            Ec[hl('\195\203\247\175|#f\232\222\224\155p)P\237','\129\164\133\203\25Q5')]=0;
-            Ec[hl('m\232@X\231F','=\137\50')]=uf
-            local Nk=xg[hl('\140q\134\194\164q\150\211','\197\31\245\182')][hl('\218\209\195','\180')](hl('\30\239T\225\57\200r\252','K\166\23\142'));
-            Nk[hl('\169\226tb\207\219\184\236be\223\218','\234\141\6\f\170\169')]=xg[hl('\148p\168Y','\193\52')][hl('ryk','\28')](0,-6937- -6944);
-            Nk[hl('\180\f\163\129\3\165','\228m\209')]=Ec
-            local Ed,Nc=false,nil;
-            _d[hl(')\23\151\154~\185\226\161\16\23\140\216X\151\254\182\15','dx\226\233\27\251\151\213')]:Connect(function()
-                if not(Ed)then
-                    Ed=true;
-                    Nc=xg[hl('\254\133\209\236\214\133\193\253','\183\235\162\152')][hl('\224\235\249','\142')](hl('\30\241\57\238=','X\131'));
-                    Nc[hl('m D,','>I')]=xg[hl('F\164z\141!','\19\224')][hl('gl~','\t')](-16867+16868,0,0,-19224+19404);
-                    Nc[hl('\b\232\24\196,\238\4\195','X\135k\173')]=xg[hl(') \21\tN','|d')][hl('\206\197\215','\160')](0,0,-6695- -6696,-4437+4439);
-                    Nc[hl('=\20\155\57R\5\252G\17\17\187=Y\24\225\1','\127u\248R5w\147\50')]=Ta[hl('\181\147_\175\169\176V\248','\197\242\49\202')];
-                    Nc[hl('o\160\217b\245\181\170\29\17;m_\160\212z\226\166\183\r\17<@','-\193\186\t\146\199\197h\127_9')]=jd[hl('\190\217\129\163\195\133\168','\209\175\228')];
-                    Nc[hl("\222g0\133\22\241\255\245r\'\177\26\251\201\240",'\156\bB\225s\131\172')]=0;
-                    Nc[hl('\197\17\6\251=\16','\159Xh')]=-0.00073195725369638409*-13662;
-                    Nc[hl('\148[\170\161T\172','\196:\216')]=_d
-                    local Rb=xg[hl('pw\133+Xw\149:','9\25\246_')][hl('V]O','8')](hl('\207\17\4\245\232\54\"\232','\154XG\154'));
-                    Rb[hl('\t\22\187\227oq\24\24\173\228\127p','Jy\201\141\n\3')]=xg[hl('\156\183\160\158','\201\243')][hl('\132\143\157','\234')](0,-0.00026069671196272037*-30687);
-                    Rb[hl('\233\254Q\220\241W','\185\159#')]=Nc
-                    local ha=xg[hl('F\208\236,n\208\252=','\15\190\159X')][hl('\150\157\143','\248')](hl('\199\50\16\231\21\a\235','\147Wh'));
-                    ha[hl('\175\221\134\209','\252\180')]=xg[hl('\194J\254c\165','\151\14')][hl('ajx','\15')](5232+-5231,205+-213,0,-0.0012481561329853626*-17626);
-                    ha[hl('\141\232<\252\169\238 \251','\221\135O\149')]=xg[hl('\147?\175\22\244','\198{')][hl('\204\199\213','\162')](0,215-211,0,-52584/-13146);
-                    ha[hl('\b\194o}G3\215E$\199OyL.\202\3','J\163\f\22 A\184\48')]=Ta[hl('\148]x\136GJ\154','\253\51\b')];
-                    ha[hl('\222Q\\j\151\213\186:X\238\152\238QQr\128\198\167*X\233\181','\156\48?\1\240\167\213O6\138\204')]=jd[hl('\182]\175F\171','\223\51')];
-                    ha[hl('\187o\151~','\239\n')]='';
-                    ha[hl('\216\180\248/\174\27D\228\188\252>\159\22S\252','\136\216\153L\203s+')]=hl('HB\204\238xO\131\178\53',"\27\'\173\156");
-                    ha[hl(';\246\142av\0\255\153g\6','o\147\246\21\53')]=Ta[hl('\239\224\214:\207\233\236\195/\237\226','\155\133\174N\159')];
-                    ha[hl('8\1\155uG\152\246t\f\b\136UM\156\246j[','hm\250\22\"\240\153\24')]=Ta[hl('v\96\166vA\183o','\2\5\222')];
-                    ha[hl('\240\26ZH\247\22XY','\164\127\"<')]=20375-20365;
-                    ha[hl('91\17*','\127^')]=xg[hl('\235\247\219\244','\174\153')][hl('rPZK','4?')][hl('\219\202\140\244\196\149','\156\165\248')];
-                    ha[hl('\166\250\217?1\156\128\141\239\206\v=\150\182\136','\228\149\171[T\238\211')]=0;
-                    ha[hl('\181-\183\139\1\161','\239d\217')]=211320/21132;
-                    ha[hl('X\250\224\22b\30\158\18o\217\235\49\127)\142\25','\27\150\133w\16J\251j')]=false;
-                    ha[hl("\127\229!J\234\'",'/\132S')]=Nc
-                    local qb=xg[hl('2\178O\183\26\178_\166','{\220<\195')][hl('\199\204\222','\169')](hl('\212\55\28t\243\16:i','\129~_\27'));
-                    qb[hl('\\z=!\254IMt+&\238H','\31\21OO\155;')]=xg[hl('s\147O\186','&\215')][hl('\131\136\154','\237')](0,24426/4071);
-                    qb[hl('\136\23}\189\24{','\216v\15')]=ha
-                    local Fi=xg[hl('\217\202\147<\241\202\131-','\144\164\224H')][hl('\182\189\175','\216')](hl('4\211\254\234y\r\140\t\215\202\247t\f\128','g\176\140\133\21a\229'));
-                    Fi[hl('\23w>{','D\30')]=xg[hl('3\151\15\190T','f\211')][hl('odv','\1')](-18014- -18015,13870-13874,3208+-3207,-32479+32449);
-                    Fi[hl('\136vr\150\172pn\145','\216\25\1\255')]=xg[hl('\174\151\146\190\201','\251\211')][hl('\29\22\4','s')](0,-52910/-26455,0,14053+-14025);
-                    Fi[hl('\229\218\a\193},\19\135\136\194o\213\218\n\217j?\14\151\136\197B','\167\187d\170\26^|\242\230\166;')]=5.8275058275058275e-05*17160;
-                    Fi[hl('Z\198C\227u\188bG\148]\205X\239r\190EU\149','\t\165\49\140\25\208 &\230')]=18281-18278;
-                    Fi[hl('\231\183\183\232\\\186\177\2o\164\217\181\162\226s\185\159\fo\222','\180\212\197\135\48\214\243c\29\237')]=Ta[hl('\166d\157+\185k\141%\167','\213\a\239D')];
-                    Fi[hl('\220si\185{\227\a\145\160\205\254WE\234Di\183y\252\53\145\160\225\253U[','\143\16\27\214\23\143E\240\210\132\147\54\"')]=6666.3000000000002/22221;
-                    Fi[hl('\129\a\3\57\21\30!\170\18\20\r\25\20\23\175','\195hq]plr')]=0;
-                    Fi[hl('B?G|\19Q','\24v)')]=0.00041748423996994114*23953;
-                    Fi[hl('g\217\155R\214\157','7\184\233')]=Nc
-                    local _g=xg[hl('x\15v/P\15f>','1a\5[')][hl('29+','\\')](hl('\205\231\25\26\153\161\212\207,\28\159\161','\152\174Us\234\213'));
-                    _g[hl('\152\167\236\172\175\230\175','\200\198\136')]=xg[hl(')\175\21\134','|\235')][hl('\196\207\221','\170')](0,-26145- -26147);
-                    _g[hl('\202\180/\144\214\169\57\129\235','\153\219]\228')]=xg[hl('e\165U\166',' \203')][hl('\131#O\182\159>Y\167\162','\208L=\194')][hl('z\245Y\241','4\148')];
-                    _g[hl('\248\144\160\205\159\166','\168\241\210')]=Fi
-                    local Xf={}
-                    local function Jm()
-                        local hk,Tf,ec=xg[hl('\20\15\r\28\23','dn')](Xf)
+            c.Text=Kf;
+            c.TextColor3=He.textSecond;
+            c.TextSize=10;
+            c.Font=Enum.Font.Gotham;
+            c.TextXAlignment=Enum.TextXAlignment.Left;
+            c.BorderSizePixel=0;
+            c.Parent=Lk
+            local Cd=Instance.new'UICorner';
+            Cd.CornerRadius=UDim.new(0,7);
+            Cd.Parent=c
+            local Me=Instance.new'UIPadding';
+            Me.PaddingLeft=UDim.new(0,8);
+            Me.Parent=c
+            local Cl=Instance.new'TextBox';
+            Cl.Size=UDim2 .new(1,-10,0,40);
+            Cl.Position=UDim2 .new(0,5,0,60);
+            Cl.BackgroundColor3=He.inputBg;
+            Cl.BackgroundTransparency=Hm.input;
+            Cl.Text='';
+            Cl.PlaceholderText='Or paste keyframe code...';
+            Cl.TextColor3=He.textPrimary;
+            Cl.PlaceholderColor3=He.textDim;
+            Cl.TextSize=9;
+            Cl.Font=Enum.Font.Code;
+            Cl.TextWrapped=true;
+            Cl.TextXAlignment=Enum.TextXAlignment.Left;
+            Cl.TextYAlignment=Enum.TextYAlignment.Top;
+            Cl.ClearTextOnFocus=false;
+            Cl.MultiLine=true;
+            Cl.BorderSizePixel=0;
+            Cl.Parent=Lk
+            local bc=Instance.new'UICorner';
+            bc.CornerRadius=UDim.new(0,7);
+            bc.Parent=Cl
+            local cn,Vc=false,nil;
+            c.MouseButton1Click:Connect(function()
+                if cn then
+                    if Vc then
+                        Vc:Destroy()
+                    end
+                    cn=false
+                else
+                    cn=true;
+                    Vc=Instance.new'Frame';
+                    Vc.Size=UDim2 .new(1,0,0,180);
+                    Vc.Position=UDim2 .new(0,0,1,2);
+                    Vc.BackgroundColor3=He.panelBg2;
+                    Vc.BackgroundTransparency=Hm.overlay;
+                    Vc.BorderSizePixel=0;
+                    Vc.ZIndex=10;
+                    Vc.Parent=c
+                    local Oc=Instance.new'UICorner';
+                    Oc.CornerRadius=UDim.new(0,8);
+                    Oc.Parent=Vc
+                    local mh=Instance.new'TextBox';
+                    mh.Size=UDim2 .new(1,-8,0,22);
+                    mh.Position=UDim2 .new(0,4,0,4);
+                    mh.BackgroundColor3=He.inputBg;
+                    mh.BackgroundTransparency=Hm.input;
+                    mh.Text='';
+                    mh.PlaceholderText='Search...';
+                    mh.TextColor3=He.textPrimary;
+                    mh.PlaceholderColor3=He.textDim;
+                    mh.TextSize=10;
+                    mh.Font=Enum.Font.Gotham;
+                    mh.BorderSizePixel=0;
+                    mh.ZIndex=10;
+                    mh.ClearTextOnFocus=false;
+                    mh.Parent=Vc
+                    local rk=Instance.new'UICorner';
+                    rk.CornerRadius=UDim.new(0,6);
+                    rk.Parent=mh
+                    local Ab=Instance.new'ScrollingFrame';
+                    Ab.Size=UDim2 .new(1,-4,1,-30);
+                    Ab.Position=UDim2 .new(0,2,0,28);
+                    Ab.BackgroundTransparency=1;
+                    Ab.ScrollBarThickness=3;
+                    Ab.ScrollBarImageColor3=He.scrollbar;
+                    Ab.ScrollBarImageTransparency=0.29999999999999999;
+                    Ab.BorderSizePixel=0;
+                    Ab.ZIndex=10;
+                    Ab.Parent=Vc
+                    local we=Instance.new'UIListLayout';
+                    we.Padding=UDim.new(0,2);
+                    we.SortOrder=Enum.SortOrder.Name;
+                    we.Parent=Ab
+                    local Ke={}
+                    local function ch()
+                        local mc,qb,Gb=pairs(Ke)
                         while true do
-                            local am;
-                            ec,am=hk(Tf,ec)
-                            if not(ec==nil)then
-                            else
+                            local E;
+                            Gb,E=mc(qb,Gb)
+                            if Gb==nil then
                                 break
                             end
-                            am:Destroy()
+                            E:Destroy()
                         end
-                        Xf={}
-                        local yg,Le=ha[hl(',:\0+','x_')]:lower(),xg[hl('\235q3\1\195q#\16','\162\31@u')][hl('P[I','>')](hl('\186\176\168\168\217\155\161\164\179\245','\238\213\208\220\155'));
-                        Le[hl('\213\138\252\134','\134\227')]=xg[hl('\v\192\55\233l','^\132')][hl('\150\157\143','\248')](-17221- -17222,0,0,0.0013032403293643741*16881);
-                        Le[hl('$8\162.\190\133\193\164\b=\130*\181\152\220\226','fY\193E\217\247\174\209')]=Ta[hl('\134T\131y\147','\244;')];
-                        Le[hl("\214t\164\']\137\215?\244D\224\230t\169?J\154\202/\244C\205",'\148\21\199L:\251\184J\154 \180')]=jd[hl('\214\203\211','\164')];
-                        Le[hl('\168\173\132\188','\252\200')]=hl('yu\t\141\54;7\158','YUR\195');
-                        Le[hl('e\tK\232\b^\0\\\238x','1l3\156K')]=Ta[hl('\17(\96\17\31}\1','eM\24')];
-                        Le[hl('rsv\au\127t\22','&\22\14s')]=-23244+23254;
-                        Le[hl('\22F>]','P)')]=xg[hl('\208z\224y','\149\20')][hl(';\t\19\18','}f')][hl('\160\fIN\134\138!RJ\131','\231c=&\231')];
-                        Le[hl('\193\164O\196\253\226\25\252\166Y\221\192\205\1','\149\193\55\176\165\163u')]=xg[hl('\172\229\156\230','\233\139')][hl("\26u\tk\224x\142\'w\31r\221W\150",'N\16q\31\184\57\226')][hl('\219q\241\96','\151\20')];
-                        Le[hl('F\146\211a\2\137Vm\135\196U\14\131\96h','\4\253\161\5g\251\5')]=0;
-                        Le[hl('\203N\150\245b\128','\145\a\248')]=-1971+1981;
-                        Le[hl('+w\172Y?\19Y\167R/\21','g\22\213\54J')]=3.1776294884016526e-05*-31470;
-                        Le[hl("\213(F\224\'@",'\133I4')]=Fi;
-                        xg[hl("\187*\173\'\170",'\207K')][hl('\231\161\150\235\189\145','\142\207\229')](Xf,Le);
-                        Le[hl('<\142 \142g\30\167z\5\142;\204A0\187m\26','q\225U\253\2\\\210\14')]:Connect(function()
-                            sa[tl]='';
-                            bb();
-                            _d[hl('\169A\133P','\253$')]=hl('u\238H\17\22\4\155k\197O\230E\0\28\31\213\4\133\b','&\139$tup\187*\171');
-                            Ec[hl('\207<\227-','\155Y')]=''
-                            if Nc then
-                                Nc:Destroy()
+                        Ke={}
+                        local Wa,Od=mh.Text:lower(),Instance.new'TextButton';
+                        Od.Size=UDim2 .new(1,0,0,22);
+                        Od.BackgroundColor3=He.rowBg;
+                        Od.BackgroundTransparency=Hm.row;
+                        Od.Text='  [None]';
+                        Od.TextColor3=He.textRed;
+                        Od.TextSize=10;
+                        Od.Font=Enum.Font.GothamBold;
+                        Od.TextXAlignment=Enum.TextXAlignment.Left;
+                        Od.BorderSizePixel=0;
+                        Od.ZIndex=10;
+                        Od.LayoutOrder=-1;
+                        Od.Parent=Ab;
+                        table.insert(Ke,Od);
+                        Od.MouseButton1Click:Connect(function()
+                            ma[cg]='';
+                            Yc();
+                            c.Text='Select Animation...';
+                            Cl.Text=''
+                            if Vc then
+                                Vc:Destroy()
                             end
-                            Ed=false;
-                            Kg[hl("\'q\v\96",'s\20')]=Cl..hl('[\152\24\220\26\137\17\221','{\251t\185');
-                            Kg[hl('\26{n\246\b!ry\240x','N\30\22\130K')]=Ta[hl('\227\15@!\160\242\6T:\142','\151j8U\249')];
-                            xg[hl('Q\31C\24L','\"o')](function()
-                                xg[hl('\154}\132h','\237\28')](7.1230144597193533e-05*28078);
-                                Kg[hl('\t\4%\21',']a')]=hl('\239Q[\176\196\20F\244','\189\52:\212')..lb;
-                                Kg[hl("\'\142\158\198\r\28\135\137\192}",'s\235\230\178N')]=Ta[hl('\249\196\129\249\229\144\224','\141\161\249')]
+                            cn=false;
+                            vd.Text=pm..' cleared';
+                            vd.TextColor3=He.textYellow;
+                            spawn(function()
+                                wait(2);
+                                vd.Text='Ready | '..ud;
+                                vd.TextColor3=He.textDim
                             end)
-                            if not(Tm)then
-                            else
-                                local rl,k,xi=xg[hl('\201\246\208\229\202','\185\151')](wa)
+                            if Pg then
+                                local Si,mi,K=pairs(Uf)
                                 while true do
-                                    local we;
-                                    xi,we=rl(k,xi)
-                                    if not(xi==nil)then
-                                    else
+                                    local pk;
+                                    K,pk=Si(mi,K)
+                                    if K==nil then
                                         break
                                     end
-                                    if not(we)then
-                                    else
-                                        xg[hl('\215\234\198\229\203','\167\137')](function()
-                                            we:Disconnect()
+                                    if pk then
+                                        pcall(function()
+                                            pk:Disconnect()
                                         end)
                                     end
                                 end
-                                wa={}
-                                if wi[hl('\172\217\128\222\171\196\187\197\162','\197\170\210\171')]then
-                                    Sb()
+                                Uf={}
+                                if Rf.isRunning then
+                                    L()
                                 end
-                                xg[hl('*\226-\232','^\131')][hl('\22I\b\\','a(')](0.00037593984962406017*266)
-                                if not(Tm)then
-                                else
-                                    ib()
+                                task.wait(0.10000000000000001)
+                                if Pg then
+                                    Dm()
                                 end
                             end
                         end)
-                        local kf,bl,ua=xg[hl('\30O\a\\\29','n.')](nd)
-                        local Cn,Ub={},0
+                        local vb,tc,Ah=pairs(md)
+                        local Fc,Vk={},0
                         while true do
-                            local Nl;
-                            ua,Nl=kf(bl,ua)
-                            if ua==nil then
+                            local Tj;
+                            Ah,Tj=vb(tc,Ah)
+                            if Ah==nil then
                                 break
                             end
-                            if not(yg==''or ua:lower():find(yg,3655+-3654,true))then
-                            else
-                                xg[hl('\215w\193z\198','\163\22')][hl('\240\147\160\252\143\167','\153\253\211')](Cn,{[hl('\202\178\201\182','\164\211')]=ua,[hl('\251\246','\146')]=Nl});
-                                Ub=Ub+-20596/-20596
-                                if 30478-30428<=Ub then
+                            if Wa==''or Ah:lower():find(Wa,1,true)then
+                                table.insert(Fc,{name=Ah,id=Tj});
+                                Vk=Vk+1
+                                if 50<=Vk then
                                     break
                                 end
                             end
                         end
-                        xg[hl('\173h\187e\188','\217\t')][hl('\17\169\16\178','b\198')](Cn,function(wg,Uh)
-                            return wg[hl('\207\154\204\158','\161\251')]<Uh[hl('AVBR','/7')]
+                        table.sort(Fc,function(Za,bn)
+                            return Za.name<bn.name
                         end)
-                        for tf,dg in xg[hl('|QX|SJ','\21!9')](Cn)do
-                            local Kb=xg[hl('\r\160\250m%\160\234|','D\206\137\25')][hl('1:(','_')](hl('N\201hF\\o\216d]p','\26\172\16\50\30'));
-                            Kb[hl('Z0s<','\tY')]=xg[hl('\132L\184e\227','\209\b')][hl('W\\N','9')](18822+-18821,0,0,-67232/-3056);
-                            Kb[hl('8\149:*\18GG\136\20\144\26.\25ZZ\206','z\244YAu5(\253')]=Ta[hl('-<(\17\56','_S')];
-                            Kb[hl("\181\185\139(0\163\154\23\v\'\6\133\185\134\48\'\176\135\a\v +",'\247\216\232CW\209\245beCR')]=jd[hl('\235\246\238','\153')];
-                            Kb[hl('5\229\25\244','a\128')]=hl('\214\214','\246')..dg[hl('\159W\156S','\241\54')];
-                            Kb[hl('\14\197\231\131g5\204\240\133\23','Z\160\159\247$')]=Ta[hl('1@\209\5\234\55L\196\16\200<','E%\169q\186')];
-                            Kb[hl('\r\54\134\129\n:\132\144','YS\254\245')]=28390-28380;
-                            Kb[hl('\210\v\250\16','\148d')]=xg[hl('\30\24.\27','[v')][hl('\238\170\198\177','\168\197')][hl('\135i\5\168g\28','\192\6q')];
-                            Kb[hl('i5\165I\200\213\219T7\179P\245\250\195','=P\221=\144\148\183')]=xg[hl('q&A%','4H')][hl('F\nz#fyr{\bl:[Vj','\18o\2W>8\30')][hl(']bws','\17\a')];
-                            Kb[hl('5\171p\b\229\175\57\30\190g<\233\165\15\27','w\196\2l\128\221j')]=0;
-                            Kb[hl('I8\181w\20\163','\19q\219')]=-77840/-7784;
-                            Kb[hl('\179\24\171\134\23\173','\227y\217')]=Fi;
-                            xg[hl('\199\200\209\197\214','\179\169')][hl('MS\28AO\27','$=o')](Xf,Kb);
-                            Kb[hl('\228\198e\216y\167\205e\221\198~\154_\137\209r\194','\169\169\16\171\28\229\184\17')]:Connect(function()
-                                sa[tl]=xg[hl('\177\137\164\15\183\143\185\28','\197\230\215{')](dg[hl('jg','\3')]);
-                                bb();
-                                _d[hl('\189s\145b','\233\22')]=dg[hl('\20\175\23\171','z\206')];
-                                Ec[hl('\0H,Y','T-')]=''
-                                if Nc then
-                                    Nc:Destroy()
+                        for ba,qc in ipairs(Fc)do
+                            local Jc=Instance.new'TextButton';
+                            Jc.Size=UDim2 .new(1,0,0,22);
+                            Jc.BackgroundColor3=He.rowBg;
+                            Jc.BackgroundTransparency=Hm.row;
+                            Jc.Text='  '..qc.name;
+                            Jc.TextColor3=He.textPrimary;
+                            Jc.TextSize=10;
+                            Jc.Font=Enum.Font.Gotham;
+                            Jc.TextXAlignment=Enum.TextXAlignment.Left;
+                            Jc.BorderSizePixel=0;
+                            Jc.ZIndex=10;
+                            Jc.Parent=Ab;
+                            table.insert(Ke,Jc);
+                            Jc.MouseButton1Click:Connect(function()
+                                ma[cg]=tostring(qc.id);
+                                Yc();
+                                c.Text=qc.name;
+                                Cl.Text=''
+                                if Vc then
+                                    Vc:Destroy()
                                 end
-                                Ed=false;
-                                Kg[hl('\134\189\170\172','\210\216')]=Cl..hl('m\141s\128','M\160')..dg[hl('\128(\131,','\238I')];
-                                Kg[hl('r\160N\186\tI\169Y\188y','&\197\54\206J')]=Ta[hl('\203rY\157\248eD\140\209','\191\23!\233')];
-                                xg[hl('\f\151\30\144\17','\127\231')](function()
-                                    xg[hl('\242\166\236\179','\133\199')](-35150/-17575);
-                                    Kg[hl('?\147\19\130','k\246')]=hl('\244\r\208\253\223H\205\185','\166h\177\153')..lb;
-                                    Kg[hl('a\219\141T+Z\210\154R[','5\190\245 h')]=Ta[hl('\165~\183\165_\166\188','\209\27\207')]
+                                cn=false;
+                                vd.Text=pm..' -> '..qc.name;
+                                vd.TextColor3=He.textGreen;
+                                spawn(function()
+                                    wait(2);
+                                    vd.Text='Ready | '..ud;
+                                    vd.TextColor3=He.textDim
                                 end)
-                                if not(Tm)then
-                                else
-                                    local Fe,Fc,zi=xg[hl('\214\n\207\25\213','\166k')](wa)
+                                if Pg then
+                                    local xe,Bc,qj=pairs(Uf)
                                     while true do
-                                        local Dd;
-                                        zi,Dd=Fe(Fc,zi)
-                                        if zi==nil then
+                                        local vg;
+                                        qj,vg=xe(Bc,qj)
+                                        if qj==nil then
                                             break
                                         end
-                                        if Dd then
-                                            xg[hl('\135\182\150\185\155','\247\213')](function()
-                                                Dd:Disconnect()
+                                        if vg then
+                                            pcall(function()
+                                                vg:Disconnect()
                                             end)
                                         end
                                     end
-                                    wa={}
-                                    if not(wi[hl('\217k\255\128\222v\196\155\215','\176\24\173\245')])then
-                                    else
-                                        Sb()
+                                    Uf={}
+                                    if Rf.isRunning then
+                                        L()
                                     end
-                                    xg[hl('\166j\161\96','\210\v')][hl('\20\199\n\210','c\166')](-681.30000000000007/-6813)
-                                    if not(Tm)then
-                                    else
-                                        ib()
+                                    task.wait(0.10000000000000001)
+                                    if Pg then
+                                        Dm()
                                     end
                                 end
                             end)
                         end
-                        xg[hl('\176\56\183\50','\196Y')][hl('U\211W\211C','1\182')](function()
-                            Fi[hl('\147\t\234Dd\163;\237H\96','\208h\132\50\5')]=xg[hl('p\138L\163\23','%\206')][hl('xsa','\22')](0,0,0,_g[hl('e5\170\201\23\2\230\bXK9\173\195\21\3\193\4aA','$W\217\166{w\146m\27')][hl('\175','\246')])
+                        task.defer(function()
+                            Ab.CanvasSize=UDim2 .new(0,0,0,we.AbsoluteContentSize.Y)
                         end)
                     end
-                    Jm()
-                    local Sl=false;
-                    ha:GetPropertyChangedSignal(hl('\225\200\205\217','\181\173')):Connect(function()
-                        if not Sl then
-                            Sl=true;
-                            xg[hl('-\197*\207','Y\164')][hl('\185\159\167\138','\206\254')](-4792.4000000000005/-23962);
-                            Jm();
-                            Sl=false
+                    ch()
+                    local Jd=false;
+                    mh:GetPropertyChangedSignal'Text':Connect(function()
+                        if not Jd then
+                            Jd=true;
+                            task.wait(0.20000000000000001);
+                            ch();
+                            Jd=false
                         end
                     end)
-                else
-                    if Nc then
-                        Nc:Destroy()
-                    end
-                    Ed=false
                 end
             end);
-            Ec[hl('\196\148z\154\241\183v\156\246','\130\251\25\239')]:Connect(function(id)
-                if Ec[hl('\139\184\167\169','\223\221')]~=''then
-                    sa[tl]=Ec[hl('Anm\127','\21\v')];
-                    bb();
-                    _d[hl('\241\21\221\4','\165p')]=hl('Q\140\137\55\196\152iqw\128\156\49\202\152,I','\18\249\250C\171\245I:');
-                    Kg[hl('\255\188\211\173','\171\217')]=Cl..hl('+K\159\53p\165}\v\1\243+\r\196lu\162o\18\v\237','\vf\161\21\19\208\14\127n\158');
-                    Kg[hl('!\187\186\53\195\26\178\173\51\179','u\222\194A\128')]=Ta[hl('\247\244\235\133\196\227\246\148\237','\131\145\147\241')];
-                    xg[hl('\145\232\131\239\140','\226\152')](function()
-                        xg[hl('p\201n\220','\a\168')](0.00069013112491373362*2898);
-                        Kg[hl('\226\199\206\214','\182\162')]=hl('\"\136\176\25\t\205\173]','p\237\209}')..lb;
-                        Kg[hl("\28\241\204\209L\'\248\219\215<",'H\148\180\165\15')]=Ta[hl('\2\134\140\2\167\157\27','v\227\244')]
+            Cl.FocusLost:Connect(function(Lg)
+                if Cl.Text~=''then
+                    ma[cg]=Cl.Text;
+                    Yc();
+                    c.Text='Custom Keyframes';
+                    vd.Text=pm..' -> custom keyframes';
+                    vd.TextColor3=He.textGreen;
+                    spawn(function()
+                        wait(2);
+                        vd.Text='Ready | '..ud;
+                        vd.TextColor3=He.textDim
                     end)
-                    if not(Tm)then
-                    else
-                        local Yl,Gd,mh=xg[hl('\142C\151P\141','\254\"')](wa)
+                    if Pg then
+                        local Ma,Uj,m=pairs(Uf)
                         while true do
-                            local bj;
-                            mh,bj=Yl(Gd,mh)
-                            if mh==nil then
+                            local zm;
+                            m,zm=Ma(Uj,m)
+                            if m==nil then
                                 break
                             end
-                            if bj then
-                                xg[hl('\nK\27D\22','z(')](function()
-                                    bj:Disconnect()
+                            if zm then
+                                pcall(function()
+                                    zm:Disconnect()
                                 end)
                             end
                         end
-                        wa={}
-                        if not(wi[hl('o\133~\152h\152E\131a','\6\246,\237')])then
-                        else
-                            Sb()
+                        Uf={}
+                        if Rf.isRunning then
+                            L()
                         end
-                        xg[hl('2\252\53\246','F\157')][hl('\136\249\150\236','\255\152')](3.0616618700630703e-06*32662)
-                        if Tm then
-                            ib()
+                        task.wait(0.10000000000000001)
+                        if Pg then
+                            Dm()
                         end
                     end
                 end
             end)
         end
-        Lg(hl('\163P\166Q','\202\52'),hl('\228&g\250J\143\230\196\15J\203\3\161\230','\173b+\191j\206\136'),2918+-2917);
-        Lg(hl('\223\254!\195\246#\207','\168\159M'),hl('\176\208\144\215\230\179\142\148\166\255\181\241\206\137\160\219\137','\231\145\220\156\175\253\201\180'),-32828/-16414);
-        Lg(hl('{\187\aa\167\4v','\17\206j'),hl('\16\50\239\188\178=\24\230\27\t\203\129\154\a\54\169\52','Zg\162\236\251s_\198'),-28887- -28890);
-        xg[hl('\18U\0R\15','a%')](function()
-            xg[hl('\167L\185Y','\208-')](3165.1000000000004/31651);
-            eg[hl('\194\fik\192\242>ng\196','\129m\a\29\161')]=xg[hl('T\254h\215\51','\1\186')][hl('38*',']')](0,0,0,rb[hl('{\147\24\246\153\191\a\197\191U\159\31\252\155\190 \201\134_',':\241k\153\245\202s\160\252')][hl('\14','W')]+(32247+-32237))
+        Ph('idle','IDLE Animation',1);
+        Ph('walking','WALKING Animation',2);
+        Ph('jumping','JUMPING Animation',3);
+        spawn(function()
+            wait(0.10000000000000001);
+            tb.CanvasSize=UDim2 .new(0,0,0,tf.AbsoluteContentSize.Y+10)
         end)
-        local dn=xg[hl('\173\253\147~\133\253\131o','\228\147\224\n')][hl('SXJ','=')](hl('\211\186\244\165\240','\149\200'));
-        dn[hl('Qvxz','\2\31')]=xg[hl('y\204E\229\30',',\136')][hl('ODV','!')](3.6145449287934649e-05*27666,-23611+23595,-7585/-7585,-13947- -13772);
-        dn[hl('\150\233\t~\178\239\21y','\198\134z\23')]=xg[hl('D\187x\146#','\17\255')][hl('\n\1\19','d')](0,0.006024096385542169*1328,0,-24299+24403);
-        dn[hl('\21\207T*\141E@\243\135\252\151%\207Y2\154V]\227\135\251\186','W\174\55A\234\55/\134\233\152\195')]=-20168- -20169;
-        dn[hl('\232\230K\215\237T\219','\190\143\56')]=false;
-        dn[hl('\251m\163\206b\165','\171\f\209')]=af
-        local ob=xg[hl('\206\145h\224\230\145x\241','\135\255\27\148')][hl('u~l','\27')](hl('~\208\6\225f\212\28\240F','*\181~\149'));
-        ob[hl('\21\203<\199','F\162')]=xg[hl('\128\139\188\162\231','\213\207')][hl('\176\187\169','\222')](-8753- -8754,0,0,-24378- -24403);
-        ob[hl('\243\172^\244\215\170B\243','\163\195-\157')]=xg[hl('\30\54\"\31y','Kr')][hl(",\'\53",'B')](0,0,0,6629+-6619);
-        ob[hl("\200\176*\221x\248\127\132m\23N\248\176\'\197o\235b\148m\16c",'\138\209I\182\31\138\16\241\3s\26')]=-5828/-5828;
-        ob[hl('\223\134\243\151','\139\227')]=hl('\215\17\186\140\26\\\165T\226\197B\24\231','\159t\211\235r(');
-        ob[hl('\239\208\207W\167\212\217\216Q\215','\187\181\183#\228')]=Ta[hl('\228|l.\210\226py;\240\233','\144\25\20Z\130')];
-        ob[hl('8\171\244\166?\167\246\183','l\206\140\210')]=27189-27177;
-        ob[hl('Ngf|','\b\b')]=xg[hl('%\210\21\209','\96\188')][hl('0\1\24\26','vn')][hl('\156\170\127\164\204\182\135d\160\201','\219\197\v\204\173')];
-        ob[hl('\171h\20U\182\30g\150j\2L\139\49\127','\255\rl!\238_\v')]=xg[hl('H\180x\183','\r\218')][hl('N\141\200}HZ_s\143\222duuG','\26\232\176\t\16\27\51')][hl('knA\127',"\'\v")];
-        ob[hl('\210\220\178\231\211\180','\130\189\192')]=dn
-        local Xi=xg[hl('\197\165\a\135\237\165\23\150','\140\203t\243')][hl('$/=','J')](hl('\184Q\159N\155','\254#'));
-        Xi[hl('\24\r\49\1','Kd')]=xg[hl('S\158o\183\52','\6\218')][hl('\1\n\24','o')](7247+-7246,0.0010854227721697602*-18426,0,13328-13323);
-        Xi[hl('\218\165.\147\254\163\50\148','\138\202]\250')]=xg[hl("P\'l\14\55",'\5c')][hl('SXJ','=')](0,-18243+18253,0,2673-2628);
-        Xi[hl('\158-:@\165\162_W\178(\26D\174\191B\17','\220LY+\194\208\48\"')]=Ta[hl('\132\f\128U\156\6\168T\150','\240c\231\50')];
-        Xi[hl('_\f\14\171Z\0f\127\48&\212o\f\3\179M\19{o0!\249','\29mm\192=r\t\n^B\128')]=6.2980224209598189e-06*31756;
-        Xi[hl('\247\30\158\167\221n\228\220\v\137\147\209d\210\217','\181q\236\195\184\28\183')]=0;
-        Xi[hl('\210j\203\231e\205','\130\v\185')]=dn
-        local Ye=xg[hl('\227\248\fS\203\248\28B',"\170\150\127\'")][hl('RYK','<')](hl('\193\201#\229\230\238\5\248','\148\128\96\138'));
-        Ye[hl('\30>b\\\208\253\15\48t[\192\252',']Q\16\50\181\143')]=xg[hl('\14\199\50\238','[\131')][hl('83!','V')](0,-5658/-1886);
-        Ye[hl('i\20\55\\\27\49','9uE')]=Xi
-        local Bb=xg[hl('\204\233d\138\228\233t\155','\133\135\23\254')][hl('\r\6\20','c')](hl('iMNRJ','/?'));
-        Bb[hl('\250\224\211\236','\169\137')]=xg[hl('\23\238+\199p','B\170')][hl(' +9','N')](0,25676-25662,0,-23584- -23598);
-        Bb[hl('-\134\172a\t\128\176f','}\233\223\b')]=xg[hl('\t\31\53\54n','\\[')][hl('\168\163\177','\198')](-7008/-14016,-0.001398880895283773*5004,-31012.5- -31013,0.001357378320729106*-5157);
-        Bb[hl('\196\96\137Ci0T\173\232e\169Gb-I\235','\134\1\234(\14B;\216')]=Ta[hl('m\222R\173\131k\210G\184\161\96','\25\187*\217\211')];
-        Bb[hl('[v\128>\154\157\228\215\145j\207kv\141&\141\142\249\199\145m\226','\25\23\227U\253\239\139\162\255\14\155')]=-4.5415323130024075e-06*-22019;
-        Bb[hl('\23c\183\237\196]_<v\160\217\200Wi9','U\f\197\137\161/\f')]=0;
-        Bb[hl('$\"\27\17-\29','tCi')]=Xi
-        local Ah=xg[hl('\210\227\159#\250\227\143\50','\155\141\236W')][hl('T_M',':')](hl('1j\b\48\22M.-','d#K_'));
-        Ah[hl('(\214\a\154\205\170\57\216\17\157\221\171','k\185u\244\168\216')]=xg[hl('0\31\f\54','e[')][hl('\239\228\246','\129')](0,15902+-15895);
-        Ah[hl('\222n\159\235a\153','\142\15\237')]=Bb
-        local om=xg[hl('G]\196\238o]\212\255','\14\51\183\154')][hl('HCQ','&')](hl('\235\21\140\213\243\17\150\196\211','\191p\244\161'));
-        om[hl('\173\146\132\158','\254\251')]=xg[hl('\211J\239c\180','\134\14')][hl('sxj','\29')](8181/8181,0,0,-10714- -10739);
-        om[hl('\203_\165\251\239Y\185\252','\155\48\214\146')]=xg[hl('\201=\245\20\174','\156y')][hl('\21\30\f','{')](0,0,0,25006+-24926);
-        om[hl('?\15$#P\187\251\249O\28\53\15\15);G\168\230\233O\27\24','}nGH7\201\148\140!xa')]=8.6587583340548964e-05*11549;
-        om[hl('\190-\146<','\234H')]=hl('}\220\4DKR\n\132N\0\19\16','*\181\96\48#h');
-        om[hl('B\0A\28\232y\tV\26\152','\22e9h\171')]=Ta[hl('=\159\171\129\23;\147\190\148\53\48','I\250\211\245G')];
-        om[hl('b\241\174Se\253\172B',"6\148\214\'")]=0.0011750881316098707*10212;
-        om[hl('\142;\166 ','\200T')]=xg[hl('\190\238\142\237','\251\128')][hl('\174\18\134\t','\232}')][hl('\6\244\227\3\145,\217\248\a\148','A\155\151k\240')];
-        om[hl('\251\134\240\225\228\a\155\198\132\230\248\217(\131','\175\227\136\149\188F\247')]=xg[hl('\255&\207%','\186H')][hl('\201\194(\169p\142\214\244\192>\176M\161\206','\157\167P\221(\207\186')][hl('\"\153\b\136','n\252')];
-        om[hl('\251\v\160\206\4\166','\171j\210')]=dn
-        local Od=xg[hl('O\206\161Lg\206\177]','\6\160\210\56')][hl('}vd','\19')](hl('\2\242%\237!','D\128'));
-        Od[hl('p\230Y\234','#\143')]=xg[hl('\164a\152H\195','\241%')][hl('w|n','\25')](13562/13562,23902+-23922,0,0.0066137566137566134*756);
-        Od[hl('\225\146\247\248\197\148\235\255','\177\253\132\145')]=xg[hl('\207\5\243,\168','\154A')][hl(')\"\48','G')](0,12316-12306,0,3642510/31674);
-        Od[hl('\201\54R\15\55\50Y\211\229\51r\v</D\149','\139W1dP@6\166')]=Ta[hl('S\217!VK\211\tWA',"\'\182F1")];
-        Od[hl('\rwQiTnD\248{\252a=w\\qC}Y\232{\251L','O\22\50\2\51\28+\141\21\152\53')]=-9.7030855812148275e-06*-20612;
-        Od[hl('\211;~><\175i\248.i\n\48\165_\253','\145T\fZY\221:')]=0;
-        Od[hl('\187\252\217\142\243\223','\235\157\171')]=dn
-        local jl=xg[hl('\178\247[\140\154\247K\157','\251\153(\248')][hl('29+','\\')](hl("\173\'\v\53\138\0-(",'\248nHZ'));
-        jl[hl('Q\\\177\193\178\251@R\167\198\162\250','\18\51\195\175\215\137')]=xg[hl('\4i8@','Q-')][hl('\230\237\255','\136')](0,26253/8751);
-        jl[hl('\238\203 \219\196&','\190\170R')]=Od
-        local te=xg[hl(']\151\245\tu\151\229\24','\20\249\134}')][hl('\196\207\221','\170')](hl('\167\r\128\18\132','\225\127'));
-        te[hl('\181\224\156\236','\230\137')]=xg[hl('\183\165\139\140\208','\226\225')][hl('\5\14\28','k')](0,28682+-28668,0,-0.0022029897718332022*-6355);
-        te[hl('\252kY\205\216mE\202','\172\4*\164')]=xg[hl('\190\141\130\164\217','\235\201')][hl('\245\254\236','\155')](13695.5/27391,3391-3398,-18519.5+18520,-7867- -7860);
-        te[hl('yT\v\230\24\165\21\227UQ+\226\19\184\b\165',';5h\141\127\215z\150')]=Ta[hl('\248\t\146\133\190\254\5\135\144\156\245','\140l\234\241\238')];
-        te[hl('\131\153@\212\162\154,\229\217E\149\179\153M\204\181\137\49\245\217B\184','\193\248#\191\197\232C\144\183!\193')]=3.6690515501742799e-06*27255;
-        te[hl('\177\177\151\56\23a\30\154\164\128\f\27k(\159','\243\222\229\\r\19M')]=0;
-        te[hl('\28\129\152)\142\158','L\224\234')]=Od
-        local vc=xg[hl('&\203\254\254\14\203\238\239','o\165\141\138')][hl('\134\141\159','\232')](hl('\211\179lT\244\148JI','\134\250/;'));
-        vc[hl('[\215\131\164\6\187J\217\149\163\22\186','\24\184\241\202c\201')]=xg[hl('\213\27\233\50','\128_')][hl('\29\22\4','s')](0,-167839/-23977);
-        vc[hl('76%\2\57#','gWW')]=te
-        local Sf=xg[hl('\201\194\245\129\225\194\229\144','\128\172\134\245')][hl('\187\176\162','\213')](hl('\198P3%\187\231A?>\151','\146\53KQ\249'));
-        Sf[hl('%\225\f\237','v\136')]=xg[hl('k\214W\255\f','>\146')][hl('\241\250\232','\159')](0,26923+-26823,0,15722+-15694);
-        Sf[hl('z\t\15\228^\15\19\227','*f|\141')]=xg[hl('\2k>Be','W/')][hl('\195\200\218','\173')](-7666/-15332,13633+-13683,0,-2667- -2827);
-        Sf[hl('\14Z\19\146\246\199\139\192\"_3\150\253\218\150\134','L;p\249\145\181\228\181')]=Ta[hl('\227\223\239\233\230','\129\171')];
-        Sf[hl('\\\24\177\48\202q%\134e}\162l\24\188(\221b8\150ez\143','\30y\210[\173\3J\243\v\25\246')]=jd[hl('\n\28\6','h')];
-        Sf[hl('\21?9.','AZ')]=hl('\141\18\174o-\255$\180p<','\223w\221\nY');
-        Sf[hl('@\v\254\204\142{\2\233\202\254','\20n\134\184\205')]=Ta[hl("\208\52)\202\5\214\56<\223\'\221",'\164QQ\190U')];
-        Sf[hl('\218}\193L\221q\195]','\142\24\185\56')]=0.004647232784114913*2367;
-        Sf[hl('j!B:',',N')]=xg[hl('\140I\188J',"\201\'")][hl('\235Y\195B','\173\54')][hl('\206\rr\0y\148\255\236\15o\nw\149\200','\137b\6h\24\249\172')];
-        Sf[hl('\225Q\154\225B\199\218\202D\141\213N\205\236\207',"\163>\232\133\'\181\137")]=0;
-        Sf[hl('\231n\215\210a\209','\183\15\165')]=dn
-        local hd=xg[hl('\20\252*4<\252:%',']\146Y@')][hl('7<.','Y')](hl('L\130,\207k\165\n\210','\25\203o\160'));
-        hd[hl('\239\30\138\232\127?\254\16\156\239o>','\172q\248\134\26M')]=xg[hl('\237E\209l','\184\1')][hl('xsa','\22')](0,25804+-25795);
-        hd[hl('d\218XQ\213^','4\187*')]=Sf
-        local Rh,Mc=false,false
-        local function Vb(I)
-            rc[hl('d@V\20\170xv\\\18\174i','\f%?s\194')]=(-287.80000000000001/-2878)*xg[hl('=\2$\v','Pc')][hl('\182\169\177','\198')](-11776- -12776,I);
-            Bb[hl('=h!\243\25n=\244','m\aR\154')]=xg[hl('\234o\214F\141','\191+')][hl('\165\174\188','\203')](I,27927-27934,-351/-702,-0.00031948881789137381*21910);
-            ob[hl('\5l)}','Q\t')]=xg[hl('Br\141Xh\152','1\6\255')][hl('\187\3Q\176\rW','\221l#')](hl('C\224\168\5\151\214\49\165\228L\205\196s','\v\133\193b\255\162'),rc[hl('Q\252\a\252\160M\202\r\250\164\\','9\153n\155\200')])
-            if not(Tm)then
-            else
-                ci()
+        local je=Instance.new'Frame';
+        je.Size=UDim2 .new(1,-16,1,-175);
+        je.Position=UDim2 .new(0,8,0,104);
+        je.BackgroundTransparency=1;
+        je.Visible=false;
+        je.Parent=sg
+        local yg=Instance.new'TextLabel';
+        yg.Size=UDim2 .new(1,0,0,25);
+        yg.Position=UDim2 .new(0,0,0,10);
+        yg.BackgroundTransparency=1;
+        yg.Text='Height: 1.00x';
+        yg.TextColor3=He.textPrimary;
+        yg.TextSize=12;
+        yg.Font=Enum.Font.GothamBold;
+        yg.TextXAlignment=Enum.TextXAlignment.Left;
+        yg.Parent=je
+        local fe=Instance.new'Frame';
+        fe.Size=UDim2 .new(1,-20,0,5);
+        fe.Position=UDim2 .new(0,10,0,45);
+        fe.BackgroundColor3=He.toggleOff;
+        fe.BackgroundTransparency=0.20000000000000001;
+        fe.BorderSizePixel=0;
+        fe.Parent=je
+        local Ff=Instance.new'UICorner';
+        Ff.CornerRadius=UDim.new(0,3);
+        Ff.Parent=fe
+        local uh=Instance.new'Frame';
+        uh.Size=UDim2 .new(0,14,0,14);
+        uh.Position=UDim2 .new(0.5,-7,0.5,-7);
+        uh.BackgroundColor3=He.textPrimary;
+        uh.BackgroundTransparency=0.10000000000000001;
+        uh.BorderSizePixel=0;
+        uh.Parent=fe
+        local ke=Instance.new'UICorner';
+        ke.CornerRadius=UDim.new(0,7);
+        ke.Parent=uh
+        local nm=Instance.new'TextLabel';
+        nm.Size=UDim2 .new(1,0,0,25);
+        nm.Position=UDim2 .new(0,0,0,80);
+        nm.BackgroundTransparency=1;
+        nm.Text='Width: 1.00x';
+        nm.TextColor3=He.textPrimary;
+        nm.TextSize=12;
+        nm.Font=Enum.Font.GothamBold;
+        nm.TextXAlignment=Enum.TextXAlignment.Left;
+        nm.Parent=je
+        local Yg=Instance.new'Frame';
+        Yg.Size=UDim2 .new(1,-20,0,5);
+        Yg.Position=UDim2 .new(0,10,0,115);
+        Yg.BackgroundColor3=He.toggleOff;
+        Yg.BackgroundTransparency=0.20000000000000001;
+        Yg.BorderSizePixel=0;
+        Yg.Parent=je
+        local Gh=Instance.new'UICorner';
+        Gh.CornerRadius=UDim.new(0,3);
+        Gh.Parent=Yg
+        local qi=Instance.new'Frame';
+        qi.Size=UDim2 .new(0,14,0,14);
+        qi.Position=UDim2 .new(0.5,-7,0.5,-7);
+        qi.BackgroundColor3=He.textPrimary;
+        qi.BackgroundTransparency=0.10000000000000001;
+        qi.BorderSizePixel=0;
+        qi.Parent=Yg
+        local Bb=Instance.new'UICorner';
+        Bb.CornerRadius=UDim.new(0,7);
+        Bb.Parent=qi
+        local za=Instance.new'TextButton';
+        za.Size=UDim2 .new(0,100,0,28);
+        za.Position=UDim2 .new(0.5,-50,0,160);
+        za.BackgroundColor3=He.btnBg;
+        za.BackgroundTransparency=Hm.btn;
+        za.Text='Reset Size';
+        za.TextColor3=He.textPrimary;
+        za.TextSize=11;
+        za.Font=Enum.Font.GothamSemibold;
+        za.BorderSizePixel=0;
+        za.Parent=je
+        local Dd=Instance.new'UICorner';
+        Dd.CornerRadius=UDim.new(0,9);
+        Dd.Parent=za
+        local Qi,Mm=false,false
+        local function Eh(Oe)
+            aa.heightScale=0.10000000000000001*math.pow(1000,Oe);
+            uh.Position=UDim2 .new(Oe,-7,0.5,-7);
+            yg.Text=string.format('Height: %.2fx',aa.heightScale)
+            if Pg then
+                Bg()
             end
         end
-        local function Pa(dj)
-            rc[hl('i\246\174\6\155M\252\171\30\150','\30\159\202r\243')]=(6.0606060606060611e-05*1650)*xg[hl('\16;\t\50','}Z')][hl('#<$','S')](-0.16139444803098774*-6196,dj);
-            te[hl('U&\202)q \214.','\5I\185@')]=xg[hl("V\14j\'\49",'\3J')][hl('\146\153\139','\252')](dj,2344-2351,22841.5+-22841,0.000440251572327044*-15900);
-            om[hl('\5U)D','Q0')]=xg[hl('\"\216\202\56\194\223','Q\172\184')][hl('\219\48}\208>{','\189_\15')](hl("\160\174yar\232\215\226\51\'|\170",'\247\199\29\21\26\210'),rc[hl('BEG\241\186fOB\233\183','5,#\133\210')])
-            if Tm then
-                ci()
+        local function cm(Bd)
+            aa.widthScale=0.10000000000000001*math.pow(1000,Bd);
+            qi.Position=UDim2 .new(Bd,-7,0.5,-7);
+            nm.Text=string.format('Width: %.2fx',aa.widthScale)
+            if Pg then
+                Bg()
             end
         end
-        local function Zb(Ud)
-            Vb(xg[hl(' \149\57\156','M\244')][hl('W@UAD','4,')]((Ud[hl('\241\251\218\52\213\253\198\51','\161\148\169]')][hl('\246','\174')]-Xi[hl('\183\52\132\144\156D(\212\166\57\132\150\132X3\223','\246V\247\255\240\49\\\177')][hl('\219','\131')])/Xi[hl('>S}\187\211;\vT]\189\197+','\127\49\14\212\191N')][hl('\163','\251')],0,-1046+1047))
+        local function Tb(wk)
+            Eh(math.clamp((wk.Position.X-fe.AbsolutePosition.X)/fe.AbsoluteSize.X,0,1))
         end
-        local function df(Bd)
-            Pa(xg[hl('\27b\2k','v\3')][hl('\241[\243Z\226','\146\55')]((Bd[hl('qE=\185UC!\190','!*N\208')][hl('\248','\160')]-Od[hl('\189\196\241\189\176%\238\216\172\201\241\187\168\57\245\211','\252\166\130\210\220P\154\189')][hl('\220','\132')])/Od[hl('O\231\207\165N\22z\224\239\163X\6','\14\133\188\202\"c')][hl('\207','\151')],0,24750/24750))
+        local function pc(t_)
+            cm(math.clamp((t_.Position.X-Yg.AbsolutePosition.X)/Yg.AbsoluteSize.X,0,1))
         end
-        Bb[hl(",L9\16\175\'G.\4\181",'e\"Ie\219')]:Connect(function(pb)
-            if pb[hl('\199\184t\3\196\145\226\190e%\244\143\247','\146\203\17q\141\255')]==xg[hl('\168\141\152\142','\237\227')][hl("*\161\233\t\23!\15\167\248/\'?\26",'\127\210\140{^O')][hl('\139\142R\29L\19\179\149S\1G\96',"\198\225\'n)Q")]or pb[hl('\233\144\t\197\48\159\204\150\24\227\0\129\217','\188\227l\183y\241')]==xg[hl('\139\225\187\226','\206\143')][hl('e\180}\171\253?@\178l\141\205!U','0\199\24\217\180Q')][hl('\254e\223i\194','\170\n')]then
-                Rh=true;
-                Zb(pb)
+        uh.InputBegan:Connect(function(ib)
+            if ib.UserInputType==Enum.UserInputType.MouseButton1 or ib.UserInputType==Enum.UserInputType.Touch then
+                Qi=true;
+                Tb(ib)
             end
         end);
-        te[hl('\169\156\28@\24\162\151\vT\2','\224\242l5l')]:Connect(function(tk)
-            if tk[hl('i\159\213\139\174\133L\153\196\173\158\155Y','<\236\176\249\231\235')]==xg[hl('\157\147\173\144','\216\253')][hl('g,\169\26&\231B*\184<\22\249W','2_\204ho\137')][hl('\216\139$\0Oj\224\144%\28D\25','\149\228Qs*(')]or tk[hl('uf\142\54\174(P\96\159\16\158\54E',' \21\235D\231F')]==xg[hl('9\6\t\5','|h')][hl('\228\183jt\249l\193\177{R\201r\212','\177\196\15\6\176\2')][hl("\6Y\'U:",'R6')]then
-                Mc=true;
-                df(tk)
+        qi.InputBegan:Connect(function(X)
+            if X.UserInputType==Enum.UserInputType.MouseButton1 or X.UserInputType==Enum.UserInputType.Touch then
+                Mm=true;
+                pc(X)
             end
         end);
-        Rf[hl('\200~\164@{\31\233q\186Rj8','\129\16\212\53\15\\')]:Connect(function(ce)
-            if Rh and(ce[hl('\15;p\208\175\188*=a\246\159\162?','ZH\21\162\230\210')]==xg[hl('\192\159\240\156','\133\241')][hl('\16\147\52=\"o5\149%\27\18q ','E\224QOk\1')][hl('X\142\162\186\t{z\151\178\164\tXa','\21\225\215\201l6')]or ce[hl('\214\146\18\208!\f\243\148\3\246\17\18\230','\131\225w\162hb')]==xg[hl('\251\214\203\213','\190\184')][hl('\236\131\51\242\53f\201\133\"\212\5x\220','\185\240V\128|\b')][hl('V\242w\254j','\2\157')])then
-                Zb(ce)
+        cb.InputChanged:Connect(function(oh)
+            if Qi and(oh.UserInputType==Enum.UserInputType.MouseMovement or oh.UserInputType==Enum.UserInputType.Touch)then
+                Tb(oh)
             end
-            if Mc and(ce[hl("\187\248\244\242\224\57\158\254\229\212\208\'\139",'\238\139\145\128\169W')]==xg[hl('\18\27\"\24','Wu')][hl("\223}3\167\23\207\250{\"\129\'\209\239",'\138\14V\213^\161')][hl("\234\'\200\173\51\1\200>\216\179\51\"\211",'\167H\189\222VL')]or ce[hl('4bMX\165\250\17d\\~\149\228\4','a\17(*\236\148')]==xg[hl('\199\179\247\176','\130\221')][hl("\128\134\18\1\51\51\165\128\3\'\3-\176",'\213\245wsz]')][hl('i\167H\171U','=\200')])then
-                df(ce)
-            end
-        end);
-        Rf[hl('B\197\19s\217N\197\ac\201','\v\171c\6\173')]:Connect(function(Je)
-            if Je[hl('G&p/3ub a\t\3kw','\18U\21]z\27')]==xg[hl('\254\25\206\26','\187w')][hl('\127$\177}Y\214Z\"\160[i\200O','*W\212\15\16\184')][hl('\176\2~j\231[\136\25\127v\236(','\253m\v\25\130\25')]or Je[hl('\181\27\252^\222\242\144\29\237x\238\236\133','\224h\153,\151\156')]==xg[hl('\218\144\234\147','\159\254')][hl('\154\189\129\210\250_\191\187\144\244\202A\170','\207\206\228\160\179\49')][hl('\195\52\226\56\255','\151[')]then
-                Rh=false;
-                Mc=false
+            if Mm and(oh.UserInputType==Enum.UserInputType.MouseMovement or oh.UserInputType==Enum.UserInputType.Touch)then
+                pc(oh)
             end
         end);
-        Sf[hl('\250\164\167\245\17\234\140\n\195\164\188\183\55\196\144\29\220','\183\203\210\134t\168\249~')]:Connect(function()
-            rc[hl('\223\186\154,\130\195\140\144*\134\210','\183\223\243K\234')]=-8.4695519607012786e-05*-11807;
-            rc[hl('\235\130\140y\232\207\136\137a\229','\156\235\232\r\128')]=3.9053346871826916e-05*25606;
-            Bb[hl('K\96X\249ofD\254','\27\15+\144')]=xg[hl(']\155a\178:','\b\223')][hl('\a\f\30','i')](1.8018667339363581e-05*27749,31721+-31728,-3.5780735651925003e-05*-13974,-0.00082169268693508624*8519);
-            te[hl('5\r\212\167\17\v\200\160','eb\167\206')]=xg[hl("@\145|\184\'",'\21\213')][hl('\194\201\219','\172')](3463.5-3463,-22532+22525,3963.5/7927,-0.00036054596961112542*19415);
-            ob[hl('\128\183\172\166','\212\210')]=hl(']\169\208>y\240/\236\136w!\180m','\21\204\185Y\17\132');
-            om[hl('H\210d\195','\28\183')]=hl('\234\134\136\185v\197\157\222\194\253.\135','\189\239\236\205\30\255')
-            if not(Tm)then
-            else
-                ci()
+        cb.InputEnded:Connect(function(nj)
+            if nj.UserInputType==Enum.UserInputType.MouseButton1 or nj.UserInputType==Enum.UserInputType.Touch then
+                Qi=false;
+                Mm=false
             end
         end);
-        Sf[hl('\143\19~a\30\135\18\127w\t','\194|\v\18{')]:Connect(function()
-            Sf[hl('JdO9\231]\26\251t\200\96zdB!\240N\a\235t\207M','\b\5,R\128/u\142\26\172\52')]=jd[hl('\144&\156\26','\242R')]
+        za.MouseButton1Click:Connect(function()
+            aa.heightScale=1;
+            aa.widthScale=1;
+            uh.Position=UDim2 .new(0.5,-7,0.5,-7);
+            qi.Position=UDim2 .new(0.5,-7,0.5,-7);
+            yg.Text='Height: 1.00x';
+            nm.Text='Width: 1.00x'
+            if Pg then
+                Bg()
+            end
         end);
-        Sf[hl('?\253\4\180\235>\247\16\177\235','r\146q\199\142')]:Connect(function()
-            Sf[hl('@*0F\200\50HB\a[Dp*=^\223!UR\a\\i',"\2KS-\175@\'\55i?\16")]=jd[hl('drh','\6')]
+        za.MouseEnter:Connect(function()
+            za.BackgroundTransparency=Hm.btnH
+        end);
+        za.MouseLeave:Connect(function()
+            za.BackgroundTransparency=Hm.btn
         end)
-        local Om=xg[hl('\30~\2\220\54~\18\205','W\16q\168')][hl('\242\249\235','\156')](hl('D\213c\202g','\2\167'));
-        Om[hl('x&Q*','+O')]=xg[hl('C\187\127\146$','\22\255')][hl('\19\24\n','}')](-892- -893,-0.0038938914577756143*4109,-24151- -24152,-18391+18216);
-        Om[hl('t\27\222\27P\29\194\28','$t\173r')]=xg[hl('IduM.','\28 ')][hl('\0\v\25','n')](0,198984/24873,0,-1687088/-16222);
-        Om[hl('\163\225\159\136\53\234\193i\157|\213\147\225\146\144\"\249\220y\157{\248','\225\128\252\227R\152\174\28\243\24\129')]=-19678- -19679;
-        Om[hl('\27\n.$\1\49(','Mc]')]=false;
-        Om[hl('\200\0\236\253\15\234','\152a\158')]=af
-        local cc=xg[hl('\199\194\230\240\239\194\246\225','\142\172\149\132')][hl('\233\226\240','\135')](hl('\154\251Q\b\130\255K\25\162','\206\158)|'));
-        cc[hl('\213\205\252\193','\134\164')]=xg[hl('\198\227\250\202\161','\147\167')][hl('HCQ','&')](-7170/-7170,0,0,633612/22629);
-        cc[hl('\166\178a\161\130\180}\166','\246\221\18\200')]=xg[hl('\148\16\168\57\243','\193T')][hl('\249\242\224','\151')](0,0,0,-18088+18083);
-        cc[hl('2\141A\204nhN\161J\169D\2\141L\212y{S\177J\174i','p\236\"\167\t\26!\212$\205\16')]=26188+-26187;
-        cc[hl('\nK&Z','^.')]=hl('\237hB \15\200c\26\135\219U\178\226\163\165\154j\217:g\3\96\224,0\170\242b\219\226\201\164\186@\139',"\169\26-P/\174\fv\227\190\'\136\194\129\225\232\5");
-        cc[hl('\155\f\216l-\160\5\207j]','\207i\160\24n')]=Ta[hl('\0+\203q\136\17-\220k\191','tN\179\5\219')];
-        cc[hl('\193\55__\198;]N',"\149R\'+")]=-0.00059977208660708927*-16673;
-        cc[hl('\206\53\230.','\136Z')]=xg[hl('R{bx','\23\21')][hl('k\251C\224','-\148')][hl('\181k<gv\20Y\151i!mx\21n','\242\4H\15\23y\n')];
-        cc[hl('j7%\159\221\172IW53\134\224\131Q','>R]\235\133\237%')]=xg[hl('k\203[\200','.\165')][hl('N\164\179=d\f+s\166\165$Y#3','\26\193\203I<MG')][hl('h0B!','$U')];
-        cc[hl('U\251l\3\27s\255d\a)e','\1\158\20wL')]=true;
-        cc[hl('Nc\22{l\16','\30\2d')]=Om
-        local td=xg[hl('\235\153N\15\195\153^\30','\162\247={')][hl('\182\189\175','\216')](hl('M\20\246\bLl\5\250\19\96','\25q\142|\14'));
-        td[hl('\225\15\200\3','\178f')]=xg[hl('\145*\173\3\246','\196n')][hl('#(:','M')](0,-0.015103666071673761*-7283,0,581-559);
-        td[hl('\184z\96C\156||D','\232\21\19*')]=xg[hl('A\135}\174&','\20\195')][hl(':1#','T')](0,0,0,488992/17464);
-        td[hl("\5\206\57\138*\'\243\52)\203\25\142!:\238r",'G\175Z\225MU\156A')]=Ta[hl('\25*\21\28\28','{^')];
-        td[hl('\208\199\164\161\v_\229j\187\249r\224\199\169\185\28L\248z\187\254_','\146\166\199\202l-\138\31\213\157&')]=jd[hl('.8\"','L')];
-        td[hl("\'\231\v\246",'s\130')]=hl('\96%\179\166\16\191\177ua\15\145\233\55\178\253ZA','2@\223\201q\219\145?');
-        td[hl('3\205\203e*\b\196\220cZ','g\168\179\17i')]=Ta[hl('\134\172n1\25\128\160{$;\139','\242\201\22EI')];
-        td[hl('c4\30-d8\28<','7QfY')]=-0.0003659726740403383*-24592;
-        td[hl('y+Q0','?D')]=xg[hl('=\170\r\169','x\196')][hl('3\175\27\180','u\192')][hl("\'\49\231\b?\254",'\96^\147')];
-        td[hl('an\197s\176[\150J{\210G\188Q\160O','#\1\183\23\213)\197')]=0;
-        td[hl('\246\211L\195\220J','\166\178>')]=Om
-        local pf=xg[hl('[\250.\168s\250>\185','\18\148]\220')][hl('en|','\v')](hl('Mp}\237jW[\240','\24\57>\130'));
-        pf[hl('Lf\205\150v2]h\219\145f3','\15\t\191\248\19@')]=xg[hl('\6F:o','S\2')][hl('ibp','\a')](0,2786-2779);
-        pf[hl('-\t\227\24\6\229','}h\145')]=td;
-        td[hl('\152\236\245d\229\203\188\206\161\236\238&\195\229\160\217\190','\213\131\128\23\128\137\201\186')]:Connect(function()
-            on();
-            Kg[hl('\247\142\219\159','\163\235')]=hl('\96\169\236\3R\253\14b\237Y\218\209(\30\244\6j\237N','*\250\163Mr\155g\14\136');
-            Kg[hl('\255\228\168\241t\196\237\191\247\4','\171\129\208\133\55')]=Ta[hl('\218\n\167|\233\29\186m\192','\174o\223\b')];
-            xg[hl('\141\137\159\142\144','\254\249')](function()
-                xg[hl('\149\180\139\161','\226\213')](-6.1389238466496825e-05*-32579);
-                Kg[hl("c6O\'",'7S')]=hl('\206\217g\248\229\156z\188','\156\188\6\156')..lb;
-                Kg[hl('\221\250\158qT\230\243\137w$','\137\159\230\5\23')]=Ta[hl('\185[\148\185z\133\160','\205>\236')]
+        local rd=Instance.new'Frame';
+        rd.Size=UDim2 .new(1,-16,1,-175);
+        rd.Position=UDim2 .new(0,8,0,104);
+        rd.BackgroundTransparency=1;
+        rd.Visible=false;
+        rd.Parent=sg
+        local Fd=Instance.new'TextLabel';
+        Fd.Size=UDim2 .new(1,0,0,28);
+        Fd.Position=UDim2 .new(0,0,0,-5);
+        Fd.BackgroundTransparency=1;
+        Fd.Text='Drop folder: \"Drop JSON FILES HERE\"';
+        Fd.TextColor3=He.textSecond;
+        Fd.TextSize=10;
+        Fd.Font=Enum.Font.GothamSemibold;
+        Fd.TextXAlignment=Enum.TextXAlignment.Left;
+        Fd.TextWrapped=true;
+        Fd.Parent=rd
+        local id=Instance.new'TextButton';
+        id.Size=UDim2 .new(0,110,0,22);
+        id.Position=UDim2 .new(0,0,0,28);
+        id.BackgroundColor3=He.btnBg;
+        id.BackgroundTransparency=Hm.btn;
+        id.Text='Reload JSON Files';
+        id.TextColor3=He.textPrimary;
+        id.TextSize=9;
+        id.Font=Enum.Font.Gotham;
+        id.BorderSizePixel=0;
+        id.Parent=rd
+        local od=Instance.new'UICorner';
+        od.CornerRadius=UDim.new(0,7);
+        od.Parent=id;
+        id.MouseButton1Click:Connect(function()
+            bd();
+            vd.Text='JSON files reloaded';
+            vd.TextColor3=He.textGreen;
+            spawn(function()
+                wait(2);
+                vd.Text='Ready | '..ud;
+                vd.TextColor3=He.textDim
             end)
         end);
-        td[hl('yR\207\166*qS\206\176=','4=\186\213O')]:Connect(function()
-            td[hl('\224x.\18\211\237\232\229\tw\144\208x#\n\196\254\245\245\tp\189','\162\25My\180\159\135\144g\19\196')]=jd[hl('L\186@\134','.\206')]
+        id.MouseEnter:Connect(function()
+            id.BackgroundTransparency=Hm.btnH
         end);
-        td[hl('\17 *IL\16*>LL','\\O_:)')]:Connect(function()
-            td[hl('\247#\202\150%I[\2\227i\154\199#\199\142\50ZF\18\227n\183','\181B\169\253B;4w\141\r\206')]=jd[hl('h~d','\n')]
+        id.MouseLeave:Connect(function()
+            id.BackgroundTransparency=Hm.btn
         end)
-        local uc=xg[hl('\155\173\194\240\179\173\210\225','\210\195\177\132')][hl('6=/','X')](hl('\255\f\f\213\231\b\22\196\199','\171it\161'));
-        uc[hl('w\163^\175','$\202')]=xg[hl('\174\178\146\155\201','\251\246')][hl('\18\25\v','|')](7756+-7755,0,0,-31344- -31364);
-        uc[hl('=\246,\240\25\240\48\247','m\153_\153')]=xg[hl('\138X\182q\237','\223\28')][hl('\18\25\v','|')](0,0,0,0.0021231422505307855*26847);
-        uc[hl('H\147Rp\224\211z\213\222H\212x\147_h\247\192g\197\222O\249','\n\242\49\27\135\161\21\160\176,\128')]=22757-22756;
-        uc[hl('A\146m\131','\21\247')]=hl('\140\182\141H\a\55\227\160\166\153LU\1\255',"\196\223\233-\'u\140");
-        uc[hl('\206i\144\a\252\245\96\135\1\140','\154\f\232s\191')]=Ta[hl('\248\198\232g\141\254\202\253r\175\245','\140\163\144\19\221')];
-        uc[hl(',5\179$+9\177\53','xP\203P')]=-32624+32636;
-        uc[hl('\183\1\159\26','\241n')]=xg[hl('\251\252\203\255','\190\146')][hl('\136\178\160\169','\206\221')][hl('\208\174\223Vk\250\131\196Rn','\151\193\171>\n')];
-        uc[hl(';\206D\195\21\253w\6\204R\218(\210o','o\171<\183M\188\27')]=xg[hl('\175\"\159!','\234L')][hl('w\194\173\160c\223xJ\192\187\185^\240\96','#\167\213\212;\158\20')][hl('\152\15\178\30','\212j')];
-        uc[hl('h\233\190]\230\184','8\136\204')]=Om
-        local _a=xg[hl('\130\203\201\180\170\203\217\165','\203\165\186\192')][hl('\248\243\225','\150')](hl('d\237\1V\238E\252\rM\194','0\136y\"\172'));
-        _a[hl('\211\19\250\31','\128z')]=xg[hl('\205\193\241\232\170','\152\133')][hl('\190\181\167','\208')](-14525+14526,0,0,-178612/-6379);
-        _a[hl('\232{R?\204}N8','\184\20!V')]=xg[hl('\1\165=\140f','T\225')][hl('\254\245\231','\144')](0,0,0,981180/12420);
-        _a[hl('\248A\226D\1\145\214p\212D\194@\n\140\203\54','\186 \129/f\227\185\5')]=Ta[hl('\228\146\232\164\225','\134\230')];
-        _a[hl('\171\51\142\180\219\219\232PVE\21\155\51\131\172\204\200\245@VB8','\233R\237\223\188\169\135%8!A')]=jd[hl('YOU',';')];
-        _a[hl('\137Z\165K','\221?')]=hl('\"\233%\14\156i\226\243\147:Zf\176V;\145~\245\244\157V\27','\2\201vk\240\f\129\135\179x5');
-        _a[hl('\27\137\31\18e \128\b\20\21','O\236gf&')]=Ta[hl('\255\134:}\148\249\138/h\182\242','\139\227B\t\196')];
-        _a[hl('\218\26\3\225\221\22\1\240','\142\127{\149')]=119340/11934;
-        _a[hl('\154\163\178\184','\220\204')]=xg[hl('\254\231\206\228','\187\137')][hl('>\215\22\204','x\184')][hl('\155Z8\180T!','\220\53L')];
-        _a[hl('\191\143\249\251\144\174v\130\141\239\226\173\129n','\235\234\129\143\200\239\26')]=xg[hl('\194\141\242\142','\135\227')][hl('7\191\6\154\177\3;\n\189\16\131\140,#','c\218~\238\233BW')][hl('\182\23\156\6','\250r')];
-        _a[hl('+\235C\134\196\207\26\0\254T\178\200\197,\5','i\132\49\226\161\189I')]=0;
-        _a[hl('c\220\148V\211\146','3\189\230')]=Om
-        local mf=xg[hl('\203\175\142\214\227\175\158\199','\130\193\253\162')][hl('\211\216\202','\189')](hl('\21\210\136I2\245\174T','@\155\203&'));
-        mf[hl('h\143J\210\54\ny\129\\\213&\v','+\224\56\188Sx')]=xg[hl('V\192j\233','\3\132')][hl('\251\240\226','\149')](0,-3669+3678);
-        mf[hl('\181\56J\128\55L','\229Y8')]=_a
-        local y=xg[hl('\244I\139\154\220I\155\139',"\189\'\248\238")][hl('\128\139\153','\238')](hl('\26\170\160\149+\135\153\154(','O\227\240\244'));
-        y[hl('\217\176\209Y0\231\182\249X?\253','\137\209\181=Y')]=xg[hl("\27\246\'\223",'N\178')][hl('GL^',')')](0,-0.00032795487340941888*-30492);
-        y[hl('L\222\141y\209\139','\28\191\255')]=_a
-        local ug={hl('\n\140#\141','B\233'),hl('\253\246\a\197\163\252\233\5\211\190','\168\134w\160\209'),hl('\212\184N\253\168\204\184K\235\181','\152\215\57\152\218'),hl('Y4\134J\196\137e4\146\127\227\148','\21Q\224>\145\249'),hl('8\243)\147\57\219\3\243=\166\a\217','t\150O\231u\180'),hl('\198\203\210\28\194\207\218\f','\138\174\180h'),hl('\226\243\228LjJ\192\234\230V_m\221','\176\154\131$\30\31'),hl('\144\173i\f\156\237\173\179k\22\169\211\175','\194\196\14d\232\161'),hl('q\173\216\246W\140\222\240G','#\196\191\158'),hl('PX_\147\172\144lXK\171\156\135','\28=9\231\249\224'),hl('t\\\135\143\238\163O\\\147\183\199\171','89\225\251\162\204'),hl('\251/\135A\241%\142A','\183J\225\53'),hl('z8\228g\175\227X!\230}\151\211O','(Q\131\15\219\182'),hl('>\159\162Q)i\3\129\160K\17@\v','l\246\197\57]%'),hl('$\18\0\181\2=\b\178\2','v{g\221'),hl('\144Q\182M\171','\196>'),hl('F\138 \241*\174\52\232','\n\239F\133'),hl('T/\147\54rf\181,k','\6F\244^'),hl('aK|\195\rb\127\208','-.\26\183'),hl('b\134\215\tD\207\252\4W','0\239\176a')}
-        local function _b(Ee)
-            if not(Tm and(ol and Eb))then
-            else
-                local Pc,di=ol:FindFirstChild(Ee),Eb:FindFirstChild(Ee)
-                if not(Pc and Pc:IsA(hl('\196\14t\158\214\14u\143','\134o\a\251')))then
-                else
-                    if not(di and di:IsA(hl('CtR\30QtS\15','\1\21!{')))then
-                    else
-                        Pc[hl('\27\165s\205\169\232.\165w\205\185\225','O\215\18\163\218\152')]=-16254/-16254;
-                        Pc[hl('\229\30Cz|\202\19D]v','\166\127-9\19')]=false
-                        if Ee==hl('\199x\238y','\143\29')then
-                            for Yc,lm in xg[hl('\212\169\159\212\171\141','\189\217\254')](Pc:GetChildren())do
-                                if lm:IsA(hl('\197\166\226\162\237','\129\195'))then
-                                    lm[hl('[\233\211w\235\250n\233\215w\251\243','\15\155\178\25\152\138')]=3.7387370546229483e-05*26747
+        local Yh=Instance.new'TextLabel';
+        Yh.Size=UDim2 .new(1,0,0,20);
+        Yh.Position=UDim2 .new(0,0,0,57);
+        Yh.BackgroundTransparency=1;
+        Yh.Text='Hide Bodyparts';
+        Yh.TextColor3=He.textPrimary;
+        Yh.TextSize=12;
+        Yh.Font=Enum.Font.GothamBold;
+        Yh.TextXAlignment=Enum.TextXAlignment.Left;
+        Yh.Parent=rd
+        local pi=Instance.new'TextButton';
+        pi.Size=UDim2 .new(1,0,0,28);
+        pi.Position=UDim2 .new(0,0,0,79);
+        pi.BackgroundColor3=He.btnBg;
+        pi.BackgroundTransparency=Hm.btn;
+        pi.Text='  Select Body Parts...';
+        pi.TextColor3=He.textPrimary;
+        pi.TextSize=10;
+        pi.Font=Enum.Font.Gotham;
+        pi.TextXAlignment=Enum.TextXAlignment.Left;
+        pi.BorderSizePixel=0;
+        pi.Parent=rd
+        local Fh=Instance.new'UICorner';
+        Fh.CornerRadius=UDim.new(0,9);
+        Fh.Parent=pi
+        local Tl=Instance.new'UIPadding';
+        Tl.PaddingLeft=UDim.new(0,10);
+        Tl.Parent=pi
+        local U={'Head','UpperTorso','LowerTorso','LeftUpperArm','LeftLowerArm','LeftHand','RightUpperArm','RightLowerArm','RightHand','LeftUpperLeg','LeftLowerLeg','LeftFoot','RightUpperLeg','RightLowerLeg','RightFoot','Torso','Left Arm','Right Arm','Left Leg','Right Leg'}
+        local function ii(eh)
+            if Pg and(Dh and xm)then
+                local Sj,W=Dh:FindFirstChild(eh),xm:FindFirstChild(eh)
+                if Sj and Sj:IsA'BasePart'then
+                    if W and W:IsA'BasePart'then
+                        Sj.Transparency=1;
+                        Sj.CanCollide=false
+                        if eh=='Head'then
+                            for lf,Jh in ipairs(Sj:GetChildren())do
+                                if Jh:IsA'Decal'then
+                                    Jh.Transparency=1
                                 end
                             end
                         end
-                        xg[hl("\'?",'x')][hl('\170\5\150\6\230\182P\173\b\139\50\226\170f\177','\194l\242b\131\216\18')][Ee]=true
+                        _G.hiddenBodyParts[eh]=true
                     end
                 end
             end
         end
-        local function Qk(Kj)
-            xg[hl('\22\14','I')][hl("+\244\241\19FyG,\249\236\'Beq0",'C\157\149w#\23\5')][Kj]=nil
+        local function Ul(Ve)
+            _G.hiddenBodyParts[Ve]=nil
         end
-        local Qf,ja=false,nil;
-        _a[hl('=C\161/,\3-\232\4C\186m\n-1\255\27','p,\212\\IAX\156')]:Connect(function()
-            if not(Qf)then
-                if not(Tm and ol)then
-                    Kg[hl('\197\231\233\246','\145\130')]=hl('o_\239\2r\18r\213\227\151\6DGP\250\tq\25r\193\239\132\27Y\v','*1\142\96\30wR\167\134\246h-');
-                    Kg[hl("\158\141\'f\165\165\132\48\96\213",'\202\232_\18\230')]=Ta[hl('?Zh?mu/','K?\16')];
-                    xg[hl('\168R\186U\181','\219\"')](function()
-                        xg[hl('\166\170\184\191','\209\203')](43436/21718);
-                        Kg[hl(':\220\22\205','n\185')]=hl('\152\14\174\173\179K\179\233','\202k\207\201')..lb;
-                        Kg[hl("D\'\1\178s\127.\22\180\3",'\16By\198\48')]=Ta[hl('\169\237\26\169\204\v\176','\221\136b')]
-                    end)
-                else
-                    Qf=true;
-                    ja=xg[hl('\161\152\15D\137\152\31U','\232\246|0')][hl('EN\\','+')](hl('\147\180\180\171\176','\213\198'));
-                    ja[hl('d<M0','7U')]=xg[hl('\130d\190M\229','\215 ')][hl('DO]','*')](-14024- -14025,0,0,-3907+4057);
-                    ja[hl('\219W\2^\255Q\30Y','\139\56q7')]=xg[hl('\226\213\222\252\133','\183\145')][hl('T_M',':')](0,0,-20828+20829,-10637+10640);
-                    ja[hl('\131\233Y\192\178\132\22\t\175\236y\196\185\153\vO','\193\136:\171\213\246y|')]=Ta[hl('\"S\222\15>p\215X','R2\176j')];
-                    ja[hl('\154\171\222\248\247m\171Gs\228H\170\171\211\224\224~\182Ws\227e','\216\202\189\147\144\31\196\50\29\128\28')]=jd[hl('\193\173\208\220\183\212\215','\174\219\181')];
-                    ja[hl('.|\153\208:\152\227\5i\142\228\54\146\213\0','l\19\235\180_\234\176')]=0;
-                    ja[hl('\206\151L\240\187Z','\148\222\"')]=16857-16847;
-                    ja[hl('\134g]\179h[','\214\6/')]=_a
-                    local hb=xg[hl('{i\231\219Si\247\202','2\a\148\175')][hl('\192\203\217','\174')](hl('\192\146\20\30\231\181\50\3','\149\219Wq'));
-                    hb[hl('\237\250\224:*S\252\244\246=:R','\174\149\146TO!')]=xg[hl('L_pv','\25\27')][hl('\247\252\238','\153')](0,-0.00063420477767599183*-14191);
-                    hb[hl('\137\57\1\188\54\a','\217Xs')]=ja
-                    local Ld=xg[hl('\234U\157|\194U\141m','\163;\238\b')][hl('\134\141\159','\232')](hl('(a\220\6\51\161a\21e\232\27>\160m','{\2\174i_\205\b'));
-                    Ld[hl('\195\222\234\210','\144\183')]=xg[hl('.\217\18\240I','{\157')][hl('1:(','_')](-32594- -32595,163770/-27295,10802+-10801,22681+-22687);
-                    Ld[hl('\164\202Z\b\128\204F\15','\244\165)a')]=xg[hl('\133\182\185\159\226','\208\242')][hl('_TF','1')](0,30982-30979,0,-70185/-23395);
-                    Ld[hl('\1\174\14\249L_\202\133\148\221\191\49\174\3\225[L\215\149\148\218\146','C\207m\146+-\165\240\250\185\235')]=-0.00015229972586049346*-6566;
-                    Ld[hl('Y\208\210\141\48\213\223\216\19^\219\201\129\55\215\248\202\18','\n\179\160\226\\\185\157\185a')]=12522+-12519;
-                    Ld[hl(';\138\0G\135\197\139\141X\220\5\136\21M\168\198\165\131X\166','h\233r(\235\169\201\236*\149')]=Ta[hl('\228b\159\248\251m\143\246\229','\151\1\237\151')];
-                    Ld[hl('\188\n\154\136VL\252?\215\53I\195\24\138=\154\134TS\206?\215\25J\193\6','\239i\232\231: \190^\165|$\162\127')]=-1.8683440244130285e-05*-16057;
-                    Ld[hl('\233#\237f\137q\127\194\54\250R\133{I\199','\171L\159\2\236\3,')]=0;
-                    Ld[hl('\216\133\17\230\169\a','\130\204\127')]=-5337- -5347;
-                    Ld[hl('@\\\23uS\17','\16=e')]=ja
-                    local sc=xg[hl('\233\199\227\165\193\199\243\180','\160\169\144\209')][hl('\240\251\233','\158')](hl('\14\212Us\148$\23\252\96u\146$','[\157\25\26\231P'));
-                    sc[hl('M\198qy\206{z','\29\167\21')]=xg[hl('\136\15\180&','\221K')][hl('\247\252\238','\153')](0,6150-6148);
-                    sc[hl('4\179\246\160(\174\224\177\21','g\220\132\212')]=xg[hl('\200\132\248\135','\141\234')][hl('\167H\167[\187U\177J\134',"\244\'\213/")][hl('\145\24\178\28','\223y')];
-                    sc[hl('\148\146\18\161\157\20','\196\243\96')]=Ld
-                    for Ri,ie in xg[hl('l\140\168l\142\186','\5\252\201')](ug)do
-                        if ol:FindFirstChild(ie)~=nil then
-                            local kg=xg[hl('\148\180u\17\188\180e\0','\221\218\6e')][hl('\178\185\171','\220')](hl('b\225n\188\238C\240b\167\194','6\132\22\200\172'));
-                            kg[hl('\210z\251v','\129\19')]=xg[hl('\28\57 \16{','I}')][hl('\213\222\204','\187')](18484+-18483,0,0,24233-24209);
-                            kg[hl(',\187\227\6\156G\244\241\0\190\195\2\151Z\233\183','n\218\128m\251\53\155\132')]=Ta[hl('\190\56\187\21\171','\204W')];
-                            kg[hl('\130\51&&\140\182\18SR\185\232\178\51+>\155\165\15CR\190\197','\192REM\235\196}&<\221\188')]=jd[hl('zg\127','\b')];
-                            kg[hl('\185>\149/','\237[')]=(xg[hl('(0','w')][hl('\t}\253\4Er\165\14p\224\48An\147\18','a\20\153\96 \28\231')][ie]and hl('\30\243\24\171','E\139')or hl('\209\209\209','\241'))..ie;
-                            kg[hl('\251\215\201\at\192\222\222\1\4','\175\178\177s7')]=xg[hl('5-','j')][hl('\0\250\199-\188N\24\a\247\218\25\184R.\27','h\147\163I\217 Z')][ie]and Ta[hl('&8q\152@3\v~\156W','G[\18\253.')]or Ta[hl('\145%\149\142\54\151)\128\155\20\156','\229@\237\250f')];
-                            kg[hl('\31\209\153\14\24\221\155\31','K\180\225z')]=169650/18850;
-                            kg[hl('-\233\5\242','k\134')]=xg[hl('\134E\182F','\195+')][hl('\r\23%\f','Kx')][hl('\5\49\224*?\249','B^\148')];
-                            kg[hl("D\16D.V\'\26y\18R7k\b\2",'\16u<Z\14fv')]=xg[hl('d\"T!','!L')][hl('f\v^V\151\246v[\tHO\170\217n','2n&\"\207\183\26')][hl('\186@\144Q','\246%')];
-                            kg[hl('\\\150\202\131\200\199\96w\131\221\183\196\205Vr','\30\249\184\231\173\181\51')]=0;
-                            kg[hl('\198e\\\248IJ','\156,2')]=-212800/-21280;
-                            kg[hl('\v\133i>\138o','[\228\27')]=Ld
-                            local vl=xg[hl('\209\250}*\249\250m;','\152\148\14^')][hl('ZQC','4')](hl('\2\236\149z3\193\172u0','W\165\197\27'));
-                            vl[hl('\213Z\239\148\183\235\\\199\149\184\241','\133;\139\240\222')]=xg[hl('\225\196\221\237','\180\128')][hl('\180\191\173','\218')](0,-54210/-10842);
-                            vl[hl('\229\129\161\208\142\167','\181\224\211')]=kg;
-                            kg[hl('s\189LA|\174\129lJ\189W\3Z\128\157{U','>\210\57\50\25\236\244\24')]:Connect(function()
-                                if not(xg[hl('iq','6')][hl('6\212\206A\230\174G1\217\211u\226\178q-','^\189\170%\131\192\5')][ie])then
-                                    _b(ie);
-                                    Kg[hl('\19Q?@','G4')]=ie..hl('\167,\248\227 \244\233','\135D\145');
-                                    Kg[hl('i\208\96j\220R\217wl\172','=\181\24\30\159')]=Ta[hl('ST#\28\96C>\rI',"\'\49[h")]
-                                else
-                                    Qk(ie);
-                                    Kg[hl('\143y\163h','\219\28')]=ie..hl('\218\137\247\149\141\241','\250\250\159');
-                                    Kg[hl('\231-\196\220G\220$\211\218\55','\179H\188\168\4')]=Ta[hl('\f+n\132 \29\"z\159\14','xN\22\240y')]
-                                end
-                                xg[hl('\b\29\26\26\21','{m')](function()
-                                    xg[hl('\197\53\219 ','\178T')](50848/25424);
-                                    Kg[hl('\186\204\150\221','\238\169')]=hl('r\200\6eY\141\27!',' \173g\1')..lb;
-                                    Kg[hl('\137\27\190\56\163\178\18\169>\211','\221~\198L\224')]=Ta[hl('\204#F\204\2W\213','\184F>')]
-                                end);
-                                kg[hl('\251\196\215\213','\175\161')]=(xg[hl('\178\170','\237')][hl('[\242\56\209\21\133\205\\\255%\229\17\153\251@','3\155\\\181p\235\143')][ie]and hl('\174L\168\20','\245\52')or hl('SSS','s'))..ie;
-                                kg[hl('d:\254W\233_3\233Q\153','0_\134#\170')]=xg[hl('\17\t','N')][hl('\219\20P\145-\198\130\220\25M\165)\218\180\192','\179}4\245H\168\192')][ie]and Ta[hl('6\181\140\217\156#\134\131\221\139','W\214\239\188\242')]or Ta[hl('\208\243\179\198\161\214\255\166\211\131\221','\164\150\203\178\241')]
-                            end)
-                        end
-                    end
-                    xg[hl('\157\158\143\153\128','\238\238')](function()
-                        xg[hl('i\232w\253','\30\137')](-4.1921690282552197e-06*-11927);
-                        Ld[hl('\238\a\57q\211\222\53>}\215','\173fW\a\178')]=xg[hl('\201\235\245\194\174','\156\175')][hl('\22\29\15','x')](0,0,0,sc[hl('_\184\96L\141\199\228&\0q\180gF\143\198\195*9{','\30\218\19#\225\178\144CC')][hl('3','j')])
-                    end)
+        local Lm,Vm=false,nil;
+        pi.MouseButton1Click:Connect(function()
+            if Lm then
+                if Vm then
+                    Vm:Destroy()
                 end
-            else
-                if not(ja)then
-                else
-                    ja:Destroy()
-                end
-                Qf=false
+                Lm=false
                 return
-            end
-        end);
-        _a[hl(' \253X*\172(\252Y<\187','m\146-Y\201')]:Connect(function()
-            _a[hl('\203{\15\31\162\253\23\26\144\200\127\251{\2\a\181\238\n\n\144\207R','\137\26lt\197\143xo\254\172+')]=jd[hl('\244\31\248#','\150k')]
-        end);
-        _a[hl('@\254R\177\216A\244F\180\216',"\r\145\'\194\189")]:Connect(function()
-            _a[hl("\221\196z?\216\16\254\243\172\244\245\237\196w\'\207\3\227\227\172\243\216",'\159\165\25T\191b\145\134\194\144\161')]=jd[hl('\21\3\25','w')]
-        end)
-        local function ph(Ff,Gc,ij)
-            local Im=xg[hl('\213\152=\15\253\152-\30','\156\246N{')][hl('\206\197\215','\160')](hl('\237\169+f\245\173\49w\213','\185\204S\18'));
-            Im[hl('l\241E\253','?\152')]=xg[hl('\5Y9pb','P\29')][hl('\146\153\139','\252')](16288.299999999999/23269,0,0,-14305+14325);
-            Im[hl('\178\153\219\135\150\159\199\128','\226\246\168\238')]=xg[hl('\134\250\186\211\225','\211\190')][hl('\215\220\206','\185')](0,0,0,Gc);
-            Im[hl('\160\27rhOq\152\246-\236\158\144\27\127pXb\133\230-\235\179','\226z\17\3(\3\247\131C\136\202')]=-131+132;
-            Im[hl('\242\20\222\5','\166q')]=Ff;
-            Im[hl('*T\223nL\17]\200h<','~1\167\26\15')]=Ta[hl('\231\212~\20\223\225\216k\1\253\234','\147\177\6\96\143')];
-            Im[hl('\248\166\236\206\255\170\238\223','\172\195\148\186')]=-27025- -27037;
-            Im[hl('9\20\17\15','\127{')]=xg[hl('\172\54\156\53','\233X')][hl('\21.=5','SA')][hl('4\241\195_)\30\220\216[,','s\158\183\55H')];
-            Im[hl('\239\161\152\18\208\130i\210\163\142\v\237\173q','\187\196\224f\136\195\5')]=xg[hl('\147\255\163\252','\214\145')][hl('\249tA\152\141\226w\196vW\129\176\205o','\173\17\57\236\213\163\27')][hl('9\231\19\246','u\130')];
-            Im[hl('\235\15{\222\0}','\187n\t')]=Om
-            local Ua=xg[hl('\159\6\215v\183\6\199g','\214h\164\2')][hl('\245\254\236','\155')](hl('/\219\b\196\f','i\169'));
-            Ua[hl('o\186F\182','<\211')]=xg[hl('\251\17\199\56\156','\174U')][hl('\26\17\3','t')](0,-4367+4407,0,-21150- -21168);
-            Ua[hl('_\231t\188{\225h\187','\15\136\a\213')]=xg[hl('\218v\230_\189','\143\50')][hl('en|','\v')](17227/17227,0.0019786307874950534*-22743,0,Gc+(-4126- -4127));
-            Ua[hl(';\23\49\18\0\198\177m\23\18\17\22\v\219\172+','yvRyg\180\222\24')]=Ta[hl('xBn\31\96HF\30j','\f-\tx')];
-            Ua[hl('\213\252\24\157\236B\14\148\134\212.\229\252\21\133\251Q\19\132\134\211\3','\151\157{\246\139\48a\225\232\176z')]=0;
-            Ua[hl('\240p\135\175\57\f\\\219e\144\155\53\6j\222','\178\31\245\203\\~\15')]=0;
-            Ua[hl('\b\175{=\160}','X\206\t')]=Om
-            local U=xg[hl('\b\143\29& \143\r\55','A\225nR')][hl('HCQ','&')](hl('\230\156\183\\\193\187\145A','\179\213\244\51'));
-            U[hl('o?\244\171\230\155~1\226\172\246\154',',P\134\197\131\233')]=xg[hl('4\189\b\148','a\249')][hl('\184\179\161','\214')](0,-0.00069805320716667956*-12893);
-            U[hl('\205\231\t\248\232\15','\157\134{')]=Ua
-            local xh=xg[hl('Dx\146Slx\130B',"\r\22\225\'")][hl('ibp','\a')](hl('\146O\181P\177','\212='));
-            xh[hl('\206v\231z','\157\31')]=xg[hl('w\201K\224\16','\"\141')][hl('\26\17\3','t')](0,-0.0035569105691056909*-3936,0,-0.0017658930373360242*-7928);
-            xh[hl('J@\193WnF\221P','\26/\178>')]=xg[hl('y\139E\162\30',',\207')][hl('\158\149\135','\240')](0,-18655+18657,0,-7340+7342);
-            xh[hl('\251\174g\191-zs1\215\171G\187&gnw','\185\207\4\212J\b\28D')]=Ta[hl('\160\53\234\169\20\227\173','\203[\133')];
-            xh[hl('p\214\5\193\56\200b[\195\18\245\52\194T^','2\185w\165]\186\49')]=0;
-            xh[hl('\228\197D\209\202B','\180\164\54')]=Ua
-            local Jc=xg[hl('\30\130\96\160\54\130p\177','W\236\19\212')][hl('DO]','*')](hl('\163]\239_\132z\201B','\246\20\172\48'));
-            Jc[hl('F\5\160\224N\166W\v\182\231^\167','\5j\210\142+\212')]=xg[hl('\24\196$\237','M\128')][hl('\170\161\179','\196')](0,-15243+15250);
-            Jc[hl('\181\155M\128\148K','\229\250?')]=xh
-            local rd=xg[hl('\20;,D<;<U',']U_0')][hl('\139\128\146','\229')](hl('\217\a\183Zr\248\22\187A^','\141b\207.0'));
-            rd[hl('\188&\149*','\239O')]=xg[hl('\233\250\213\211\142','\188\190')][hl('\177\186\168','\223')](0.00021682567215958369*4612,0,-9599- -9600,0);
-            rd[hl('Z\a\195^]\r\132\4\203\231\206j\a\206FJ\30\153\20\203\224\227','\24f\160\53:\127\235q\165\131\154')]=-12695/-12695;
-            rd[hl('Lw\96f','\24\18')]='';
-            rd[hl('\170\232w\159\231q','\250\137\5')]=Ua;
-            rd[hl('oG\236=\"\26\251\204VG\247\127\4\52\231\219I','\"(\153NGX\142\184')]:Connect(function()
-                ij(Ua,xh)
-            end)
-            return Ua,xh
-        end
-        local Uj,u_=ph(hl('P\132YY\162#\167WV\162','\3\234\56\50\199'),0.36277602523659308*317,function(Ok,Za)
-            if Tm then
-                lf=not lf;
-                Cg={};
-                n_={};
-                Rg={}
-                if lf then
-                    Ok[hl('d\145\148W\146\230\235cH\148\180S\153\251\246%','&\240\247<\245\148\132\22')]=Ta[hl('\183\157\140\135\175\151\164\142','\195\242\235\224')];
-                    Za[hl('\132\159r\134\160\153n\129','\212\240\1\239')]=xg[hl('.8\18\17I','{|')][hl('\26\17\3','t')](7.8094494338149165e-05*12805,13883+-13899,0,359+-357);
-                    Za[hl('\19D\245\163\146\17tB?A\213\167\153\fi\4','Q%\150\200\245c\27\55')]=Ta[hl('P[GYzF',';5(')];
-                    Kg[hl('\239\n\195\27','\187o')]=hl('H#\204\128\252.v\"\201\142\185au','\27M\173\235\153\14');
-                    Kg[hl('E\2\255\237\244~\v\232\235\132','\17g\135\153\183')]=Ta[hl('\17_i\25\"Ht\b\v','e:\17m')]
-                else
-                    Ok[hl('\18G\"\232^\5\198\235>B\2\236U\24\219\173','P&A\131\57w\169\158')]=Ta[hl('\227\163\134\166\251\169\174\167\241','\151\204\225\193')];
-                    Za[hl("\31(;e;.\'b",'OGH\f')]=xg[hl('\192%\252\f\167','\149a')][hl('HCQ','&')](0,-8890- -8892,0,-27989- -27991);
-                    Za[hl('>\186\140~\236Ca\188\18\191\172z\231^|\250','|\219\239\21\139\49\14\201')]=Ta[hl('\221}4\212\\=\208','\182\19[')];
-                    Kg[hl('p\236\\\253','$\137')]=hl('\143\158}\149\191\226~\179\148y\222\181\164u','\220\240\28\254\218\194\19');
-                    Kg[hl("\28?]\224\159\'\54J\230\239",'HZ%\148\220')]=Ta[hl('\151\252\241\14\138\134\245\229\21\164','\227\153\137z\211')]
-                end
-                xg[hl('vndik','\5\30')](function()
-                    xg[hl('#U=@','T4')](49852/24926);
-                    Kg[hl('\151/\187>','\195J')]=hl('\255\198\162\28\212\131\191X','\173\163\195x')..lb;
-                    Kg[hl('\226\146z\136_\217\155m\142/','\182\247\2\252\28')]=Ta[hl('OD\5Oe\20V',';!}')]
-                end)
-            else
-                Kg[hl('\151\15\187\30','\195j')]=hl('\179\194&\154\n\200WQo\150\a\219\155\205\51\145\t\195WEc\133\26\198\215','\246\172G\248f\173w#\n\247i\178');
-                Kg[hl('\182\130\235\251\208\141\139\252\253\160','\226\231\147\143\147')]=Ta[hl('\199\245\213\199\194\200\215','\179\144\173')];
-                xg[hl('z\3h\4g','\ts')](function()
-                    xg[hl('\202T\212A','\189\53')](6068/3034);
-                    Kg[hl('\96\134L\151','4\227')]=hl('\248\229!\231\211\160<\163','\170\128@\131')..lb;
-                    Kg[hl('\184\227\221\190\141\131\234\202\184\253','\236\134\165\202\206')]=Ta[hl('\157\216M\157\249\\\132','\233\189\53')]
-                end)
-            end
-        end)
-        local D=xg[hl('\190\55\216\246\150\55\200\231','\247Y\171\130')][hl('\145\154\136','\255')](hl('\187\137\231\236\163\141\253\253\131','\239\236\159\152'));
-        D[hl('\187\19\146\31','\232z')]=xg[hl(']9a\16:','\b}')][hl('\253\246\228','\147')](14772-14771,31561-31621,0,0.0010550996483001172*17060);
-        D[hl('\219&\3\181\255 \31\178','\139Ip\220')]=xg[hl('^Lbe9','\v\b')][hl('\14\5\23','\96')](0,0,0,-1028580/-7347);
-        D[hl('\171\"f\223+\251\248\186R\184q\155\"k\199<\232\229\170R\191\\','\233C\5\180L\137\151\207<\220%')]=20169-20168;
-        D[hl('\28\225\48\240','H\132')]=hl(';2\235v\193\53\224\26a\184\51\142k\179','\127[\152\2\160[\131');
-        D[hl('\31@d\160E$Is\166\53','K%\28\212\6')]=Ta[hl('JD\154\52K[B\141.|','>!\226@\24')];
-        D[hl('\250TnI\253XlX','\174\49\22=')]=-12536+12546;
-        D[hl('\181{\157\96','\243\20')]=xg[hl('\150*\166)','\211D')][hl('\234\219\194\192','\172\180')][hl('\165\4\190\138\n\167','\226k\202')];
-        D[hl('oO\169l\210\187\148RM\191u\239\148\140',';*\209\24\138\250\248')]=xg[hl('\24\194(\193',']\172')][hl('\29=sm\234\56\55 ?et\215\23/','IX\v\25\178y[')][hl('\226\49\200 ','\174T')];
-        D[hl('\191\141J\138\130L','\239\236\56')]=Om
-        local fd=xg[hl('&\189\213\221\14\189\197\204','o\211\166\169')][hl('\183\188\174','\217')](hl('\215\147\240\140\244','\145\225'));
-        fd[hl('\249\248\208\244','\170\145')]=xg[hl('\205\179\241\154\170','\152\247')][hl('\171\160\178','\197')](4.6518118807275437e-05*21497,21670+-21680,0,-0.0010718113612004287*-3732);
-        fd[hl('\139\184\252Y\175\190\224^','\219\215\143\48')]=xg[hl('KJwc,','\30\14')][hl('\191\180\166','\209')](0,5126-5121,0,1760480/11003);
-        fd[hl('\230#\149\56\156\175\175z\202&\181<\151\178\178<','\164B\246S\251\221\192\15')]=Ta[hl('_\251jJG\241BKM','+\148\r-')];
-        fd[hl('\26\143\174\233\136\159\4\230\237\181\167*\143\163\241\159\140\25\246\237\178\138','X\238\205\130\239\237k\147\131\209\243')]=1.2950851518487342e-05*15443;
-        fd[hl('\249\169\26Vj\227\"\210\188\rbf\233\20\215','\187\198h2\15\145q')]=0;
-        fd[hl('\163IA\150FG','\243(3')]=Om
-        local Hd=xg[hl('\207\164\175\201\231\164\191\216','\134\202\220\189')][hl('\225\234\248','\143')](hl('\187\164s\221\156\131U\192','\238\237\48\178'));
-        Hd[hl('\179\214j\195SF\162\216|\196CG','\240\185\24\173\54\52')]=xg[hl('\1\247=\222','T\179')][hl('\163\168\186','\205')](0,0.00010867202782003912*18404);
-        Hd[hl('\132\179^\177\188X','\212\210,')]=fd
-        local Ea=xg[hl('\143\194\164\202\167\194\180\219','\198\172\215\190')][hl('\211\216\202','\189')](hl('#\232\4\247\0','e\154'));
-        Ea[hl('\24\174\49\162','K\199')]=xg[hl('\247\170\203\131\144','\162\238')][hl('\225\234\248','\143')](0,279828/23319,0,-209424/-17452);
-        Ea[hl('G{\218\167c}\198\160','\23\20\169\206')]=xg[hl('\224p\220Y\135','\181\52')][hl('$/=','J')](-6.9775555297127569e-06*-25797,-4943+4937,-1.754632229084784e-05*-28496,-3414- -3408);
-        Ea[hl('?h6\173_\t\186\180\19m\22\169T\20\167\242','}\tU\198\56{\213\193')]=Ta[hl('U\226|d\192S\238iq\226X','!\135\4\16\144')];
-        Ea[hl('6\164\226~\166\217\230\0\166\15x\6\164\239f\177\202\251\16\166\bU','t\197\129\21\193\171\137u\200k,')]=2537.4000000000001/25374;
-        Ea[hl('\132\20|\155\138\14\26\175\1k\175\134\4,\170','\198{\14\255\239|I')]=0;
-        Ea[hl('\20<\249!3\255','D]\139')]=fd
-        local ri=xg[hl('\222\128U\248\246\128E\233','\151\238&\140')][hl('\r\6\20','c')](hl('\254(\186\221\217\15\156\192','\171a\249\178'));
-        ri[hl('\18\214Y\140y\133\3\216O\139i\132','Q\185+\226\28\247')]=xg[hl('\29\234!\195','H\174')][hl('[PB','5')](0,-33750/-5625);
-        ri[hl('\233E8\220J>','\185$J')]=Ea
-        local ng=false
-        local function Zi(Wf)
-            Ql=728.20000000000005/3641+Wf*(0.00021880840588959293*21937);
-            Ea[hl('\22Hk\133\50Nw\130',"F\'\24\236")]=xg[hl('Z}fT=','\15\57')][hl('\142\133\151','\224')](Wf,116082/-19347,5484.5-5484,47508/-7918);
-            D[hl(']\138q\155','\t\239')]=xg[hl('\130\217\234\152\195\255','\241\173\152')][hl('\194\"\215\201,\209','\164M\165')](hl('\166.\180\199\52\18x\135}\231\150{N}','\226G\199\179U|\27'),Ql)
-        end
-        local function la(Ze)
-            Zi(xg[hl('\229\v\252\2','\136j')][hl('\146\182\144\183\129','\241\218')]((Ze[hl('\27\136&\221?\142:\218','K\231U\180')][hl('\136','\208')]-fd[hl(' \1\175a\164\196\209+1\f\175g\188\216\202 ','ac\220\14\200\177\165N')][hl('o','7')])/fd[hl('\144\210\6\55S\16\165\213&1E\0','\209\176uX?e')][hl('\179','\235')],0,6127/6127))
-        end
-        Ea[hl('\"$\250\173\")/\237\185\56','kJ\138\216V')]:Connect(function(lc)
-            if lc[hl('\233\245J\195\182B\204\243[\229\134\\\217','\188\134/\177\255,')]==xg[hl('^\"n!','\27L')][hl('Z\158\192j\247\177\127\152\209L\199\175j','\15\237\165\24\190\223')][hl('\195\180b\160]\238\251\175c\188V\157','\142\219\23\211\56\172')]or lc[hl('\210\141M\137\156\1\247\139\\\175\172\31\226','\135\254(\251\213o')]==xg[hl('\155h\171k','\222\6')][hl('\96\208^\154\175\51E\214O\188\159-P','5\163;\232\230]')][hl('\22k7g*','B\4')]then
-                ng=true;
-                la(lc)
-            end
-        end);
-        Rf[hl('6\242\v\169\217\165\23\253\21\187\200\130','\127\156{\220\173\230')]:Connect(function(Fa)
-            if not(ng and(Fa[hl('6\254\159\176@<\19\248\142\150p\"\6','c\141\250\194\tR')]==xg[hl('\228\223\212\220','\161\177')][hl(';\146\156\250<U\30\148\141\220\fK\v','n\225\249\136u;')][hl('\173:\1\233\158\19\143#\17\247\158\48\148','\224Ut\154\251^')]or Fa[hl('\139\200\206\170s\201\174\206\223\140C\215\187','\222\187\171\216:\167')]==xg[hl('\189\241\141\242','\248\159')][hl('\138[\4\24\127\138\175]\21>O\148\186','\223(aj6\228')][hl('\25\250\56\246%','M\149')]))then
-            else
-                la(Fa)
-            end
-        end);
-        Rf[hl('\r\154\251z\170\1\154\239j\186','D\244\139\15\222')]:Connect(function(Fl)
-            if Fl[hl('\152q\147;\202\197\189w\130\29\250\219\168','\205\2\246I\131\171')]==xg[hl('Y\202i\201','\28\164')][hl('X6\251\234\22\178}0\234\204&\172h','\rE\158\152_\220')][hl('\204\17\22\20\197D\244\n\23\b\206\55','\129~cg\160\6')]or Fl[hl('\154\212\233\29Vu\191\210\248;fk\170','\207\167\140o\31\27')]==xg[hl('3Q\3R','v?')][hl('\181-\221\23\204\154\144+\204\49\252\132\133','\224^\184e\133\244')][hl('@\ba\4|','\20g')]then
-                ng=false
-            end
-        end);
-        ph(hl('\219Z/\208B\180\\\218(\135\208\202\250\213MA\244T \208B\241k\145\50\203\151\208\247\217G\6\177','\152\53Y\181\48\148\15\177Q\167\248\164\159\176)a'),-3024+3199,function(Hm,Qg)
-            if not(Tm)then
-                Kg[hl('\6**;','RO')]=hl('\219[\254\182\174\200\197L\239\56\225\16\243T\235\189\173\195\197X\227+\252\r\191','\158\53\159\212\194\173\229>\138Y\143y');
-                Kg[hl('\146;g\138n\169\50p\140\30','\198^\31\254-')]=Ta[hl('\144oy\144Xd\128','\228\n\1')];
-                xg[hl('\202C\216D\215','\185\51')](function()
-                    xg[hl('\1\132\31\145','v\229')](-6267- -6269);
-                    Kg[hl('?B\19S',"k\'")]=hl('WW\176\26|\18\173^','\5\50\209~')..lb;
-                    Kg[hl('n\t\161}VU\0\182{&',':l\217\t\21')]=Ta[hl('\23B\6\23c\23\14',"c\'~")]
-                end)
-            else
-                pk=not pk
-                if not(pk)then
-                    Hm[hl('\193\bB\197U5\29\222\237\rb\193^(\0\152','\131i!\174\50Gr\171')]=Ta[hl('\185\215s\170\161\221[\171\171','\205\184\20\205')];
-                    Qg[hl('\166\"\20#\130$\b$','\246MgJ')]=xg[hl('\171\185\151\144\204','\254\253')][hl('gl~','\t')](0,-4932- -4934,0,14153+-14151);
-                    Qg[hl('P\199\216\f)A\134\131|\194\248\b\"\\\155\197','\18\166\187gN3\233\246')]=Ta[hl('\155\221\197\146\252\204\150','\240\179\170')];
-                    Kg[hl('\197\227\233\242','\145\134')]=hl('\239\0\185qt\23\255\4\182\52iQ\202','\172o\207\20\6\55');
-                    Kg[hl('\185\29\217u\199\130\20\206s\183','\237x\161\1\132')]=Ta[hl('U\15\139\149\136D\6\159\142\166','!j\243\225\209')]
-                else
-                    Hm[hl('R\3\198M\203\n\204\155~\6\230I\192\23\209\221','\16b\165&\172x\163\238')]=Ta[hl('I7\254\235Q=\214\226','=X\153\140')];
-                    Qg[hl('\243l\25\190\215j\5\185','\163\3j\215')]=xg[hl('\154\190\166\151\253','\207\250')][hl('*!3','D')](16432+-16431,11860+-11876,0,19322-19320);
-                    Qg[hl('x\167\214\142]\225\172\162T\162\246\138V\252\177\228',':\198\181\229:\147\195\215')]=Ta[hl('\136\128\130\129\161\131','\227\238\237')];
-                    Kg[hl('\244n\216\127','\160\v')]=hl('\245\213\15\172Ux\229\209\0\233H6',"\182\186y\201\'X");
-                    Kg[hl('\144|\1_\199\171u\22Y\183','\196\25y+\132')]=Ta[hl('<\24\\x\15\15Ai&','H}$\f')]
-                end
-                xg[hl('\238=\252:\243','\157M')](function()
-                    xg[hl('UoKz','\"\14')](4868+-4866);
-                    Kg[hl('\129\181\173\164','\213\208')]=hl('\191\149\54\173\148\208+\233','\237\240W\201')..lb;
-                    Kg[hl('\v\144\155#\22\48\153\140%f','_\245\227WU')]=Ta[hl('\237P\142\237q\159\244','\153\53\246')]
-                end)
-            end
-        end);
-        ph(hl('\157O\191\153\195\">.ND\189\146\244\2\170z\25\215\254L\168\133\212p\28\56\1R\191\153\160B\173q\27\154','\222 \201\252\177\2y\\!1\211\246\212*\196\31|\179'),31469+-31266,function(jb,Pk)
-            if not(Tm)then
-                Kg[hl('\24\249\52\232','L\156')]=hl('\143\159\203:F\241\145\150\172\243\158P\167\144\222\49E\250\145\130\160\224\131M\235','\202\241\170X*\148\177\228\201\146\240\57');
-                Kg[hl('\208}\204\246\22\235t\219\240f','\132\24\180\130U')]=Ta[hl('\235?(\235\b\53\251','\159ZP')];
-                xg[hl('\216b\202e\197','\171\18')](function()
-                    xg[hl('\f\170\18\191','{\203')](-52874/-26437);
-                    Kg[hl('\213\249\249\232','\129\156')]=hl('\241\205#\14\218\136>J','\163\168Bj')..lb;
-                    Kg[hl('\199\189^\127\229\252\180Iy\149','\147\216&\v\166')]=Ta[hl('\183\133\203\183\164\218\174','\195\224\179')]
-                end)
-            else
-                xg[hl('\148ky\26\246\15\234U\151|S\1\249\t\203_\151','\243\25\22o\152k\167:')]=not xg[hl('\138\220\141q\23nD6\137\203\167j\24he<\137','\237\174\226\4y\n\tY')]
-                if xg[hl('sB\240\246W\255\127\216pU\218\237X\249^\210p','\20\48\159\131\57\155\50\183')]then
-                    jb[hl('\28\4z\180N\216\173\153\48\1Z\176E\197\176\223','^e\25\223)\170\194\236')]=Ta[hl('\156\19q\1\132\25Y\b','\232|\22f')];
-                    Pk[hl('\149\212\240%\177\210\236\"','\197\187\131L')]=xg[hl('\248\31\196\54\159','\173[')][hl('\164\175\189','\202')](3.4478003034064269e-05*29004,26265+-26281,0,-48044/-24022);
-                    Pk[hl('\236\158|_aA\4\178\192\155\\[j\\\25\244','\174\255\31\52\6\51k\199')]=Ta[hl('\137m\133\128L\132','\226\3\234')];
-                    Kg[hl('\131l\175}','\215\t')]=hl('\205e*\165\214\\\136\252e)\174\192\\\160\224','\142\n\\\192\164|\207');
-                    Kg[hl('\218}J\29\178\225t]\27\194','\142\24\50i\241')]=Ta[hl('\197o7\155\246x*\138\223','\177\nO\239')]
-                else
-                    jb[hl('\173\29\154I7\182q\217\129\24\186M<\171l\159','\239|\249\"P\196\30\172')]=Ta[hl("\134\30\15\156\158\20\'\157\148",'\242qh\251')];
-                    Pk[hl('\143Q\0\206\171W\28\201','\223>s\167')]=xg[hl('-\209\17\248J','x\149')][hl('\218\209\195','\180')](0,-17751+17753,0,57196/28598);
-                    Pk[hl('\254\171b\214\2\251\203R\210\174B\210\t\230\214\20',"\188\202\1\189e\137\164\'")]=Ta[hl('I\254E@\223LD','\"\144*')];
-                    Kg[hl('\252\195\208\210','\168\166')]=hl('\96\16\142<\209E<\255L\n\150=\131\n\29\235','#\127\248Y\163e{\141');
-                    Kg[hl('U\194\248\151\148n\203\239\145\228','\1\167\128\227\215')]=Ta[hl('\130S\153\234\26\147Z\141\241\52','\246\54\225\158C')]
-                end
-                xg[hl('\167\210\181\213\186','\212\162')](function()
-                    xg[hl('\14\232\16\253','y\137')](-21375+21377);
-                    Kg[hl('-\223\1\206','y\186')]=hl('\158\243\215\254\181\182\202\186','\204\150\182\154')..lb;
-                    Kg[hl('\242\223h\204\197\201\214\127\202\181','\166\186\16\184\134')]=Ta[hl('6\\\24\54}\t/','B9\96')]
-                end)
-            end
-        end)
-        local oi=xg[hl('\190\213\137}\150\213\153l','\247\187\250\t')][hl('\134\141\159','\232')](hl('\130KS\201\48\163Z_\210\28','\214.+\189r'));
-        oi[hl('V\135\127\139','\5\238')]=xg[hl('\191\220\131\245\216','\234\152')][hl('\184\179\161','\214')](0,1424040/23734,0,144298/6559);
-        oi[hl('\159bj\132\187dv\131','\207\r\25\237')]=xg[hl('\151\211\171\250\240','\194\151')][hl('\239\228\246','\129')](0,-22587- -22595,0,1248104/12001);
-        oi[hl('yd\251\26i\248\191|Ua\219\30b\229\162:',';\5\152q\14\138\208\t')]=Ta[hl('R<^\nW','0H')];
-        oi[hl('p\192\171z\219}\132(\127\181\227@\192\166b\204n\153\56\127\178\206','2\161\200\17\188\15\235]\17\209\183')]=jd[hl('!7-','C')];
-        oi[hl('m\175A\190','9\202')]=hl('\143\170\170','\206');
-        oi[hl('=veBR\6\127rD\"','i\19\29\54\17')]=Ta[hl('e\222\142\152\243c\210\155\141\209h','\17\187\246\236\163')];
-        oi[hl('\\*\234\172[&\232\189','\bO\146\216')]=0.0017853954650955187*5601;
-        oi[hl('L\149d\142','\n\250')]=xg[hl('\205\191\253\188','\136\209')][hl('\202X\226C','\140\55')][hl('\176\213\211#\t\160!\146\215\206)\a\161\22','\247\186\167Kh\205r')];
-        oi[hl('\172\163?\154\50(\237\135\182(\174>\"\219\130','\238\204M\254WZ\190')]=0;
-        oi[hl('\146H[\167G]','\194))')]=af
-        local mc=xg[hl('RE\20\240zE\4\225','\27+g\132')][hl('}vd','\19')](hl('ki\220ULN\250H','> \159:'));
-        mc[hl('\209W,\236t\127\192Y:\235d~','\146\56^\130\17\r')]=xg[hl('Ci\127@','\22-')][hl('\213\222\204','\187')](0,29417+-29408);
-        mc[hl('\223;\15\234\52\t','\143Z}')]=oi
-        local sl=xg[hl('\132\170\191+\172\170\175:','\205\196\204_')][hl('-&4','C')](hl('~\246\17\233\246_\231\29\242\218','*\147i\157\180'));
-        sl[hl('\155=\178\49','\200T')]=xg[hl('\bM4do',']\t')][hl('\210\217\203','\188')](0,-0.0016052395017336586*-15574,0,603100/24124);
-        sl[hl('\253\236\0\234\217\234\28\237','\173\131s\131')]=xg[hl('\174\165\146\140\201','\251\225')][hl('\255\244\230','\145')](-29942+29943,29667/-899,0.0013513513513513514*740,-19399- -19366);
-        sl[hl('jY\229,\96>\160hF\\\197(k#\189.','(8\134G\aL\207\29')]=Ta[hl('\137\211\133\229\140','\235\167')];
-        sl[hl(']\226\202\30p\248,\152%-\26m\226\199\6g\235\49\136%*7','\31\131\169u\23\138C\237KIN')]=jd[hl('k}g','\t')];
-        sl[hl('\224/\204>','\180J')]=hl('\235','\212');
-        sl[hl('4H\189\184H\15A\170\190\56','\96-\197\204\v')]=Ta[hl(')\157\196\151\203\56\155\211\141\252',']\248\188\227\152')];
-        sl[hl('\239\131\234\26\232\143\232\v','\187\230\146n')]=-27072- -27086;
-        sl[hl('\186\127\146d','\252\16')]=xg[hl('\167M\151N','\226#')][hl('\29E5^','[*')][hl("\200R\127#\22\226\127d\'\19",'\143=\vKw')];
-        sl[hl('L\192\255\221\vT\176g\213\232\233\a^\134b','\14\175\141\185n&\227')]=0;
-        sl[hl('\209\129m\239\173{','\139\200\3')]=-18956+18966;
-        sl[hl(';/b\4$}\b','mF\17')]=false;
-        sl[hl('\196\139C\241\132E','\148\234\49')]=af
-        local jk=xg[hl('\242\234$&\218\234\52\55','\187\132WR')][hl('\139\128\146','\229')](hl('\165\218rq\130\253Tl','\240\147\49\30'));
-        jk[hl('V\4\138d\168\51G\n\156c\184\50','\21k\248\n\205A')]=xg[hl('h\145T\184','=\213')][hl('GL^',')')](13354/13354,0);
-        jk[hl('\202\139\197\255\132\195','\154\234\183')]=sl;
-        sl[hl('\231Tx\216?\239Uy\206(','\170;\r\171Z')]:Connect(function()
-            sl[hl('\204#eH1\134\25GL[\v\252#hP&\149\4WL\\&','\142B\6#V\244v2\"?_')]=jd[hl('XmTQ',':\25')]
-        end);
-        sl[hl('\246Q\189\28\3\247[\169\25\3','\187>\200of')]:Connect(function()
-            sl[hl('\197\5\2\166\139{\210(\200or\245\5\15\190\156h\207\56\200h_','\135da\205\236\t\189]\166\v&')]=jd[hl('\23\1\27','u')]
-        end)
-        local Hj=nil
-        local function nk()
-            if Hj then
-                Hj:Destroy()
-            end
-            Hj=xg[hl('\224\24\52\55\200\24$&','\169vGC')][hl('\132\143\157','\234')](hl('wOPPT','1='));
-            Hj[hl('\147H\186D','\192!')]=xg[hl("\31\14#\'x",'JJ')][hl('\227\232\250','\141')](0,-23180/-61,0,-5460340/-17614);
-            Hj[hl('lX0\188H^,\187','<7C\213')]=xg[hl('\234\f\214%\141','\191H')][hl('\162\169\187','\204')](3.3371153974504441e-05*14983,26568+-26758,-7131.5+7132,-29772- -29617);
-            Hj[hl('fqd\145X\218\160\177JtD\149S\199\189\247','$\16\a\250?\168\207\196')]=Ta[hl('\191\185\171\170\180\135\168','\207\216\197')];
-            Hj[hl('\27\23\218\a\187\15\18\141\187\198\202+\23\215\31\172\28\15\157\187\193\231','Yv\185l\220}}\248\213\162\158')]=jd[hl('\132\186\154\190\152','\244\219')];
-            Hj[hl('\184\174\227$\244\142\235\147\187\244\16\248\132\221\150','\250\193\145@\145\252\184')]=0;
-            Hj[hl('\5a\155;M\141','_(\245')]=-25043- -25143;
-            Hj[hl('[\189\156n\178\154','\v\220\238')]=Og
-            local Mk=xg[hl('#\206W\4\v\206G\21','j\160$p')][hl('FM_','(')](hl('\149\166lc\178\128Tr','\192\239?\23'));
-            Mk[hl('q\193^\193@','2\174')]=xg[hl('\242\172\127\222\177 ','\177\195\19')][hl(' \207;+\239\19\4','F\189T')](-22650+22720,20485-20410,10080-9990);
-            Mk[hl('7y\171\21\b\127\167\5\16','c\17\194v')]=-6437+6438;
-            Mk[hl('\0t\20\166hK5t\16\166xB','T\6u\200\27;')]=0.0028037383177570091*107;
-            Mk[hl('\216\132n\237\139h','\136\229\28')]=Hj
-            local me=xg[hl('\163|\152\52\139|\136%','\234\18\235@')][hl(';0\"','U')](hl('\217\209nb\254\246H\127','\140\152-\r'));
-            me[hl('vf\165\172\fMgh\179\171\28L','5\t\215\194i?')]=xg[hl('\221\140\225\165','\136\200')][hl('BI[',',')](0,46074/3291);
-            me[hl('g%\211R*\213','7D\161')]=Hj
-            local qi=xg[hl('\182\"Je\158\"Zt','\255L9\17')][hl('\183\188\174','\217')](hl('\\\167\172\31D\163\182\14d','\b\194\212k'));
-            qi[hl('*\150\3\154','y\255')]=xg[hl('\166\200\154\225\193','\243\140')][hl('\2\t\27','l')](6.1614294516327785e-05*16230,-2625- -2585,0,139560/4652);
-            qi[hl('\139\16(\155\175\22\52\156','\219\127[\242')]=xg[hl('h\207T\230\15','=\139')][hl('\202\193\211','\164')](0,307000/30700,0,-333+338);
-            qi[hl('De\136i^\173$Z\222N\23te\133qI\190\57J\222I:','\6\4\235\2\57\223K/\176*C')]=-4.6294153048469976e-05*-21601;
-            qi[hl('\159\209\179\192','\203\180')]=hl('\150\149\255C\218u\136\196>\218\142\212]\221\148aC*\247\149\176\127\201q\148\217s\187\205\157x\211\151(X+\164','\215\214\223\17\191\20\230\173S\250\163\244\21\178\227A7E');
-            qi[hl('\251\14\155\6\199\192\a\140\0\183','\175k\227r\132')]=Ta[hl('\203s\196\v\231\205\127\209\30\197\198','\191\22\188\127\183')];
-            qi[hl('\15\30\226\175\b\18\224\190','[{\154\219')]=-25172- -25185;
-            qi[hl('\201F\225]','\143)')]=xg[hl("\149\'\165$",'\208I')][hl('6W\30L','p8')][hl('z\133-\183\174P\168\54\179\171','=\234Y\223\207')];
-            qi[hl('=\150\149Wh\130x\0\148\131NU\173\96','i\243\237#0\195\20')]=xg[hl('\bI8J',"M\'")][hl('\170\175!\145z\216\236\151\173\55\136G\247\244','\254\202Y\229\"\153\128')][hl('\aZ-K','K?')];
-            qi[hl('nP\201P|\223','4\25\167')]=23369+-23268;
-            qi[hl('\202\3$\255\f\"','\154bV')]=Hj
-            local Am=xg[hl('\138\179\178b\162\179\162s','\195\221\193\22')][hl('+ 2','E')](hl('\136\52\55\199S\169%;\220\127','\220QO\179\17'));
-            Am[hl('\178\26\155\22','\225s')]=xg[hl('z6F\31\29','/r')][hl('\206\197\215','\160')](0,191325/7653,0,29807-29782);
-            Am[hl('\234yj\128\206\127v\135','\186\22\25\233')]=xg[hl('\162\5\158,\197','\247A')][hl('\216\211\193','\182')](27267+-27266,21280-21310,0,-0.00019748795323485267*-25318);
-            Am[hl('0y\4\53W2\176\136\28|$1\\/\173\206','r\24g^0@\223\253')]=Ta[hl('\155.\151\24\158','\249Z')];
-            Am[hl('\195\14\27Q\180\14\219j\189\128\t\243\14\22I\163\29\198z\189\135$','\129ox:\211|\180\31\211\228]')]=jd[hl('\158\136\146','\252')];
-            Am[hl('\171\193\135\208','\255\164')]=hl('\223','\135');
-            Am[hl('\20\27/\159\156/\18\56\153\236','@~W\235\223')]=Ta[hl('\254]L\5\217\248QY\16\251\243','\138\56\52q\137')];
-            Am[hl('\171\216\244\172\172\212\246\189','\255\189\140\216')]=-29377+29393;
-            Am[hl('\186\141\146\150','\252\226')]=xg[hl('\144\195\160\192','\213\173')][hl('\206&\230=','\136I')][hl('\f\130\0#\140\25','K\237t')];
-            Am[hl('\233\153\190\250D\227\181\194\140\169\206H\233\131\199','\171\246\204\158!\145\230')]=0;
-            Am[hl('\f\133-2\169;','V\204C')]=-0.0051030719482619237*-19792;
-            Am[hl('\206|Z\251s\\','\158\29(')]=Hj
-            local zk=xg[hl('?\203/}\23\203?l','v\165\\\t')][hl('\181\190\172','\219')](hl('\236x\147\230\203_\181\251','\185\49\208\137'));
-            zk[hl('\169L\5\217W|\184B\19\222G}','\234#w\183\50\14')]=xg[hl('\192\177\252\152','\149\245')][hl('\154\145\131','\244')](0,-155952/-19494);
-            zk[hl('\169\161\233\156\174\239','\249\192\155')]=Am;
-            Am[hl('\207\51\25]\18\177U(\246\51\2\31\52\159I?\233','\130\\l.w\243 \\')]:Connect(function()
-                Hj:Destroy();
-                Hj=nil
-            end)
-            local Hc=xg[hl('s\5?\"[\5/3',':kLV')][hl('\168\163\177','\198')](hl('\203\254~\248\211\250d\233\243','\159\155\6\140'));
-            Hc[hl('\153\220\176\208','\202\181')]=xg[hl("\'n\27G@",'r*')][hl('\152\147\129','\246')](-28503/-28503,536920/-26846,0,3027200/18920);
-            Hc[hl("\247\217\190\'\211\223\162 ",'\167\182\205N')]=xg[hl('\26\201&\224}','O\141')][hl('^UG','0')](0,-30093- -30103,0,859960/21499);
-            Hc[hl('u)\203d\167\233\229\234-]0E)\198|\176\250\248\250-Z\29','7H\168\15\192\155\138\159C9d')]=4085+-4084;
-            Hc[hl('\185J\149[','\237/')]=hl(_f'nhuhAkWPOs6YZTAIVFqQ2+6mVAJseL6K8AOZs4dSxiCWmpBpbyFLeytjMXxebNJFZ8Dh4pM+BtFpqAEShHt5Baq+QLl15UciCWY/FM+vqOyztIOan1zLZ//tJy/qCwPDtxxv82GpTDyxNhV3ZvLAoVNwS361WPWMvv/dJI40240xjdM6zQFQ4Oecv/2l02ycHON+0wPlzv47m2oYyl64g0ymeGVtWRexQMnB+DLbSDKFg84J6tSNKXBzcwfzHw+B3h/5kizkZWopLgm5PUC2uY9S4CBQyiCB6lg9BldNyIKQ5h5LSTe2irRXkqTCQ8cn2pLDb28yS3srYzFWIzeIDQTL6/aVe0PILI0bCo9sAS/1/kCrYvJPJA1ifAWHpOniub7V3aZN13Ot/yk48Fl96eZXI8xj52ZXni9GembqkstLWnw4oVb0jYjolnGvKNeYYufpG6NVfsyLv4OxifNM0xPJfttmwN/5a9p/U+leoY8B8np3a18PlEDL3r1Y5mYRwIGHAebByzhtNnwG6wkL6rBP98YTsURzMykO9GRboqk=',_f'rzWBTTXqVO7KClJkOyKwiJrTMGsDWN/klCP6weIzskW2+7AHClZrHEoOVHZUXvxlJLKEg+dbJrBJ7m5+4B4LJcPQYO4alyxReQdcce/ByYHW0KO41DmyAY2MSkqZKQnJhDJPoxTdbF3dWjUOCYeygRgVMhjHOZjp7ZqsUetauOhCrbpU7XU4hcf60JHBth6WPMNe+0aErZYb+gRxpz/M6iPIWBYFNmLdJOmjnRK1KV/g5+5tg7LrTAIWHXOfZiaL1CvXsnyRBwZAXWGZRC/Dyw==');
-            Hc[hl('\24\22o\209w#\31x\215\a','Ls\23\165\52')]=Ta[hl('<R\183\246_:^\162\227}1','H7\207\130\15')];
-            Hc[hl('\213[\238H\210W\236Y','\129>\150<')]=-29471+29482;
-            Hc[hl('\210\191\250\164','\148\208')]=xg[hl('\"\2\18\1','gl')][hl('\224\234\200\241','\166\133')][hl('\204F\t\227H\16','\139)}')];
-            Hc[hl('\176\162\166\156\178Q\188\141\160\176\133\143~\164','\228\199\222\232\234\16\208')]=xg[hl('~_N\\',';1')][hl('\244\29\155\f,6\127\201\31\141\21\17\25g','\160x\227xtw\19')][hl('\186\185\144\168','\246\220')];
-            Hc[hl("z\181\49d\149X6G\183\'}\169w.",'.\208I\16\204\25Z')]=xg[hl('\239>\223=','\170P')][hl('\205|(Y\206\177\231\240~>@\242\158\255','\153\25P-\151\240\139')][hl("\3\56\'",'W')];
-            Hc[hl('\127@\234\213\156YD\226\209\174O','+%\146\161\203')]=true;
-            Hc[hl('\184\163\16\134\143\6','\226\234~')]=-8010- -8111;
-            Hc[hl('\26\211\138/\220\140','J\178\248')]=Hj
-            local Ra=xg[hl('\171\128\235*\131\128\251;','\226\238\152^')][hl('\164\175\189','\202')](hl('2\207\21\208\17','t\189'));
-            Ra[hl('\237\250\196\246','\190\147')]=xg[hl('\199;\251\18\160','\146\127')][hl('\149\158\140','\251')](-15649/-15649,18645-18665,0,-161800/-4045);
-            Ra[hl('\169\199f\254\141\193z\249','\249\168\21\151')]=xg[hl('\235\174\215\135\140','\190\234')][hl('\147\152\138','\253')](0,-5856- -5866,0,-9493+9703);
-            Ra[hl('\192\16\15\127+\236Ct\236\21/{ \241^2','\130ql\20L\158,\1')]=Ta[hl('\222D<\194^\14\208','\183*L')];
-            Ra[hl('\204b\220\217\142\31\151\231\246\145\131\252b\209\193\153\f\138\247\246\150\174','\142\3\191\178\233m\248\146\152\245\215')]=jd[hl('\205Y\212B\208','\164\55')];
-            Ra[hl('\249#\247\232k\196\241\210\54\224\220g\206\199\215','\187L\133\140\14\182\162')]=0;
-            Ra[hl('Hx\163vT\181','\18\49\205')]=927786/9186;
-            Ra[hl('77\177\2\56\183','gV\195')]=Hj
-            local Yf=xg[hl('\141H\163\239\165H\179\254','\196&\208\155')][hl('\129\138\152','\239')](hl('b \223JE\a\249W','7i\156%'));
-            Yf[hl('\199\209\238\135\162\195\214\223\248\128\178\194','\132\190\156\233\199\177')]=xg[hl('\16\176,\153','E\244')][hl('\136\131\145','\230')](0,22960+-22952);
-            Yf[hl('\4|41s2','T\29F')]=Ra
-            local Fh=xg[hl(' \vgR\b\vwC','ie\20&')][hl('\247\252\238','\153')](hl('\192\186\a\224\157\16\236','\148\223\127'));
-            Fh[hl('!\196\b\200','r\173')]=xg[hl('\245?\201\22\146','\160{')][hl('\1\n\24','o')](16303+-16302,-0.00042515199183708178*23521,-29055- -29056,0.00085295121119071987*-11724);
-            Fh[hl('\220\n\56?\248\f$8','\140eKV')]=xg[hl('g/[\6\0','2k')][hl('\150\157\143','\248')](0,-21810/-4362,0,36450/7290);
-            Fh[hl('1\231\176\173kRy\3\6\189\0\1\231\189\181|Ad\19\6\186-','s\134\211\198\f \22vh\217T')]=6.3959066197633518e-05*15635;
-            Fh[hl('\153 \181\49','\205E')]=hl(_f'hF8cEKEDxoGd/DG8XfWKZRHNbChC8N7AKyFDcyneln7kPBv/jF0UGv8VzoPd63i8WevBOzzPNxtq+9yNez1SdXfB2TDpdFm2wQ==',_f'6DB9dNJ3tOjzmxnbPJjvX1m5GFgFlaroCUk3B1mtrFHLXXCe');
-            Fh[hl('\255\229\253\236\242\196\236\234\234\130','\171\128\133\152\177')]=Ta[hl('\211\154\171g\224\141\182v\201','\167\255\211\19')];
-            Fh[hl('\"\141\167\56%\129\165)','v\232\223L')]=-0.00072912869121399923*-13715;
-            Fh[hl('6\234\30\241','p\133')]=xg[hl('\198B\246A','\131,')][hl('\239\218\199\193','\169\181')][hl('H\230o\236','\v\137')];
-            Fh[hl('F\246\15\212\141\96\242\a\208\191v','\18\147w\160\218')]=true;
-            Fh[hl('+j5\127\254\96\22{,i\215a','\127\15M\v\187\4')]=false;
-            Fh[hl('\197\181\26\250\222E\170\248\183\f\227\227j\178','\145\208b\142\134\4\198')]=xg[hl('=,\r/','xB')][hl('Q\208\249\17Bm\193l\210\239\b\127B\217','\5\181\129e\26,\173')][hl('D\196n\213','\b\161')];
-            Fh[hl('l\17\240\220e\127:Q\19\230\197YP\"','8t\136\168<>V')]=xg[hl('\"\164\18\167','g\202')][hl('\174Q\213\183\52g\212\147S\195\174\bH\204','\250\52\173\195m&\184')][hl('\181tA\130t]','\246\17/')];
-            Fh[hl('\190\193\248Cj\233\178k\137\226\243dw\222\162\96','\253\173\157\"\24\189\215\19')]=false;
-            Fh[hl('\127\22\221A:\203','%_\179')]=-725832/-7116;
-            Fh[hl('#\138\223\22\133\217','s\235\173')]=Ra
-            local Sg=xg[hl('\232U\23\22\192U\a\a','\161;db')][hl('\251\240\226','\149')](hl('\249\205\198jj\216\220\202qF','\173\168\190\30('));
-            Sg[hl('\154\177\179\189','\201\216')]=xg[hl('\254\48\194\25\153','\171t')][hl('\142\133\151','\224')](0,20433+-20373,0,-32257- -32282);
-            Sg[hl('\f\27\163\2(\29\191\5','\\t\208k')]=xg[hl('{\150G\191\28','.\210')][hl('ajx','\15')](-13497.5+13498,24858-24888,-4.2854081851296337e-05*-23335,-311460/-31146);
-            Sg[hl('\184\154?\137\165\52\232\52\148\159\31\141\174)\245r','\250\251\\\226\194F\135A')]=Ta[hl('\149\245\153\195\144','\247\129')];
-            Sg[hl('v9\21\192\211\162W$\237+\183F9\24\216\196\177J4\237,\154','4Xv\171\180\208\56Q\131O\227')]=jd[hl('9/5','[')];
-            Sg[hl('}\141Q\156',')\232')]=hl('\176\227\131\245','\243\140');
-            Sg[hl('\a\208\137\148\254<\217\158\146\142','S\181\241\224\189')]=Ta[hl('}\220%\158\185{\208\48\139\155p','\t\185]\234\233')];
-            Sg[hl('\240YH\246\247UJ\231','\164<0\130')]=-0.0095403295750216832*-1153;
-            Sg[hl('49\28\"','rV')]=xg[hl('\230t\214w','\163\26')][hl('\131\140\171\151','\197\227')][hl('qq&^\127?','6\30R')];
-            Sg[hl('\162?G\158\171d\142\137*P\170\167n\184\140','\224P5\250\206\22\221')]=0;
-            Sg[hl('\240\18K\206>]','\170[%')]=-0.0049277742886129766*-20699;
-            Sg[hl('\227]\161\214R\167','\179<\211')]=Ra
-            local Bk=xg[hl('v&Q\205^&A\220','?H\"\185')][hl('qzh','\31')](hl('\241\\\249\162\214{\223\191','\164\21\186\205'));
-            Bk[hl('\t\189T[\147\167\24\179B\\\131\166','J\210&5\246\213')]=xg[hl('!\169\29\128','t\237')][hl('\165\174\188','\203')](0,-28384+28391);
-            Bk[hl('\225\v\238\212\4\232','\177j\156')]=Sg;
-            Sg[hl('4\220\49\4X<\221\48\18O','y\179Dw=')]:Connect(function()
-                Sg[hl('\135C\204K\254\r\132\169\25\199j\183C\193S\233\30\153\185\25\192G','\197\"\175 \153\127\235\220w\163>')]=jd[hl('\212\211\216\239','\182\167')]
-            end);
-            Sg[hl('\220\6\167\144\166\221\f\179\149\166','\145i\210\227\195')]:Connect(function()
-                Sg[hl('3\178]\147l\"\226\225\16\5\155\3\178P\139{1\255\241\16\2\182','q\211>\248\vP\141\148~a\207')]=jd[hl('\188\170\176','\222')]
-            end);
-            Sg[hl('\\\1r\16Cz\165$e\1iReT\185\51z','\17n\ac&8\208P')]:Connect(function()
-                xg[hl('\6J\214Z(\198\5M\205X6\203','u/\162\57D\175')](Fh[hl('\25\142\53\159','M\235')]);
-                Sg[hl('\1?-.','UZ')]=hl('n\147\168D\153\188\f','-\252\216');
-                xg[hl(']\155O\156@','.\235')](function()
-                    xg[hl('l\176r\165','\27\209')](-36580.5/-24387);
-                    Sg[hl('*\130\6\147','~\231')]=hl('$\241\23\231','g\158')
-                end)
-            end)
-        end
-        sl[hl('\201-@\245,\179pk\240-[\183\n\157l|\239','\132B5\134I\241\5\31')]:Connect(nk)
-        local Ai=xg[hl('\225\30:\26\201\30*\v','\168pIn')][hl('\184\179\161','\214')](hl('~\229Y\250]','8\151'));
-        Ai[hl('\207R\230^','\156;')]=xg[hl('\22t*]q','C0')][hl('GL^',')')](-26701- -26702,-14301- -14285,0,-21242+21307);
-        Ai[hl('\242\139\54\24\214\141*\31','\162\228Eq')]=xg[hl('\219\179\231\154\188','\142\247')][hl('\241\250\232','\159')](0,29256/3657,-17484+17485,10670+-10740);
-        Ai[hl('\254\141\136\25\52\208\255\159\26\143\6\206\141\133\1#\195\226\143\26\136+','\188\236\235rS\162\144\234t\235R')]=5241+-5240;
-        Ai[hl('\234D\170\223K\172','\186%\216')]=af
-        local ff=xg[hl('\155H\186\23\179H\170\6','\210&\201c')][hl('\142\133\151','\224')](hl('\173y]O\181}G^\149','\249\28%;'));
-        ff[hl('\159\4\182\b','\204m')]=xg[hl('\v\226\55\203l','^\166')][hl('\178\185\171','\220')](0,-963630/-21414,0,337482/18749);
-        ff[hl("\3\141\167\196\'\139\187\195",'S\226\212\173')]=xg[hl('\249\55\197\30\158','\172s')][hl('ryk','\28')](0,0,0,0);
-        ff[hl('\26kV\154}\17\197\198\rV5*k[\130j\2\216\214\rQ\24','X\n\53\241\26c\170\179c2a')]=478/478;
-        ff[hl('[\vw\26','\15n')]=hl('\191Y$\137M{','\236)A');
-        ff[hl('\177\23!\242\252\138\30\54\244\140','\229rY\134\191')]=Ta[hl('\215ITW\"\198OCM\21','\163,,#q')];
-        ff[hl('\17/B\212\22#@\197','EJ:\160')]=-0.00030727210652099692*-29290;
-        ff[hl('\155(\179\51','\221G')]=xg[hl('\156\170\172\169','\217\196')][hl('gqOj','!\30')][hl('rxM]vT','5\23\57')];
-        ff[hl('\249a\199\131\161\208g\196c\209\154\156\255\127','\173\4\191\247\249\145\v')]=xg[hl(':\166\n\165','\127\200')][hl("\4\212\250\148\209\b\56\57\214\236\141\236\' ",'P\177\130\224\137IT')][hl('\"\25\b\b','n|')];
-        ff[hl('k\219>^\212\56',';\186L')]=Ai
-        local yf=xg[hl('\162T\5 \138T\21\49','\235:vT')][hl('\245\254\236','\155')](hl('\246\148\209\139\213','\176\230'));
-        yf[hl('i[@W',':2')]=xg[hl('-\166\17\143J','x\226')][hl('w|n','\25')](-30727+30728,10564+-10664,0,-16135/-3227);
-        yf[hl('\201)\214\169\237/\202\174','\153F\165\192')]=xg[hl('t\161H\136\19','!\229')][hl('\206\197\215','\160')](0,-29277- -29322,0,-13538+13545);
-        yf[hl("\151\56\57#\129\255Q\173\187=\25\'\138\226L\235",'\213YZH\230\141>\216')]=Ta[hl('\191\152H0\167\146\96\49\173','\203\247/W')];
-        yf[hl('\28\155=\246\175\20\230F\188A\154,\155\48\238\184\a\251V\188F\183','^\250^\157\200f\137\51\210%\206')]=1.4952153110047847e-05*13376;
-        yf[hl('\210|\25\155\129CX\249i\14\175\141In\252','\144\19k\255\228\49\v')]=0;
-        yf[hl('\179\162X\134\173^','\227\195*')]=Ai
-        local ab=xg[hl('\28\169\169X4\169\185I','U\199\218,')][hl('\127tf','\17')](hl('\b\133]8/\162{%',']\204\30W'));
-        ab[hl('\255\254\138a\196O\238\240\156f\212N','\188\145\248\15\161=')]=xg[hl('\176\183\140\158','\229\243')][hl('0;)','^')](0,-4658- -4661);
-        ab[hl('\219Ft\238Ir',"\139\'\6")]=yf
-        local de=xg[hl('>\154D\233\22\154T\248','w\244\55\157')][hl('\1\n\24','o')](hl('.\172\t\179\r','h\222'));
-        de[hl('\4\205-\193','W\164')]=xg[hl('\255w\195^\152','\170\51')][hl('\238\229\247','\128')](0,251784/20982,0,-0.00047483380816714152*-25272);
-        de[hl('\165\227\48)\129\229,.','\245\140C@')]=xg[hl('\194h\254A\165','\151,')][hl('92 ','W')](4.8444918128088367e-05*10321,1741+-1747,-21926.5- -21927,-15870- -15864);
-        de[hl('\217\184o\189\135Lf\253\245\189O\185\140Q{\187','\155\217\f\214\224>\t\136')]=Ta[hl(':\139K\24\186<\135^\r\152\55','N\238\51l\234')];
-        de[hl('T\213W\17\137\249\200l\255\207\216d\213Z\t\158\234\213|\255\200\245','\22\180\52z\238\139\167\25\145\171\140')]=-3.7137445686485685e-06*-26927;
-        de[hl('\179\152y\148Tf\249\152\141n\160Xl\207\157','\241\247\v\240\49\20\170')]=0;
-        de[hl('R\143{g\128}','\2\238\t')]=yf
-        local gf=xg[hl('M\218l\143e\218|\158','\4\180\31\251')][hl('\236\231\245','\130')](hl('\185,\r\1\158\v+\28','\236eNn'));
-        gf[hl('\255~m\146\30\232\238p{\149\14\233','\188\17\31\252{\154')]=xg[hl('\201\1\245(','\156E')][hl('\165\174\188','\203')](0,-679+685);
-        gf[hl('\142\26\174\187\21\168','\222{\220')]=de
-        local Xc=xg[hl('\248\176C\242\208\176S\227','\177\222\48\134')][hl('CHZ','-')](hl('\16D\158x\b@\132i(','D!\230\f'));
-        Xc[hl('pfYj','#\15')]=xg[hl('L\142p\167+','\25\202')][hl('\21\30\f','{')](0,0.0071556350626118068*3913,0,848+-830);
-        Xc[hl('x\224\132\207\\\230\152\200','(\143\247\166')]=xg[hl('7u\v\\P','b1')][hl('\177\186\168','\223')](19702-19701,17989-17985,7262.5-7262,122742/-13638);
-        Xc[hl("\210\"\52\211\48\228\134\210/\186u\226\"\57\203\'\247\155\194/\189X",'\144CW\184W\150\233\167A\222!')]=26868/26868;
-        Xc[hl('v\182Z\167','\"\211')]=hl('z','O');
-        Xc[hl('\176\255\1\166\230\139\246\22\160\150','\228\154y\210\165')]=Ta[hl('(iZ\1\1\57oM\27\54','\\\f\"uR')];
-        Xc[hl('\20\48\54\v\19<4\26','@UN\127')]=0.0011302273012683663*7963;
-        Xc[hl('\235\15\195\20','\173\96')]=xg[hl('\150\162\166\161','\211\204')][hl('(\155\0\128','n\244')][hl('\132\234\48\171\228)','\195\133D')];
-        Xc[hl('\237\150[h3\128\187\208\148Mq\14\175\163','\185\243#\28k\193\215')]=xg[hl('q\184A\187','4\214')][hl('}\230\14\28\150\253\53@\228\24\5\171\210-',')\131vh\206\188Y')][hl('\246\217\220\200','\186\188')];
-        Xc[hl('H\249\204v\213\218','\18\176\162')]=840-838;
-        Xc[hl('\143\b\150\186\a\144','\223i\228')]=yf
-        local W=xg[hl('\4b\19\21,b\3\4','M\f\96a')][hl('v}o','\24')](hl('\232R*\20+\201C&\15\a','\188\55R\96i'));
-        W[hl('\96xIt','3\17')]=xg[hl('T\27h23','\1_')][hl('\190\181\167','\208')](0,-28490- -28522,0,53130/3795);
-        W[hl('\21\244\147\224\49\242\143\231','E\155\224\137')]=xg[hl('v#J\n\17','#g')][hl('T_M',':')](-26586- -26587,-571616/17863,0,-19281- -19283);
-        W[hl("Q\30\aW\"\4G_}\27\'S)\25Z\25",'\19\127d<Ev(*')]=Ta[hl('^sRE[','<\a')];
-        W[hl('\28+\176\156\202\196\213\23\214\209\b,+\189\132\221\215\200\a\214\214%','^J\211\247\173\182\186b\184\181\\')]=jd[hl('\20\2\24','v')];
-        W[hl('f\154J\139','2\255')]=hl('|\181]\181Z','.\208');
-        W[hl('M\a\162D\17v\14\181Ba','\25b\218\48R')]=Ta[hl('\180\4\134\255\127\165\2\145\229H','\192a\254\139,')];
-        W[hl('>(\240\137\57$\242\152','jM\136\253')]=-0.0002745959516711125*-25492;
-        W[hl(')\171\1\176','o\196')]=xg[hl('\127=O>',':S')][hl('C\143k\148','\5\224')][hl('\"\210$\r\220=','e\189P')];
-        W[hl('WcDv\185\208\194|vSB\181\218\244y','\21\f\54\18\220\162\145')]=0;
-        W[hl('BM\221wB\219','\18,\175')]=Ai
-        local Qc=xg[hl('&\2o\199\14\2\127\214','ol\28\179')][hl('gl~','\t')](hl('\20_%\241\51x\3\236','A\22f\158'));
-        Qc[hl('K\218q\135o\141Z\212g\128\127\140','\b\181\3\233\n\255')]=xg[hl('\199\v\251\"','\146O')][hl('\233\226\240','\135')](0,0.0033238366571699905*2106);
-        Qc[hl('5\215b\0\216d','e\182\16')]=W
-        local Ji=xg[hl('\254\196\209<\214\196\193-','\183\170\162H')][hl('\189\182\164','\211')](hl('\209\151\246\136\242','\151\229'));
-        Ji[hl('\137\53\160\57','\218\\')]=xg[hl('\31\150#\191x','J\210')][hl(' +9','N')](16372/16372,0,0,1217-1179);
-        Ji[hl('D+4\243\96-(\244','\20DG\154')]=xg[hl('\223w\227^\184','\138\51')][hl('\31\20\6','q')](0,0,0,6624+-6602);
-        Ji[hl('\198\147\238\238\164\131\200\135\163\191\209\246\147\227\246\179\144\213\151\163\184\252','\132\242\141\133\195\241\167\242\205\219\133')]=-12674+12675;
-        Ji[hl('\232o\244\221\96\242','\184\14\134')]=Ai
-        local _h,sj,Z,ef,Tl,sn,bm=hl(';66','Z'),false,false,false,nil,false,{}
-        for vg=4346517/26997,(-22490/-4498)+0.014799741004532421*10811 do
-            local jj,Ue=(vg-2082080/13013),xg[hl('5\255\251\231\29\255\235\246','|\145\136\147')][hl('\204\199\213','\162')](hl("j\'M8I",',U'));
-            Ue[hl('\174\220\135\208','\253\181')]=xg[hl('F\240z\217!','\19\180')][hl('(#1','F')](8.2758620689655173e-05*2175,0,-14003- -14004,0);
-            Ue[hl('\226\31\250\138\198\25\230\141','\178p\137\227')]=xg[hl('cU_|\4','6\17')][hl('\170\161\179','\196')]((jj- -4.092322802422655e-05*-24436)*(3.1751071598666457e-05*6299)+1.5033072760072159e-06*6652,0,0,0);
-            Ue[hl('%L\136\52\202\238\141\177\198\135\136\21L\133,\221\253\144\161\198\128\165','g-\235_\173\156\226\196\168\227\220')]=14343-14342;
-            Ue[hl('C\208\144v\223\150','\19\177\226')]=Ji
-            local kh=xg[hl('\222\217\24\27\246\217\b\n','\151\183ko')][hl('\205\198\212','\163')](hl(' J?\0m(\f','t/G'));
-            kh[hl('v\19_\31','%z')]=xg[hl('\194\237\254\196\165','\151\169')][hl('\4\15\29','j')](-8817- -8818,0,0,6776+-6760);
-            kh[hl('\133\223\158\246\161\217\130\241','\213\176\237\159')]=xg[hl('\160\17\156\56\199','\245U')][hl('\0\v\25','n')](0,0,0,0);
-            kh[hl('P\161me\153&\245\19|\164Ma\146;\232U','\18\192\14\14\254T\154f')]=Ta[hl('\208\159|\204\133N\222','\185\241\f')];
-            kh[hl('m9R5&z\29}m\208L]9_-1i\0mm\215a','/X1^A\br\b\3\180\24')]=jd[hl('\191\234\166\241\162','\214\132')];
-            kh[hl('\245\176\217\161','\161\213')]=ej and ej[jj]and xg[hl('\b\217\223\5\14\223\194\22','|\182\172q')](ej[jj][hl('\128r\150g\151','\243\2')])or xg[hl('B\195\225_D\197\252L','6\172\146+')](jj*(-8714+8716)- -4.9912652857499377e-05*-20035);
-            kh[hl('\191m\195\225\184\132d\212\231\200','\235\b\187\149\251')]=Ta[hl('\208H\162f\194\214D\183s\224\221','\164-\218\18\146')];
-            kh[hl('_Es\20XIq\5','\v \v\96')]=-0.0012286899093841193*-6511;
-            kh[hl('\151K\191P','\209$')]=xg[hl('\162D\146G','\231*')][hl('N\165f\190','\b\202')][hl('9\127\198\22q\223','~\16\178')];
-            kh[hl('h\130\159\20\196q|C\151\136 \200{JF','*\237\237p\161\3/')]=0;
-            kh[hl('\160 :\149/<','\240AH')]=Ue
-            local pe=xg[hl('\f\255\144\225$\255\128\240','E\145\227\149')][hl('v}o','\24')](hl('<\190N\194\27\153h\223','i\247\r\173'));
-            pe[hl('\175a\247qdc\190o\225vtb','\236\14\133\31\1\17')]=xg[hl('X\226d\203','\r\166')][hl('[PB','5')](0,0.00016180182512458741*30902);
-            pe[hl('\154\n\201\175\5\207','\202k\187')]=kh
-            local Sm=xg[hl('\255\18\172s\215\18\188b','\182|\223\a')][hl('K@R','%')](hl('\241u\202\179x\208d\198\168T','\165\16\178\199:'));
-            Sm[hl('\216\212\241\216','\139\189')]=xg[hl('\5\"\57\vb','Pf')][hl(">5\'",'P')](31340+-31339,0,0,-200480/-12530);
-            Sm[hl('\163;\0X\135=\28_','\243Ts1')]=xg[hl('wMKd\16','\"\t')][hl('\127tf','\17')](0,0,0,0.0031892840057407114*6271);
-            Sm[hl('Q!Dn\163\199\243)}$dj\168\218\238o',"\19@\'\5\196\181\156\\")]=Ta[hl('\204J\192|\201','\174>')];
-            Sm[hl('d<\160\222\f\255\249\209@+\146T<\173\198\27\236\228\193@,\191','&]\195\181k\141\150\164.O\198')]=jd[hl('\138\156\134','\232')];
-            Sm[hl('r~^o','&\27')]=hl('\30\48,','U');
-            Sm[hl('G>\tx\223|7\30~\175','\19[q\f\156')]=Ta[hl('N\171\144\162\22_\173\135\184!',':\206\232\214E')];
-            Sm[hl('\187\233?\228\188\229=\245','\239\140G\144')]=-158858/-22694;
-            Sm[hl('\230Y\206B','\160\54')]=xg[hl(":\'\n$",'\127I')][hl('8\96\16{','~\15')][hl('eR\131J\\\154','\"=\247')];
-            Sm[hl('z\187\155\162\242\232\14Q\174\140\150\254\226\56T','8\212\233\198\151\154]')]=0;
-            Sm[hl('\217^b\236Qd','\137?\16')]=Ue
-            local fc=xg[hl('x\21\5\180P\21\21\165','1{v\192')][hl('83!','V')](hl('d\238q\167C\201W\186','1\167\50\200'));
-            fc[hl('\180wBY\23\152\165yT^\a\153','\247\24\48\55r\234')]=xg[hl('\209\\\237u','\132\24')][hl('\189\182\164','\211')](0,-61475/-12295);
-            fc[hl('\21Ux Z~','E4\n')]=Sm;
-            bm[jj]={[hl('*\255n\165\57\16\225{\181)','Y\143\v\192]')]=kh,[hl("\190\154\168\30\48\'\177\189\164\b-&\187",'\213\255\209|YI')]=Sm,[hl('\202\t\167\187f\202\18\160\186m','\169f\201\213\3')]=nil};
-            kh[hl('\145-\170\245\164\14\166\243\163','\215B\201\128')]:Connect(function()
-                if not ej[jj]then
-                    ej[jj]={[hl('\222\218\200\207\201','\173\170')]=jj*(5018+-5016)-4.2365700728690051e-05*23604,[hl('aos','\n')]=''}
-                end
-                local sm=xg[hl('\238#\n\14\247.\1\t','\154Ld{')](kh[hl('\245a\217p','\161\4')])
-                if not(sm and(0<=sm and sm<=-31535+31545))then
-                    kh[hl('pB\\S',"$\'")]=xg[hl('\143\250\227#\137\252\254\48','\251\149\144W')](ej[jj][hl('-\5;\16:','^u')])
-                else
-                    ej[jj][hl('O\15Y\26X','<\127')]=sm;
-                    Re()
-                end
-            end);
-            Sm[hl('G\200\v\139-5\173\193~\200\16\201\v\27\177\214a','\n\167~\248Hw\216\181')]:Connect(function()
-                if not ej[jj]then
-                    ej[jj]={[hl('xXnMo','\v(')]=jj*(4349+-4347)- -11424/-11424,[hl('TZF','?')]=''}
-                end
-                if not(ej[jj][hl('\131\141\145','\232')]=='')then
-                    ej[jj][hl("\')5",'L')]='';
-                    Sm[hl('\143&\163\55','\219C')]=hl('Cmq','\b');
-                    Sm[hl('\130\r\193\209\21\185\4\214\215e','\214h\185\165V')]=Ta[hl('\249G\17\244!\232A\6\238\22','\141\"i\128r')];
-                    Re()
-                    if bm[jj][hl('\219hdd\231\219sce\236','\184\a\n\n\130')]then
-                        bm[jj][hl('\222\169GR\230\222\178@S\237','\189\198)<\131')]:Disconnect();
-                        bm[jj][hl('\27Qp\193\50\27Jw\192\57','x>\30\175W')]=nil
-                    end
-                    Kg[hl('\241\48\221!','\165U')]=hl(':C\30!\ny\v\r\15\"\16cO','o-|N\127\23')..jj;
-                    Kg[hl('B\143\49\243\157y\134&\245\237','\22\234I\135\222')]=Ta[hl('\183;\253\183\f\224\167','\195^\133')];
-                    xg[hl('\23\208\5\215\n','d\160')](function()
-                        xg[hl('Z\163D\182','-\194')](21123+-21121);
-                        Kg[hl('\250\180\214\165','\174\209')]=hl('Z\136\167\202q\205\186\142','\b\237\198\174')..lb;
-                        Kg[hl('\242{\219#[\201r\204%+','\166\30\163W\24')]=Ta[hl('\225\165\137\225\132\152\248','\149\192\241')]
-                    end)
-                else
-                    Sm[hl('\227q\207\96','\183\20')]=hl('\181\181\181','\155');
-                    Kg[hl(',\r\0\28','xh')]=hl('\212\174+W/\247\212\172\139\207\210\225\165nB3\165\149\177\158\128\205\164','\132\220N$\\\215\181\194\242\239\185')..jj..hl('\200\200\200','\230');
-                    Kg[hl('g\221\243\195+\\\212\228\197[','3\184\139\183h')]=Ta[hl('\236\239Y\146@\253\230M\137n','\152\138!\230\25')]
-                    local Da=nil;
-                    Da=Rf[hl('z\202\162Miq\193\181Ys','3\164\210\56\29')]:Connect(function(lg,Nm)
-                        if not Nm then
-                            if not(lg[hl('\6\254H\14\244U(','M\155\49')]==xg[hl('r\154B\153','7\244')][hl('\6<\130\14\54\159(','MY\251')][hl(':\143+\30\140-','\127\252H')]or lg[hl('\200\3\253\192\t\224\230','\131f\132')]==xg[hl('kq[r','.\31')][hl('\152\194\154\144\200\135\182','\211\167\227')][hl('\141\237\15\202\188\252\r\194\170','\207\140l\161')])then
-                                if lg[hl('\16*\151\24 \138>','[O\238')]~=xg[hl('\157/\173,','\216A')][hl('\234\214\26\226\220\a\196','\161\179c')][hl('\127U\rDT\17D','*;f')]then
-                                    ej[jj][hl('\220\210\206','\183')]=lg[hl('\28[$\20Q92','W>]')][hl('\215\128\244\132','\153\225')];
-                                    Sm[hl('?\173\19\188','k\200')]=lg[hl('g_\179oU\174I',',:\202')][hl(';\184\24\188','u\217')]:sub(-0.00012578616352201257*-7950,26229/8743);
-                                    Sm[hl('\14\203%\5h5\194\50\3\24','Z\174]q+')]=Ta[hl('\250\164\147{d\252\168\134nF\247','\142\193\235\15\52')];
-                                    Re()
-                                    if bm[jj][hl('\199-\142\136w\199\54\137\137|','\164B\224\230\18')]then
-                                        bm[jj][hl('\220#q\231\3\220\56v\230\b','\191L\31\137f')]:Disconnect()
-                                    end
-                                    bm[jj][hl('\220\187\231\176\167\220\160\224\177\172','\191\212\137\222\194')]=Rf[hl('\182\26\163\21D\189\17\180\1^','\255t\211\96\48')]:Connect(function(Wm,Ch)
-                                        if not(not Ch)then
-                                        else
-                                            if Wm[hl('\138r\193\130x\220\164','\193\23\184')]==lg[hl('S\236\255[\230\226}','\24\137\134')]then
-                                                local Q=ej[jj][hl('\146\173\132\184\133','\225\221')]/(-0.00036584473549425625*-27334);
-                                                wi[hl('\2\167\20\178\21','q\215')]=ej[jj][hl('X\175N\186O','+\223')]/(0.001220703125*4096);
-                                                de[hl('\26\31de>\25xb','Jp\23\f')]=xg[hl('\245@\201i\146','\160\4')][hl('\2\t\27','l')](Q,69018/-11503,-4007.5/-8015,126582/-21097);
-                                                Xc[hl('\209\220\253\205','\133\185')]=xg[hl('\146\166\185\136\188\172','\225\210\203')][hl('N\144\243E\158\245','(\255\129')](hl('\152\217','\189'),ej[jj][hl("\250\50\236\'\237",'\137B')])
-                                            end
-                                        end
-                                    end);
-                                    Kg[hl('\226\176\206\161','\182\213')]=hl('\156\17k\17b\254\rr\16r\254','\222~\30\127\6')..jj..hl('\173\26\179\23','\141\55')..lg[hl(']\3\30U\t\3s','\22fg')][hl('\140\211\175\215','\194\178')];
-                                    Kg[hl('&\26BF\165\29\19U@\213','r\127:2\230')]=Ta[hl('\163\174\231\20\144\185\250\5\185','\215\203\159\96')];
-                                    xg[hl('\154\196\136\195\135','\233\180')](function()
-                                        xg[hl('\197Y\219L','\178\56')](0.000235626767200754*8488);
-                                        Kg[hl('\252\232\208\249','\168\141')]=hl('\184<\4Q\147y\25\21','\234Ye5')..lb;
-                                        Kg[hl('/\190\6\181\198\20\183\17\179\182','{\219~\193\133')]=Ta[hl('R\193\223R\224\206K','&\164\167')]
-                                    end);
-                                    Da:Disconnect()
-                                end
+            elseif Pg and Dh then
+                Lm=true;
+                Vm=Instance.new'Frame';
+                Vm.Size=UDim2 .new(1,0,0,150);
+                Vm.Position=UDim2 .new(0,0,1,3);
+                Vm.BackgroundColor3=He.panelBg2;
+                Vm.BackgroundTransparency=Hm.overlay;
+                Vm.BorderSizePixel=0;
+                Vm.ZIndex=10;
+                Vm.Parent=pi
+                local _e=Instance.new'UICorner';
+                _e.CornerRadius=UDim.new(0,9);
+                _e.Parent=Vm
+                local qm=Instance.new'ScrollingFrame';
+                qm.Size=UDim2 .new(1,-6,1,-6);
+                qm.Position=UDim2 .new(0,3,0,3);
+                qm.BackgroundTransparency=1;
+                qm.ScrollBarThickness=3;
+                qm.ScrollBarImageColor3=He.scrollbar;
+                qm.ScrollBarImageTransparency=0.29999999999999999;
+                qm.BorderSizePixel=0;
+                qm.ZIndex=10;
+                qm.Parent=Vm
+                local qk=Instance.new'UIListLayout';
+                qk.Padding=UDim.new(0,2);
+                qk.SortOrder=Enum.SortOrder.Name;
+                qk.Parent=qm
+                for Mc,Yf in ipairs(U)do
+                    if Dh:FindFirstChild(Yf)~=nil then
+                        local Vi=Instance.new'TextButton';
+                        Vi.Size=UDim2 .new(1,0,0,24);
+                        Vi.BackgroundColor3=He.rowBg;
+                        Vi.BackgroundTransparency=Hm.row;
+                        Vi.Text=(_G.hiddenBodyParts[Yf]and'[x] 'or'   ')..Yf;
+                        Vi.TextColor3=_G.hiddenBodyParts[Yf]and He.accentPlay or He.textPrimary;
+                        Vi.TextSize=9;
+                        Vi.Font=Enum.Font.Gotham;
+                        Vi.TextXAlignment=Enum.TextXAlignment.Left;
+                        Vi.BorderSizePixel=0;
+                        Vi.ZIndex=10;
+                        Vi.Parent=qm
+                        local of=Instance.new'UIPadding';
+                        of.PaddingLeft=UDim.new(0,5);
+                        of.Parent=Vi;
+                        Vi.MouseButton1Click:Connect(function()
+                            if _G.hiddenBodyParts[Yf]then
+                                Ul(Yf);
+                                vd.Text=Yf..' shown';
+                                vd.TextColor3=He.textYellow
                             else
-                                Sm[hl('\143\246\163\231','\219\147')]=hl('?\17\r','t');
-                                Kg[hl('!\217\r\200','u\188')]=hl('j\206\207\141L\195\205\139M',')\175\161\238');
-                                Kg[hl('A\25\213\159\209z\16\194\153\161','\21|\173\235\146')]=Ta[hl('\130\227\171\130\194\186\155','\246\134\211')];
-                                xg[hl('\185\51\171\52\164','\202C')](function()
-                                    xg[hl('\158\230\128\243','\233\135')](0.0013046314416177429*1533);
-                                    Kg[hl('\191\213\147\196','\235\176')]=hl('\14C\227\230%\6\254\162','\\&\130\130')..lb
-                                end);
-                                Da:Disconnect()
+                                ii(Yf);
+                                vd.Text=Yf..' hidden';
+                                vd.TextColor3=He.textGreen
                             end
-                        end
-                    end)
-                end
-            end)
-        end
-        for qj=-0.024195245108352619*-9506,(0.00021204410517387616*23580)+2784869/12161 do
-            local ma=(qj- -0.016585789816759615*-13807)
-            if not(ej[ma])then
-            else
-                bm[ma][hl("\'\27i\n\49\29\5|\26!",'Tk\foU')][hl('\128\22\172\a','\212s')]=xg[hl('\20\53\0\192\18\51\29\211','\96Zs\180')](ej[ma][hl('\207\19\217\6\216','\188c')])
-                if ej[ma][hl('\21\27\a','~')]and ej[ma][hl('lb~','\a')]~=''then
-                    bm[ma][hl('\21\186\251\230\140\241\26\157\247\240\145\240\16','~\223\130\132\229\159')][hl('\239:\195+','\187_')]=ej[ma][hl('lb~','\a')]:sub(32604-32603,94893/31631);
-                    bm[ma][hl('\127\223=\175\159\3p\248\49\185\130\2z','\20\186D\205\246m')][hl('\173\181pz3\150\188g|C','\249\208\b\14p')]=Ta[hl('\181&\192m\167\179*\213x\133\184','\193C\184\25\247')]
-                    local Yd=xg[hl('z\194J\193','?\172')][hl('^\"\253V(\224p','\21G\132')][ej[ma][hl('\181\187\167','\222')]]
-                    if not(Yd)then
-                    else
-                        bm[ma][hl('\168\185\142\230\209\168\162\137\231\218','\203\214\224\136\180')]=Rf[hl('NK\23\184\128E@\0\172\154','\a%g\205\244')]:Connect(function(Kc,Li)
-                            if not(not Li)then
-                            else
-                                if Kc[hl('\204\242\230\196\248\251\226','\135\151\159')]==Yd then
-                                    local jm=ej[ma][hl('-\136;\157:','^\248')]/(-5678+5688);
-                                    wi[hl("1]\'H&",'B-')]=ej[ma][hl('\211H\197]\196','\160\56')]/(-20198+20203);
-                                    de[hl('fuH\234BsT\237','6\26;\131')]=xg[hl('\198\148\250\189\161','\147\208')][hl('\146\153\139','\252')](jm,-16060+16054,0.00011868027533823879*4213,-23532+23526);
-                                    Xc[hl('\19)?8','GL')]=xg[hl('\154\194\134\128\216\147','\233\182\244')][hl('\242{\"\249u$','\148\20P')](hl('\236\173','\201'),ej[ma][hl('\20\171\2\190\3','g\219')])
-                                end
-                            end
+                            spawn(function()
+                                wait(2);
+                                vd.Text='Ready | '..ud;
+                                vd.TextColor3=He.textDim
+                            end);
+                            Vi.Text=(_G.hiddenBodyParts[Yf]and'[x] 'or'   ')..Yf;
+                            Vi.TextColor3=_G.hiddenBodyParts[Yf]and He.accentPlay or He.textPrimary
                         end)
                     end
                 end
-            end
-        end
-        local Ob={Kg,Zd,Cm,Gb,Ai,na,Af,sl,oi,dn,Om}
-        local function Si(pd)
-            local Qe=xg[hl('\189\165\182\229\149\165\166\244','\244\203\197\145')][hl('\15\4\22','a')](hl('12\22-\18','w@'));
-            Qe[hl('N\ag\v','\29n')]=xg[hl('\206w\242^\169','\155\51')][hl('v}o','\24')](29792-29791,0,0,-18314- -18348);
-            Qe[hl('\0\134\223\215\230\166f\167\192\96\164\48\134\210\207\241\181{\183\192g\137','B\231\188\188\129\212\t\210\174\4\240')]=11496-11495;
-            Qe[hl('\175\128\55\154\143\49','\255\225E')]=Gb
-            local im=sg[pd[hl('\v\190\b\186','e\223')]]~=nil
-            local En,Em=im and(_h==hl('\235b\186\252x\164','\136\23\201')and-2533884/24842 or-11470- -11400)or 26397+-26467,xg[hl('\226\199\221j\202\199\205{','\171\169\174\30')][hl('\127tf','\17')](hl('o\239\186\195gN\254\182\216K',';\138\194\183%'));
-            Em[hl('r;[7','!R')]=xg[hl('2\205\14\228U','g\137')][hl('\29\22\4','s')](18464+-18463,En,23773/23773,0);
-            Em[hl('x\184\168.\\\190\180)','(\215\219G')]=xg[hl('\132\189\184\148\227','\209\249')][hl('\138\129\147','\228')](0,0,0,0);
-            Em[hl('\241\181\3P\175\20\254i\221\176#T\164\t\227/','\179\212\96;\200f\145\28')]=Ta[hl("\"\5\'(7",'Pj')];
-            Em[hl('\160]\1\3f\228N\174\14T\198\144]\f\27q\247S\190\14S\235','\226<bh\1\150!\219\96\48\146')]=jd[hl('\134\155\131','\244')];
-            Em[hl('\134\165\170\180','\210\192')]=hl('DD','d')..pd[hl('\253\27\254\31','\147z')];
-            Em[hl('\198\231Eg1\253\238RaA','\146\130=\19r')]=Ta[hl('T,-\182iR 8\163KY',' IU\194\57')];
-            Em[hl('2j\226\53\53f\224$','f\15\154A')]=9854+-9842;
-            Em[hl('\164\204\140\215','\226\163')]=xg[hl('m\166]\165','(\200')][hl('e\241M\234','#\158')][hl("pN:\239\27\225\225RL\'\229\21\224\214",'7!N\135z\140\178')];
-            Em[hl('\252:\15.\135\14\25\193\56\25\55\186!\1','\168_wZ\223Ou')]=xg[hl('g:W9','\"T')][hl('z\215\57\171]\201\16G\213/\178\96\230\b','.\178A\223\5\136|')][hl('\21\229?\244','Y\128')];
-            Em[hl('\188p5\199\186\244k\151e\"\243\182\254]\146','\254\31G\163\223\134\56')]=0;
-            Em[hl('\146&|\167)z','\194G\14')]=Qe
-            local qd=xg[hl('\127|$\17W|4\0','6\18We')][hl('\177\186\168','\223')](hl('3\16\129\220\20\55\167\193','fY\194\179'));
-            qd[hl('\251n\181\243\24\195\234\96\163\244\b\194','\184\1\199\157}\177')]=xg[hl('\248\127\196V','\173;')][hl('\190\181\167','\208')](0,27299+-27291);
-            qd[hl(':#\236\15,\234','jB\158')]=Em
-            local Zl=nil
-            if not(im and _h==hl('\187\a\17\172\29\15','\216rb'))then
-            else
-                Zl=xg[hl('\178VJ\252\154VZ\237','\251\56\57\136')][hl('BI[',',')](hl('\b\162\183\149L)\179\187\142\96','\\\199\207\225\14'));
-                Zl[hl('\176\130\153\142','\227\235')]=xg[hl('\175B\147k\200','\250\6')][hl('\b\3\17','f')](0,4302-4270,745+-744,0);
-                Zl[hl('\217u6\136\253s*\143','\137\26E\225')]=xg[hl('\184t\132]\223','\237\48')][hl('\179\184\170','\221')](-27524/-27524,0.0038670980980190987*-25342,0,0);
-                Zl[hl('\22\201\251\173r\a\147g\230w/&\201\246\181e\20\142w\230p\2','T\168\152\198\21u\252\18\136\19{')]=14503-14502;
-                Zl[hl('\220\143\240\158','\136\234')]=hl('\173','\245');
-                Zl[hl('b\203\187\146#Y\194\172\148S','6\174\195\230\96')]=Ta[hl('\240Y\204\240n\209\224','\132<\180')];
-                Zl[hl('%S\220\243\"_\222\226','q6\164\135')]=-0.0012376237623762376*-11312;
-                Zl[hl('\0)\129]>=\149+<\150i27\163.','BF\243\57[O\198')]=0;
-                Zl[hl('H\15V}\0P','\24n$')]=Qe
-            end
-            local Fm=xg[hl('\132\221\188\51\172\221\172\"','\205\179\207G')][hl('\202\193\211','\164')](hl('i+W\205XH:[\214t','=N/\185\26'));
-            Fm[hl('R\134{\138','\1\239')]=xg[hl('\155r\167[\252','\206\54')][hl('\6\r\31','h')](0,0.0046169383927283222*6931,4359/4359,0);
-            Fm[hl('\230\232:\193\194\238&\198','\182\135I\168')]=xg[hl('m1Q\24\n','8u')][hl('SXJ','=')](12400/12400,-1059498/16053,0,0);
-            Fm[hl(':D\197\177\168\136\225e\n}b\nD\200\169\191\155\252u\nzO','x%\166\218\207\250\142\16d\25\54')]=-3.38123415046492e-05*-29575;
-            Fm[hl('\153\251\181\234','\205\158')]=m[pd[hl('[\142X\138','5\239')]]and hl('2HU','\208')or hl('\25c}','\251');
-            Fm[hl('\245\180\168\208|\206\189\191\214\f','\161\209\208\164?')]=m[pd[hl('gXd\\','\t\57')]]and Ta[hl('\141P\28f\190Z\bv','\249\53d\18')]or Ta[hl('|.e|\15te','\bK\29')];
-            Fm[hl('\141hH\b\138dJ\25','\217\r\48|')]=-138992/-8687;
-            Fm[hl('\168\185\132\178\20\210\160\131\172\147\134\24\216\150\134','\234\214\246\214q\160\243')]=0;
-            Fm[hl('G\227\225r\236\231','\23\130\147')]=Qe
-            local ra=xg[hl('3\208\224\1\27\208\240\16','z\190\147u')][hl('\234\225\243','\132')](hl("\2\150\"\96\'#\135.{\v",'V\243Z\20e'));
-            ra[hl('\213\247\252\251','\134\158')]=xg[hl('\128!\188\b\231','\213e')][hl('k\96r','\5')](0,-405920/-12685,7068-7067,0);
-            ra[hl('$(*\249\0.6\254','tGY\144')]=xg[hl('V\aj.1','\3C')][hl('\250\241\227','\148')](18191+-18190,-28229- -28197,0,0);
-            ra[hl('\201S\233Q\230o\29\182g\211/\249S\228I\241|\0\166g\212\2','\139\50\138:\129\29r\195\t\183{')]=-31253- -31254;
-            ra[hl('a\2M\19','5g')]=ym[pd[hl('7\\\52X','Y=')]]and(ym[pd[hl('\143N\140J','\225/')]][hl('\249\21\218\17','\183t')]:gsub(hl('\215\163\26\55\243\162\6Q\178','\156\198ct'),''):sub(-26637- -26638,0.00010454783063251438*28695))or hl('\246\202\218\199','\180\163');
-            ra[hl('N\248\180\0\223u\241\163\6\175','\26\157\204t\156')]=ym[pd[hl('\21\187\22\191','{\218')]]and Ta[hl('\26\138\200j&\28\134\221\127\4\23','n\239\176\30v')]or Ta[hl('$S.$r?=','P6V')];
-            ra[hl('@\180\159\24G\184\157\t','\20\209\231l')]=-96768/-12096;
-            ra[hl('\195e\235~','\133\n')]=xg[hl('\200v\248u','\141\24')][hl('\132\220\172\199','\194\179')][hl('\30\236\157\49\226\132','Y\131\233')];
-            ra[hl('\r\28\1\233\235p\160&\t\22\221\231z\150#','Oss\141\142\2\243')]=0;
-            ra[hl('\201\160\23\252\175\17','\153\193e')]=Qe;
-            Em[hl('\175\22\21u\177\167\23\20c\166','\226y\96\6\212')]:Connect(function()
-                if not(wi[hl('\148\4\241x\146\31\247C\147','\247q\131\n')]~=xg[hl('\213\250>$\211\252#7','\161\149MP')](pd[hl('\212\217','\189')]))then
-                else
-                    Em[hl('^nIRh\rD\148\178e)nnDJ\127\30Y\132\178b\4','\28\15*9\15\127+\225\220\1}')]=jd[hl('*#/\4','XL')]
-                end
-            end);
-            Em[hl('\178\157{\227\201\179\151o\230\201','\255\242\14\144\172')]:Connect(function()
-                if not(wi[hl('\4\158Qe\2\133W^\3','g\235#\23')]~=xg[hl('\183f-\186\177\96\48\169','\195\t^\206')](pd[hl('\233\228','\128')]))then
-                else
-                    Em[hl('\225\206\154\21%\242>hx\128\6\209\206\151\r\50\225#xx\135+','\163\175\249~B\128Q\29\22\228R')]=jd[hl('EX@','7')]
-                end
-            end);
-            Em[hl('\26\189\50\154\131\138\249G#\189)\216\165\164\229P<','W\210G\233\230\200\140\51')]:Connect(function()
-                xg[hl('\252\214\251\220','\136\183')][hl('\182B\164E\171','\197\50')](function()
-                    ul(xg[hl('0>9\a\54\56$\20','DQJs')](pd[hl('\153\148','\240')]))
+                spawn(function()
+                    wait(0.050000000000000003);
+                    qm.CanvasSize=UDim2 .new(0,0,0,qk.AbsoluteContentSize.Y)
                 end)
-            end)
-            if not(Zl)then
             else
-                Zl[hl('~\238\251]\2w\247%G\238\224\31$Y\235\50X','3\129\142.g5\130Q')]:Connect(function()
-                    sg[pd[hl('\29\131\30\135','s\226')]]=nil;
-                    nd[pd[hl('\29\177\30\181','s\208')]]=nil;
-                    ym[pd[hl('\163\26\160\30','\205{')]]=nil;
-                    m[pd[hl('*\217)\221','D\184')]]=nil;
-                    Xe();
-                    Bn();
-                    cj();
-                    xg[hl('4\180+<\156\31\17','X\219J')]()
+                vd.Text='Enable reanimation first!';
+                vd.TextColor3=He.textRed;
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
                 end)
             end
-            Fm[hl('\18B\144\143\169\197~\27+B\139\205\143\235b\f\52','_-\229\252\204\135\vo')]:Connect(function()
-                if m[pd[hl('\130\192\129\196','\236\161')]]then
-                    m[pd[hl('8\230;\226','V\135')]]=nil;
-                    Fm[hl('\162\159\142\142','\246\250')]=hl('\201\179\173','+');
-                    Fm[hl('\21\156\n?\15.\149\29\57\127','A\249rKL')]=Ta[hl('\2\208U\2\241D\27','v\181-')]
-                else
-                    m[pd[hl('\\C_G','2\"')]]=xg[hl('\fE\185\176\nC\164\163','x*\202\196')](pd[hl('\15\2','f')]);
-                    Fm[hl('\255p\211a','\171\21')]=hl(')SN','\203');
-                    Fm[hl(']\235\134\144\48f\226\145\150@','\t\142\254\228s')]=Ta[hl('\243\183\194\235\192\189\214\251','\135\210\186\159')]
-                end
-                cj()
-                if _h==hl('\255\165\27\180\235\173\25\190\234','\153\196m\219')then
-                    xg[hl('\137\57\155>\148','\250I')](function()
-                        xg[hl('\170A\180T','\221 ')](-1957.8000000000002/-19578);
-                        xg[hl('\30s\149\22[\161;','r\28\244')]()
-                    end)
-                end
-            end);
-            ra[hl('\198|\208\28UEp1\255|\203^skl&\224','\139\19\165o0\a\5E')]:Connect(function()
-                if not(ym[pd[hl('\253_\254[','\147>')]])then
-                    if not(not ef)then
-                    else
-                        ef=true;
-                        Tl=pd[hl('\31=\28\57','q\\')];
-                        Kg[hl('\238\f\194\29','\186i')]=hl('\210\140o\130\5R\252@\18\vp\140\251\222~\158V\16\244@\15\5\53\199','\130\254\n\241vr\157.k+\27\233');
-                        Kg[hl('V\4\187UOm\r\172S?','\2a\195!\f')]=Ta[hl('\244_\129\156\176\229V\149\135\158','\128:\249\232\233')];
-                        ra[hl('\246\188\218\173','\162\217')]=hl('WWW','y')
-                        local Rk=nil;
-                        Rk=Rf[hl("\23$\163\57\'\28/\180-=",'^J\211LS')]:Connect(function(Db,nh)
-                            if not(nh)then
-                                if not(ef and Tl==pd[hl('\23)\20-','yH')])then
-                                    Rk:Disconnect()
-                                else
-                                    if Db[hl('\96\155\221h\145\192N','+\254\164')]==xg[hl("\'\n\23\t",'bd')][hl('S\r\14[\a\19}','\24hw')][hl('$\18\14\0\17\b','aam')]or Db[hl('\142\232g\134\226z\160','\197\141\30')]==xg[hl('\138\171\186\168','\207\197')][hl('jR}bX\96D','!7\4')][hl('RX\193\245cI\195\253u','\16\57\162\158')]then
-                                        ra[hl('#\215\15\198','w\178')]=hl('\236\174\192\163','\174\199');
-                                        ra[hl('*7\20\240\221\17>\3\246\173','~Rl\132\158')]=Ta[hl('\f*D\f\vU\21','xO<')];
-                                        Kg[hl('\169\5\133\20','\253\96')]=hl('\213\168\210\196\216\249\153\6\244\160\210\195\212\251\146C\243','\151\193\188\160\177\151\254&');
-                                        Kg[hl('\139\48\a\223\24\176\57\16\217h','\223U\127\171[')]=Ta[hl('L\176\96L\145qU','8\213\24')];
-                                        xg[hl('\151\140\133\139\138','\228\252')](function()
-                                            xg[hl('\135\28\153\t','\240}')](25825-25823);
-                                            Kg[hl('\142\144\162\129','\218\245')]=hl('S@_\142x\5B\202','\1%>\234')..lb
-                                        end);
-                                        ef=false;
-                                        Tl=nil;
-                                        Rk:Disconnect()
-                                    elseif not(Db[hl('\ri\236\5c\241#','F\f\149')]~=xg[hl('\4c4\96','A\r')][hl('\190\248\213\182\242\200\144','\245\157\172')][hl('\128\208\30\187\209\2\187','\213\190u')])then
-                                    else
-                                        ym[pd[hl('J[I_','$:')]]=Db[hl('U\204W]\198J{','\30\169.')];
-                                        Bn();
-                                        ra[hl('\26A6P','N$')]=Db[hl('i\183(a\189\53G','\"\210Q')][hl('$\247\a\243','j\150')]:gsub(hl('?\250#\14\27\251?hZ','t\159ZM'),''):sub(-14621+14622,-26391- -26394);
-                                        ra[hl('+\198Z\127\132\16\207My\244','\127\163\"\v\199')]=Ta[hl('\27\230\161\49\164\29\234\180$\134\22','o\131\217E\244')];
-                                        Kg[hl('\138\164\166\181','\222\193')]=hl('\198\231\n\129\224\168R\209\164','\132\136\127\239')..Db[hl('7\96w?jj\25','|\5\14')][hl(')\177\n\181','g\208')]:gsub(hl('\224F\181,\196G\169J\133','\171#\204o'),'');
-                                        Kg[hl('M\212jigv\221}o\23','\25\177\18\29$')]=Ta[hl('\231\164,\137\212\179\49\152\253','\147\193T\253')];
-                                        xg[hl('\237\185\255\190\240','\158\201')](function()
-                                            xg[hl('\249\196\231\209','\142\165')](-15141- -15143);
-                                            Kg[hl('\245\15\217\30','\161j')]=hl('j>n#A{sg','8[\15G')..lb;
-                                            Kg[hl("~\171b!\218E\162u\'\170",'*\206\26U\153')]=Ta[hl('\220\v\187\220*\170\197','\168n\195')]
-                                        end);
-                                        ef=false;
-                                        Tl=nil;
-                                        Rk:Disconnect()
-                                    end
-                                end
-                            else
-                                return
-                            end
-                        end)
-                    end
-                else
-                    ym[pd[hl('\5+\6/','kJ')]]=nil;
-                    Bn();
-                    ra[hl('0\171\28\186','d\206')]=hl('\139\139\167\134','\201\226');
-                    ra[hl(']#\148\19\bf*\131\21x','\tF\236gK')]=Ta[hl('-B$-c54',"Y\'\\")];
-                    Kg[hl('\189\152\145\137','\233\253')]=hl('\250\48\213\219\218\48\211\148','\175^\183\180')..pd[hl('\156D\159@','\242%')];
-                    Kg[hl('\6\247o\209\169=\254x\215\217','R\146\23\165\234')]=Ta[hl('C\20\127C#bS','7q\a')];
-                    xg[hl('\186\132\168\131\167','\201\244')](function()
-                        xg[hl('r\217l\204','\5\184')](20572/10286);
-                        Kg[hl('\148\27\184\n','\192~')]=hl('\253\57E\241\214|X\181','\175\\$\149')..lb;
-                        Kg[hl('_\127\143\233/dv\152\239_','\v\26\247\157l')]=Ta[hl('y\196\168y\229\185\96','\r\161\208')]
-                    end)
-                    return
-                end
-            end);
-            ok[pd[hl('\165\129\166\133','\203\224')]]={[hl('q{5\230S}5\247@','2\20[\146')]=Qe,[hl('YW\v\205\167bB\18\199\139','\23\54f\168\229')]=Em,[hl('U\227\175\143N\227\240v\192\172\148H\229\234','\19\130\217\224<\138\132')]=Fm,[hl('*\147\210|+\a\5\180\222j6\6\15','a\246\171\30Bi')]=ra,[hl('\135\162$:\29\253\129\178<+\6\246','\195\199H_i\152')]=Zl}
-        end
-        xg[hl('\210\230\18\218\206&\247','\190\137s')]=function()
-            for H,Al in xg[hl('\128\26\153\t\131','\240{')](Gb:GetChildren())do
-                if not(Al:IsA(hl('\195~\228a\224','\133\f')))then
-                else
-                    Al:Destroy()
-                end
-            end
-            ok={}
-            local R
-            if not(_h~=hl('\181\2\165\162\24\187','\214w\214'))then
-                R=sn
-            else
-                R=false
-            end
-            na[hl('\6j\251\57a\228\53','P\3\136')]=R;
-            oi[hl('l\5\242S\14\237_',':l\129')]=_h==hl('\21\180\162\2\174\188','v\193\209');
-            Af[hl('G\181\244x\190\235t','\17\220\135')]=_h==hl('\202\20\140\205\5\158','\185\96\237');
-            dn[hl('\n\189\222\53\182\193\57','\\\212\173')]=_h==hl('\2\250\v\246','q\147');
-            Om[hl('9[\200\6P\215\n','o2\187')]=_h==hl('\167~\26\173x\1','\200\nr');
-            Gb[hl('\211 \0\236+\31\224','\133Is')]=_h~=hl('\191 _\184\49M','\204T>')and _h~=hl('\204\236\197\224','\191\133')and _h~=hl('\215\147\57\221\149\"','\184\231Q');
-            Cm[hl('P\208\160o\219\191c','\6\185\211')]=_h~=hl('\20\196\167\19\213\181','g\176\198')and _h~=hl('\16!\25-','cH')and _h~=hl('\238\138\183\228\140\172','\129\254\223');
-            sl[hl('K<\19t7\fx','\29U\96')]=_h==hl('\218\194\190\205\216\160','\185\183\205')or _h==hl('\138]\233\141L\251','\249)\136')
-            if Gb[hl('|\140_C\135@O','*\229,')]then
-                if not(_h~=hl('\136Rd\159Hz',"\235\'\23"))then
-                    if sn then
-                        Gb[hl('\189\17\148\29','\238x')]=xg[hl('\127/C\6\24','*k')][hl('\252\247\229','\146')](-16886- -16887,-399408/24963,29329/29329,3727-3997);
-                        Gb[hl('\224=\186:\196;\166=','\176R\201S')]=xg[hl('\5\138\57\163b','P\206')][hl('\210\217\203','\188')](0,23602+-23594,0,-237510/-1218)
-                    else
-                        Gb[hl('\202O\227C','\153&')]=xg[hl('\181\246\137\223\210','\224\178')][hl('chz','\r')](-337/-337,31279+-31295,-5462/-5462,1844180/-8996);
-                        Gb[hl('\136\54\52\161\172\48(\166','\216YG\200')]=xg[hl('\163\215\159\254\196','\246\147')][hl('\142\133\151','\224')](0,-0.00063431652394544877*-12612,0,3846-3712)
-                    end
-                else
-                    Gb[hl('\240\130\217\142','\163\235')]=xg[hl('\165*\153\3\194','\240n')][hl('BI[',',')](-6701- -6702,-0.0029968158831241805*5339,-5.3259480187473368e-05*-18776,-2269225/12967);
-                    Gb[hl('\31(\4=;.\24:','OGwT')]=xg[hl('\242\96\206I\149','\167$')][hl('\154\145\131','\244')](0,0.03669724770642202*218,0,-0.0039053698835899361*-26630)
-                end
-                local Sc,Nf,jh={},Cm[hl('\185\56\149)','\237]')]:lower(),_h==hl('\3\225t\20\251j','\96\148\a')and sg or nd
-                for Rj,in_ in xg[hl('0\216)\203\51','@\185')](jh)do
-                    if not((_h~=hl('\219\162\173\6\207\170\175\f\206','\189\195\219i')or m[Rj]~=nil)and(Nf==''or Rj:lower():find(Nf)))then
-                    else
-                        xg[hl('Z\142L\131K','.\239')][hl('\175\29,\163\1+','\198s_')](Sc,{[hl('1G2C','_&')]=Rj,[hl('%(','L')]=in_})
-                    end
-                end
-                xg[hl('\rs\27~\28','y\18')][hl('\\\225]\250','/\142')](Sc,function(wj,Na)
-                    return wj[hl('\146Q\145U','\252\48')]<Na[hl('XH[L','6)')]
-                end)
-                for Ab,xe in xg[hl('\n\221\19\206\t','z\188')](Sc)do
-                    Si(xe)
-                end
-                xg[hl('\2f\16a\31','q\22')](function()
-                    xg[hl('DdZq','3\5')](3.5698986148793377e-06*28012);
-                    Gb[hl('S\166\24\22\193c\148\31\26\197','\16\199v\96\160')]=xg[hl('\247E\203l\144','\162\1')][hl('\229\238\252','\139')](0,0,0,zl[hl('\a\251\22\132\135\vd\154\191)\247\17\142\133\nC\150\134#','F\153e\235\235~\16\255\252')][hl('\242','\171')]+(496-486))
-                end)
-            end
-        end
-        local tg=false
-        local function mb(rm)
-            local X=xg[hl('?%&,','RD')][hl('O\1F\2[',')m')](rm*(-29450/-2945)+(4273.5+-4273));
-            wi[hl('\135N\145[\144','\244>')]=X/(28131-28126);
-            de[hl('bXu\145F^i\150','27\6\248')]=xg[hl('\205\6\241/\170','\152B')][hl('\171\160\178','\197')](rm,-13438+13432,9908.5+-9908,14047-14053);
-            Xc[hl('\151r\187c','\195\23')]=xg[hl("=\157\237\'\135\248",'N\233\159')][hl('>\191\240\53\177\246','X\208\130')](hl('\144\209','\181'),X)
-        end
-        local function Wl(s_)
-            mb(xg[hl('(\244\49\253','E\149')][hl(';J9K(','X&')]((s_[hl('U\29 rq\27<u','\5rS\27')][hl('\144','\200')]-yf[hl('\242\147\53\213\31$\154N\227\158\53\211\a\56\129E','\179\241F\186sQ\238+')][hl('\244','\172')])/yf[hl('\6V\216\235N\221\51Q\248\237X\205','G4\171\132\"\168')][hl('-','u')],0,-8.9565606806986115e-05*-11165))
-        end
-        local function db()
-            wi[hl('\213\22\195\3\194','\166f')]=-5636- -5637;
-            de[hl('\159\230\133\5\187\224\153\2','\207\137\246l')]=xg[hl('\149\f\169%\242','\192H')][hl('\238\229\247','\128')](21110.5-21110,-25104/4184,-2422.5- -2423,-0.0004604758250191865*13030);
-            Xc[hl('\134~\170o','\210\27')]=hl('\2','7')
-        end
-        xg[hl('\160\142\178\137\189','\211\254')](function()
-            xg[hl('\224\232\254\253','\151\137')](-1.4066676044450696e-05*-7109);
-            de[hl('\136\210\139\146\172\212\151\149','\216\189\248\251')]=xg[hl('.\202\18\227I','{\142')][hl('/$6','A')](17903.5-17903,-0.00044829647340107593*13384,-2.5071453642882215e-05*-19943,0.0023201856148491878*-2586);
-            Xc[hl('65\26$','bP')]=hl('\227','\214')
         end);
-        yf[hl('\214\188\214-Q\221\183\193\57K','\159\210\166X%')]:Connect(function(yd)
-            if yd[hl('5\136\174\132\243\164\16\142\191\162\195\186\5','\96\251\203\246\186\202')]==xg[hl('b\233R\234',"\'\135")][hl('o\155\14d8DJ\157\31B\bZ_',':\232k\22q*')][hl('\242Fr^\184 \202]sB\179S','\191)\a-\221b')]or yd[hl('\227\241\255(\224\53\198\247\238\14\208+\211','\182\130\154Z\169[')]==xg[hl('\0\209\48\210','E\191')][hl('yDd\128\160S\\Bu\166\144MI',',7\1\242\233=')][hl('\225\246\192\250\221','\181\153')]then
-                tg=true;
-                Wl(yd)
-            end
+        pi.MouseEnter:Connect(function()
+            pi.BackgroundTransparency=Hm.btnH
         end);
-        Rf[hl('MJX\134\52TlEF\148%s','\4$(\243@\23')]:Connect(function(sk)
-            if tg and(sk[hl('\189.\a\221|;\152(\22\251L%\141','\232]b\175\53U')]==xg[hl('ZTjW','\31:')][hl('\223\6a-NM\250\0p\v~S\239','\138u\4_\a#')][hl('&\0Z\235\183d\4\25J\245\183G\31','ko/\152\210)')]or sk[hl('o \21\226]\172J&\4\196m\178_',':Sp\144\20\194')]==xg[hl('\184\161\136\162','\253\207')][hl('\156\227\161\147S\f\185\229\176\181c\18\172','\201\144\196\225\26b')][hl('\226\243\195\255\222','\182\156')])then
-                Wl(sk)
-            end
-        end);
-        Rf[hl('\217Uc\170\133\213Uw\186\149','\144;\19\223\241')]:Connect(function(jc)
-            if not(jc[hl('N\164\b\249\160\23k\162\25\223\144\t~','\27\215m\139\233y')]==xg[hl('j\247Z\244','/\153')][hl(':\26\200\226\50?\31\28\217\196\2!\n','oi\173\144{Q')][hl('\15\166\57\197<\206\55\189\56\217\55\189','B\201L\182Y\140')]or jc[hl('3~\31\30\243\167\22x\14\56\195\185\3','f\rzl\186\201')]==xg[hl('\157\255\173\252','\216\145')][hl('\234\127\159\26\153\141\207y\142<\169\147\218','\191\f\250h\208\227')][hl('Ndohr','\26\v')])then
-            else
-                tg=false
-            end
-        end);
-        W[hl('\24W^H\127l*1!WE\nYB6&>','U8+;\26._E')]:Connect(db);
-        W[hl('\208\138\240\152,\216\139\241\142;','\157\229\133\235I')]:Connect(function()
-            W[hl('\182\176\228\193\175\249\144\247\161\180\177\134\176\233\217\184\234\141\231\161\179\156','\244\209\135\170\200\139\255\130\207\208\229')]=jd[hl('5\255\57\195','W\139')]
-        end);
-        W[hl('i,\180\246uh&\160\243u','$C\193\133\16')]:Connect(function()
-            W[hl('\158\v\6s)\228\196F\135\242\0\174\v\vk>\247\217V\135\245-','\220je\24N\150\171\51\233\150T')]=jd[hl('\214\192\218','\180')]
-        end);
-        Oi[hl('\17\139\24K\166F8((\139\3\t\128h$?7','\\\228m8\195\4M\\')]:Connect(function()
-            Sb()
-            if Tm then
-                pm(false)
-            end
-            Og:Destroy()
-        end);
-        Oi[hl('\223\201\57\175\195\215\200\56\185\212','\146\166L\220\166')]:Connect(function()
-            Oi[hl(')\223a\193\251x\137C\202\249\205\25\223l\217\236k\148S\202\254\224','k\190\2\170\156\n\230\54\164\157\153')]=jd[hl('\179\224\191\220','\209\148')]
-        end);
-        Oi[hl('\"\161\243\24\237#\171\231\29\237','o\206\134k\136')]:Connect(function()
-            Oi[hl('\197b\162\49\240\153\178<8\203c\245b\175)\231\138\175,8\204N','\135\3\193Z\151\235\221IV\175\55')]=jd[hl('\241\231\253','\147')]
-        end);
-        gn[hl('\247Y\191\0\154\197\199{\206Y\164B\188\235\219l\209','\186\54\202s\255\135\178\15')]:Connect(function()
-            if not Z then
-                Z=true
-                if not(sj)then
-                    for Ng,Gl in xg[hl('\f}\21n\15','|\28')](Ob)do
-                        Gl[hl('M\141\24r\134\a~','\27\228k')]=false
-                    end
-                    local Vl=an_:Create(af,xg[hl('\143\6\31\165\181\56\20\166\180','\219qz\192')][hl('\161\170\184','\207')](2642.8000000000002/13214,xg[hl('\199\192\247\195','\130\174')][hl('\"H\139\144@\0z\140\128B\2','g)\248\249.')][hl('J\177z\160','\27\196')],xg[hl('\178\238\130\237','\247\128')][hl('-\tOB\0\165\241\1\26YH\26\171\218\6','hh<+n\194\181')][hl('.\20\21','a')]),{[hl('\4\201-\197','W\160')]=xg[hl('\20\52(\29s','Ap')][hl('\31\20\6','q')](0,-0.24212144504227517*-1301,0,-0.001574389923904487*-19055)});
-                    gn[hl('\163+\143:','\247N')]=hl('\206','\229');
-                    sj=true;
-                    Vl:Play();
-                    Vl[hl('?s\209\254\16y\200\235\24','|\28\188\142')]:Connect(function()
-                        Z=false
-                    end)
-                else
-                    local c=an_:Create(af,xg[hl("\28&X\242&\24S\241\'",'HQ=\151')][hl('+ 2','E')](-5522.8000000000002/-27614,xg[hl('\151t\167w','\210\26')][hl('<=\253,\203\30\15\250<\201\28','y\\\142E\165')][hl('\138c\186r','\219\22')],xg[hl('wrGq','2\28')][hl('\241\187S\186\15R?\221\168E\176\21\\\20\218','\180\218 \211a5{')][hl('\129\187\186','\206')]),{[hl('\161W\136[','\242>')]=xg[hl('\253\230\193\207\154','\168\162')][hl('\154\145\131','\244')](0,-6714540/-21316,0,-0.023846192061205227*-20129)});
-                    gn[hl('<i\16x','h\f')]=hl('\181','\152');
-                    sj=false;
-                    c:Play();
-                    c[hl('\"\144H\29\r\154Q\b\5','a\255%m')]:Connect(function()
-                        for Ne,Bm in xg[hl('\226b\251q\225','\146\3')](Ob)do
-                            if Bm==na then
-                                Bm[hl('\156c\6\163h\25\175','\202\nu')]=_h==hl('\14\r%\25\23;','mxV')and sn
-                            elseif Bm==oi then
-                                Bm[hl('\251\253\229\196\246\250\200','\173\148\150')]=_h==hl('\179\127_\164eA','\208\n,')
-                            elseif Bm==Af then
-                                Bm[hl('\146B\21\173I\n\161','\196+f')]=_h==hl('\199\1@\192\16R','\180u!')
-                            elseif not(Bm==dn)then
-                                if not(Bm==Om)then
-                                    if not(Bm==sl)then
-                                        if Bm==Gb or Bm==Cm then
-                                            Bm[hl('\176G\31\143L\0\131','\230.l')]=_h~=hl('\128R1\135C#','\243&P')and _h~=hl('\151\157\158\145','\228\244')and _h~=hl('\205\220\206\199\218\213','\162\168\166')
-                                        else
-                                            Bm[hl('\164\19\201\155\24\214\151','\242z\186')]=true
-                                        end
-                                    else
-                                        Bm[hl('\212Nz\235Ee\231',"\130\'\t")]=_h==hl('\23\133\20\0\159\n','t\240g')or _h==hl('\243\156\5\244\141\23','\128\232d')
-                                    end
-                                else
-                                    Bm[hl("\149,\224\170\'\255\166",'\195E\147')]=_h==hl('{\"uq$n','\20V\29')
-                                end
-                            else
-                                Bm[hl('6\155\177\t\144\174\5','\96\242\194')]=_h==hl('2\6;\n','Ao')
-                            end
-                        end
-                        Z=false
-                    end)
-                end
-            end
-        end);
-        gn[hl('\165G\252A\1\173F\253W\22','\232(\137\50d')]:Connect(function()
-            gn[hl('\18/y\192\180[\207\53\141Z\222\"/t\216\163H\210%\141]\243','PN\26\171\211)\160@\227>\138')]=jd[hl('2\137>\181','P\253')]
-        end);
-        gn[hl('\140\208\175\133\151\141\218\187\128\151','\193\191\218\246\242')]:Connect(function()
-            gn[hl('\142\240\137\201\5)eVMD>\190\240\132\209\18:xFMC\19','\204\145\234\162b[\n## j')]=jd[hl('V@Z','4')]
-        end);
-        Cm:GetPropertyChangedSignal(hl('\25\51\53\"','MV')):Connect(xg[hl('\238\209\50\230\249\6\203','\130\190S')])
-        local function Fj(Kf)
-            _h=Kf;
-            sn=false
-            for zh,Wj in xg[hl('\128y\153j\131','\240\24')](ne)do
-                if zh==Kf then
-                    Wj[hl('\162\248O,\219\150\149\28\142\253o(\208\139\136Z','\224\153,G\188\228\250i')]=Ta[hl('+!i\246<4b\193:','_@\v\183')];
-                    Wj[hl('\253_\23\156\157qVh\193\3&\205_\26\132\138bKx\193\4\v','\191>t\247\250\3\57\29\175gr')]=jd[hl('\28\151\n\183','h\246')];
-                    Wj[hl('\220\31\15:S\231\22\24<#','\136zwN\16')]=Ta[hl("L\96\21L\5Jl\0Y\'A",'8\5m8U')]
-                else
-                    Wj[hl('\217\234\166\51e\193\217K\245\239\134\55n\220\196\r','\155\139\197X\2\179\182>')]=Ta[hl('.\227\190\19\230\176?','Z\130\220')];
-                    Wj[hl('K1\144\248eq\254\205s\180\188{1\157\224rb\227\221s\179\145','\tP\243\147\2\3\145\184\29\208\232')]=jd[hl('\170\191\188','\222')];
-                    Wj[hl('\14z\130\127\161\53s\149y\209','Z\31\250\v\226')]=Ta[hl('>O5 9/I\":\14','J*MTj')]
-                end
-            end
-            xg[hl('\180\193N\188\233z\145','\216\174/')]()
-        end
-        for ql,Aa in xg[hl('\187\53\162&\184','\203T')](ne)do
-            local x=ql;
-            Aa[hl('\139Z@\194\141\249\235\167\178Z[\128\171\215\247\176\173','\198\53\53\177\232\187\158\211')]:Connect(function()
-                Fj(x)
-            end)
-        end
-        oi[hl('JM\189\154\221\136\152\157sM\166\216\251\166\132\138l','\a\"\200\233\184\202\237\233')]:Connect(function()
-            if sn then
-                local mm,Wc=Mg[hl('\150a\186p','\194\4')],Zc[hl('\239\5\195\20','\187\96')]
-                if mm==''or Wc==''then
-                    Kg[hl('\26\213\54\196','N\176')]=hl('~\142\142\253\216\255\22\21~\207\53T\138\195\234\157\239\r\24,\201>\17','0\239\227\152\248\158xq^\172Z');
-                    Kg[hl('\241\142\255g\130\202\135\232a\242','\165\235\135\19\193')]=Ta[hl(' \153L \174Q0','T\252\52')];
-                    xg[hl('&\17\52\22;','Ua')](function()
-                        xg[hl('4\142*\155','C\239')](44750/22375);
-                        Kg[hl('\235\252\199\237','\191\153')]=hl('-\4\243+\6A\238o','\127a\146O')..lb;
-                        Kg[hl('\228l\237\31\195\223e\250\25\179','\176\t\149k\128')]=Ta[hl('K\f\223K-\206R','?i\167')]
-                    end)
-                    return
-                end
-                sg[mm]=Wc;
-                nd[mm]=Wc;
-                Xe();
-                Mg[hl('j=F,','>X')]='';
-                Zc[hl('\1P-A','U5')]='';
-                sn=false;
-                na[hl('\245\a\251\202\f\228\198','\163n\136')]=false;
-                oi[hl('t\255X\238',' \154')]=hl('Mhh','\f');
-                oi[hl('\128\173\132\177\176_\131x\172\168\164\181\187B\158>','\194\204\231\218\215-\236\r')]=Ta[hl('\229\192\233\246\224','\135\180')];
-                Gb[hl('a\145H\157','2\248')]=xg[hl('w7K\30\16','\"s')][hl('\195\200\218','\173')](-7.5386355069732378e-05*-13265,430960/-26935,-5307- -5308,-29098+28923);
-                Gb[hl('\5%\t\134!#\21\129','UJz\239')]=xg[hl('\163\1\159(\196','\246E')][hl('\202\193\211','\164')](0,-21152- -21160,0,-29378+29482);
-                Kg[hl('\150M\186\\','\194(')]=hl('\222W\165\250W\251\191','\159\51\193')..mm;
-                Kg[hl('!\179\v\165\144\26\186\28\163\224','u\214s\209\211')]=Ta[hl('\f=\215\129?*\202\144\22','xX\175\245')];
-                xg[hl('\250e\232b\231','\137\21')](function()
-                    xg[hl('hnv{','\31\15')](14227+-14225);
-                    Kg[hl('\168\251\132\234','\252\158')]=hl('\176\175\148\22\155\234\137R','\226\202\245r')..lb;
-                    Kg[hl('\216T\159\136\212\227]\136\142\164','\140\49\231\252\151')]=Ta[hl('\136\178\149\136\147\132\145','\252\215\237')]
-                end);
-                xg[hl('\0\159\170\b\183\158%','l\240\203')]()
-            else
-                sn=true;
-                na[hl("y,jF\'uJ",'/E\25')]=true;
-                oi[hl('o\249C\232',';\156')]=hl('f$C ','5E');
-                oi[hl('\180F\183\220\18o\186\129\152C\151\216\25r\167\199',"\246\'\212\183u\29\213\244")]=Ta[hl('\153\251TP\129\241|Y','\237\148\51\55')];
-                Gb[hl('\170\200\131\196','\249\161')]=xg[hl('k\16W9\f','>T')][hl('k\96r','\5')](3.4675266132667569e-05*28839,-0.00051793344555224651*30892,3.8011251330393799e-05*26308,-14222- -13952);
-                Gb[hl('\148\161\57N\176\167%I',"\196\206J\'")]=xg[hl('\20\211(\250s','A\151')][hl('ODV','!')](0,-0.00059701492537313433*-13400,0,17445+-17250)
-            end
-        end);
-        oi[hl('\173\221q\229\192\165\220p\243\215','\224\178\4\150\165')]:Connect(function()
-            oi[hl('O\r\vFF\140jf\181W\247\127\r\6^Q\159wv\181P\218','\rlh-!\254\5\19\219\51\163')]=jd[hl('>\184\50\132','\\\204')]
-        end);
-        oi[hl('\220\226!\182\191\221\232\53\179\191','\145\141T\197\218')]:Connect(function()
-            oi[hl('%\136\244\199d\193\136\169~\195\188\21\136\249\223s\210\149\185~\196\145','g\233\151\172\3\179\231\220\16\167\232')]=jd[hl("\'\49+",'E')]
+        pi.MouseLeave:Connect(function()
+            pi.BackgroundTransparency=Hm.btn
         end)
-        local _c,hf,eh=false,nil,nil;
-        Ol[hl('\24\249f@\223\19\242qT\197','Q\151\22\53\171')]:Connect(function(if_)
-            if not(if_[hl('|\195pz\b<Y\197a\\\56\"L',')\176\21\bAR')]==xg[hl('\168A\152B','\237/')][hl('\233\196\48\218\138\168\204\194!\252\186\182\217','\188\183U\168\195\198')][hl('\21\30\188c0s-\5\189\127;\0','Xq\201\16U1')]or if_[hl('\181\n i\200!\144\f\49O\248?\133','\224yE\27\129O')]==xg[hl('^\14n\r','\27\96')][hl('\171\243\245<Sx\142\245\228\26cf\155','\254\128\144N\26\22')][hl('\253\150\220\154\193','\169\249')])then
+        local function Yi(wh_,R,ug)
+            local Bj=Instance.new'TextLabel';
+            Bj.Size=UDim2 .new(0.69999999999999996,0,0,20);
+            Bj.Position=UDim2 .new(0,0,0,R);
+            Bj.BackgroundTransparency=1;
+            Bj.Text=wh_;
+            Bj.TextColor3=He.textPrimary;
+            Bj.TextSize=12;
+            Bj.Font=Enum.Font.GothamBold;
+            Bj.TextXAlignment=Enum.TextXAlignment.Left;
+            Bj.Parent=rd
+            local fc=Instance.new'Frame';
+            fc.Size=UDim2 .new(0,40,0,18);
+            fc.Position=UDim2 .new(1,-45,0,R+1);
+            fc.BackgroundColor3=He.toggleOff;
+            fc.BackgroundTransparency=0;
+            fc.BorderSizePixel=0;
+            fc.Parent=rd
+            local ye=Instance.new'UICorner';
+            ye.CornerRadius=UDim.new(0,9);
+            ye.Parent=fc
+            local pb=Instance.new'Frame';
+            pb.Size=UDim2 .new(0,14,0,14);
+            pb.Position=UDim2 .new(0,2,0,2);
+            pb.BackgroundColor3=He.knobOff;
+            pb.BorderSizePixel=0;
+            pb.Parent=fc
+            local fa_=Instance.new'UICorner';
+            fa_.CornerRadius=UDim.new(0,7);
+            fa_.Parent=pb
+            local si=Instance.new'TextButton';
+            si.Size=UDim2 .new(1,0,1,0);
+            si.BackgroundTransparency=1;
+            si.Text='';
+            si.Parent=fc;
+            si.MouseButton1Click:Connect(function()
+                ug(fc,pb)
+            end)
+            return fc,pb
+        end
+        local Pf,Mh=Yi('Snake Mode',115,function(Nc,Ic)
+            if Pg then
+                yk=not yk;
+                zk={};
+                Rl={};
+                p={}
+                if yk then
+                    Nc.BackgroundColor3=He.toggleOn;
+                    Ic.Position=UDim2 .new(1,-16,0,2);
+                    Ic.BackgroundColor3=He.knobOn;
+                    vd.Text='Snake mode on';
+                    vd.TextColor3=He.textGreen
+                else
+                    Nc.BackgroundColor3=He.toggleOff;
+                    Ic.Position=UDim2 .new(0,2,0,2);
+                    Ic.BackgroundColor3=He.knobOff;
+                    vd.Text='Snake mode off';
+                    vd.TextColor3=He.textYellow
+                end
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
             else
+                vd.Text='Enable reanimation first!';
+                vd.TextColor3=He.textRed;
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
+            end
+        end)
+        local Z=Instance.new'TextLabel';
+        Z.Size=UDim2 .new(1,-60,0,18);
+        Z.Position=UDim2 .new(0,0,0,140);
+        Z.BackgroundTransparency=1;
+        Z.Text='Distance: 1.00';
+        Z.TextColor3=He.textSecond;
+        Z.TextSize=10;
+        Z.Font=Enum.Font.Gotham;
+        Z.TextXAlignment=Enum.TextXAlignment.Left;
+        Z.Parent=rd
+        local lk=Instance.new'Frame';
+        lk.Size=UDim2 .new(1,-10,0,4);
+        lk.Position=UDim2 .new(0,5,0,160);
+        lk.BackgroundColor3=He.toggleOff;
+        lk.BackgroundTransparency=0.20000000000000001;
+        lk.BorderSizePixel=0;
+        lk.Parent=rd
+        local Sl=Instance.new'UICorner';
+        Sl.CornerRadius=UDim.new(0,2);
+        Sl.Parent=lk
+        local he=Instance.new'Frame';
+        he.Size=UDim2 .new(0,12,0,12);
+        he.Position=UDim2 .new(0.17999999999999999,-6,0.5,-6);
+        he.BackgroundColor3=He.textPrimary;
+        he.BackgroundTransparency=0.10000000000000001;
+        he.BorderSizePixel=0;
+        he.Parent=lk
+        local Wm=Instance.new'UICorner';
+        Wm.CornerRadius=UDim.new(0,6);
+        Wm.Parent=he
+        local _c=false
+        local function Xc(tm)
+            Ij=0.20000000000000001+tm*4.7999999999999998;
+            he.Position=UDim2 .new(tm,-6,0.5,-6);
+            Z.Text=string.format('Distance: %.2f',Ij)
+        end
+        local function Ec(fb)
+            Xc(math.clamp((fb.Position.X-lk.AbsolutePosition.X)/lk.AbsoluteSize.X,0,1))
+        end
+        he.InputBegan:Connect(function(Ua)
+            if Ua.UserInputType==Enum.UserInputType.MouseButton1 or Ua.UserInputType==Enum.UserInputType.Touch then
                 _c=true;
-                hf=if_[hl('\237XO\243\201^S\244','\189\55<\154')];
-                eh=af[hl('u>pSQ8lT','%Q\3:')]
+                Ec(Ua)
             end
         end);
-        Rf[hl('\200\219\229\196p\197\233\212\251\214a\226','\129\181\149\177\4\134')]:Connect(function(bi)
-            if not(_c and(bi[hl('\215\176F.\156\191\242\182W\b\172\161\231','\130\195#\\\213\209')]==xg[hl('Kp{s','\14\30')][hl('\180\14\203\138io\145\b\218\172Yq\132','\225}\174\248 \1')][hl('\191\222\165\31\26A\157\199\181\1\26b\134','\242\177\208l\127\f')]or bi[hl('yW\254Q\164D\\Q\239w\148ZI',',$\155#\237*')]==xg[hl('\202v\250u','\143\24')][hl('\231\0\233\154\52\236\194\6\248\188\4\242\215','\178s\140\232}\130')][hl('7\154\22\150\v','c\245')]))then
-            else
-                local ad=bi[hl('\250J\6F\222L\26A','\170%u/')]-hf;
-                af[hl('\186<\196\237\158:\216\234','\234S\183\132')]=xg[hl('\243\52\207\29\148','\166p')][hl('LGU','\"')](eh[hl('\173','\245')][hl('\137\213\187\218\191','\218\182')],eh[hl('\219','\131')][hl('\20\96R(c@','[\6\52')]+ad[hl('\162','\250')],eh[hl('\230','\191')][hl('\211\24\225\23\229','\128{')],eh[hl('>','g')][hl('\212\53\209\232\54\195','\155S\183')]+ad[hl('\240','\169')])
+        cb.InputChanged:Connect(function(xc)
+            if _c and(xc.UserInputType==Enum.UserInputType.MouseMovement or xc.UserInputType==Enum.UserInputType.Touch)then
+                Ec(xc)
             end
         end);
-        Rf[hl('\142\240\31\214;\130\240\v\198+','\199\158o\163O')]:Connect(function(Xj)
-            if not(Xj[hl('R\96,71Wwf=\17\1Ib','\a\19IEx9')]==xg[hl('\244\1\196\2','\177o')][hl('0\1[\207$\230\21\aJ\233\20\248\0','er>\189m\136')][hl('\129\204\221\181\176\235\185\215\220\169\187\152','\204\163\168\198\213\169')]or Xj[hl('\147\188\51\132\156\218\182\186\"\162\172\196\163','\198\207V\246\213\180')]==xg[hl('2\236\2\239','w\130')][hl('\150\27\224\247RE\179\29\241\209b[\166','\195h\133\133\27+')][hl('wsV\127K','#\28')])then
-            else
+        cb.InputEnded:Connect(function(Qg)
+            if Qg.UserInputType==Enum.UserInputType.MouseButton1 or Qg.UserInputType==Enum.UserInputType.Touch then
                 _c=false
             end
         end);
-        Kg[hl('\166\167\138\182','\242\194')]=hl('\195|\29\240\139\2qMH\205\230~\29\224\139\3x\30\a\141\161','\143\19|\148\226l\22m)\163');
-        Kg[hl('s\151\216\29AH\158\207\27\49',"\'\242\160i\2")]=Ta[hl('\181\173\28\157\236\164\164\b\134\194','\193\200d\233\181')];
-        xg[hl('\233)\251.\244','\154Y')](function()
-            xg[hl('}\29c\b','\n|')](-32640/-32640)
-            local Hl=0
-            for Ii in xg[hl('\227\55\250$\224','\147V')](nd)do
-                Hl=Hl+5.6650804441423069e-05*17652
+        Yi('Cover Sky (need layered clothing)',175,function(Mb,qh)
+            if Pg then
+                la=not la
+                if la then
+                    Mb.BackgroundColor3=He.toggleOn;
+                    qh.Position=UDim2 .new(1,-16,0,2);
+                    qh.BackgroundColor3=He.knobOn;
+                    vd.Text='Cover Sky on';
+                    vd.TextColor3=He.textGreen
+                else
+                    Mb.BackgroundColor3=He.toggleOff;
+                    qh.Position=UDim2 .new(0,2,0,2);
+                    qh.BackgroundColor3=He.knobOff;
+                    vd.Text='Cover Sky off';
+                    vd.TextColor3=He.textYellow
+                end
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
+            else
+                vd.Text='Enable reanimation first!';
+                vd.TextColor3=He.textRed;
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
             end
-            Kg[hl('\204\213\224\196','\152\176')]=hl('\27\178n3\184kw','W\221\15')..Hl..hl('\234\161\164\210!\199\234\224(;\238\148\234','\202\192\202\187L\180')..lb;
-            Kg[hl('\176F\224\4\235\139O\247\2\155','\228#\152p\168')]=Ta[hl("\28\48\"\254/\'?\239\6",'hUZ\138')];
-            xg[hl(';\217\157\51\241\169\30','W\182\252')]();
-            xg[hl('y\204k\203d','\n\188')](function()
-                xg[hl('\185\49\167$','\206P')](5451+-5448);
-                Kg[hl('\t\134%\151',']\227')]=hl('\202\189=\215\225\248 \147','\152\216\\\179')..lb;
-                Kg[hl('\162\252\222==\153\245\201;M','\246\153\166I~')]=Ta[hl('\14\178*\14\147;\23','z\215R')]
+        end);
+        Yi('Cover Ground (need layered clothing)',203,function(Dj,Mi)
+            if Pg then
+                groundModeEnabled=not groundModeEnabled
+                if groundModeEnabled then
+                    Dj.BackgroundColor3=He.toggleOn;
+                    Mi.Position=UDim2 .new(1,-16,0,2);
+                    Mi.BackgroundColor3=He.knobOn;
+                    vd.Text='Cover Ground on';
+                    vd.TextColor3=He.textGreen
+                else
+                    Dj.BackgroundColor3=He.toggleOff;
+                    Mi.Position=UDim2 .new(0,2,0,2);
+                    Mi.BackgroundColor3=He.knobOff;
+                    vd.Text='Cover Ground off';
+                    vd.TextColor3=He.textYellow
+                end
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
+            else
+                vd.Text='Enable reanimation first!';
+                vd.TextColor3=He.textRed;
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end)
+            end
+        end)
+        local Zd=Instance.new'TextButton';
+        Zd.Size=UDim2 .new(0,60,0,22);
+        Zd.Position=UDim2 .new(0,8,0,104);
+        Zd.BackgroundColor3=He.btnBg;
+        Zd.BackgroundTransparency=Hm.btn;
+        Zd.Text='Add';
+        Zd.TextColor3=He.textPrimary;
+        Zd.TextSize=10;
+        Zd.Font=Enum.Font.GothamSemibold;
+        Zd.BorderSizePixel=0;
+        Zd.Parent=sg
+        local Tm=Instance.new'UICorner';
+        Tm.CornerRadius=UDim.new(0,9);
+        Tm.Parent=Zd
+        local Ee=Instance.new'TextButton';
+        Ee.Size=UDim2 .new(0,25,0,25);
+        Ee.Position=UDim2 .new(1,-33,1,-33);
+        Ee.BackgroundColor3=He.btnBg;
+        Ee.BackgroundTransparency=Hm.btn;
+        Ee.Text='?';
+        Ee.TextColor3=He.textSecond;
+        Ee.TextSize=14;
+        Ee.Font=Enum.Font.GothamBold;
+        Ee.BorderSizePixel=0;
+        Ee.ZIndex=10;
+        Ee.Visible=false;
+        Ee.Parent=sg
+        local ih=Instance.new'UICorner';
+        ih.CornerRadius=UDim.new(1,0);
+        ih.Parent=Ee;
+        Ee.MouseEnter:Connect(function()
+            Ee.BackgroundTransparency=Hm.btnH
+        end);
+        Ee.MouseLeave:Connect(function()
+            Ee.BackgroundTransparency=Hm.btn
+        end)
+        local Al=nil
+        local function Wf()
+            if Al then
+                Al:Destroy()
+            end
+            Al=Instance.new'Frame';
+            Al.Size=UDim2 .new(0,380,0,310);
+            Al.Position=UDim2 .new(0.5,-190,0.5,-155);
+            Al.BackgroundColor3=He.panelBg;
+            Al.BackgroundTransparency=Hm.panel;
+            Al.BorderSizePixel=0;
+            Al.ZIndex=100;
+            Al.Parent=_f
+            local hl=Instance.new'UIStroke';
+            hl.Color=Color3 .fromRGB(70,75,90);
+            hl.Thickness=1;
+            hl.Transparency=0.29999999999999999;
+            hl.Parent=Al
+            local km=Instance.new'UICorner';
+            km.CornerRadius=UDim.new(0,14);
+            km.Parent=Al
+            local hb=Instance.new'TextLabel';
+            hb.Size=UDim2 .new(1,-40,0,30);
+            hb.Position=UDim2 .new(0,10,0,5);
+            hb.BackgroundTransparency=1;
+            hb.Text='AC Reanim - How to Convert Animations';
+            hb.TextColor3=He.textPrimary;
+            hb.TextSize=13;
+            hb.Font=Enum.Font.GothamBold;
+            hb.TextXAlignment=Enum.TextXAlignment.Left;
+            hb.ZIndex=101;
+            hb.Parent=Al
+            local ah=Instance.new'TextButton';
+            ah.Size=UDim2 .new(0,25,0,25);
+            ah.Position=UDim2 .new(1,-30,0,5);
+            ah.BackgroundColor3=He.btnBg;
+            ah.BackgroundTransparency=Hm.btn;
+            ah.Text='X';
+            ah.TextColor3=He.textPrimary;
+            ah.TextSize=16;
+            ah.Font=Enum.Font.Gotham;
+            ah.BorderSizePixel=0;
+            ah.ZIndex=101;
+            ah.Parent=Al
+            local Ae=Instance.new'UICorner';
+            Ae.CornerRadius=UDim.new(0,8);
+            Ae.Parent=ah;
+            ah.MouseButton1Click:Connect(function()
+                Al:Destroy();
+                Al=nil
+            end)
+            local wg=Instance.new'TextLabel';
+            wg.Size=UDim2 .new(1,-20,0,160);
+            wg.Position=UDim2 .new(0,10,0,40);
+            wg.BackgroundTransparency=1;
+            wg.Text='1. Open Roblox Studio and create a new game\n\n\50. Create a Folder in Workspace named \"Keyframes\"\n\n\51. Put all your KeyframeSequences in the folder\n   (Each animation should be named differently)\n\n\52. Publish your game to Roblox\n\n\53. Join the published game with your executor\n\n\54. Execute the converter script below:\n\nCustom JSON folder: Drop JSON FILES HERE/\n   Drop {\"Name\":\"animId\"} JSON files to auto-add to Custom tab';
+            wg.TextColor3=He.textPrimary;
+            wg.TextSize=11;
+            wg.Font=Enum.Font.Gotham;
+            wg.TextXAlignment=Enum.TextXAlignment.Left;
+            wg.TextYAlignment=Enum.TextYAlignment.Top;
+            wg.TextWrapped=true;
+            wg.ZIndex=101;
+            wg.Parent=Al
+            local Hb=Instance.new'Frame';
+            Hb.Size=UDim2 .new(1,-20,0,40);
+            Hb.Position=UDim2 .new(0,10,0,210);
+            Hb.BackgroundColor3=He.inputBg;
+            Hb.BackgroundTransparency=Hm.input;
+            Hb.BorderSizePixel=0;
+            Hb.ZIndex=101;
+            Hb.Parent=Al
+            local Jk=Instance.new'UICorner';
+            Jk.CornerRadius=UDim.new(0,8);
+            Jk.Parent=Hb
+            local ac=Instance.new'TextBox';
+            ac.Size=UDim2 .new(1,-10,1,-10);
+            ac.Position=UDim2 .new(0,5,0,5);
+            ac.BackgroundTransparency=1;
+            ac.Text='loadstring(game:HttpGet(\"https://akadmin-bzk.pages.dev/Converter.lua\"))()';
+            ac.TextColor3=He.textGreen;
+            ac.TextSize=10;
+            ac.Font=Enum.Font.Code;
+            ac.TextWrapped=true;
+            ac.TextEditable=false;
+            ac.TextXAlignment=Enum.TextXAlignment.Left;
+            ac.TextYAlignment=Enum.TextYAlignment.Center;
+            ac.ClearTextOnFocus=false;
+            ac.ZIndex=102;
+            ac.Parent=Hb
+            local ue=Instance.new'TextButton';
+            ue.Size=UDim2 .new(0,60,0,25);
+            ue.Position=UDim2 .new(0.5,-30,1,10);
+            ue.BackgroundColor3=He.btnBg;
+            ue.BackgroundTransparency=Hm.btn;
+            ue.Text='Copy';
+            ue.TextColor3=He.textPrimary;
+            ue.TextSize=11;
+            ue.Font=Enum.Font.Gotham;
+            ue.BorderSizePixel=0;
+            ue.ZIndex=102;
+            ue.Parent=Hb
+            local Zl=Instance.new'UICorner';
+            Zl.CornerRadius=UDim.new(0,7);
+            Zl.Parent=ue;
+            ue.MouseEnter:Connect(function()
+                ue.BackgroundTransparency=Hm.btnH
+            end);
+            ue.MouseLeave:Connect(function()
+                ue.BackgroundTransparency=Hm.btn
+            end);
+            ue.MouseButton1Click:Connect(function()
+                setclipboard(ac.Text);
+                ue.Text='Copied!';
+                spawn(function()
+                    wait(1.5);
+                    ue.Text='Copy'
+                end)
+            end)
+        end
+        Ee.MouseButton1Click:Connect(Wf)
+        local If=Instance.new'Frame';
+        If.Size=UDim2 .new(1,-16,0,65);
+        If.Position=UDim2 .new(0,8,1,-70);
+        If.BackgroundTransparency=1;
+        If.Parent=sg
+        local td=Instance.new'TextLabel';
+        td.Size=UDim2 .new(0,45,0,18);
+        td.Position=UDim2 .new(0,0,0,0);
+        td.BackgroundTransparency=1;
+        td.Text='Speed:';
+        td.TextColor3=He.textSecond;
+        td.TextSize=9;
+        td.Font=Enum.Font.Gotham;
+        td.TextXAlignment=Enum.TextXAlignment.Left;
+        td.Parent=If
+        local yf=Instance.new'Frame';
+        yf.Size=UDim2 .new(1,-100,0,5);
+        yf.Position=UDim2 .new(0,45,0,7);
+        yf.BackgroundColor3=He.toggleOff;
+        yf.BackgroundTransparency=0.20000000000000001;
+        yf.BorderSizePixel=0;
+        yf.Parent=If
+        local va=Instance.new'UICorner';
+        va.CornerRadius=UDim.new(0,3);
+        va.Parent=yf
+        local Rh=Instance.new'Frame';
+        Rh.Size=UDim2 .new(0,12,0,12);
+        Rh.Position=UDim2 .new(0.5,-6,0.5,-6);
+        Rh.BackgroundColor3=He.textPrimary;
+        Rh.BackgroundTransparency=0.10000000000000001;
+        Rh.BorderSizePixel=0;
+        Rh.Parent=yf
+        local Ld=Instance.new'UICorner';
+        Ld.CornerRadius=UDim.new(0,6);
+        Ld.Parent=Rh
+        local Of=Instance.new'TextLabel';
+        Of.Size=UDim2 .new(0,28,0,18);
+        Of.Position=UDim2 .new(1,4,0.5,-9);
+        Of.BackgroundTransparency=1;
+        Of.Text='5';
+        Of.TextColor3=He.textSecond;
+        Of.TextSize=9;
+        Of.Font=Enum.Font.Gotham;
+        Of.TextXAlignment=Enum.TextXAlignment.Left;
+        Of.ZIndex=2;
+        Of.Parent=yf
+        local Km=Instance.new'TextButton';
+        Km.Size=UDim2 .new(0,32,0,14);
+        Km.Position=UDim2 .new(1,-32,0,2);
+        Km.BackgroundColor3=He.btnBg;
+        Km.BackgroundTransparency=Hm.btn;
+        Km.Text='Reset';
+        Km.TextColor3=He.textSecond;
+        Km.TextSize=7;
+        Km.Font=Enum.Font.Gotham;
+        Km.BorderSizePixel=0;
+        Km.Parent=If
+        local ng=Instance.new'UICorner';
+        ng.CornerRadius=UDim.new(0,7);
+        ng.Parent=Km
+        local kh=Instance.new'Frame';
+        kh.Size=UDim2 .new(1,0,0,38);
+        kh.Position=UDim2 .new(0,0,0,22);
+        kh.BackgroundTransparency=1;
+        kh.Parent=If
+        local Th,Zm,_l,Ob,ne,tl,ij='all',false,false,false,nil,false,{}
+        for gi=1,5 do
+            local rg,ph=gi,Instance.new'Frame';
+            ph.Size=UDim2 .new(0.17999999999999999,0,1,0);
+            ph.Position=UDim2 .new((rg-1)*0.20000000000000001+0.01,0,0,0);
+            ph.BackgroundTransparency=1;
+            ph.Parent=kh
+            local a_=Instance.new'TextBox';
+            a_.Size=UDim2 .new(1,0,0,16);
+            a_.Position=UDim2 .new(0,0,0,0);
+            a_.BackgroundColor3=He.inputBg;
+            a_.BackgroundTransparency=Hm.input;
+            a_.Text=Sg and Sg[rg]and tostring(Sg[rg].speed)or tostring(rg*2-1);
+            a_.TextColor3=He.textPrimary;
+            a_.TextSize=8;
+            a_.Font=Enum.Font.Gotham;
+            a_.BorderSizePixel=0;
+            a_.Parent=ph
+            local cd=Instance.new'UICorner';
+            cd.CornerRadius=UDim.new(0,5);
+            cd.Parent=a_
+            local Kb=Instance.new'TextButton';
+            Kb.Size=UDim2 .new(1,0,0,16);
+            Kb.Position=UDim2 .new(0,0,0,20);
+            Kb.BackgroundColor3=He.btnBg;
+            Kb.BackgroundTransparency=Hm.btn;
+            Kb.Text='Key';
+            Kb.TextColor3=He.textSecond;
+            Kb.TextSize=7;
+            Kb.Font=Enum.Font.Gotham;
+            Kb.BorderSizePixel=0;
+            Kb.Parent=ph
+            local ze=Instance.new'UICorner';
+            ze.CornerRadius=UDim.new(0,5);
+            ze.Parent=Kb;
+            ij[rg]={speedInput=a_,keybindButton=Kb,connection=nil};
+            a_.FocusLost:Connect(function()
+                if not Sg[rg]then
+                    Sg[rg]={speed=rg*2-1,key=''}
+                end
+                local u_=tonumber(a_.Text)
+                if u_ and(0<=u_ and u_<=10)then
+                    Sg[rg].speed=u_;
+                    ji()
+                else
+                    a_.Text=tostring(Sg[rg].speed)
+                end
+            end);
+            Kb.MouseButton1Click:Connect(function()
+                if not Sg[rg]then
+                    Sg[rg]={speed=rg*2-1,key=''}
+                end
+                if Sg[rg].key==''then
+                    Kb.Text='...';
+                    vd.Text='Press any key for slot '..rg..'...';
+                    vd.TextColor3=He.textYellow
+                    local am=nil;
+                    am=cb.InputBegan:Connect(function(S,Se)
+                        if not Se then
+                            if S.KeyCode==Enum.KeyCode.Escape or S.KeyCode==Enum.KeyCode.Backspace then
+                                Kb.Text='Key';
+                                vd.Text='Cancelled';
+                                vd.TextColor3=He.textDim;
+                                spawn(function()
+                                    wait(2);
+                                    vd.Text='Ready | '..ud
+                                end);
+                                am:Disconnect()
+                            elseif S.KeyCode~=Enum.KeyCode.Unknown then
+                                Sg[rg].key=S.KeyCode.Name;
+                                Kb.Text=S.KeyCode.Name:sub(1,3);
+                                Kb.TextColor3=He.textPrimary;
+                                ji()
+                                if ij[rg].connection then
+                                    ij[rg].connection:Disconnect()
+                                end
+                                ij[rg].connection=cb.InputBegan:Connect(function(Ta,vm)
+                                    if not vm then
+                                        if Ta.KeyCode==S.KeyCode then
+                                            local Xf=Sg[rg].speed/10;
+                                            Rf.speed=Sg[rg].speed/5;
+                                            Rh.Position=UDim2 .new(Xf,-6,0.5,-6);
+                                            Of.Text=string.format('%d',Sg[rg].speed)
+                                        end
+                                    end
+                                end);
+                                vd.Text='Bound slot '..rg..' -> '..S.KeyCode.Name;
+                                vd.TextColor3=He.textGreen;
+                                spawn(function()
+                                    wait(2);
+                                    vd.Text='Ready | '..ud;
+                                    vd.TextColor3=He.textDim
+                                end);
+                                am:Disconnect()
+                            end
+                        end
+                    end)
+                else
+                    Sg[rg].key='';
+                    Kb.Text='Key';
+                    Kb.TextColor3=He.textSecond;
+                    ji()
+                    if ij[rg].connection then
+                        ij[rg].connection:Disconnect();
+                        ij[rg].connection=nil
+                    end
+                    vd.Text='Unbound slot '..rg;
+                    vd.TextColor3=He.textRed;
+                    spawn(function()
+                        wait(2);
+                        vd.Text='Ready | '..ud;
+                        vd.TextColor3=He.textDim
+                    end)
+                end
+            end)
+        end
+        for ca=1,5 do
+            local Ti=ca
+            if Sg[Ti]then
+                ij[Ti].speedInput.Text=tostring(Sg[Ti].speed)
+                if Sg[Ti].key and Sg[Ti].key~=''then
+                    ij[Ti].keybindButton.Text=Sg[Ti].key:sub(1,3);
+                    ij[Ti].keybindButton.TextColor3=He.textPrimary
+                    local Ch=Enum.KeyCode[Sg[Ti].key]
+                    if Ch then
+                        ij[Ti].connection=cb.InputBegan:Connect(function(Sc,Qj)
+                            if not Qj then
+                                if Sc.KeyCode==Ch then
+                                    local ub=Sg[Ti].speed/10;
+                                    Rf.speed=Sg[Ti].speed/5;
+                                    Rh.Position=UDim2 .new(ub,-6,0.5,-6);
+                                    Of.Text=string.format('%d',Sg[Ti].speed)
+                                end
+                            end
+                        end)
+                    end
+                end
+            end
+        end
+        local d_={vd,Sk,ql,Fj,If,kn,Pa,Ee,Zd,je,rd}
+        local function Rj(da)
+            local M=Instance.new'Frame';
+            M.Size=UDim2 .new(1,0,0,34);
+            M.BackgroundTransparency=1;
+            M.Parent=Fj
+            local fg=Ue[da.name]~=nil
+            local Qe,Na=fg and(Th=='custom'and-102 or-70)or-70,Instance.new'TextButton';
+            Na.Size=UDim2 .new(1,Qe,1,0);
+            Na.Position=UDim2 .new(0,0,0,0);
+            Na.BackgroundColor3=He.rowBg;
+            Na.BackgroundTransparency=Hm.row;
+            Na.Text='  '..da.name;
+            Na.TextColor3=He.textPrimary;
+            Na.TextSize=12;
+            Na.Font=Enum.Font.GothamSemibold;
+            Na.TextXAlignment=Enum.TextXAlignment.Left;
+            Na.BorderSizePixel=0;
+            Na.Parent=M
+            local w_=Instance.new'UICorner';
+            w_.CornerRadius=UDim.new(0,8);
+            w_.Parent=Na
+            local xi=nil
+            if fg and Th=='custom'then
+                xi=Instance.new'TextButton';
+                xi.Size=UDim2 .new(0,32,1,0);
+                xi.Position=UDim2 .new(1,-98,0,0);
+                xi.BackgroundTransparency=1;
+                xi.Text='X';
+                xi.TextColor3=He.textRed;
+                xi.TextSize=14;
+                xi.BorderSizePixel=0;
+                xi.Parent=M
+            end
+            local Zk=Instance.new'TextButton';
+            Zk.Size=UDim2 .new(0,32,1,0);
+            Zk.Position=UDim2 .new(1,-66,0,0);
+            Zk.BackgroundTransparency=1;
+            Zk.Text=me[da.name]and'\226\152\133'or'\226\152\134';
+            Zk.TextColor3=me[da.name]and He.textGold or He.textDim;
+            Zk.TextSize=16;
+            Zk.BorderSizePixel=0;
+            Zk.Parent=M
+            local Ei=Instance.new'TextButton';
+            Ei.Size=UDim2 .new(0,32,1,0);
+            Ei.Position=UDim2 .new(1,-32,0,0);
+            Ei.BackgroundTransparency=1;
+            Ei.Text=Hi[da.name]and(Hi[da.name].Name:gsub('KeyCode%.',''):sub(1,3))or'Bind';
+            Ei.TextColor3=Hi[da.name]and He.textPrimary or He.textDim;
+            Ei.TextSize=8;
+            Ei.Font=Enum.Font.Gotham;
+            Ei.BorderSizePixel=0;
+            Ei.Parent=M;
+            Na.MouseEnter:Connect(function()
+                if Rf.currentId~=tostring(da.id)then
+                    Na.BackgroundTransparency=Hm.rowH
+                end
+            end);
+            Na.MouseLeave:Connect(function()
+                if Rf.currentId~=tostring(da.id)then
+                    Na.BackgroundTransparency=Hm.row
+                end
+            end);
+            Na.MouseButton1Click:Connect(function()
+                task.spawn(function()
+                    Ka(tostring(da.id))
+                end)
+            end)
+            if xi then
+                xi.MouseButton1Click:Connect(function()
+                    Ue[da.name]=nil;
+                    md[da.name]=nil;
+                    Hi[da.name]=nil;
+                    me[da.name]=nil;
+                    Wi();
+                    Jl();
+                    Ad();
+                    loadGUI()
+                end)
+            end
+            Zk.MouseButton1Click:Connect(function()
+                if me[da.name]then
+                    me[da.name]=nil;
+                    Zk.Text='\226\152\134';
+                    Zk.TextColor3=He.textDim
+                else
+                    me[da.name]=tostring(da.id);
+                    Zk.Text='\226\152\133';
+                    Zk.TextColor3=He.textGold
+                end
+                Ad()
+                if Th=='favorites'then
+                    spawn(function()
+                        wait(0.10000000000000001);
+                        loadGUI()
+                    end)
+                end
+            end);
+            Ei.MouseButton1Click:Connect(function()
+                if Hi[da.name]then
+                    Hi[da.name]=nil;
+                    Jl();
+                    Ei.Text='Bind';
+                    Ei.TextColor3=He.textDim;
+                    vd.Text='Unbound '..da.name;
+                    vd.TextColor3=He.textRed;
+                    spawn(function()
+                        wait(2);
+                        vd.Text='Ready | '..ud;
+                        vd.TextColor3=He.textDim
+                    end)
+                    return
+                elseif not Ob then
+                    Ob=true;
+                    ne=da.name;
+                    vd.Text='Press any key to bind...';
+                    vd.TextColor3=He.textYellow;
+                    Ei.Text='...'
+                    local zj=nil;
+                    zj=cb.InputBegan:Connect(function(jc,Lf)
+                        if Lf then
+                            return
+                        elseif Ob and ne==da.name then
+                            if jc.KeyCode==Enum.KeyCode.Escape or jc.KeyCode==Enum.KeyCode.Backspace then
+                                Ei.Text='Bind';
+                                Ei.TextColor3=He.textDim;
+                                vd.Text='Binding cancelled';
+                                vd.TextColor3=He.textDim;
+                                spawn(function()
+                                    wait(2);
+                                    vd.Text='Ready | '..ud
+                                end);
+                                Ob=false;
+                                ne=nil;
+                                zj:Disconnect()
+                            elseif jc.KeyCode~=Enum.KeyCode.Unknown then
+                                Hi[da.name]=jc.KeyCode;
+                                Jl();
+                                Ei.Text=jc.KeyCode.Name:gsub('KeyCode%.',''):sub(1,3);
+                                Ei.TextColor3=He.textPrimary;
+                                vd.Text='Bound -> '..jc.KeyCode.Name:gsub('KeyCode%.','');
+                                vd.TextColor3=He.textGreen;
+                                spawn(function()
+                                    wait(2);
+                                    vd.Text='Ready | '..ud;
+                                    vd.TextColor3=He.textDim
+                                end);
+                                Ob=false;
+                                ne=nil;
+                                zj:Disconnect()
+                            end
+                        else
+                            zj:Disconnect()
+                        end
+                    end)
+                end
+            end);
+            Hk[da.name]={Container=M,NameButton=Na,FavoriteButton=Zk,KeybindButton=Ei,DeleteButton=xi}
+        end
+        function loadGUI()
+            for bj,uj in pairs(Fj:GetChildren())do
+                if uj:IsA'Frame'then
+                    uj:Destroy()
+                end
+            end
+            Hk={}
+            local oi
+            if Th~='custom'then
+                oi=false
+            else
+                oi=tl
+            end
+            kn.Visible=oi;
+            Zd.Visible=Th=='custom';
+            Pa.Visible=Th=='states';
+            je.Visible=Th=='size';
+            rd.Visible=Th=='others';
+            Fj.Visible=Th~='states'and Th~='size'and Th~='others';
+            ql.Visible=Th~='states'and Th~='size'and Th~='others';
+            Ee.Visible=Th=='custom'or Th=='states'
+            if Fj.Visible then
+                if Th~='custom'then
+                    Fj.Size=UDim2 .new(1,-16,1,-175);
+                    Fj.Position=UDim2 .new(0,8,0,104)
+                elseif tl then
+                    Fj.Size=UDim2 .new(1,-16,1,-270);
+                    Fj.Position=UDim2 .new(0,8,0,195)
+                else
+                    Fj.Size=UDim2 .new(1,-16,1,-205);
+                    Fj.Position=UDim2 .new(0,8,0,134)
+                end
+                local Kk,pa,pd={},ql.Text:lower(),Th=='custom'and Ue or md
+                for Eg,Fi in pairs(pd)do
+                    if(Th~='favorites'or me[Eg]~=nil)and(pa==''or Eg:lower():find(pa))then
+                        table.insert(Kk,{name=Eg,id=Fi})
+                    end
+                end
+                table.sort(Kk,function(j,qd)
+                    return j.name<qd.name
+                end)
+                for vi,oj in pairs(Kk)do
+                    Rj(oj)
+                end
+                spawn(function()
+                    wait(0.10000000000000001);
+                    Fj.CanvasSize=UDim2 .new(0,0,0,Jm.AbsoluteContentSize.Y+10)
+                end)
+            end
+        end
+        local n_=false
+        local function Yj(sl)
+            local bb=math.floor(sl*10+0.5);
+            Rf.speed=bb/5;
+            Rh.Position=UDim2 .new(sl,-6,0.5,-6);
+            Of.Text=string.format('%d',bb)
+        end
+        local function Eb(Kc)
+            Yj(math.clamp((Kc.Position.X-yf.AbsolutePosition.X)/yf.AbsoluteSize.X,0,1))
+        end
+        local function nl()
+            Rf.speed=1;
+            Rh.Position=UDim2 .new(0.5,-6,0.5,-6);
+            Of.Text='5'
+        end
+        spawn(function()
+            wait(0.10000000000000001);
+            Rh.Position=UDim2 .new(0.5,-6,0.5,-6);
+            Of.Text='5'
+        end);
+        yf.InputBegan:Connect(function(oa)
+            if oa.UserInputType==Enum.UserInputType.MouseButton1 or oa.UserInputType==Enum.UserInputType.Touch then
+                n_=true;
+                Eb(oa)
+            end
+        end);
+        cb.InputChanged:Connect(function(fj)
+            if n_ and(fj.UserInputType==Enum.UserInputType.MouseMovement or fj.UserInputType==Enum.UserInputType.Touch)then
+                Eb(fj)
+            end
+        end);
+        cb.InputEnded:Connect(function(zi)
+            if zi.UserInputType==Enum.UserInputType.MouseButton1 or zi.UserInputType==Enum.UserInputType.Touch then
+                n_=false
+            end
+        end);
+        Km.MouseButton1Click:Connect(nl);
+        Km.MouseEnter:Connect(function()
+            Km.BackgroundTransparency=Hm.btnH
+        end);
+        Km.MouseLeave:Connect(function()
+            Km.BackgroundTransparency=Hm.btn
+        end);
+        nk.MouseButton1Click:Connect(function()
+            L()
+            if Pg then
+                Nk(false)
+            end
+            _f:Destroy()
+        end);
+        nk.MouseEnter:Connect(function()
+            nk.BackgroundTransparency=Hm.btnH
+        end);
+        nk.MouseLeave:Connect(function()
+            nk.BackgroundTransparency=Hm.btn
+        end);
+        Ya.MouseButton1Click:Connect(function()
+            if not _l then
+                _l=true
+                if Zm then
+                    local yl=Ci:Create(sg,TweenInfo.new(0.20000000000000001,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size=UDim2 .new(0,315,0,480)});
+                    Ya.Text='-';
+                    Zm=false;
+                    yl:Play();
+                    yl.Completed:Connect(function()
+                        for _b,Yk in pairs(d_)do
+                            if Yk==kn then
+                                Yk.Visible=Th=='custom'and tl
+                            elseif Yk==Zd then
+                                Yk.Visible=Th=='custom'
+                            elseif Yk==Pa then
+                                Yk.Visible=Th=='states'
+                            elseif Yk==je then
+                                Yk.Visible=Th=='size'
+                            elseif Yk==rd then
+                                Yk.Visible=Th=='others'
+                            elseif Yk==Ee then
+                                Yk.Visible=Th=='custom'or Th=='states'
+                            elseif Yk==Fj or Yk==ql then
+                                Yk.Visible=Th~='states'and Th~='size'and Th~='others'
+                            else
+                                Yk.Visible=true
+                            end
+                        end
+                        _l=false
+                    end)
+                else
+                    for sf,Vl in pairs(d_)do
+                        Vl.Visible=false
+                    end
+                    local Ha=Ci:Create(sg,TweenInfo.new(0.20000000000000001,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size=UDim2 .new(0,315,0,30)});
+                    Ya.Text='+';
+                    Zm=true;
+                    Ha:Play();
+                    Ha.Completed:Connect(function()
+                        _l=false
+                    end)
+                end
+            end
+        end);
+        Ya.MouseEnter:Connect(function()
+            Ya.BackgroundTransparency=Hm.btnH
+        end);
+        Ya.MouseLeave:Connect(function()
+            Ya.BackgroundTransparency=Hm.btn
+        end);
+        ql:GetPropertyChangedSignal'Text':Connect(loadGUI)
+        local function Vh(hd)
+            Th=hd;
+            tl=false
+            for Ea,Wl in pairs(Hc)do
+                if Ea==hd then
+                    Wl.BackgroundColor3=He.tabActive;
+                    Wl.BackgroundTransparency=Hm.tabA;
+                    Wl.TextColor3=He.textPrimary
+                else
+                    Wl.BackgroundColor3=He.tabIdle;
+                    Wl.BackgroundTransparency=Hm.tab;
+                    Wl.TextColor3=He.textSecond
+                end
+            end
+            loadGUI()
+        end
+        for ck,Hf in pairs(Hc)do
+            local fn=ck;
+            Hf.MouseButton1Click:Connect(function()
+                Vh(fn)
+            end)
+        end
+        Zd.MouseButton1Click:Connect(function()
+            if tl then
+                local vl,rf=dm.Text,kj.Text
+                if vl==''or rf==''then
+                    vd.Text='Name and code required!';
+                    vd.TextColor3=He.textRed;
+                    spawn(function()
+                        wait(2);
+                        vd.Text='Ready | '..ud;
+                        vd.TextColor3=He.textDim
+                    end)
+                    return
+                end
+                Ue[vl]=rf;
+                md[vl]=rf;
+                Wi();
+                dm.Text='';
+                kj.Text='';
+                tl=false;
+                kn.Visible=false;
+                Zd.Text='Add';
+                Zd.BackgroundColor3=He.btnBg;
+                Fj.Size=UDim2 .new(1,-16,1,-175);
+                Fj.Position=UDim2 .new(0,8,0,104);
+                vd.Text='Added: '..vl;
+                vd.TextColor3=He.textGreen;
+                spawn(function()
+                    wait(2);
+                    vd.Text='Ready | '..ud;
+                    vd.TextColor3=He.textDim
+                end);
+                loadGUI()
+            else
+                tl=true;
+                kn.Visible=true;
+                Zd.Text='Save';
+                Zd.BackgroundColor3=He.toggleOn;
+                Fj.Size=UDim2 .new(1,-16,1,-270);
+                Fj.Position=UDim2 .new(0,8,0,195)
+            end
+        end);
+        Zd.MouseEnter:Connect(function()
+            Zd.BackgroundTransparency=Hm.btnH
+        end);
+        Zd.MouseLeave:Connect(function()
+            Zd.BackgroundTransparency=Hm.btn
+        end)
+        local xb,_j,r_=false,nil,nil;
+        hh.InputBegan:Connect(function(Bf)
+            if Bf.UserInputType==Enum.UserInputType.MouseButton1 or Bf.UserInputType==Enum.UserInputType.Touch then
+                xb=true;
+                _j=Bf.Position;
+                r_=sg.Position
+            end
+        end);
+        cb.InputChanged:Connect(function(Xa)
+            if xb and(Xa.UserInputType==Enum.UserInputType.MouseMovement or Xa.UserInputType==Enum.UserInputType.Touch)then
+                local y=Xa.Position-_j;
+                sg.Position=UDim2 .new(r_.X.Scale,r_.X.Offset+y.X,r_.Y.Scale,r_.Y.Offset+y.Y)
+            end
+        end);
+        cb.InputEnded:Connect(function(wb)
+            if wb.UserInputType==Enum.UserInputType.MouseButton1 or wb.UserInputType==Enum.UserInputType.Touch then
+                xb=false
+            end
+        end);
+        vd.Text='Loading animations...';
+        vd.TextColor3=He.textYellow;
+        spawn(function()
+            wait(1)
+            local jf=0
+            for vf in pairs(md)do
+                jf=jf+1
+            end
+            vd.Text='Loaded '..jf..' anims  \226\128\162  '..ud;
+            vd.TextColor3=He.textGreen;
+            loadGUI();
+            spawn(function()
+                wait(3);
+                vd.Text='Ready | '..ud;
+                vd.TextColor3=He.textDim
             end)
         end)
     end
 end
-Rf[hl('\231\246s#\181\236\253d7\175','\174\152\3V\193')]:Connect(function(Tk,Sd)
-    if not(Sd)then
-    else
+cb.InputBegan:Connect(function(jk,mk)
+    if mk then
         return
     end
-    for Xm,Fn in xg[hl('H\149Q\134K','8\244')](ym)do
-        if Tk[hl('\144\176\237\152\186\240\190','\219\213\148')]==Fn then
-            local An=sg[Xm]or nd[Xm]or m[Xm]
-            if An then
-                ul(xg[hl('Ox\204\48I~\209#',';\23\191D')](An))
+    for Ga,ti in pairs(Hi)do
+        if jk.KeyCode==ti then
+            local Lc=Ue[Ga]or md[Ga]or me[Ga]
+            if Lc then
+                Ka(tostring(Lc))
             end
             break
         end
     end
 end);
-xg[hl('\3\242\4\248','w\147')][hl('\27!\t&\6','hQ')](function()
-    ak();
-    fk();
-    Kd()
+task.spawn(function()
+    Cg();
+    ag();
+    Ud()
 end);
-xg[hl('\233c\240\127\237','\153\17')](hl("\31\236N\149\211\220\15\229|]\0o\246\206G\175B\199I(\28\182$9\235\a\193\248\195@\240\49x\'E\203\206e\148a\242:n;\159\18\25",'\\\153=\225\188\177/\128\17\50t\n\133\238#\221-\183iNs\218@'));
-xg[hl('\222\191\199\163\218','\174\205')](hl(_f'79GE5li/9jzJ1vl/j6xp95S2VQhVfsOaLgOT7N9S+s0Su5QG16KQ01q3+CPBlbdn7rki27S+VSMWP4TRcAPIoNdR2sR5opYU+A==',_f'pYLLqHjZmU6kt41Fr9dLtvrfOEY0E6a4FCHygrY/s6kwxrRp'))
+print'Custom emotes drop folder: Drop JSON FILES HERE';
+print'JSON format: {\"AnimName\":\"animId\"} or [{\"name\":\"AnimName\",\"id\":\"animId\"}]'
