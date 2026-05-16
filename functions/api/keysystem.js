@@ -1,4 +1,6 @@
 // functions/api/keysystem.js
+// Uses Cloudflare KV (AC_KV binding) and environment variable for secret
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -13,6 +15,19 @@ export async function onRequest(context) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { headers: cors });
   }
+
+  // ═══════════════════════════════════════════════════════════
+  // MAINTENANCE MODE - ENABLED
+  // Remove this block when ready to re-enable the key system
+  // ═══════════════════════════════════════════════════════════
+  return new Response(
+    JSON.stringify({ 
+      ok: false, 
+      error: 'Key system temporarily offline for maintenance. Please check back in 24 hours.' 
+    }), 
+    { status: 503, headers: cors }
+  );
+  // ═══════════════════════════════════════════════════════════
 
   // DEBUG: Check if KV is available
   if (!env.AC_KV) {
