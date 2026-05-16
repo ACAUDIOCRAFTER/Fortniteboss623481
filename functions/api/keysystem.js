@@ -16,19 +16,6 @@ export async function onRequest(context) {
     return new Response(null, { headers: cors });
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // MAINTENANCE MODE - ENABLED
-  // Remove this block when ready to re-enable the key system
-  // ═══════════════════════════════════════════════════════════
-  return new Response(
-    JSON.stringify({ 
-      ok: false, 
-      error: 'Key system temporarily offline for maintenance. Please check back in 24 hours.' 
-    }), 
-    { status: 503, headers: cors }
-  );
-  // ═══════════════════════════════════════════════════════════
-
   // DEBUG: Check if KV is available
   if (!env.AC_KV) {
     return new Response(
@@ -42,6 +29,59 @@ export async function onRequest(context) {
   }
 
   const KV = env.AC_KV;
+  const action = url.searchParams.get('action');
+  const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const now = Date.now();
+
+  // ═══════════════════════════════════════════════════════════
+  // RATE LIMITING - Per IP, Per Endpoint
+  // ═══════════════════════════════════════════════════════════
+  const RATE_LIMITS = {
+    gentoken: { limit: 3, window: 600000 },      // 3 per 10 minutes
+    getkey: { limit: 5, window: 600000 },        // 5 per 10 minutes
+    validate: { limit: 20, window: 3600000 }     // 20 per hour
+  };
+
+  if (action && RATE_LIMITS[action]) {
+    const rateLimitKey = `ratelimit:${action}:${clientIP}`;
+    const rateLimitRaw = await KV.get(rateLimitKey);
+    
+    let rateLimitData = rateLimitRaw 
+      ? JSON.parse(rateLimitRaw) 
+      : { count: 0, resetAt: now + RATE_LIMITS[action].window };
+
+    // Reset if window expired
+    if (now > rateLimitData.resetAt) {
+      rateLimitData = { count: 0, resetAt: now + RATE_LIMITS[action].window };
+    }
+
+    // Check limit
+    if (rateLimitData.count >= RATE_LIMITS[action].limit) {
+      const retryAfter = Math.ceil((rateLimitData.resetAt - now) / 1000);
+      return new Response(
+        JSON.stringify({ 
+          ok: false, 
+          error: 'Rate limit exceeded. Try again later.',
+          retry_after_seconds: retryAfter 
+        }),
+        { 
+          status: 429, 
+          headers: { 
+            ...cors, 
+            'Retry-After': retryAfter.toString() 
+          } 
+        }
+      );
+    }
+
+    // Increment and save
+    rateLimitData.count++;
+    await KV.put(rateLimitKey, JSON.stringify(rateLimitData), {
+      expirationTtl: Math.ceil((rateLimitData.resetAt - now) / 1000)
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════
   
   function generateKey() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -51,8 +91,6 @@ export async function onRequest(context) {
     }
     return result;
   }
-
-  const action = url.searchParams.get('action');
 
   // ── Generate a one-time token ────
   if (action === 'gentoken') {
