@@ -35,14 +35,8 @@ export async function onRequest(context) {
   if (action === 'gentoken') {
     const secret = url.searchParams.get('secret');
     
-    // Check if environment variable exists, fallback to error
-    const expectedSecret = env.AC_EXEC_SECRET;
-    
-    if (!expectedSecret) {
-      return new Response(JSON.stringify({ ok: false, error: 'Server configuration error' }), { status: 500, headers: cors });
-    }
-    
-    if (secret !== expectedSecret) {
+    // Hardcoded secret - will work immediately
+    if (secret !== 'carf1x66_22') {
       return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), { status: 403, headers: cors });
     }
 
