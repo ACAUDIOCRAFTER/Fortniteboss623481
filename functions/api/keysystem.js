@@ -1,6 +1,4 @@
 // functions/api/keysystem.js
-// Uses Cloudflare KV (AC_KV binding) and environment variable for secret
-
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -16,13 +14,12 @@ export async function onRequest(context) {
     return new Response(null, { headers: cors });
   }
 
-  // DEBUG: Check if KV is available
+  // Check if KV is available
   if (!env.AC_KV) {
     return new Response(
       JSON.stringify({ 
         ok: false, 
-        error: 'KV namespace not configured',
-        debug: 'AC_KV binding is missing'
+        error: 'KV namespace not configured'
       }), 
       { status: 500, headers: cors }
     );
@@ -30,19 +27,26 @@ export async function onRequest(context) {
 
   const KV = env.AC_KV;
   const action = url.searchParams.get('action');
+
+  // Validate action first
+  if (!action || !['gentoken', 'getkey', 'validate'].includes(action)) {
+    return new Response(
+      JSON.stringify({ ok: false, error: 'Invalid or missing action' }), 
+      { status: 400, headers: cors }
+    );
+  }
+
+  // Rate limiting - ONLY for valid actions
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
   const now = Date.now();
-
-  // ═══════════════════════════════════════════════════════════
-  // RATE LIMITING - Per IP, Per Endpoint
-  // ═══════════════════════════════════════════════════════════
+  
   const RATE_LIMITS = {
     gentoken: { limit: 3, window: 600000 },      // 3 per 10 minutes
     getkey: { limit: 5, window: 600000 },        // 5 per 10 minutes
     validate: { limit: 20, window: 3600000 }     // 20 per hour
   };
 
-  if (action && RATE_LIMITS[action]) {
+  try {
     const rateLimitKey = `ratelimit:${action}:${clientIP}`;
     const rateLimitRaw = await KV.get(rateLimitKey);
     
@@ -61,7 +65,7 @@ export async function onRequest(context) {
       return new Response(
         JSON.stringify({ 
           ok: false, 
-          error: 'Rate limit exceeded. Try again later.',
+          error: 'Rate limit exceeded',
           retry_after_seconds: retryAfter 
         }),
         { 
@@ -79,10 +83,11 @@ export async function onRequest(context) {
     await KV.put(rateLimitKey, JSON.stringify(rateLimitData), {
       expirationTtl: Math.ceil((rateLimitData.resetAt - now) / 1000)
     });
+  } catch (error) {
+    // If rate limiting fails, log but continue (don't break the whole system)
+    console.error('Rate limit error:', error);
   }
 
-  // ═══════════════════════════════════════════════════════════
-  
   function generateKey() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     let result = 'AudioCrafter-';
@@ -108,7 +113,7 @@ export async function onRequest(context) {
       const token = crypto.randomUUID().replace(/-/g, '');
       await KV.put(
         'token_' + token, 
-        JSON.stringify({ used: false, createdAt: Date.now() }), 
+        JSON.stringify({ used: false, createdAt: now }), 
         { expirationTtl: 600 }
       );
 
@@ -120,7 +125,7 @@ export async function onRequest(context) {
       return new Response(
         JSON.stringify({ 
           ok: false, 
-          error: 'KV operation failed',
+          error: 'Failed to generate token',
           debug: error.message 
         }), 
         { status: 500, headers: cors }
@@ -134,7 +139,7 @@ export async function onRequest(context) {
     
     if (!token) {
       return new Response(
-        JSON.stringify({ ok: false, error: 'No token' }), 
+        JSON.stringify({ ok: false, error: 'No token provided' }), 
         { status: 400, headers: cors }
       );
     }
@@ -158,14 +163,16 @@ export async function onRequest(context) {
         );
       }
 
+      // Mark token as used
       await KV.put(
         'token_' + token, 
         JSON.stringify({ used: true }), 
         { expirationTtl: 60 }
       );
 
+      // Generate key
       const key = generateKey();
-      const expiresAt = Date.now() + (14 * 60 * 60 * 1000);
+      const expiresAt = now + (14 * 60 * 60 * 1000);
       
       await KV.put(
         'key_' + key, 
@@ -181,7 +188,7 @@ export async function onRequest(context) {
       return new Response(
         JSON.stringify({ 
           ok: false, 
-          error: 'Operation failed',
+          error: 'Failed to process token',
           debug: error.message 
         }), 
         { status: 500, headers: cors }
@@ -195,7 +202,7 @@ export async function onRequest(context) {
     
     if (!key) {
       return new Response(
-        JSON.stringify({ ok: false, valid: false }), 
+        JSON.stringify({ ok: false, valid: false, reason: 'No key provided' }), 
         { status: 400, headers: cors }
       );
     }
@@ -212,7 +219,7 @@ export async function onRequest(context) {
 
       const keyData = JSON.parse(raw);
       
-      if (Date.now() > keyData.expiresAt) {
+      if (now > keyData.expiresAt) {
         await KV.delete('key_' + key);
         return new Response(
           JSON.stringify({ ok: true, valid: false, reason: 'Expired' }), 
@@ -228,6 +235,7 @@ export async function onRequest(context) {
       return new Response(
         JSON.stringify({ 
           ok: false, 
+          valid: false,
           error: 'Validation failed',
           debug: error.message 
         }), 
@@ -235,9 +243,4 @@ export async function onRequest(context) {
       );
     }
   }
-
-  return new Response(
-    JSON.stringify({ ok: false, error: 'Unknown action' }), 
-    { status: 400, headers: cors }
-  );
 }
