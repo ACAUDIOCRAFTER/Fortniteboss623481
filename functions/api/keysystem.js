@@ -1,4 +1,6 @@
 // functions/api/keysystem.js
+// Uses Cloudflare KV (AC_KV_NEW binding) and environment variable for secret
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -14,18 +16,19 @@ export async function onRequest(context) {
     return new Response(null, { headers: cors });
   }
 
-  // Check if KV is available
-  if (!env.AC_KV) {
+  // DEBUG: Check if KV is available
+  if (!env.AC_KV_NEW) {
     return new Response(
       JSON.stringify({ 
         ok: false, 
-        error: 'KV namespace not configured'
+        error: 'KV namespace not configured',
+        debug: 'AC_KV_NEW binding is missing'
       }), 
       { status: 500, headers: cors }
     );
   }
 
-  const KV = env.AC_KV;
+  const KV = env.AC_KV_NEW;
   const action = url.searchParams.get('action');
 
   // Validate action first
@@ -36,7 +39,9 @@ export async function onRequest(context) {
     );
   }
 
-  // Rate limiting - ONLY for valid actions
+  // ═══════════════════════════════════════════════════════════
+  // RATE LIMITING - Per IP, Per Endpoint
+  // ═══════════════════════════════════════════════════════════
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
   const now = Date.now();
   
@@ -84,7 +89,7 @@ export async function onRequest(context) {
       expirationTtl: Math.ceil((rateLimitData.resetAt - now) / 1000)
     });
   } catch (error) {
-    // If rate limiting fails, log but continue (don't break the whole system)
+    // If rate limiting fails, log but continue
     console.error('Rate limit error:', error);
   }
 
@@ -244,4 +249,3 @@ export async function onRequest(context) {
     }
   }
 }
-
