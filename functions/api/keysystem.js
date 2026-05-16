@@ -1,10 +1,4 @@
 // functions/api/keysystem.js
-// Uses Cloudflare KV (AC_KV binding) and environment variable for secret
-
-const KEY_PREFIX = 'AudioCrafter-';
-const KEY_TTL_SEC = 14 * 60 * 60;   // 14 hours
-const TOKEN_TTL_SEC = 10 * 60;       // 10 minutes to use token
-
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -20,11 +14,23 @@ export async function onRequest(context) {
     return new Response(null, { headers: cors });
   }
 
+  // DEBUG: Check if KV is available
+  if (!env.AC_KV) {
+    return new Response(
+      JSON.stringify({ 
+        ok: false, 
+        error: 'KV namespace not configured',
+        debug: 'AC_KV binding is missing'
+      }), 
+      { status: 500, headers: cors }
+    );
+  }
+
   const KV = env.AC_KV;
   
   function generateKey() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let result = KEY_PREFIX;
+    let result = 'AudioCrafter-';
     for (let i = 0; i < 14; i++) {
       result += chars[Math.floor(Math.random() * chars.length)];
     }
@@ -33,11 +39,9 @@ export async function onRequest(context) {
 
   const action = url.searchParams.get('action');
 
-  // ── Generate a one-time token (called by redirect.html after Linkvertise) ────
+  // ── Generate a one-time token ────
   if (action === 'gentoken') {
     const secret = url.searchParams.get('secret');
-    
-    // Use environment variable instead of hardcoded secret
     const expectedSecret = env.KEYSYSTEM_SECRET || 'carf1x66_22';
     
     if (secret !== expectedSecret) {
@@ -47,20 +51,31 @@ export async function onRequest(context) {
       );
     }
 
-    const token = crypto.randomUUID().replace(/-/g, '');
-    await KV.put(
-      'token_' + token, 
-      JSON.stringify({ used: false, createdAt: Date.now() }), 
-      { expirationTtl: TOKEN_TTL_SEC }
-    );
+    try {
+      const token = crypto.randomUUID().replace(/-/g, '');
+      await KV.put(
+        'token_' + token, 
+        JSON.stringify({ used: false, createdAt: Date.now() }), 
+        { expirationTtl: 600 }
+      );
 
-    return new Response(
-      JSON.stringify({ ok: true, token }), 
-      { headers: cors }
-    );
+      return new Response(
+        JSON.stringify({ ok: true, token }), 
+        { headers: cors }
+      );
+    } catch (error) {
+      return new Response(
+        JSON.stringify({ 
+          ok: false, 
+          error: 'KV operation failed',
+          debug: error.message 
+        }), 
+        { status: 500, headers: cors }
+      );
+    }
   }
 
-  // ── Get a key using a valid token (called by key.html) ───────────────────────
+  // ── Get a key using a valid token ───────────────────────
   if (action === 'getkey') {
     const token = url.searchParams.get('token');
     
@@ -71,48 +86,57 @@ export async function onRequest(context) {
       );
     }
 
-    const raw = await KV.get('token_' + token);
-    
-    if (!raw) {
+    try {
+      const raw = await KV.get('token_' + token);
+      
+      if (!raw) {
+        return new Response(
+          JSON.stringify({ ok: false, error: 'Invalid or expired token' }), 
+          { status: 403, headers: cors }
+        );
+      }
+
+      const tokenData = JSON.parse(raw);
+      
+      if (tokenData.used) {
+        return new Response(
+          JSON.stringify({ ok: false, error: 'Token already used' }), 
+          { status: 403, headers: cors }
+        );
+      }
+
+      await KV.put(
+        'token_' + token, 
+        JSON.stringify({ used: true }), 
+        { expirationTtl: 60 }
+      );
+
+      const key = generateKey();
+      const expiresAt = Date.now() + (14 * 60 * 60 * 1000);
+      
+      await KV.put(
+        'key_' + key, 
+        JSON.stringify({ valid: true, expiresAt }), 
+        { expirationTtl: 14 * 60 * 60 }
+      );
+
       return new Response(
-        JSON.stringify({ ok: false, error: 'Invalid or expired token' }), 
-        { status: 403, headers: cors }
+        JSON.stringify({ ok: true, key, expiresAt }), 
+        { headers: cors }
+      );
+    } catch (error) {
+      return new Response(
+        JSON.stringify({ 
+          ok: false, 
+          error: 'Operation failed',
+          debug: error.message 
+        }), 
+        { status: 500, headers: cors }
       );
     }
-
-    const tokenData = JSON.parse(raw);
-    
-    if (tokenData.used) {
-      return new Response(
-        JSON.stringify({ ok: false, error: 'Token already used' }), 
-        { status: 403, headers: cors }
-      );
-    }
-
-    // Mark token as used immediately
-    await KV.put(
-      'token_' + token, 
-      JSON.stringify({ used: true }), 
-      { expirationTtl: 60 }
-    );
-
-    // Generate and store the key
-    const key = generateKey();
-    const expiresAt = Date.now() + (KEY_TTL_SEC * 1000);
-    
-    await KV.put(
-      'key_' + key, 
-      JSON.stringify({ valid: true, expiresAt }), 
-      { expirationTtl: KEY_TTL_SEC }
-    );
-
-    return new Response(
-      JSON.stringify({ ok: true, key, expiresAt }), 
-      { headers: cors }
-    );
   }
 
-  // ── Validate a key (called by your Lua script) ───────────────────────────────
+  // ── Validate a key ───────────────────────────────
   if (action === 'validate') {
     const key = url.searchParams.get('key');
     
@@ -123,29 +147,40 @@ export async function onRequest(context) {
       );
     }
 
-    const raw = await KV.get('key_' + key);
-    
-    if (!raw) {
+    try {
+      const raw = await KV.get('key_' + key);
+      
+      if (!raw) {
+        return new Response(
+          JSON.stringify({ ok: true, valid: false, reason: 'Invalid key' }), 
+          { headers: cors }
+        );
+      }
+
+      const keyData = JSON.parse(raw);
+      
+      if (Date.now() > keyData.expiresAt) {
+        await KV.delete('key_' + key);
+        return new Response(
+          JSON.stringify({ ok: true, valid: false, reason: 'Expired' }), 
+          { headers: cors }
+        );
+      }
+
       return new Response(
-        JSON.stringify({ ok: true, valid: false, reason: 'Invalid key' }), 
+        JSON.stringify({ ok: true, valid: true, expiresAt: keyData.expiresAt }), 
         { headers: cors }
       );
-    }
-
-    const keyData = JSON.parse(raw);
-    
-    if (Date.now() > keyData.expiresAt) {
-      await KV.delete('key_' + key);
+    } catch (error) {
       return new Response(
-        JSON.stringify({ ok: true, valid: false, reason: 'Expired' }), 
-        { headers: cors }
+        JSON.stringify({ 
+          ok: false, 
+          error: 'Validation failed',
+          debug: error.message 
+        }), 
+        { status: 500, headers: cors }
       );
     }
-
-    return new Response(
-      JSON.stringify({ ok: true, valid: true, expiresAt: keyData.expiresAt }), 
-      { headers: cors }
-    );
   }
 
   return new Response(
