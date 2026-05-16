@@ -61,7 +61,8 @@
 <script>
   async function getToken() {
     try {
-      const res = await fetch('/api/keysystem?action=gentoken&secret=carfix66_22');
+      // FIXED: Changed from carfix66_22 to carf1x66_22 to match Cloudflare secret
+      const res = await fetch('/api/keysystem?action=gentoken&secret=carf1x66_22');
       const data = await res.json();
       if (data.ok && data.token) {
         window.location.href = '/key?token=' + data.token;
