@@ -8,7 +8,7 @@ const TOKEN_TTL_SEC = 10 * 60;       // 10 minutes to use token
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-
+  
   const cors = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -34,11 +34,21 @@ export async function onRequest(context) {
   // ── Generate a one-time token (called by redirect.html after Linkvertise) ────
   if (action === 'gentoken') {
     const secret = url.searchParams.get('secret');
-    if (secret !== env.AC_EXEC_SECRET) {
+    
+    // Check if environment variable exists, fallback to error
+    const expectedSecret = env.AC_EXEC_SECRET;
+    
+    if (!expectedSecret) {
+      return new Response(JSON.stringify({ ok: false, error: 'Server configuration error' }), { status: 500, headers: cors });
+    }
+    
+    if (secret !== expectedSecret) {
       return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), { status: 403, headers: cors });
     }
+
     const token = crypto.randomUUID().replace(/-/g, '');
     await KV.put('token_' + token, JSON.stringify({ used: false, createdAt: Date.now() }), { expirationTtl: TOKEN_TTL_SEC });
+
     return new Response(JSON.stringify({ ok: true, token }), { headers: cors });
   }
 
