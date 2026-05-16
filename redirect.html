@@ -47,6 +47,7 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .error { color: #ff4444; font-size: 14px; display: none; }
+  .debug { color: #888; font-size: 11px; margin-top: 12px; text-align: left; }
 </style>
 </head>
 <body>
@@ -57,22 +58,36 @@
   <div class="subtitle">Please wait while we generate your key.</div>
   <div class="spinner"></div>
   <div class="error" id="error">Something went wrong. Please try again.</div>
+  <div class="debug" id="debug"></div>
 </div>
 <script>
+  const debugEl = document.getElementById('debug');
+  
   async function getToken() {
     try {
-      // FIXED: Changed from carfix66_22 to carf1x66_22 to match Cloudflare secret
-      const res = await fetch('/api/keysystem?action=gentoken&secret=carf1x66_22');
+      debugEl.textContent = 'Attempting to fetch token...';
+      
+      // Try the full path first
+      const url = 'https://hashbrownalt.pages.dev/api/keysystem?action=gentoken&secret=carf1x66_22';
+      debugEl.textContent += '\nURL: ' + url;
+      
+      const res = await fetch(url);
+      debugEl.textContent += '\nStatus: ' + res.status;
+      
       const data = await res.json();
+      debugEl.textContent += '\nResponse: ' + JSON.stringify(data);
+      
       if (data.ok && data.token) {
         window.location.href = '/key?token=' + data.token;
       } else {
         document.getElementById('error').style.display = 'block';
         document.querySelector('.spinner').style.display = 'none';
+        debugEl.textContent += '\nError: ' + (data.error || 'Unknown error');
       }
     } catch(e) {
       document.getElementById('error').style.display = 'block';
       document.querySelector('.spinner').style.display = 'none';
+      debugEl.textContent += '\nException: ' + e.message;
     }
   }
   getToken();
