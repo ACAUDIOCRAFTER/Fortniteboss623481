@@ -6,40 +6,90 @@
 <title>AudioCrafter - Redirecting...</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { min-height: 100vh; background: #000; display: flex; align-items: center; justify-content: center; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-  .container { position: relative; z-index: 10; background: rgba(10,10,10,0.88); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px 36px; width: 380px; text-align: center; backdrop-filter: blur(12px); }
+  body {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+  #bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100vw; min-height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .container {
+    position: relative; z-index: 10;
+    background: rgba(10,10,10,0.88);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 380px; max-width: 90vw;
+    text-align: center;
+    backdrop-filter: blur(12px);
+  }
+  .logo { width: 70px; height: 70px; object-fit: cover; border-radius: 50%; margin-bottom: 20px; }
   .title { color: #fff; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
-  .spinner { width: 36px; height: 36px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+  .subtitle { color: #555; font-size: 13px; margin-bottom: 24px; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
   @keyframes spin { to { transform: rotate(360deg); } }
   .error { color: #ff4444; font-size: 14px; display: none; }
+  .debug { color: #888; font-size: 11px; margin-top: 12px; text-align: left; white-space: pre-wrap; word-break: break-all; }
 </style>
 </head>
 <body>
+<img id="bg" src="circle.gif" alt="">
 <div class="container">
+  <img class="logo" src="circle.gif" alt="logo">
   <div class="title">Verifying completion...</div>
-  <div class="spinner" id="spinner"></div>
-  <div id="error" class="error">Something went wrong.</div>
+  <div class="subtitle">Please wait while we generate your key.</div>
+  <div class="spinner"></div>
+  <div class="error" id="error">Something went wrong. Please try again.</div>
+  <div class="debug" id="debug"></div>
 </div>
 <script>
+  const debugEl = document.getElementById('debug');
   async function getToken() {
     try {
-      const res = await fetch('/api/keysystem?action=gentoken&secret=carf1x66_22');
+      debugEl.textContent = 'Attempting to fetch token...';
+      
+      // Using relative path to ensure it hits your Pages API correctly
+      const url = '/api/keysystem?action=gentoken&secret=carf1x66_22';
+      debugEl.textContent += '\nURL: ' + url;
+      
+      const res = await fetch(url);
+      debugEl.textContent += '\nStatus: ' + res.status;
+      
       const data = await res.json();
+      debugEl.textContent += '\nResponse: ' + JSON.stringify(data);
+      
       if (data.ok && data.token) {
         window.location.href = '/key?token=' + data.token;
       } else {
         document.getElementById('error').style.display = 'block';
-        document.getElementById('spinner').style.display = 'none';
-        if (data.debug && data.debug.includes('limit exceeded')) {
-          document.getElementById('error').textContent = 'Daily limit reached. Try again in 24h.';
-        }
+        document.querySelector('.spinner').style.display = 'none';
+        debugEl.textContent += '\nError: ' + (data.error || 'Unknown error');
       }
     } catch(e) {
       document.getElementById('error').style.display = 'block';
-      document.getElementById('spinner').style.display = 'none';
+      document.querySelector('.spinner').style.display = 'none';
+      debugEl.textContent += '\nException: ' + e.message;
     }
   }
-  window.onload = getToken;
+  getToken();
 </script>
 </body>
 </html>
